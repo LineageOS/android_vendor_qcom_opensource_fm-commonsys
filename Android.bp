@@ -10,3 +10,9 @@ java_library {
 
     srcs: ["qcom/fmradio/**/*.java"],
 }
+
+prebuilt_etc {
+    name: "qcom.fmradio.xml",
+    src: "qcom/fmradio/qcom.fmradio.xml",
+    sub_dir: "permissions",
+}
