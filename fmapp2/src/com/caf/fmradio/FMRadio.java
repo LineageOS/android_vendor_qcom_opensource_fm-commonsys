@@ -709,14 +709,12 @@ public void onRequestPermissionsResult(int requestCode, String[] permissions,  i
           item = menu.add(0, MENU_RECORD_START, 0, R.string.menu_record_start)
                               .setIcon(R.drawable.ic_menu_record);
           if (item != null) {
-             item.setVisible(true);
-             item.setEnabled((!recording) && radioOn);
+             item.setVisible((!recording) && radioOn);
           }
           item = menu.add(0, MENU_RECORD_STOP, 0, R.string.menu_record_stop)
                               .setIcon(R.drawable.ic_menu_record);
           if (item != null) {
-             item.setVisible(true);
-             item.setEnabled(recording && radioOn);
+             item.setVisible(recording && radioOn);
           }
       }
       /* Settings can be active */
@@ -1317,7 +1315,7 @@ public void onRequestPermissionsResult(int requestCode, String[] permissions,  i
                                                 R.layout.alert_dialog_text_entry, null);
       dlgBuilder.setTitle(R.string.dialog_presetlist_rename_title);
       dlgBuilder.setView(textEntryView);
-      dlgBuilder.setPositiveButton(R.string.alert_dialog_ok,
+      dlgBuilder.setPositiveButton(android.R.string.ok,
                                    new DialogInterface.OnClickListener() {
                                       public void onClick(DialogInterface dialog, int whichButton) {
                                          //int curList = FmSharedPreferences.getCurrentListIndex();
@@ -1336,7 +1334,7 @@ public void onRequestPermissionsResult(int requestCode, String[] permissions,  i
                                          closeDialog(DIALOG_PRESET_RENAME);
                                       }
                                    });
-      dlgBuilder.setNegativeButton(R.string.alert_dialog_cancel,
+      dlgBuilder.setNegativeButton(android.R.string.cancel,
                                    new DialogInterface.OnClickListener() {
                                       public void onClick(DialogInterface dialog, int whichButton) {
                                          closeDialog(DIALOG_PRESET_RENAME);
@@ -1350,7 +1348,7 @@ public void onRequestPermissionsResult(int requestCode, String[] permissions,  i
          dlgBuilder.setIcon(R.drawable.alert_dialog_icon)
                    .setTitle(R.string.fm_command_timeout_title);
          dlgBuilder.setMessage(R.string.fm_tune_timeout_msg);
-         dlgBuilder.setPositiveButton(R.string.alert_dialog_ok,
+         dlgBuilder.setPositiveButton(android.R.string.ok,
                                       new DialogInterface.OnClickListener() {
                                          public void onClick(DialogInterface dialog,
                                                              int whichButton) {
@@ -1369,7 +1367,7 @@ public void onRequestPermissionsResult(int requestCode, String[] permissions,  i
                 .setTitle(R.string.fm_command_failed_title);
       dlgBuilder.setMessage(R.string.fm_cmd_failed_msg);
 
-      dlgBuilder.setPositiveButton(R.string.alert_dialog_ok,
+      dlgBuilder.setPositiveButton(android.R.string.ok,
                                    new DialogInterface.OnClickListener() {
                                       public void onClick(DialogInterface dialog,
                                                           int whichButton) {
@@ -1387,7 +1385,7 @@ public void onRequestPermissionsResult(int requestCode, String[] permissions,  i
                  .setTitle(R.string.fm_command_failed_title);
        dlgBuilder.setMessage(R.string.fm_cmd_failed_call_on);
 
-       dlgBuilder.setPositiveButton(R.string.alert_dialog_ok,
+       dlgBuilder.setPositiveButton(android.R.string.ok,
                                     new DialogInterface.OnClickListener() {
                                        public void onClick(DialogInterface dialog,
                                                            int whichButton) {
