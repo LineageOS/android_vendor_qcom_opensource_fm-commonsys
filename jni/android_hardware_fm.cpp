@@ -573,12 +573,14 @@ static jint android_hardware_fmradio_FmReceiverJNI_acquireFdNative
         (JNIEnv* env, jobject thiz __unused, jstring path)
 {
     int fd;
-    int i = 0, err;
     char value[PROPERTY_VALUE_MAX] = {'\0'};
+    boolean isCopy;
+#ifndef QCOM_NO_FM_FIRMWARE
+    int i = 0, err;
     char versionStr[40] = {'\0'};
     int init_success = 0;
-    jboolean isCopy;
     v4l2_capability cap;
+#endif
     const char* radio_path = env->GetStringUTFChars(path, &isCopy);
     if(radio_path == NULL){
         return FM_JNI_FAILURE;
@@ -590,6 +592,7 @@ static jint android_hardware_fmradio_FmReceiverJNI_acquireFdNative
     if(fd < 0){
         return FM_JNI_FAILURE;
     }
+#ifndef QCOM_NO_FM_FIRMWARE
     //Read the driver verions
     err = ioctl(fd, VIDIOC_QUERYCAP, &cap);
 
@@ -604,6 +607,7 @@ static jint android_hardware_fmradio_FmReceiverJNI_acquireFdNative
        close(fd);
        return FM_JNI_FAILURE;
     }
+#endif
 
     property_get("vendor.qcom.bluetooth.soc", value, NULL);
 
@@ -611,6 +615,7 @@ static jint android_hardware_fmradio_FmReceiverJNI_acquireFdNative
 
     if ((strcmp(value, "rome") != 0) && (strcmp(value, "hastings") != 0))
     {
+#ifndef QCOM_NO_FM_FIRMWARE
        /*Set the mode for soc downloader*/
        property_set("vendor.hw.fm.mode", "normal");
        /* Need to clear the hw.fm.init firstly */
@@ -633,6 +638,10 @@ static jint android_hardware_fmradio_FmReceiverJNI_acquireFdNative
          close(fd);
          return FM_JNI_FAILURE;
        }
+#else
+       property_set("hw.fm.init", "1");
+       usleep(WAIT_TIMEOUT);
+#endif
     }
     return fd;
 }
@@ -649,7 +658,11 @@ static jint android_hardware_fmradio_FmReceiverJNI_closeFdNative
 
     if ((strcmp(value, "rome") != 0) && (strcmp(value, "hastings") != 0))
     {
+#ifndef QCOM_NO_FM_FIRMWARE
         property_set("ctl.stop", "vendor.fm");
+#else
+        property_set("hw.fm.init", "0");
+#endif
     }
     close(fd);
     return FM_JNI_SUCCESS;
