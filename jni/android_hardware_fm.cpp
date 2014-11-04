@@ -656,7 +656,7 @@ static jint android_hardware_fmradio_FmReceiverJNI_acquireFdNative
         (JNIEnv* env, jobject thiz, jstring path)
 {
     int fd;
-    int i, retval=0, err;
+    int i = 0, retval=0, err;
     char value[PROPERTY_VALUE_MAX] = {'\0'};
     char versionStr[40] = {'\0'};
     int init_success = 0;
@@ -698,6 +698,7 @@ static jint android_hardware_fmradio_FmReceiverJNI_acquireFdNative
        property_set("vendor.hw.fm.mode", "normal");
        /* Need to clear the hw.fm.init firstly */
        property_set("vendor.hw.fm.init", "0");
+#ifndef QCOM_NO_FM_FIRMWARE
        property_set("ctl.start", "fm_dl");
        sched_yield();
        for(i=0; i<45; i++) {
@@ -709,6 +710,11 @@ static jint android_hardware_fmradio_FmReceiverJNI_acquireFdNative
             usleep(WAIT_TIMEOUT);
          }
        }
+#else
+       property_set("vendor.hw.fm.init", "1");
+       usleep(WAIT_TIMEOUT);
+       init_success = 1;
+#endif
        ALOGE("init_success:%d after %f seconds \n", init_success, 0.2*i);
        if(!init_success) {
          property_set("ctl.stop", "fm_dl");
@@ -1202,7 +1208,9 @@ static jint android_hardware_fmradio_FmReceiverJNI_getRawRdsNative
 static jint android_hardware_fmradio_FmReceiverJNI_setNotchFilterNative(JNIEnv * env, jobject thiz,jint fd, jint id, jboolean aValue)
 {
     char value[PROPERTY_VALUE_MAX] = {'\0'};
+#ifndef QCOM_NO_FM_FIRMWARE
     int init_success = 0,i;
+#endif
     char notch[PROPERTY_VALUE_MAX] = {0x00};
     int band;
     int err = 0;
@@ -1220,6 +1228,7 @@ static jint android_hardware_fmradio_FmReceiverJNI_setNotchFilterNative(JNIEnv *
        else
           property_set("vendor.hw.fm.mode", "wa_disable");
 
+#ifndef QCOM_NO_FM_FIRMWARE
        property_set("ctl.start", "fm_dl");
        sched_yield();
        for(i=0; i<10; i++) {
@@ -1232,6 +1241,9 @@ static jint android_hardware_fmradio_FmReceiverJNI_setNotchFilterNative(JNIEnv *
           }
        }
        ALOGE("init_success:%d after %f seconds \n", init_success, 0.2*i);
+#else
+       usleep(WAIT_TIMEOUT);
+#endif
 
        property_get("vendor.notch.value", notch, NULL);
        ALOGE("Notch = %s",notch);
