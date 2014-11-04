@@ -1,5 +1,8 @@
 cc_library_shared {
     name: "libqcomfm_jni",
+    defaults: [
+        "qcom_no_fm_firmware_defaults",
+    ],
 
     system_ext_specific: true,
     srcs: [
