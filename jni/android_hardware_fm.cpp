@@ -615,6 +615,7 @@ static jint android_hardware_fmradio_FmReceiverJNI_acquireFdNative
        property_set("vendor.hw.fm.mode", "normal");
        /* Need to clear the hw.fm.init firstly */
        property_set("vendor.hw.fm.init", "0");
+#ifndef QCOM_NO_FM_FIRMWARE
        property_set("ctl.start", "vendor.fm");
        sched_yield();
        for(i=0; i<45; i++) {
@@ -626,6 +627,11 @@ static jint android_hardware_fmradio_FmReceiverJNI_acquireFdNative
             usleep(WAIT_TIMEOUT);
          }
        }
+#else
+       property_set("vendor.hw.fm.init", "1");
+       usleep(WAIT_TIMEOUT);
+       init_success = 1;
+#endif
        ALOGE("init_success:%d after %f seconds \n", init_success, 0.2*i);
        if(!init_success) {
          property_set("ctl.stop", "vendor.fm");
