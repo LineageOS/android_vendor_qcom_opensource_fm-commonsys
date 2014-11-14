@@ -28,6 +28,7 @@
 
 package com.caf.fmradio;
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -98,6 +99,7 @@ import com.caf.fmradio.HorizontalNumberPicker.Scale;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.Point;
+import android.graphics.drawable.ColorDrawable;
 import android.Manifest;
 import android.content.pm.PackageManager;
 
@@ -335,6 +337,17 @@ public void onRequestPermissionsResult(int requestCode, String[] permissions,  i
       Log.d(LOGTAG, " Height : " + p.y + " - mDisplayWidth  : " + mDisplayWidth);
       DisplayMetrics outMetrics = new DisplayMetrics();
       getWindowManager().getDefaultDisplay().getMetrics(outMetrics );
+
+      getWindow().setBackgroundDrawableResource(R.color.background_color);
+
+      // Set up your ActionBar
+      final ActionBar actionBar = getActionBar();
+      actionBar.setDisplayShowHomeEnabled(false);
+      actionBar.setDisplayShowTitleEnabled(false);
+      actionBar.setDisplayShowCustomEnabled(true);
+      actionBar.setCustomView(R.layout.action_bar);
+
+      ((TextView) findViewById(R.id.title)).setText(R.string.app_name);
 
       setContentView(R.layout.fmradio);
       SavedDataAndState = (LoadedDataAndState)getLastNonConfigurationInstance();
@@ -1442,7 +1455,7 @@ public void onRequestPermissionsResult(int requestCode, String[] permissions,  i
                displayDialog(DIALOG_PRESET_OPTIONS);
            }else {
                addToPresets();
-               view.startAnimation(mAnimation);
+               //view.startAnimation(mAnimation);
            }
          return true;
       }
@@ -1772,7 +1785,7 @@ public void onRequestPermissionsResult(int requestCode, String[] permissions,  i
       int durationInMins = FmSharedPreferences.getRecordDuration();
       Log.e(LOGTAG, " Fected duration:" + durationInMins );
       initiateRecordDurationTimer( durationInMins );
-      setRecordingStopImage();
+      //setRecordingStopImage();
       invalidateOptionsMenu();
    }
 
@@ -1884,9 +1897,9 @@ public void onRequestPermissionsResult(int requestCode, String[] permissions,  i
              mRecordingMsgTV.setText("");
          }
          if(isRecording()) {
-            setRecordingStopImage();
+            //setRecordingStopImage();
          }else {
-            setRecordingStartImage();
+            //setRecordingStartImage();
          }
          for (int nButton = 0; nButton < MAX_PRESETS_PER_PAGE; nButton++) {
              if (mPresetButtons[nButton] != null) {
@@ -1906,11 +1919,11 @@ public void onRequestPermissionsResult(int requestCode, String[] permissions,  i
              }
          }
       }
-      if (mForwardButton != null) {
+      if (false && mForwardButton != null) {
           mForwardButton.setVisibility(((bEnable == true) ? View.VISIBLE
                                         : View.INVISIBLE));
       }
-      if (mBackButton != null) {
+      if (false && mBackButton != null) {
          mBackButton.setVisibility(((bEnable == true) ? View.VISIBLE
                                         : View.INVISIBLE));
       }
@@ -1944,9 +1957,9 @@ public void onRequestPermissionsResult(int requestCode, String[] permissions,  i
       }
       if(mERadioTextTV != null) {
          mERadioTextTV.setVisibility(((bEnable == true) ? View.VISIBLE
-                                  : View.INVISIBLE));
+                                  : View.GONE));
       }
-      if (mProgramServiceTV != null) {
+      if (false && mProgramServiceTV != null) {
          mProgramServiceTV.setVisibility(((bEnable == true) ? View.VISIBLE
                                   : View.INVISIBLE));
       }
@@ -1986,7 +1999,7 @@ public void onRequestPermissionsResult(int requestCode, String[] permissions,  i
          }
       }
 
-      if (mStereoTV != null) {
+      if (false && mStereoTV != null) {
           mStereoTV.setVisibility(((bEnable == true) ? View.VISIBLE
                                    : View.INVISIBLE));
       }
@@ -2081,7 +2094,7 @@ public void onRequestPermissionsResult(int requestCode, String[] permissions,  i
 
    private void updateStationInfoToUI() {
       double frequency = mTunedStation.getFrequency() / 1000.0;
-      mTuneStationFrequencyTV.setText("" + frequency + "MHz");
+      mTuneStationFrequencyTV.setText("" + frequency);
       if ((mPicker != null) && mUpdatePickerValue) {
           mPicker.setValue(((mTunedStation.getFrequency() - mPrefs.getLowerLimit())
                               / mPrefs.getFrequencyStepSize()));
