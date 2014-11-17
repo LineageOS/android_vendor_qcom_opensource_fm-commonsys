@@ -388,13 +388,11 @@ public void onRequestPermissionsResult(int requestCode, String[] permissions,  i
       mForwardButton = (ImageView)findViewById(R.id.btn_forward);
       if (mForwardButton != null) {
           mForwardButton.setOnClickListener(mForwardClickListener);
-          mForwardButton.setOnLongClickListener(mForwardLongClickListener);
       }
 
       mBackButton = (ImageView)findViewById(R.id.btn_back);
       if (mBackButton != null) {
           mBackButton.setOnClickListener(mBackClickListener);
-          mBackButton.setOnLongClickListener(mBackLongClickListener);
       }
 
       /* 6 Preset Buttons */
@@ -1392,35 +1390,15 @@ public void onRequestPermissionsResult(int requestCode, String[] permissions,  i
    private View.OnClickListener mForwardClickListener =
       new View.OnClickListener() {
         public void onClick(View v) {
-          int frequency = FmSharedPreferences.getNextTuneFrequency();
-          Log.d(LOGTAG, "Tune Up: to " + frequency);
-          tuneRadio(frequency);
+          SeekNextStation();
       }
    };
 
    private View.OnClickListener mBackClickListener =
       new View.OnClickListener() {
         public void onClick(View v) {
-          int frequency = FmSharedPreferences.getPrevTuneFrequency();
-          Log.d(LOGTAG, "Tune Down: to " + frequency);
-          tuneRadio(frequency);
-      }
-   };
-
-   private View.OnLongClickListener mForwardLongClickListener =
-      new View.OnLongClickListener() {
-        public boolean onLongClick(View view) {
-          SeekNextStation();
-          return true;
-        }
-   };
-
-   private View.OnLongClickListener mBackLongClickListener =
-      new View.OnLongClickListener() {
-        public boolean onLongClick(View view) {
           SeekPreviousStation();
-          return true;
-        }
+      }
    };
 
    private View.OnClickListener mPresetsPageClickListener =
@@ -1919,11 +1897,11 @@ public void onRequestPermissionsResult(int requestCode, String[] permissions,  i
              }
          }
       }
-      if (false && mForwardButton != null) {
+      if (mForwardButton != null) {
           mForwardButton.setVisibility(((bEnable == true) ? View.VISIBLE
                                         : View.INVISIBLE));
       }
-      if (false && mBackButton != null) {
+      if (mBackButton != null) {
          mBackButton.setVisibility(((bEnable == true) ? View.VISIBLE
                                         : View.INVISIBLE));
       }
