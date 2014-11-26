@@ -556,6 +556,13 @@ public void onRequestPermissionsResult(int requestCode, String[] permissions,  i
       mERadioTextScroller.stopScroll();
       FmSharedPreferences.setTunedFrequency(mTunedStation.getFrequency());
       mPrefs.Save();
+      if (mService != null) {
+          try {
+            mService.unregisterCallbacks();
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
+      }
    }
 
    @Override
