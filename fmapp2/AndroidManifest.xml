@@ -53,12 +53,14 @@
     <uses-permission android:name="android.permission.CAPTURE_AUDIO_OUTPUT" />
     <uses-permission android:name="android.permission.CAPTURE_AUDIO_HOTWORD" />
     <uses-permission android:name="android.permission.MANAGE_USERS"/>
+
     <application
         android:requestLegacyExternalStorage="true"
         android:icon="@drawable/ic_launcher_fmradio"
         android:label="@string/app_name"
         android:allowTaskReparenting="true"
         android:taskAffinity="com.caf.task.fmradio"
+        android:theme="@style/FMTheme"
         android:name=".FMAdapterApp">
 
         <uses-library android:name="qcom.fmradio"
@@ -67,11 +69,11 @@
         <activity android:icon="@drawable/ic_launcher_fmradio"
             android:name=".FMRadio"
             android:label="@string/app_name"
-            android:theme="@style/OptOutEdgeToEdge"
             android:clearTaskOnLaunch="true"
             android:screenOrientation="portrait"
             android:allowTaskReparenting="true"
             android:launchMode="singleTask"
+            android:theme="@style/FMTheme"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:excludeFromRecents="false"
             android:exported="true" >
@@ -97,6 +99,7 @@
 
         <activity android:name=".Settings"
                   android:exported="true"
+                  android:theme="@style/FMTheme"
                   android:label="@string/menu_settings">
 
             <intent-filter>

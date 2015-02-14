@@ -226,6 +226,8 @@ public class FMRadio extends Activity
    private TextView mSleepMsgTV;
    private TextView mRecordingMsgTV;
 
+   private ImageView mFmSeeker;
+
    private double mOutputFreq;
    private int mPresetPageNumber = 0;
    private int mStereo = -1;
@@ -394,6 +396,8 @@ public void onRequestPermissionsResult(int requestCode, String[] permissions,  i
       if (mBackButton != null) {
           mBackButton.setOnClickListener(mBackClickListener);
       }
+
+      mFmSeeker = (ImageView)findViewById(R.id.fm_seeker);
 
       /* 6 Preset Buttons */
       mPresetButtons[0] = (Button)findViewById(R.id.presets_button_1);
@@ -1891,6 +1895,7 @@ public void onRequestPermissionsResult(int requestCode, String[] permissions,  i
           setMuteModeButtonImage(false);
       }
       if (bEnable) {
+         mFmSeeker.setVisibility(View.VISIBLE);
          if (mRadioTextScroller != null) {
              mRadioTextScroller.startScroll();
          }
@@ -1915,6 +1920,7 @@ public void onRequestPermissionsResult(int requestCode, String[] permissions,  i
              }
         }
       }else {
+         mFmSeeker.setVisibility(View.INVISIBLE);
          if (mRadioTextScroller != null) {
              mRadioTextScroller.stopScroll();
          }
@@ -1923,7 +1929,7 @@ public void onRequestPermissionsResult(int requestCode, String[] permissions,  i
          }
          for (int nButton = 0; nButton < MAX_PRESETS_PER_PAGE; nButton++) {
              if (mPresetButtons[nButton] != null) {
-                  mPresetButtons[nButton].setTextColor(Color.BLACK);
+                  mPresetButtons[nButton].setTextColor(Color.WHITE);
              }
          }
       }
@@ -1959,10 +1965,6 @@ public void onRequestPermissionsResult(int requestCode, String[] permissions,  i
          mRecordingMsgTV.setVisibility(((bEnable == true) ? View.VISIBLE
                                      : View.GONE));
       }
-      if (mRadioTextTV != null) {
-         mRadioTextTV.setVisibility(((bEnable == true) ? View.VISIBLE
-                                  : View.GONE));
-      }
       if(mERadioTextTV != null) {
          mERadioTextTV.setVisibility(((bEnable == true) ? View.VISIBLE
                                   : View.GONE));
@@ -1983,8 +1985,8 @@ public void onRequestPermissionsResult(int requestCode, String[] permissions,  i
          }
       }else if (isCallActive()) {
          if (mRadioTextTV != null) {
-            mRadioTextTV.setText("");
-            mRadioTextScroller.mOriginalString = "";
+            mRadioTextTV.setText(getString(R.string.fm_call));
+            mRadioTextScroller.mOriginalString = getString(R.string.fm_call);
          }
          if (mERadioTextTV != null) {
              mERadioTextTV.setText("");
@@ -1996,7 +1998,7 @@ public void onRequestPermissionsResult(int requestCode, String[] permissions,  i
          }
       }else {
          if (mRadioTextTV != null) {
-             mRadioTextTV.setText("");
+             mRadioTextTV.setText(getString(R.string.fm_off));
              mRadioTextScroller.mOriginalString = "";
          }
          if (mERadioTextTV != null) {
@@ -2131,7 +2133,6 @@ public void onRequestPermissionsResult(int requestCode, String[] permissions,  i
       mRadioTextTV.setText("");
       mERadioTextTV.setText("");
       mERadioTextTV.setVisibility(View.GONE);
-      mRadioTextTV.setVisibility(View.GONE);
       mRadioTextScroller.mOriginalString = "";
       mRadioTextScroller.mStringlength = 0;
       mRadioTextScroller.mIteration = 0;
@@ -2626,7 +2627,7 @@ public void onRequestPermissionsResult(int requestCode, String[] permissions,  i
       mTunedStation.setPI(0);
       mTunedStation.setRDSSupported(false);
       mTunedStation.setPty(0);
-      mRadioTextTV.setText("");
+      mRadioTextTV.setText(getString(R.string.fm_off));
       mERadioTextTV.setText("");
       mRadioTextScroller.mOriginalString = "";
       mProgramServiceTV.setText("");
@@ -2732,7 +2733,7 @@ public void onRequestPermissionsResult(int requestCode, String[] permissions,  i
                   mRadioTextScroller.mOriginalString = str;
                }else if(TextUtils.isEmpty(str)) { /* Rest the string to empty*/
                   mRadioTextTV.setText("");
-                  mRadioTextScroller.mOriginalString = "";
+                  mRadioTextScroller.mOriginalString = getString(R.string.fm_off);
                }else {
                   Log.v(LOGTAG, "mUpdateRadioText: Leaving old string " + mRadioTextTV.getText());
                }
