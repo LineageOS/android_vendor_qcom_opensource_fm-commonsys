@@ -144,6 +144,7 @@ public class FMRadioService extends Service
    private int mServiceStartId = -1;
    private boolean mServiceInUse = false;
    private static boolean mMuted = false;
+   private static int mFreq = 0;
    private static boolean mResumeAfterCall = false;
    private static int mAudioDevice = AudioDeviceInfo.TYPE_WIRED_HEADPHONES;
    MediaRecorder mRecorder = null;
@@ -1472,6 +1473,8 @@ public class FMRadioService extends Service
                 } catch (RemoteException e) {
                     e.printStackTrace();
                 }
+            } else if (mFreq > 0) {
+                tune(mFreq);
             }
         }
     }
@@ -2747,6 +2750,7 @@ public class FMRadioService extends Service
       {
          mReceiver.setStation(frequency);
          bCommandSent = true;
+         mFreq = frequency;
       }
       return bCommandSent;
    }
