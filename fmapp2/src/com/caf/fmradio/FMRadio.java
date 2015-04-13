@@ -1607,7 +1607,6 @@ public void onRequestPermissionsResult(int requestCode, String[] permissions,  i
                 bStatus = mService.fmOn();
                 if(bStatus) {
                    tuneRadio(FmSharedPreferences.getTunedFrequency());
-                   enableRadioOnOffUI();
                 }else {
                    Log.e(LOGTAG, "mService.fmOn failed");
                    mCommandFailed = CMD_FMON;
@@ -2556,6 +2555,7 @@ public void onRequestPermissionsResult(int requestCode, String[] permissions,  i
              mTunedStation.setPI(0);
              mTunedStation.setPty(0);
              updateStationInfoToUI();
+             enableRadioOnOffUI();
          }catch (RemoteException e) {
             e.printStackTrace();
          }
@@ -2613,6 +2613,7 @@ public void onRequestPermissionsResult(int requestCode, String[] permissions,  i
       mERadioTextScroller.stopScroll();
       mUpdatePickerValue = true;
       updateStationInfoToUI();
+      enableRadioOnOffUI();
    }
 
    Runnable mRadioEnabled = new Runnable() {
