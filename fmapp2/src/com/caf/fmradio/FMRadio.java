@@ -2000,7 +2000,11 @@ public void onRequestPermissionsResult(int requestCode, String[] permissions,  i
          }
       }else {
          if (mRadioTextTV != null) {
-             mRadioTextTV.setText(getString(R.string.fm_off));
+             if (bEnable) {
+                 mRadioTextTV.setText("");
+             } else {
+                 mRadioTextTV.setText(getString(R.string.fm_off));
+             }
              mRadioTextScroller.mOriginalString = "";
          }
          if (mERadioTextTV != null) {
