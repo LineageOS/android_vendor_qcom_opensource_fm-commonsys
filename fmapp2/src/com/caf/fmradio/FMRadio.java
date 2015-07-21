@@ -1858,6 +1858,7 @@ public void onRequestPermissionsResult(int requestCode, String[] permissions,  i
          FmSharedPreferences.addStation(selectedStation.getName(), selectedStation
                         .getFrequency(), currentList);
          setupPresetLayout();
+         mPrefs.Save();
       }
    }
 
