@@ -1818,6 +1818,7 @@ public class FMRadio extends Activity
          FmSharedPreferences.addStation(selectedStation.getName(), selectedStation
                         .getFrequency(), currentList);
          setupPresetLayout();
+         mPrefs.Save();
       }
    }
 
