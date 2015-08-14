@@ -570,11 +570,25 @@ public void onRequestPermissionsResult(int requestCode, String[] permissions,  i
       }
    }
 
+    private void syncScanState() {
+        if (!mIsScaning || mService == null) {
+            return;
+        }
+        try {
+            if (!mService.isSearchInProgress()) {
+                resetSearch();
+            }
+        }catch (RemoteException e) {
+            e.printStackTrace();
+        }
+    }
+
    @Override
    public void onResume() {
       Log.d(LOGTAG, "FMRadio: onResume");
 
       super.onResume();
+      syncScanState();
 
       if (mService == null) {
           Log.d(LOGTAG,"bind callback has not received yet - wait for 100ms");
