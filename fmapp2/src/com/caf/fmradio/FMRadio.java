@@ -709,7 +709,6 @@ public void onRequestPermissionsResult(int requestCode, String[] permissions,  i
       MenuItem item;
       boolean radioOn = isFmOn();
       boolean recording = isRecording();
-      boolean mSpeakerPhoneOn = isSpeakerEnabled();
       boolean sleepActive = isSleepTimerActive();
       boolean searchActive = isScanActive() || isSeekActive();
       Log.d(LOGTAG, "onCreateOptionsmenu");
@@ -769,7 +768,6 @@ public void onRequestPermissionsResult(int requestCode, String[] permissions,  i
       boolean radioOn = isFmOn();
       boolean recording = isRecording();
       boolean RtPlusSupported = isRtPlusSupported();
-      boolean mSpeakerPhoneOn = isSpeakerEnabled();
       boolean searchActive = isScanActive() || isSeekActive();
 
       item = menu.findItem(MENU_SCAN_START);
@@ -865,7 +863,7 @@ public void onRequestPermissionsResult(int requestCode, String[] permissions,  i
    }
 
    private void enableSpeaker() {
-    //This method with toggle Speaker phone based on existing state .
+       //This method with toggle Speaker phone based on existing state .
        boolean bSpeakerPhoneOn = isSpeakerEnabled();
        if(mService != null) {
            try {
@@ -1476,7 +1474,6 @@ public void onRequestPermissionsResult(int requestCode, String[] permissions,  i
         new View.OnClickListener() {
           @Override
           public void onClick(View v) {
-             // TODO Auto-generated method stub
              mSpeakerButton.setClickable(false);
              mSpeakerButton.setOnClickListener(null);
              mHandler.removeCallbacks(mEnableRadioTask);
