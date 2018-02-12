@@ -1220,7 +1220,7 @@ public void onRequestPermissionsResult(int requestCode, String[] permissions,  i
       if (bSearchActive) {
           AlertDialog.Builder builder = new AlertDialog.Builder(this);
           builder.setTitle(titleStr);
-          builder.setIcon(R.drawable.ic_launcher_fmradio);
+          builder.setIcon(R.mipmap.ic_launcher);
           View view = getLayoutInflater().inflate(R.layout.layout_dialog_progress,null);
           builder.setView(view);
           TextView tvMessage = (TextView)view.findViewById(R.id.id_tv_message);
