@@ -254,7 +254,6 @@ void fm_rt_update_cb(char *rt)
     }
 
     mCallbackEnv->SetByteArrayRegion(rt_buff, 0, len,(jbyte *)rt);
-    jbyte* bytes= mCallbackEnv->GetByteArrayElements(rt_buff,0);
 
     mCallbackEnv->CallVoidMethod(mCallbacksObj, method_rtCallback,rt_buff);
     mCallbackEnv->DeleteLocalRef(rt_buff);
@@ -279,7 +278,6 @@ void fm_ps_update_cb(char *ps)
     }
 
     mCallbackEnv->SetByteArrayRegion(ps_data, 0, len,(jbyte *)ps);
-    jbyte* bytes= mCallbackEnv->GetByteArrayElements(ps_data,0);
     mCallbackEnv->CallVoidMethod(mCallbacksObj, method_psInfoCallback,ps_data);
     mCallbackEnv->DeleteLocalRef(ps_data);
 }
@@ -575,7 +573,7 @@ static jint android_hardware_fmradio_FmReceiverJNI_acquireFdNative
         (JNIEnv* env, jobject thiz, jstring path)
 {
     int fd;
-    int i,err;
+    int i = 0, err;
     char value[PROPERTY_VALUE_MAX] = {'\0'};
     char versionStr[40] = {'\0'};
     int init_success = 0;
