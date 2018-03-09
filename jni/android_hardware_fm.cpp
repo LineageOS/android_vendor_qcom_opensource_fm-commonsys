@@ -356,12 +356,12 @@ void fm_ext_country_code_cb(char *ecc)
 }
 
 
-void rds_grp_cntrs_rsp_cb(char * evt_buffer)
+void rds_grp_cntrs_rsp_cb(char * evt_buffer __unused)
 {
    ALOGD("rds_grp_cntrs_rsp_cb");
 }
 
-void rds_grp_cntrs_ext_rsp_cb(char * evt_buffer)
+void rds_grp_cntrs_ext_rsp_cb(char * evt_buffer __unused)
 {
    ALOGE("rds_grp_cntrs_ext_rsp_cb");
 }
@@ -376,19 +376,19 @@ void fm_disabled_cb(void)
     mCallbacksObjCreated = false;
 }
 
-void fm_peek_rsp_cb(char *peek_rsp) {
+void fm_peek_rsp_cb(char *peek_rsp __unused) {
     ALOGD("fm_peek_rsp_cb");
 }
 
-void fm_ssbi_peek_rsp_cb(char *ssbi_peek_rsp){
+void fm_ssbi_peek_rsp_cb(char *ssbi_peek_rsp __unused){
     ALOGD("fm_ssbi_peek_rsp_cb");
 }
 
-void fm_agc_gain_rsp_cb(char *agc_gain_rsp){
+void fm_agc_gain_rsp_cb(char *agc_gain_rsp __unused){
     ALOGE("fm_agc_gain_rsp_cb");
 }
 
-void fm_ch_det_th_rsp_cb(char *ch_det_rsp){
+void fm_ch_det_th_rsp_cb(char *ch_det_rsp __unused){
     ALOGD("fm_ch_det_th_rsp_cb");
 }
 
@@ -570,7 +570,7 @@ static   fm_hal_callbacks_t fm_callbacks = {
 };
 /* native interface */
 static jint android_hardware_fmradio_FmReceiverJNI_acquireFdNative
-        (JNIEnv* env, jobject thiz, jstring path)
+        (JNIEnv* env, jobject thiz __unused, jstring path)
 {
     int fd;
     int i = 0, err;
@@ -639,7 +639,7 @@ static jint android_hardware_fmradio_FmReceiverJNI_acquireFdNative
 
 /* native interface */
 static jint android_hardware_fmradio_FmReceiverJNI_closeFdNative
-    (JNIEnv * env, jobject thiz, jint fd)
+    (JNIEnv * env __unused, jobject thiz __unused, jint fd)
 {
     char value[PROPERTY_VALUE_MAX] = {'\0'};
 
@@ -671,7 +671,7 @@ static bool is_soc_cherokee() {
 
 /* native interface */
 static jint android_hardware_fmradio_FmReceiverJNI_getFreqNative
-    (JNIEnv * env, jobject thiz, jint fd)
+    (JNIEnv * env __unused, jobject thiz __unused, jint fd __unused)
 {
     int err;
     long freq;
@@ -706,7 +706,7 @@ static jint android_hardware_fmradio_FmReceiverJNI_getFreqNative
 
 /*native interface */
 static jint android_hardware_fmradio_FmReceiverJNI_setFreqNative
-    (JNIEnv * env, jobject thiz, jint fd, jint freq)
+    (JNIEnv * env __unused, jobject thiz __unused, jint fd __unused, jint freq)
 {
     int err;
     if (is_soc_cherokee())
@@ -734,7 +734,8 @@ static jint android_hardware_fmradio_FmReceiverJNI_setFreqNative
 
 /* native interface */
 static jint android_hardware_fmradio_FmReceiverJNI_setControlNative
-    (JNIEnv * env, jobject thiz, jint fd, jint id, jint value)
+    (JNIEnv * env __unused, jobject thiz __unused, jint fd __unused, jint id,
+    jint value)
 {
     int err;
     ALOGE("id(%x) value: %x\n", id, value);
@@ -763,7 +764,7 @@ static jint android_hardware_fmradio_FmReceiverJNI_setControlNative
 
 /* native interface */
 static jint android_hardware_fmradio_FmReceiverJNI_getControlNative
-    (JNIEnv * env, jobject thiz, jint fd, jint id)
+    (JNIEnv * env __unused, jobject thiz __unused, jint fd __unused, jint id)
 {
     int err;
     long val;
@@ -801,7 +802,7 @@ static jint android_hardware_fmradio_FmReceiverJNI_getControlNative
 
 /* native interface */
 static jint android_hardware_fmradio_FmReceiverJNI_startSearchNative
-    (JNIEnv * env, jobject thiz, jint fd, jint dir)
+    (JNIEnv * env __unused, jobject thiz __unused, jint fd __unused, jint dir)
 {
     int err;
     if (is_soc_cherokee())
@@ -836,7 +837,7 @@ static jint android_hardware_fmradio_FmReceiverJNI_startSearchNative
 
 /* native interface */
 static jint android_hardware_fmradio_FmReceiverJNI_cancelSearchNative
-    (JNIEnv * env, jobject thiz, jint fd)
+    (JNIEnv * env __unused, jobject thiz __unused, jint fd __unused)
 {
     int err;
 
@@ -871,7 +872,7 @@ static jint android_hardware_fmradio_FmReceiverJNI_cancelSearchNative
 
 /* native interface */
 static jint android_hardware_fmradio_FmReceiverJNI_getRSSINative
-    (JNIEnv * env, jobject thiz, jint fd)
+    (JNIEnv * env __unused, jobject thiz __unused, jint fd __unused)
 {
     int err;
     long rmssi;
@@ -907,7 +908,8 @@ static jint android_hardware_fmradio_FmReceiverJNI_getRSSINative
 
 /* native interface */
 static jint android_hardware_fmradio_FmReceiverJNI_setBandNative
-    (JNIEnv * env, jobject thiz, jint fd, jint low, jint high)
+    (JNIEnv * env __unused, jobject thiz __unused, jint fd __unused, jint low,
+    jint high)
 {
     int err;
     if (is_soc_cherokee())
@@ -948,7 +950,7 @@ static jint android_hardware_fmradio_FmReceiverJNI_setBandNative
 
 /* native interface */
 static jint android_hardware_fmradio_FmReceiverJNI_getLowerBandNative
-    (JNIEnv * env, jobject thiz, jint fd)
+    (JNIEnv * env __unused, jobject thiz __unused, jint fd)
 {
     int err;
     ULINT freq;
@@ -984,7 +986,7 @@ else
 
 /* native interface */
 static jint android_hardware_fmradio_FmReceiverJNI_getUpperBandNative
-    (JNIEnv * env, jobject thiz, jint fd)
+    (JNIEnv * env __unused, jobject thiz __unused, jint fd)
 {
     int err;
     ULINT freq;
@@ -1019,7 +1021,7 @@ else
 }
 
 static jint android_hardware_fmradio_FmReceiverJNI_setMonoStereoNative
-    (JNIEnv * env, jobject thiz, jint fd, jint val)
+    (JNIEnv * env __unused, jobject thiz __unused, jint fd, jint val)
 {
 
     int err;
@@ -1053,7 +1055,7 @@ else
 
 /* native interface */
 static jint android_hardware_fmradio_FmReceiverJNI_getBufferNative
- (JNIEnv * env, jobject thiz, jint fd, jbyteArray buff, jint index)
+    (JNIEnv * env, jobject thiz __unused, jint fd, jbyteArray buff, jint index)
 {
     int err;
     jboolean isCopy;
@@ -1083,7 +1085,8 @@ static jint android_hardware_fmradio_FmReceiverJNI_getBufferNative
 
 /* native interface */
 static jint android_hardware_fmradio_FmReceiverJNI_getRawRdsNative
- (JNIEnv * env, jobject thiz, jint fd, jbooleanArray buff, jint count)
+    (JNIEnv * env __unused, jobject thiz __unused, jint fd, jbooleanArray buff,
+    jint count)
 {
 
     return (read (fd, buff, count));
@@ -1091,7 +1094,7 @@ static jint android_hardware_fmradio_FmReceiverJNI_getRawRdsNative
 }
 
 static jint android_hardware_fmradio_FmReceiverJNI_configureSpurTable
-    (JNIEnv * env, jobject thiz, jint fd)
+    (JNIEnv * env __unused, jobject thiz __unused, jint fd)
 {
     int err;
 
@@ -1114,7 +1117,7 @@ static jint android_hardware_fmradio_FmReceiverJNI_configureSpurTable
 }
 
 static jint android_hardware_fmradio_FmReceiverJNI_setPSRepeatCountNative
-    (JNIEnv * env, jobject thiz, jint fd, jint repCount)
+    (JNIEnv * env __unused, jobject thiz __unused, jint fd, jint repCount)
 {
     int masked_ps_repeat_cnt;
     int err;
@@ -1139,7 +1142,7 @@ static jint android_hardware_fmradio_FmReceiverJNI_setPSRepeatCountNative
 }
 
 static jint android_hardware_fmradio_FmReceiverJNI_setTxPowerLevelNative
-    (JNIEnv * env, jobject thiz, jint fd, jint powLevel)
+    (JNIEnv * env __unused, jobject thiz __unused, jint fd, jint powLevel)
 {
     int err;
 
@@ -1162,7 +1165,7 @@ static jint android_hardware_fmradio_FmReceiverJNI_setTxPowerLevelNative
 }
 
 static void android_hardware_fmradio_FmReceiverJNI_configurePerformanceParams
-    (JNIEnv * env, jobject thiz, jint fd)
+    (JNIEnv * env __unused, jobject thiz __unused, jint fd)
 {
 
      ConfigFmThs thsObj;
@@ -1172,7 +1175,8 @@ static void android_hardware_fmradio_FmReceiverJNI_configurePerformanceParams
 
 /* native interface */
 static jint android_hardware_fmradio_FmReceiverJNI_setSpurDataNative
- (JNIEnv * env, jobject thiz, jint fd, jshortArray buff, jint count)
+    (JNIEnv * env, jobject thiz __unused, jint fd, jshortArray buff,
+    jint count)
 {
     ALOGE("entered JNI's setSpurDataNative\n");
     int err, i = 0;
@@ -1210,7 +1214,7 @@ static jint android_hardware_fmradio_FmReceiverJNI_setSpurDataNative
 }
 
 static jint android_hardware_fmradio_FmReceiverJNI_enableSlimbusNative
- (JNIEnv * env, jobject thiz, jint fd, jint val)
+ (JNIEnv * env __unused, jobject thiz __unused, jint fd __unused, jint val)
 {
     ALOGD("%s: val = %d\n", __func__, val);
     int err = JNI_ERR;
@@ -1221,7 +1225,7 @@ if (is_soc_cherokee()) {
 }
 
 static jint android_hardware_fmradio_FmReceiverJNI_enableSoftMuteNative
- (JNIEnv * env, jobject thiz, jint fd, jint val)
+ (JNIEnv * env __unused, jobject thiz __unused, jint fd __unused, jint val)
 {
     ALOGD("%s: val = %d\n", __func__, val);
     int err = JNI_ERR;
@@ -1231,7 +1235,7 @@ if (is_soc_cherokee()) {
     return err;
 }
 
-static void classInitNative(JNIEnv* env, jclass clazz) {
+static void classInitNative(JNIEnv* env __unused, jclass clazz __unused) {
 
     ALOGI("ClassInit native called \n");
     jclass dataClass = env->FindClass("qcom/fmradio/FmReceiverJNI");
@@ -1285,7 +1289,7 @@ error:
     lib_handle = NULL;
 }
 
-static void initNative(JNIEnv *env, jobject object) {
+static void initNative(JNIEnv *env __unused, jobject object __unused) {
 if (is_soc_cherokee()) {
     int status;
     ALOGI("Init native called \n");
@@ -1303,7 +1307,7 @@ if (is_soc_cherokee()) {
 }
 }
 
-static void cleanupNative(JNIEnv *env, jobject object) {
+static void cleanupNative(JNIEnv *env __unused, jobject object __unused) {
 
     if (is_soc_cherokee()) {
         if (mCallbacksObj != NULL) {
@@ -1373,7 +1377,7 @@ int register_android_hardware_fm_fmradio(JNIEnv* env)
 
 } // end namespace
 
-jint JNI_OnLoad(JavaVM *jvm, void *reserved)
+jint JNI_OnLoad(JavaVM *jvm, void *reserved __unused)
 {
     JNIEnv *e;
     int status;
