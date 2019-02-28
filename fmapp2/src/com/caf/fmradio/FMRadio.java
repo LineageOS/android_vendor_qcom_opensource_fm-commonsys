@@ -278,7 +278,7 @@ public class FMRadio extends Activity
    public static boolean mUpdatePickerValue = false;
 
    private LoadedDataAndState SavedDataAndState = null;
-   private static String mBTsoc;
+   private static String mBTsoc = "invalid";
 
    /** fm stats property string */
    public static final String FM_STATS_PROP = "persist.fm.stats";
@@ -432,6 +432,7 @@ public void onRequestPermissionsResult(int requestCode, String[] permissions,  i
       if ((mERadioTextScroller == null) && (mERadioTextTV != null)) {
           mERadioTextScroller = new ScrollerText(mERadioTextTV);
       }
+      mBTsoc = SystemProperties.get("vendor.bluetooth.soc");
    }
 
    protected void setDisplayvalue(){
@@ -789,29 +790,12 @@ public void onRequestPermissionsResult(int requestCode, String[] permissions,  i
           startActivity(launchFMStatIntent);
           return true;
       case MENU_SCAN_START:
-          Log.d(LOGTAG, "mBTsoc: " + mBTsoc + " mService: " + mService);
-
-          if (mBTsoc == null) {
-              if (mService != null) {
-                  try {
-                      mBTsoc = mService.getSocName();
-                      Log.d(LOGTAG, "mBTsoc: " + mBTsoc);
-                  }catch (RemoteException e) {
-                      e.printStackTrace();
-                      return false;
-                  }
-              } else {
-                return false;
-              }
-          }
-
          if (mBTsoc.equals("rome")) {
              clearStationList();
              initiateSearch(0); // 0 - All stations
          } else {
              displayDialog(DIALOG_SEARCH);
          }
-
          return true;
       case MENU_SCAN_STOP:
          cancelSearch();
