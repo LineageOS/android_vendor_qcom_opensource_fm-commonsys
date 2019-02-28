@@ -334,9 +334,6 @@ public class FMStats extends Activity  {
                           (this, R.array.band_sweep_methods,
                             android.R.layout.simple_spinner_item);
 
-        if(mReceiver == null)
-            mReceiver = new FmReceiver();
-
         Log.d(LOGTAG, "oncreate");
         checkTransportLayer();
         if (isCherokeeChip()) {
@@ -368,6 +365,9 @@ public class FMStats extends Activity  {
             this, R.array.rf_cfg, android.R.layout.simple_spinner_item);
 
         tLayout = (TableLayout) findViewById(R.id.maintable);
+
+        if(mReceiver == null)
+            mReceiver = new FmReceiver();
 
         long curTime = System.currentTimeMillis();
         mCurrentFileName = "FMStats_".concat(
@@ -2837,8 +2837,8 @@ public class FMStats extends Activity  {
         }
     }
     private void checkTransportLayer() {
-       String chip = mReceiver.getSocName();
-       if (chip.equals("pronto"))
+       String chip = SystemProperties.get("vendor.bluetooth.soc","default");
+       if (chip.equals("default"))
            mIsTransportSMD = true;
        else
            mIsTransportSMD = false;
@@ -2850,8 +2850,7 @@ public class FMStats extends Activity  {
     private boolean isCherokeeChip() {
         Log.d(LOGTAG, "isCherokeeChip");
 
-        String chip = mReceiver.getSocName();
-
+        String chip = SystemProperties.get("vendor.bluetooth.soc");
         if (chip.equals("cherokee"))
             return true;
         else
@@ -2859,15 +2858,16 @@ public class FMStats extends Activity  {
     }
 
     private boolean isRomeChip() {
-        String chip = mReceiver.getSocName();
+        String chip = "";
 
+        chip = SystemProperties.get("vendor.bluetooth.soc");
         if(chip.equals("rome"))
            return true;
         return false;
     }
 
     private boolean isHastingsChip() {
-        String chip = mReceiver.getSocName();
+        String chip = SystemProperties.get("vendor.bluetooth.soc","default");
 
         if(chip.equals("hastings"))
            return true;
