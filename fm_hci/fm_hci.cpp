@@ -97,11 +97,11 @@ static void hci_close();
 static int enqueue_fm_rx_event(struct fm_event_header_t *hdr)
 {
 
-    ALOGI("%s: putting lock before enqueue ", __func__);
+    ALOGV("%s: putting lock before enqueue ", __func__);
     hci.rx_cond_mtx.lock();
     hci.rx_event_queue.push(hdr);
     hci.rx_cond_mtx.unlock();
-    ALOGI("%s:notify to waiting thred", __func__);
+    ALOGV("%s:notify to waiting thred", __func__);
     hci.rx_cond.notify_all();
     ALOGI("%s: FM-Event ENQUEUED SUCCESSFULLY", __func__);
 
@@ -140,11 +140,11 @@ static void dequeue_fm_rx_event()
             ALOGI("%s: FM_CMD_COMPLETE: current_credits %d, %d Credits got from the SOC", __func__, hci.command_credits, evt_buf->params[0]);
             if (hci.command_credits == 0) {
                 hci.command_credits += evt_buf->params[0];
-                ALOGI(" dequeue_fm_rx_event: wait for tx_cond_lock ");
+                ALOGV(" dequeue_fm_rx_event: wait for tx_cond_lock ");
                 hci.tx_cond_mtx.lock();
-                ALOGI(" dequeue_fm_rx_event: Notifying tx_cond_lock ");
+                ALOGV(" dequeue_fm_rx_event: Notifying tx_cond_lock ");
                 hci.tx_cond.notify_all();
-                ALOGI(" dequeue_fm_rx_event: UNLOCKING tx_cond_lock ");
+                ALOGV(" dequeue_fm_rx_event: UNLOCKING tx_cond_lock ");
                 hci.tx_cond_mtx.unlock();
             } else {
                 hci.command_credits += evt_buf->params[0];
@@ -154,11 +154,11 @@ static void dequeue_fm_rx_event()
             ALOGI("%s: FM_CMD_STATUS: current_credits %d, %d Credits got from the SOC", __func__, hci.command_credits, evt_buf->params[1]);
             if (hci.command_credits == 0) {
                 hci.command_credits += evt_buf->params[1];
-                ALOGI(" dequeue_fm_rx_event: wait for tx_cond_lock ");
+                ALOGV(" dequeue_fm_rx_event: wait for tx_cond_lock ");
                 hci.tx_cond_mtx.lock();
-                ALOGI(" dequeue_fm_rx_event: Notifying tx_cond_lock ");
+                ALOGV(" dequeue_fm_rx_event: Notifying tx_cond_lock ");
                 hci.tx_cond.notify_all();
-                ALOGI(" dequeue_fm_rx_event: UNLOCKING tx_cond_lock ");
+                ALOGV(" dequeue_fm_rx_event: UNLOCKING tx_cond_lock ");
                 hci.tx_cond_mtx.unlock();
             } else {
                 hci.command_credits += evt_buf->params[1];
@@ -203,11 +203,11 @@ static int enqueue_fm_tx_cmd(struct fm_command_header_t *hdr)
 
     ALOGI("%s:  notifying credits %d", __func__, hci.command_credits);
     if (hci.command_credits > 0) {
-        ALOGI(" enqueue_fm_tx_cmd: wait for tx_cond_lock ");
+        ALOGV(" enqueue_fm_tx_cmd: wait for tx_cond_lock ");
         hci.tx_cond_mtx.lock();
-        ALOGI(" enqueue_fm_tx_cmd: Notifying tx_cond_lock ");
+        ALOGV(" enqueue_fm_tx_cmd: Notifying tx_cond_lock ");
         hci.tx_cond.notify_all();
-        ALOGI(" enqueue_fm_tx_cmd: UNLOCK tx_cond_lock ");
+        ALOGV(" enqueue_fm_tx_cmd: UNLOCK tx_cond_lock ");
         hci.tx_cond_mtx.unlock();
     }
 
@@ -233,16 +233,15 @@ static void dequeue_fm_tx_cmd()
 {
     fm_command_header_t *hdr;
 
-    ALOGI("%s", __func__);
+    ALOGI("%s command credits %d ", __func__, hci.command_credits);
 
     while (1) 
     {
-       ALOGI(" dequeue_fm_tx_cmd:  command credits %d ", hci.command_credits);
        if (hci.command_credits == 0) {
           return;
        }
         hci.tx_queue_mtx.lock();
-        ALOGI("%s is_que_empty %d", __func__,hci.tx_cmd_queue.empty());
+        ALOGV("%s is_que_empty %d", __func__,hci.tx_cmd_queue.empty());
         if(hci.tx_cmd_queue.empty()){
             ALOGI(" %s No more FM CMDs are available in the Queue",__func__);
             hci.tx_queue_mtx.unlock();
@@ -252,7 +251,7 @@ static void dequeue_fm_tx_cmd()
         hdr = hci.tx_cmd_queue.front();
         hci.tx_cmd_queue.pop();
         hci.tx_queue_mtx.unlock();
-        ALOGI("%s: packet popped %d credits", __func__,hci.command_credits);
+        ALOGV("%s: packet popped %d credits", __func__,hci.command_credits);
 
 
         hci.command_credits--;
