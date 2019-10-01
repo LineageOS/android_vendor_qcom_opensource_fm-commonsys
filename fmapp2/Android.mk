@@ -31,7 +31,6 @@ LOCAL_CERTIFICATE := platform
 LOCAL_JNI_SHARED_LIBRARIES := libqcomfm_jni
 LOCAL_JAVA_LIBRARIES := qcom.fmradio
 LOCAL_PRIVATE_PLATFORM_APIS := true
-LOCAL_AAPT_FLAGS += --legacy
 include $(BUILD_PACKAGE)
 
 endif
