@@ -344,15 +344,15 @@ public class FmReceiver extends FmTransceiver
    private static final int SEARCH_SINR_INT = 1;
 
    public boolean isSmdTransportLayer() {
-       String chip = getSocName();
-       if (chip.equals("pronto"))
+       String chip = SystemProperties.get("vendor.bluetooth.soc","default");
+       if (chip.equals("default"))
            return true;
        else
            return false;
    }
 
    public static boolean isRomeChip() {
-       String chip = FmReceiverJNI.getSocNameNative();
+       String chip = SystemProperties.get("vendor.bluetooth.soc");
        if (chip.equals("rome"))
            return true;
        else
@@ -360,7 +360,7 @@ public class FmReceiver extends FmTransceiver
    }
 
    public static boolean isCherokeeChip() {
-       String chip = FmReceiverJNI.getSocNameNative();
+       String chip = SystemProperties.get("vendor.bluetooth.soc");
        if (chip.equals("cherokee"))
            return true;
        else
@@ -3087,9 +3087,5 @@ public class FmReceiver extends FmTransceiver
    public void EnableSoftMute(int enable) {
        Log.d(TAG, "enableSoftMute :enable =" + enable);
        mControl.enableSoftMute(sFd, enable);
-   }
-
-   public String getSocName() {
-     return FmReceiverJNI.getSocNameNative();
    }
 }
