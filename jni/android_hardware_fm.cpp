@@ -717,7 +717,7 @@ static jint android_hardware_fmradio_FmReceiverJNI_acquireFdNative
 
           /* Need to clear the hw.fm.init firstly */
           bt_configstore_intf->set_vendor_property(FM_PROP_HW_INIT, "0");
-          bt_configstore_intf->set_vendor_property(FM_PROP_CTL_START, "fm_dl");
+          bt_configstore_intf->set_vendor_property(FM_PROP_CTL_START, "vendor.fm");
 
           sched_yield();
           for(i=0; i<45; i++) {
@@ -731,7 +731,7 @@ static jint android_hardware_fmradio_FmReceiverJNI_acquireFdNative
           }
           ALOGE("init_success:%d after %f seconds \n", init_success, 0.2*i);
           if(!init_success) {
-             bt_configstore_intf->set_vendor_property(FM_PROP_CTL_STOP,"fm_dl");
+             bt_configstore_intf->set_vendor_property(FM_PROP_CTL_STOP,"vendor.fm");
              // close the fd(power down)
              close(fd);
              return FM_JNI_FAILURE;
@@ -751,7 +751,7 @@ static jint android_hardware_fmradio_FmReceiverJNI_closeFdNative
 
     if (is_soc_pronto() && bt_configstore_intf != NULL)
     {
-        bt_configstore_intf->set_vendor_property(FM_PROP_CTL_STOP,"fm_dl");
+        bt_configstore_intf->set_vendor_property(FM_PROP_CTL_STOP,"vendor.fm");
     }
     close(fd);
     return FM_JNI_SUCCESS;
@@ -1230,7 +1230,7 @@ static jint android_hardware_fmradio_FmReceiverJNI_setNotchFilterNative(JNIEnv *
         else
             bt_configstore_intf->set_vendor_property(FM_PROP_HW_MODE, "wa_disable");
 
-        bt_configstore_intf->set_vendor_property(FM_PROP_CTL_START, "fm_dl");
+        bt_configstore_intf->set_vendor_property(FM_PROP_CTL_START, "vendor.fm");
 
         sched_yield();
         for(i=0; i<10; i++) {
