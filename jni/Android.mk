@@ -18,13 +18,10 @@ LOCAL_SHARED_LIBRARIES := \
         libcutils \
         libbtconfigstore
 
-LOCAL_C_INCLUDES += $(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ/usr/include \
-                   $(TOP)/libnativehelper/include/nativehelper \
+LOCAL_C_INCLUDES +=$(TOP)/libnativehelper/include/nativehelper \
                    $(TOP)/vendor/qcom/opensource/commonsys-intf/bluetooth/include \
                    $(TOP)/vendor/qcom/opensource/commonsys/bluetooth_ext/system_bt_ext/btconfigstore \
                    vendor/qcom/opensource/commonsys/fm/helium
-
-LOCAL_ADDITIONAL_DEPENDENCIES := $(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ/usr
 
 LOCAL_MODULE := libqcomfm_jni
 LOCAL_MODULE_TAGS := optional
