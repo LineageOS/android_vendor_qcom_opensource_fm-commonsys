@@ -146,20 +146,20 @@ typedef enum {
 
 #define TUNE_PARAM 16
 #define SIZE_ARRAY(x)  (sizeof(x) / sizeof((x)[0]))
-typedef void (*enb_result_cb)();
+typedef void (*enb_result_cb)(void);
 typedef void (*tune_rsp_cb)(int Freq);
 typedef void (*seek_rsp_cb)(int Freq);
-typedef void (*scan_rsp_cb)();
+typedef void (*scan_rsp_cb)(void);
 typedef void (*srch_list_rsp_cb)(uint16_t *scan_tbl);
 typedef void (*stereo_mode_cb)(bool status);
 typedef void (*rds_avl_sts_cb)(bool status);
 typedef void (*af_list_cb)(uint16_t *af_list);
 typedef void (*rt_cb)(char *rt);
 typedef void (*ps_cb)(char *ps);
-typedef void (*oda_cb)();
+typedef void (*oda_cb)(void);
 typedef void (*rt_plus_cb)(char *rt_plus);
 typedef void (*ert_cb)(char *ert);
-typedef void (*disable_cb)();
+typedef void (*disable_cb)(void);
 typedef void (*callback_thread_event)(unsigned int evt);
 typedef void (*rds_grp_cntrs_cb)(char *rds_params);
 typedef void (*rds_grp_cntrs_ext_cb)(char *rds_params);
@@ -1252,7 +1252,7 @@ struct fm_hal_t {
 };
 
 struct fm_interface_t {
-    int (*init)(const fm_hal_callbacks_t *p_cb);
+    int (*hal_init)(const fm_hal_callbacks_t *p_cb);
     int (*set_fm_ctrl)(int opcode, int val);
     int (*get_fm_ctrl) (int opcode, int *val);
 };

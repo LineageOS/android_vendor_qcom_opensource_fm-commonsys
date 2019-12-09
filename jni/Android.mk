@@ -21,7 +21,9 @@ LOCAL_SHARED_LIBRARIES := \
 LOCAL_C_INCLUDES += $(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ/usr/include \
                    $(TOP)/libnativehelper/include/nativehelper \
                    $(TOP)/vendor/qcom/opensource/commonsys-intf/bluetooth/include \
-                   $(TOP)/vendor/qcom/opensource/commonsys/bluetooth_ext/system_bt_ext/btconfigstore
+                   $(TOP)/vendor/qcom/opensource/commonsys/bluetooth_ext/system_bt_ext/btconfigstore \
+                   vendor/qcom/opensource/commonsys/fm/helium
+
 LOCAL_ADDITIONAL_DEPENDENCIES := $(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ/usr
 
 LOCAL_MODULE := libqcomfm_jni
