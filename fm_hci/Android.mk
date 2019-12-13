@@ -10,8 +10,6 @@ LOCAL_SHARED_LIBRARIES := \
          libcutils \
          libbase \
          libhidlbase \
-         libhidltransport \
-         libhwbinder \
          liblog \
          libutils \
          android.hidl.base@1.0 \
