@@ -465,11 +465,6 @@ class FmReceiverJNI {
     static native int setNotchFilterNative(int fd, int id, boolean value);
 
     /**
-     * native method: enable/disable Analog Mode
-     */
-    static native int setAnalogModeNative(boolean value);
-
-    /**
      * native method: Starts the RT transmission
      * @param fd file descriptor of device
      * @param buff[] buffer

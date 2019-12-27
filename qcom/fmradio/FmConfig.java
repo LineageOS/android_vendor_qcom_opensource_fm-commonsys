@@ -203,19 +203,6 @@ public class FmConfig {
 	re = FmReceiverJNI.setControlNative (fd, V4L2_CID_PRIVATE_TAVARUA_EMPHASIS, configSettings.getEmphasis());
         re = FmReceiverJNI.setControlNative (fd, V4L2_CID_PRIVATE_TAVARUA_RDS_STD, configSettings.getRdsStd() );
         re = FmReceiverJNI.setControlNative (fd, V4L2_CID_PRIVATE_TAVARUA_SPACING, configSettings.getChSpacing() );
-
-        boolean fmSrchAlg = SystemProperties.getBoolean("persist.fm.new.srch.algorithm",false);
-        if (fmSrchAlg) {
-          Log.v (TAG, "fmConfigure() : FM Srch Alg : NEW ");
-          re = FmReceiverJNI.setControlNative (fd, V4L2_CID_PRIVATE_TAVARUA_SRCH_ALGORITHM, 1);
-        }
-        else {
-          Log.v (TAG, "fmConfigure() : FM Srch Alg : OLD ");
-          re = FmReceiverJNI.setControlNative (fd, V4L2_CID_PRIVATE_TAVARUA_SRCH_ALGORITHM, 0);
-        }
-        if (re < 0)
-          return false;
-
         re = FmReceiverJNI.setBandNative (fd, configSettings.getLowerLimit(), configSettings.getUpperLimit());
         if (re < 0)
           return false;

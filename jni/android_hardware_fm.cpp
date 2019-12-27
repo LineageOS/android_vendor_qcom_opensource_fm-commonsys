@@ -81,7 +81,6 @@ enum search_dir_t {
     SCAN_DN
 };
 
-static JNIEnv *g_jEnv = NULL;
 static JavaVM *g_jVM = NULL;
 
 namespace android {
@@ -99,7 +98,6 @@ static void *bt_configstore_lib_handle = NULL;
 static JNIEnv *mCallbackEnv = NULL;
 static jobject mCallbacksObj = NULL;
 static bool mCallbacksObjCreated = false;
-static jfieldID sCallbacksField;
 
 static jclass javaClassRef;
 static jmethodID method_psInfoCallback;
@@ -248,7 +246,7 @@ void fm_rt_update_cb(char *rt)
 {
     ALOGD("RT_EVT: " );
     jbyteArray rt_buff = NULL;
-    int i,len;
+    int len;
 
     if (!checkCallbackThread())
         return;
@@ -274,7 +272,7 @@ void fm_rt_update_cb(char *rt)
 void fm_ps_update_cb(char *ps)
 {
     jbyteArray ps_data = NULL;
-    int i,len;
+    int len;
     int numPs;
     if (!checkCallbackThread())
         return;
@@ -325,7 +323,7 @@ void fm_ert_update_cb(char *ert)
 {
     ALOGD("ERT_EVT");
     jbyteArray ert_buff = NULL;
-    int i,len;
+    int len;
 
     if (!checkCallbackThread())
         return;
@@ -350,7 +348,7 @@ void fm_ext_country_code_cb(char *ecc)
 {
     ALOGI("Extended Contry code ");
     jbyteArray ecc_buff = NULL;
-    int i,len;
+    int len;
 
     if (!checkCallbackThread())
         return;
@@ -606,7 +604,7 @@ static jint android_hardware_fmradio_FmReceiverJNI_acquireFdNative
         (JNIEnv* env, jobject thiz, jstring path)
 {
     int fd;
-    int i, retval=0, err;
+    int i,err;
     char value[PROPERTY_VALUE_MAX] = {'\0'};
     int init_success = 0;
     jboolean isCopy;
@@ -664,10 +662,6 @@ static jint android_hardware_fmradio_FmReceiverJNI_acquireFdNative
 static jint android_hardware_fmradio_FmReceiverJNI_closeFdNative
     (JNIEnv * env, jobject thiz, jint fd)
 {
-    int i = 0;
-    int cleanup_success = 0;
-    char retval =0;
-
     if (is_soc_pronto() && bt_configstore_intf != NULL)
     {
         bt_configstore_intf->set_vendor_property(FM_PROP_CTL_STOP,"fm_dl");
@@ -1190,14 +1184,6 @@ static jint android_hardware_fmradio_FmReceiverJNI_setNotchFilterNative(JNIEnv *
     return err;
 }
 
-
-/* native interface */
-static jint android_hardware_fmradio_FmReceiverJNI_setAnalogModeNative(JNIEnv * env, jobject thiz, jboolean aValue)
-{
-    /*DAC configuration is applicable only msm7627a target*/
-    return 0;
-}
-
 /*
  * Interfaces added for Tx
 */
@@ -1713,8 +1699,6 @@ static JNINativeMethod gMethods[] = {
             (void*)android_hardware_fmradio_FmReceiverJNI_setPSRepeatCountNative},
         { "setTxPowerLevelNative", "(II)I",
             (void*)android_hardware_fmradio_FmReceiverJNI_setTxPowerLevelNative},
-       { "setAnalogModeNative", "(Z)I",
-            (void*)android_hardware_fmradio_FmReceiverJNI_setAnalogModeNative},
         { "SetCalibrationNative", "(I)I",
             (void*)android_hardware_fmradio_FmReceiverJNI_SetCalibrationNative},
         { "configureSpurTable", "(I)I",

@@ -132,7 +132,6 @@ public class FMRadioService extends Service
    private BroadcastReceiver mAudioBecomeNoisyListener = null;
    private SharedPreferences mPref = null;
    private Editor mEditor = null;
-   private boolean mOverA2DP = false;
    private BroadcastReceiver mFmMediaButtonListener;
    private BroadcastReceiver mAirplaneModeChanged;
    private BroadcastReceiver mRegisterUserSwitched;
@@ -155,7 +154,6 @@ public class FMRadioService extends Service
    private int mCallStatus = 0;
    private BroadcastReceiver mScreenOnOffReceiver = null;
    final Handler mHandler = new Handler();
-   private boolean misAnalogModeSupported = false;
    private boolean misAnalogPathEnabled = false;
    private boolean mA2dpDisconnected = false;
    private boolean mA2dpConnected = false;
@@ -192,7 +190,6 @@ public class FMRadioService extends Service
    private boolean mA2dpDeviceSupportInHal = false;
    //on shutdown not to send start Intent to AudioManager
    private boolean mAppShutdown = false;
-   private boolean mSingleRecordingInstanceSupported = false;
    private AudioManager mAudioManager;
    public static final long UNAVAILABLE = -1L;
    public static final long PREPARING = -2L;
@@ -254,7 +251,6 @@ public class FMRadioService extends Service
       PowerManager pm = (PowerManager)getSystemService(Context.POWER_SERVICE);
       mWakeLock = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, this.getClass().getName());
       mWakeLock.setReferenceCounted(false);
-      misAnalogModeSupported  = SystemProperties.getBoolean("ro.fm.analogpath.supported",false);
       /* Register for Screen On/off broadcast notifications */
       mA2dpDeviceState = new A2dpDeviceStatus(getApplicationContext());
       registerScreenOnOffListener();
@@ -270,9 +266,6 @@ public class FMRadioService extends Service
       mSession = new MediaSession(getApplicationContext(), this.getClass().getName());
       mSession.setCallback(mSessionCallback);
       mSession.setFlags(MediaSession.FLAG_EXCLUSIVE_GLOBAL_PRIORITY);
-      if ( false == SystemProperties.getBoolean("ro.fm.mulinst.recording.support",true)) {
-           mSingleRecordingInstanceSupported = true;
-      }
 
       // Register for pause commands from other apps to stop FM
       registerMusicServiceCommandReceiver();
@@ -1166,13 +1159,7 @@ public class FMRadioService extends Service
       int mRecordDuration = -1;
 
       Log.d(LOGTAG, "In startRecording of Recorder");
-      if((true == mSingleRecordingInstanceSupported) &&
-         (true == mOverA2DP )) {
-                Toast.makeText( this,
-                                "playback on BT in progress,can't record now",
-                                Toast.LENGTH_SHORT).show();
-                return false;
-       }
+
        stopRecording();
 
        if (!Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState())) {
@@ -1602,10 +1589,7 @@ public class FMRadioService extends Service
                   case AudioManager.AUDIOFOCUS_LOSS:
                       Log.v(LOGTAG, "AudioFocus: received AUDIOFOCUS_LOSS mspeakerphone= " +
                                mSpeakerPhoneOn);
-                      if (mSpeakerPhoneOn) {
-                          if (isAnalogModeSupported())
-                              setAudioPath(false);
-                      }
+
                       if (mSession.isActive()) {
                           mSession.setActive(false);
                       }
@@ -2147,28 +2131,6 @@ public class FMRadioService extends Service
    }
    private final IBinder mBinder = new ServiceStub(this);
 
-   private boolean setAudioPath(boolean analogMode) {
-
-        if (mReceiver == null) {
-              return false;
-        }
-        if (isAnalogModeEnabled() == analogMode) {
-                Log.d(LOGTAG,"Analog Path already is set to "+analogMode);
-                return false;
-        }
-        if (!isAnalogModeSupported()) {
-                Log.d(LOGTAG,"Analog Path is not supported ");
-                return false;
-        }
-
-        boolean state = mReceiver.setAnalogMode(analogMode);
-        if (false == state) {
-            Log.d(LOGTAG, "Error in toggling analog/digital path " + analogMode);
-            return false;
-        }
-        misAnalogPathEnabled = analogMode;
-        return true;
-   }
    private boolean waitForEvent() {
        boolean status = false;
 
@@ -2230,11 +2192,7 @@ public class FMRadioService extends Service
        if (mReceiver.isCherokeeChip()) {
            bStatus = waitForEvent();
        }
-       if (isSpeakerEnabled()) {
-           setAudioPath(false);
-       } else {
-           setAudioPath(true);
-       }
+
        Log.d(LOGTAG, "mReceiver.enable done, Status :" +  bStatus);
 
          if (bStatus == true)
@@ -2341,11 +2299,6 @@ public class FMRadioService extends Service
        bStatus = waitForEvent();
        mReceiver.setRawRdsGrpMask();
 
-       if (isSpeakerEnabled()) {
-           setAudioPath(false);
-       } else {
-           setAudioPath(true);
-       }
        Log.d(LOGTAG, "mReceiver.enable done, Status :" +  bStatus);
 
        if (bStatus == true) {
@@ -2620,10 +2573,6 @@ public class FMRadioService extends Service
    /* Returns true if Analog Path is enabled */
    public boolean isAnalogModeEnabled() {
          return misAnalogPathEnabled;
-   }
-
-   public boolean isAnalogModeSupported() {
-        return misAnalogModeSupported;
    }
 
    public boolean isFmRecordingOn() {
