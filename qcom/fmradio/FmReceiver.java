@@ -3092,4 +3092,8 @@ public class FmReceiver extends FmTransceiver
    public String getSocName() {
      return FmReceiverJNI.getSocNameNative();
    }
+
+   public boolean getFmStatsProp() {
+     return FmReceiverJNI.getFmStatsPropNative();
+   }
 }

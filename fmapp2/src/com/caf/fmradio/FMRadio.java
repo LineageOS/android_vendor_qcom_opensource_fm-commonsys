@@ -278,9 +278,6 @@ public class FMRadio extends Activity
    private LoadedDataAndState SavedDataAndState = null;
    private static String mBTsoc;
 
-   /** fm stats property string */
-   public static final String FM_STATS_PROP = "persist.fm.stats";
-
    private BroadcastReceiver mFmSettingReceiver = null;
 
    /** Called when the activity is first created. */
@@ -679,7 +676,17 @@ public class FMRadio extends Activity
       if (item != null) {
           item.setVisible(sleepActive && radioOn);
       }
-      mFMStats = SystemProperties.getBoolean(FM_STATS_PROP, false);
+
+      if (mService != null) {
+          try {
+              mFMStats = mService.getFmStatsProp();
+              Log.d(LOGTAG, "mFMStats: " + mFMStats);
+          } catch (RemoteException e) {
+              e.printStackTrace();
+              return false;
+          }
+      }
+
       if(mFMStats) {
           item = menu.add(0, MENU_STAT_TEST, 0,R.string.menu_stats).
                              setIcon(android.R.drawable.ic_menu_info_details);
