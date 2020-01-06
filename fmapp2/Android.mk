@@ -32,6 +32,7 @@ LOCAL_JNI_SHARED_LIBRARIES := libqcomfm_jni
 LOCAL_JAVA_LIBRARIES := qcom.fmradio
 LOCAL_PRIVATE_PLATFORM_APIS := true
 LOCAL_AAPT_FLAGS += --legacy
+LOCAL_PRODUCT_MODULE := true
 include $(BUILD_PACKAGE)
 
 endif

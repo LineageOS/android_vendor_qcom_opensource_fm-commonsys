@@ -3,6 +3,7 @@ ifneq (,$(filter $(QCOM_BOARD_PLATFORMS),$(TARGET_BOARD_PLATFORM)))
 LOCAL_PATH := $(call my-dir)
 include $(CLEAR_VARS)
 
+LOCAL_PRODUCT_MODULE := true
 LOCAL_SRC_FILES:= \
 android_hardware_fm.cpp \
 ConfFileParser.cpp \
@@ -27,7 +28,6 @@ LOCAL_MODULE := libqcomfm_jni
 LOCAL_MODULE_TAGS := optional
 
 include $(BUILD_SHARED_LIBRARY)
-
 
 endif # is-vendor-board-platform
 endif # BOARD_HAVE_QCOM_FM
