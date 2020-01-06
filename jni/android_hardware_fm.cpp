@@ -81,6 +81,11 @@ enum search_dir_t {
     SCAN_DN
 };
 
+enum fm_prop_t {
+    FMWAN_RATCONF,
+    FMBTWLAN_LPFENABLER
+};
+
 static JavaVM *g_jVM = NULL;
 
 namespace android {
@@ -1545,6 +1550,26 @@ static jboolean android_hardware_fmradio_FmReceiverJNI_getFmStatsPropNative
     return ret;
 }
 
+static jint android_hardware_fmradio_FmReceiverJNI_getFmCoexPropNative
+(JNIEnv * env, jobject thiz, jint fd, jint prop)
+{
+    jint ret;
+    int property = (int)prop;
+    char value[PROPERTY_VALUE_MAX] = {'\0'};
+
+    if (property == FMWAN_RATCONF) {
+        get_property(FM_PROP_WAN_RATCONF, value);
+    } else if (property == FMBTWLAN_LPFENABLER) {
+        get_property(FM_PROP_BTWLAN_LPFENABLER, value);
+    } else {
+        ALOGE("%s: invalid get property prop = %d\n", __func__, property);
+    }
+
+    ret = atoi(value);
+    ALOGI("%d:: ret  = %d",property, ret);
+    return ret;
+}
+
 static jint android_hardware_fmradio_FmReceiverJNI_enableSoftMuteNative
  (JNIEnv * env, jobject thiz, jint fd, jint val)
 {
@@ -1730,6 +1755,8 @@ static JNINativeMethod gMethods[] = {
              (void*) android_hardware_fmradio_FmReceiverJNI_getSocNameNative},
         {"getFmStatsPropNative", "()Z",
              (void*) android_hardware_fmradio_FmReceiverJNI_getFmStatsPropNative},
+        { "getFmCoexPropNative", "(II)I",
+            (void*)android_hardware_fmradio_FmReceiverJNI_getFmCoexPropNative},
 };
 
 int register_android_hardware_fm_fmradio(JNIEnv* env)

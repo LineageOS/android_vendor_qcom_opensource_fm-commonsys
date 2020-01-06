@@ -343,6 +343,13 @@ public class FmReceiver extends FmTransceiver
    private static final int SEARCH_MPXDCC = 0;
    private static final int SEARCH_SINR_INT = 1;
 
+   /**
+    * Fm Coex property type
+    */
+   private static final int WAN_RATCONF = 0;
+   private static final int BTWLAN_LPFENABLER = 1;
+
+
    public boolean isSmdTransportLayer() {
        String chip = getSocName();
        if (chip.equals("pronto"))
@@ -402,7 +409,7 @@ public class FmReceiver extends FmTransceiver
            if (WifiManager.WIFI_STATE_CHANGED_ACTION.equals(intent.getAction())) {
                int newState = intent.getIntExtra(WifiManager.EXTRA_WIFI_STATE,
                        WifiManager.WIFI_STATE_UNKNOWN);
-               int mBtWlanLpf = SystemProperties.getInt("persist.btwlan.lpfenabler", 0);
+               int mBtWlanLpf = getFmWanWlanCoexProp(BTWLAN_LPFENABLER);
                if (newState == WifiManager.WIFI_STATE_ENABLED) {
                    Log.d (TAG, "enable LPF on wifi enabled " + newState);
                    if ((mBtWlanLpf & mIsWlanLpfEnabled) == mIsWlanLpfEnabled)
@@ -2955,7 +2962,7 @@ public class FmReceiver extends FmTransceiver
      return;
    }
    public void FMcontrolLowPassFilter(int state, int net_type, int enable) {
-       int RatConf = SystemProperties.getInt("persist.fm_wan.ratconf", 0);
+       int RatConf = getFmWanWlanCoexProp(WAN_RATCONF);
        Log.v (TAG, "FMcontrolLowPassFilter " + RatConf);
        switch (net_type)
        {
@@ -3095,5 +3102,9 @@ public class FmReceiver extends FmTransceiver
 
    public boolean getFmStatsProp() {
      return FmReceiverJNI.getFmStatsPropNative();
+   }
+
+   public int getFmWanWlanCoexProp(int property) {
+     return FmReceiverJNI.getFmCoexPropNative(sFd, property);
    }
 }
