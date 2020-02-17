@@ -25,7 +25,6 @@ interface IFMRadioService
     boolean scan(int pty);
     boolean seekPI(int piCode);
     boolean searchStrongStationList(int numStations);
-    int[]   getSearchList();
     boolean cancelSearch();
     String getProgramService();
     String getRadioText();
