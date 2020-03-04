@@ -40,6 +40,7 @@
 #include <mutex>              // std::mutex, std::unique_lock
 #include <condition_variable> // std::condition_variable
 #include <cstdlib>
+#include <cutils/properties.h>
 #include <thread>
 
 #include <utils/Log.h>
@@ -48,10 +49,10 @@
 #include <vendor/qti/hardware/fm/1.0/IFmHci.h>
 #include <vendor/qti/hardware/fm/1.0/IFmHciCallbacks.h>
 #include <vendor/qti/hardware/fm/1.0/types.h>
+#include <hwbinder/IPCThreadState.h>
 #include "fm_hci.h"
 
-#include <hwbinder/ProcessState.h>
-
+using android::hardware::IPCThreadState;
 using vendor::qti::hardware::fm::V1_0::IFmHci;
 using vendor::qti::hardware::fm::V1_0::IFmHciCallbacks;
 using vendor::qti::hardware::fm::V1_0::HciPacket;
@@ -525,6 +526,31 @@ class FmHciCallbacks : public IFmHciCallbacks {
         }
 };
 
+#ifdef ARCH_ARM_32
+bool IsLazyHalSupported()
+{
+  static bool isPropertyRead = false;
+  static bool isLazyHalEnabled = false;
+
+  ALOGD("%s isPropertyRead: %d isLazyHalEnabled: %d", __func__, isPropertyRead,
+         isLazyHalEnabled);
+
+  if (!isPropertyRead) {
+    char device[PROPERTY_VALUE_MAX]= {'\0'};
+    int len = property_get("ro.board.platform", device, "");
+    if (len) {
+      isPropertyRead = true;
+      isLazyHalEnabled = (!strcmp(device, "bengal") ? true : false);
+      ALOGD("%s isLazyHalEnabled: %d", __func__, isLazyHalEnabled);
+    } else {
+      ALOGE("%s: Failed to read property", __func__);
+    }
+  }
+
+  return isLazyHalEnabled;
+}
+#endif
+
 /*******************************************************************************
 **
 ** Function         hci_initialize
@@ -609,6 +635,13 @@ static void hci_close()
         auto hidl_daemon_status = fmHci->close();
         if(!hidl_daemon_status.isOk()) {
             ALOGE("%s: HIDL daemon is dead", __func__);
+        } else {
+#ifdef ARCH_ARM_32
+          if (IsLazyHalSupported()) {
+            ALOGD("%s: decrementing HIDL usage counter", __func__);
+            IPCThreadState::self()->flushCommands();
+          }
+#endif
         }
         fmHci = nullptr;
     }
