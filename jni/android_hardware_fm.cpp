@@ -43,6 +43,7 @@
 #include "android_runtime/AndroidRuntime.h"
 #include "FmIoctlsInterface.h"
 #include "ConfigFmThs.h"
+#include "radio-helium.h"
 
 #define RADIO "/dev/radio0"
 #define FM_JNI_SUCCESS 0L
@@ -87,41 +88,6 @@ const char *FM_LIBRARY_SYMBOL_NAME = "FM_HELIUM_LIB_INTERFACE";
 void *lib_handle;
 static int slimbus_flag = 0;
 
-typedef void (*enb_result_cb)();
-typedef void (*tune_rsp_cb)(int Freq);
-typedef void (*seek_rsp_cb)(int Freq);
-typedef void (*scan_rsp_cb)();
-typedef void (*srch_list_rsp_cb)(uint16_t *scan_tbl);
-typedef void (*stereo_mode_cb)(bool status);
-typedef void (*rds_avl_sts_cb)(bool status);
-typedef void (*af_list_cb)(uint16_t *af_list);
-typedef void (*rt_cb)(char *rt);
-typedef void (*ps_cb)(char *ps);
-typedef void (*oda_cb)();
-typedef void (*rt_plus_cb)(char *rt_plus);
-typedef void (*ert_cb)(char *ert);
-typedef void (*disable_cb)();
-typedef void (*callback_thread_event)(unsigned int evt);
-typedef void (*rds_grp_cntrs_cb)(char *rds_params);
-typedef void (*rds_grp_cntrs_ext_cb)(char *rds_params);
-
-typedef void (*fm_peek_cb)(char *peek_rsp);
-typedef void (*fm_ssbi_peek_cb)(char *ssbi_peek_rsp);
-typedef void (*fm_agc_gain_cb)(char *agc_gain_rsp);
-typedef void (*fm_ch_det_th_cb)(char *ch_det_rsp);
-typedef void (*fm_ecc_evt_cb)(char *ecc);
-typedef void (*fm_sig_thr_cb)(int val, int status);
-typedef void (*fm_get_ch_det_thrs_cb) (int val, int status);
-typedef void (*fm_def_data_rd_cb) (int val, int status);
-typedef void (*fm_get_blnd_cb) (int val, int status);
-typedef void (*fm_set_ch_det_thrs_cb) (int status);
-typedef void (*fm_def_data_wrt_cb) (int status);
-typedef void (*fm_set_blnd_cb) (int status);
-typedef void (*fm_get_stn_prm_cb) (int val, int status);
-typedef void (*fm_get_stn_dbg_prm_cb) (int val, int status);
-typedef void (*fm_enable_sb_cb) (int status);
-typedef void (*fm_enable_sm_cb) (int status);
-
 static JNIEnv *mCallbackEnv = NULL;
 static jobject mCallbacksObj = NULL;
 static bool mCallbacksObjCreated = false;
@@ -165,7 +131,7 @@ static bool checkCallbackThread() {
     return true;
 }
 
-void fm_enabled_cb() {
+void fm_enabled_cb(void) {
     ALOGD("Entered %s", __func__);
 
     if (slimbus_flag) {
@@ -203,7 +169,7 @@ void fm_seek_cmpl_cb(int Freq)
     mCallbackEnv->CallVoidMethod(mCallbacksObj, method_seekCmplCallback, (jint) Freq);
 }
 
-void fm_scan_next_cb()
+void fm_scan_next_cb(void)
 {
     ALOGI("SCAN_NEXT");
     if (!checkCallbackThread())
@@ -316,7 +282,7 @@ void fm_ps_update_cb(char *ps)
     mCallbackEnv->DeleteLocalRef(ps_data);
 }
 
-void fm_oda_update_cb()
+void fm_oda_update_cb(void)
 {
     ALOGD("ODA_EVT");
 }
@@ -400,7 +366,7 @@ void rds_grp_cntrs_ext_rsp_cb(char * evt_buffer __unused)
    ALOGE("rds_grp_cntrs_ext_rsp_cb");
 }
 
-void fm_disabled_cb()
+void fm_disabled_cb(void)
 {
     ALOGE("DISABLE");
     if (!checkCallbackThread())
@@ -565,53 +531,8 @@ static void fm_enable_softmute_cb(int status)
     ALOGD("--fm_enable_softmute_cb");
 }
 
-
-typedef struct {
-   size_t  size;
-
-   enb_result_cb  enabled_cb;
-   tune_rsp_cb tune_cb;
-   seek_rsp_cb  seek_cmpl_cb;
-   scan_rsp_cb  scan_next_cb;
-   srch_list_rsp_cb  srch_list_cb;
-   stereo_mode_cb  stereo_status_cb;
-   rds_avl_sts_cb  rds_avail_status_cb;
-   af_list_cb  af_list_update_cb;
-   rt_cb  rt_update_cb;
-   ps_cb  ps_update_cb;
-   oda_cb  oda_update_cb;
-   rt_plus_cb  rt_plus_update_cb;
-   ert_cb  ert_update_cb;
-   disable_cb  disabled_cb;
-   rds_grp_cntrs_cb rds_grp_cntrs_rsp_cb;
-   rds_grp_cntrs_ext_cb rds_grp_cntrs_ext_rsp_cb;
-   fm_peek_cb fm_peek_rsp_cb;
-   fm_ssbi_peek_cb fm_ssbi_peek_rsp_cb;
-   fm_agc_gain_cb fm_agc_gain_rsp_cb;
-   fm_ch_det_th_cb fm_ch_det_th_rsp_cb;
-   fm_ecc_evt_cb   ext_country_code_cb;
-   callback_thread_event thread_evt_cb;
-   fm_sig_thr_cb fm_get_sig_thres_cb;
-   fm_get_ch_det_thrs_cb fm_get_ch_det_thr_cb;
-   fm_def_data_rd_cb fm_def_data_read_cb;
-   fm_get_blnd_cb fm_get_blend_cb;
-   fm_set_ch_det_thrs_cb fm_set_ch_det_thr_cb;
-   fm_def_data_wrt_cb fm_def_data_write_cb;
-   fm_set_blnd_cb fm_set_blend_cb;
-   fm_get_stn_prm_cb fm_get_station_param_cb;
-   fm_get_stn_dbg_prm_cb fm_get_station_debug_param_cb;
-   fm_enable_sb_cb fm_enable_slimbus_cb;
-   fm_enable_sm_cb fm_enable_softmute_cb;
-} fm_vendor_callbacks_t;
-
-typedef struct {
-    int (*hal_init)(fm_vendor_callbacks_t *p_cb);
-    int (*set_fm_ctrl)(int ioctl, int val);
-    int (*get_fm_ctrl) (int ioctl, int *val);
-} fm_interface_t;
-
 fm_interface_t *vendor_interface;
-static   fm_vendor_callbacks_t fm_callbacks = {
+static   fm_hal_callbacks_t fm_callbacks = {
     sizeof(fm_callbacks),
     fm_enabled_cb,
     fm_tune_cb,
@@ -695,7 +616,7 @@ static jint android_hardware_fmradio_FmReceiverJNI_acquireFdNative
        /* Need to clear the hw.fm.init firstly */
        property_set("vendor.hw.fm.init", "0");
 #ifndef QCOM_NO_FM_FIRMWARE
-       property_set("ctl.start", "fm_dl");
+       property_set("ctl.start", "vendor.fm");
        sched_yield();
        for(i=0; i<45; i++) {
          property_get("vendor.hw.fm.init", value, NULL);
@@ -713,7 +634,7 @@ static jint android_hardware_fmradio_FmReceiverJNI_acquireFdNative
 #endif
        ALOGE("init_success:%d after %f seconds \n", init_success, 0.2*i);
        if(!init_success) {
-         property_set("ctl.stop", "fm_dl");
+         property_set("ctl.stop", "vendor.fm");
          // close the fd(power down)
          close(fd);
          return FM_JNI_FAILURE;
@@ -734,7 +655,7 @@ static jint android_hardware_fmradio_FmReceiverJNI_closeFdNative
 
     if ((strcmp(value, "rome") != 0) && (strcmp(value, "hastings") != 0))
     {
-       property_set("ctl.stop", "fm_dl");
+       property_set("ctl.stop", "vendor.fm");
     }
     close(fd);
     return FM_JNI_SUCCESS;
@@ -1228,7 +1149,7 @@ static jint android_hardware_fmradio_FmReceiverJNI_setNotchFilterNative
           property_set("vendor.hw.fm.mode", "wa_disable");
 
 #ifndef QCOM_NO_FM_FIRMWARE
-       property_set("ctl.start", "fm_dl");
+       property_set("ctl.start", "vendor.fm");
        sched_yield();
        for(i=0; i<10; i++) {
           property_get("vendor.hw.fm.init", value, NULL);
@@ -1287,7 +1208,7 @@ static jint android_hardware_fmradio_FmReceiverJNI_setAnalogModeNative
        /*Enable/Disable Analog Mode FM*/
        property_set("vendor.hw.fm.init", "0");
        property_set("vendor.hw.fm.mode","config_dac");
-       property_set("ctl.start", "fm_dl");
+       property_set("ctl.start", "vendor.fm");
        sched_yield();
        for(i=0; i<10; i++) {
           property_get("vendor.hw.fm.init", value, NULL);
