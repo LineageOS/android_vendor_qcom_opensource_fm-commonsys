@@ -20,6 +20,11 @@ LOCAL_SHARED_LIBRARIES := \
 
 LOCAL_CFLAGS := -Wno-unused-parameter
 
+# Enable LAZY HAL
+ifeq ($(TARGET_ARCH), arm)
+LOCAL_CFLAGS += -DARCH_ARM_32
+endif
+
 LOCAL_C_INCLUDES += \
         $(LOCAL_PATH)/../helium \
         $(LOCAL_PATH)/fm_hci

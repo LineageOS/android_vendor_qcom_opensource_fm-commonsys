@@ -305,8 +305,6 @@ public class FMRadioService extends Service
       mA2dpDeviceSupportInHal = valueStr.contains("=true");
       Log.d(LOGTAG, " is A2DP device Supported In HAL"+mA2dpDeviceSupportInHal);
 
-      getA2dpStatusAtStart();
-
       mUseAudioSession = SystemProperties.getBoolean("ro.vendor.fm.use_audio_session", false);
       if (mUseAudioSession)
           mRoutingListener = new AudioRoutingListener();
@@ -328,7 +326,9 @@ public class FMRadioService extends Service
       Log.d(LOGTAG, "onDestroy");
       if (isFmOn())
       {
-         Log.e(LOGTAG, "Service being destroyed while still playing.");
+         Log.e(LOGTAG, "FMRadio Service being destroyed");
+          /* Since the service is closing, disable the receiver */
+          fmOff();
       }
 
       // make sure there aren't any other messages coming
@@ -388,9 +388,6 @@ public class FMRadioService extends Service
           unregisterReceiver(mRegisterUserSwitched);
           mRegisterUserSwitched = null;
       }
-      /* Since the service is closing, disable the receiver */
-      if (isFmOn())
-          fmOff();
 
       TelephonyManager tmgr = (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);
       tmgr.listen(mPhoneStateListener, 0);
