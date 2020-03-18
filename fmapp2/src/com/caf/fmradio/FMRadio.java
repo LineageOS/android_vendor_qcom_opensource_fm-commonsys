@@ -2968,12 +2968,8 @@ public class FMRadio extends Activity
       }
       context.unbindService(sb);
 
-      if (isFmOn) {
-         Log.d(LOGTAG, "FM is still on");
-      } else {
-         Log.e(LOGTAG, "stop FM radio service");
-         context.stopService(new Intent(context, FMRadioService.class));
-      }
+      Log.e(LOGTAG, "stop FM radio service");
+      context.stopService(new Intent(context, FMRadioService.class));
 
       if (sConnectionMap.isEmpty()) {
          // presumably there is nobody interested in the service at this point,
