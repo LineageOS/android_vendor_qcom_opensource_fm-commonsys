@@ -1092,7 +1092,7 @@ int process_event(unsigned char *evt_buf)
     return 0;
 }
 
-int fm_hci_close_done()
+int fm_hci_close_done(void)
 {
     ALOGI("fm_hci_close_done");
     const fm_hal_callbacks_t *ptr = NULL;
