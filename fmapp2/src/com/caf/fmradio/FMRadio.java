@@ -98,6 +98,8 @@ import com.caf.fmradio.HorizontalNumberPicker.Scale;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.Point;
+import android.Manifest;
+import android.content.pm.PackageManager;
 
 public class FMRadio extends Activity
 {
@@ -279,7 +281,39 @@ public class FMRadio extends Activity
    private static String mBTsoc;
 
    private BroadcastReceiver mFmSettingReceiver = null;
+   private static String[] RECORD_PERMISSIONS = {
+            Manifest.permission.RECORD_AUDIO,
+            Manifest.permission.CAPTURE_AUDIO_OUTPUT,
+            Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE
+    };
+   private static final int ALL_PERMISSIONS = 101;
 
+    @Override
+public void onRequestPermissionsResult(int requestCode, String[] permissions,  int[] grantResults) {
+    super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+    // for PERMISSION_CODE:
+    switch (requestCode){
+        case 101:
+            if(grantResults.length > 0){
+                if(grantResults[0] == PackageManager.PERMISSION_GRANTED){
+                    Log.d(LOGTAG,"  RECORD_AUDIO permission granted");
+                }
+                else{ Log.d(LOGTAG,"  no RECORD_AUDIO permissions"); }
+                if(grantResults[1] == PackageManager.PERMISSION_GRANTED){
+                    Log.d(LOGTAG,"   CAPTURE_AUDIO_OUTPUT permission granted");
+                }
+                else{  Log.d(LOGTAG,"   no CAPTURE_AUDIO_OUTPUT permissions"); }
+                if(grantResults[2] == PackageManager.PERMISSION_GRANTED){
+                    Log.d(LOGTAG,"   WRITE_EXTERNAL_STORAGE permission granted");
+                }
+                else{ Log.d(LOGTAG,"   no WRITE_EXTERNAL_STORAGE permissions"); }
+                if(grantResults[3] == PackageManager.PERMISSION_GRANTED){
+                    Log.d(LOGTAG,"  READ_EXTERNAL_STORAGE permission granted");
+                }
+                else{Log.d(LOGTAG,"  no READ_EXTERNAL_STORAGE permissions"); }
+            }
+    }
+}
    /** Called when the activity is first created. */
    @Override
    public void onCreate(Bundle savedInstanceState) {
@@ -290,6 +324,8 @@ public class FMRadio extends Activity
       mCommandActive = CMD_NONE;
       mCommandFailed = CMD_NONE;
 
+      Log.d(LOGTAG, "onCreate permssion req");
+      requestPermissions(RECORD_PERMISSIONS, ALL_PERMISSIONS);
       Point p = new Point();
       getWindowManager().getDefaultDisplay().getSize(p);
       mDisplayWidth = p.x;
@@ -1723,6 +1759,8 @@ public class FMRadio extends Activity
    private void startRecording() {
       if(mService != null) {
          try {
+             Log.d(LOGTAG, "startRecording permssion req");
+             requestPermissions(RECORD_PERMISSIONS, ALL_PERMISSIONS);
              mRecording = mService.startRecording();
          }catch (RemoteException e) {
              e.printStackTrace();
