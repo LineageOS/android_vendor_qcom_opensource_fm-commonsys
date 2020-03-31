@@ -673,15 +673,6 @@ int fm_hci_init(fm_hci_hal_t *hci_hal)
         return FM_HC_STATUS_NULL_POINTER;
     }
 
-    memset(&hci, 0, sizeof(struct fm_hci_t));
-
-    hci.cb = hci_hal->cb;
-    hci.command_credits = 1;
-    hci.is_tx_thread_running = false;
-    hci.is_rx_thread_running = false;
-    hci.state = FM_RADIO_DISABLED;
-    hci_hal->hci = &hci;
-
     fmHci = IFmHci::getService();
     if(fmHci == nullptr) {
         ALOGE("FM hal service is not running");
@@ -693,6 +684,15 @@ int fm_hci_init(fm_hci_hal_t *hci_hal)
         ALOGE("%s: Unable to set the death recipient for the Fm HAL", __func__);
         abort();
     }
+
+    memset(&hci, 0, sizeof(struct fm_hci_t));
+
+    hci.cb = hci_hal->cb;
+    hci.command_credits = 1;
+    hci.is_tx_thread_running = false;
+    hci.is_rx_thread_running = false;
+    hci.state = FM_RADIO_DISABLED;
+    hci_hal->hci = &hci;
 
     if (hci_initialize()) {
         //wait for iniialization complete
@@ -706,6 +706,7 @@ int fm_hci_init(fm_hci_hal_t *hci_hal)
                hci.on_cond.wait_until(lk, now + std::chrono::seconds(HCI_TIMEOUT));
              if (status == std::cv_status::timeout) {
                  ALOGE("hci_initialize failed, kill the fm process");
+                 hci.on_mtx.unlock();
                  kill(getpid(), SIGKILL);
              }
         }
