@@ -1159,13 +1159,6 @@ public class FMRadioService extends Service
 
        stopRecording();
 
-       if (!Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState())) {
-            Log.e(LOGTAG, "startRecording, no external storage available");
-            return false;
-       }
-
-        if (!updateAndShowStorageHint())
-            return false;
         long maxFileSize = mStorageSpace - LOW_STORAGE_THRESHOLD;
         if(FmSharedPreferences.getRecordDuration() !=
             FmSharedPreferences.RECORD_DUR_INDEX_3_VAL) {
@@ -1181,7 +1174,7 @@ public class FMRadioService extends Service
 
         }
 
-        mStoragePath = Environment.getExternalStorageDirectory();
+        mStoragePath = getApplicationContext().getFilesDir();;
         Log.d(LOGTAG, "mStoragePath " + mStoragePath);
         if (null == mStoragePath) {
             Log.e(LOGTAG, "External Storage Directory is null");
@@ -1192,10 +1185,10 @@ public class FMRadioService extends Service
         File sampleDir = null;
         if (!"".equals(getResources().getString(R.string.def_fmRecord_savePath))) {
             String fmRecordSavePath = getResources().getString(R.string.def_fmRecord_savePath);
-            sampleDir = new File(Environment.getExternalStorageDirectory().toString()
+            sampleDir = new File(getApplicationContext().getFilesDir().getPath().toString()
                     + fmRecordSavePath);
         } else {
-            sampleDir = new File(Environment.getExternalStorageDirectory().getAbsolutePath()
+            sampleDir = new File(getApplicationContext().getFilesDir().getAbsolutePath()
                     + "/FMRecording");
         }
 
@@ -1273,7 +1266,6 @@ public class FMRadioService extends Service
                      if (mFmRecordingOn) {
                          stopRecording();
                      }
-                     updateAndShowStorageHint();
                  }
              }
         });
@@ -1306,7 +1298,6 @@ public class FMRadioService extends Service
        String state = Environment.getExternalStorageState(mStoragePath);
        Log.d(LOGTAG, "storage state is " + state);
 
-       if (Environment.MEDIA_MOUNTED.equals(state)) {
           try {
                this.addToMediaDB(mSampleFile);
                Toast.makeText(this,getString(R.string.save_record_file,
@@ -1315,10 +1306,6 @@ public class FMRadioService extends Service
           } catch(Exception e) {
                e.printStackTrace();
           }
-       } else {
-           Log.e(LOGTAG, "SD card must have removed during recording. ");
-           Toast.makeText(this, "Recording aborted", Toast.LENGTH_SHORT).show();
-       }
        try {
            if((mServiceInUse) && (mCallbacks != null) ) {
                mCallbacks.onRecordingStopped();
