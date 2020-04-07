@@ -18,6 +18,6 @@ cc_library_shared {
 
     include_dirs: ["vendor/qcom/opensource/commonsys/fm/fm_hci"],
 
-    product_specific: true,
+    system_ext_specific: true,
 
 }

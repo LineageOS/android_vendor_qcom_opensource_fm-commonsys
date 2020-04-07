@@ -9,5 +9,5 @@ android_app {
     libs: ["qcom.fmradio"],
     platform_apis: true,
     aaptflags: ["--legacy"],
-    product_specific: true,
+    system_ext_specific: true,
 }
