@@ -570,8 +570,9 @@ static   fm_hal_callbacks_t fm_callbacks = {
 };
 /* native interface */
 static jint android_hardware_fmradio_FmReceiverJNI_acquireFdNative
-        (JNIEnv* env, jobject thiz __unused, jstring path)
+        (JNIEnv* env__unused, jobject thiz __unused, jstring path__unused)
 {
+#ifndef QCOM_NO_FM_FIRMWARE
     int fd;
     int i = 0, err;
     char value[PROPERTY_VALUE_MAX] = {'\0'};
@@ -615,7 +616,6 @@ static jint android_hardware_fmradio_FmReceiverJNI_acquireFdNative
        property_set("vendor.hw.fm.mode", "normal");
        /* Need to clear the hw.fm.init firstly */
        property_set("vendor.hw.fm.init", "0");
-#ifndef QCOM_NO_FM_FIRMWARE
        property_set("ctl.start", "vendor.fm");
        sched_yield();
        for(i=0; i<45; i++) {
@@ -627,11 +627,6 @@ static jint android_hardware_fmradio_FmReceiverJNI_acquireFdNative
             usleep(WAIT_TIMEOUT);
          }
        }
-#else
-       property_set("vendor.hw.fm.init", "1");
-       usleep(WAIT_TIMEOUT);
-       init_success = 1;
-#endif
        ALOGE("init_success:%d after %f seconds \n", init_success, 0.2*i);
        if(!init_success) {
          property_set("ctl.stop", "vendor.fm");
@@ -641,12 +636,18 @@ static jint android_hardware_fmradio_FmReceiverJNI_acquireFdNative
        }
     }
     return fd;
+#else
+    property_set("hw.fm.init", "1");
+    usleep(WAIT_TIMEOUT);
+    return FM_JNI_SUCCESS;
+#endif
 }
 
 /* native interface */
 static jint android_hardware_fmradio_FmReceiverJNI_closeFdNative
-    (JNIEnv * env __unused, jobject thiz __unused, jint fd)
+    (JNIEnv * env __unused, jobject thiz __unused, jint fd __unused)
 {
+#ifndef QCOM_NO_FM_FIRMWARE
     char value[PROPERTY_VALUE_MAX] = {'\0'};
 
     property_get("vendor.bluetooth.soc", value, NULL);
@@ -659,6 +660,10 @@ static jint android_hardware_fmradio_FmReceiverJNI_closeFdNative
     }
     close(fd);
     return FM_JNI_SUCCESS;
+#else
+    property_set("hw.fm.init", "0");
+    return FM_JNI_SUCCESS;
+#endif
 }
 
 static bool is_soc_cherokee() {
