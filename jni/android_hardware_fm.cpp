@@ -599,7 +599,7 @@ static jint android_hardware_fmradio_FmReceiverJNI_acquireFdNative
        ALOGD("Driver Version(Same as ChipId): %x \n",  cap.version );
        /*Conver the integer to string */
        snprintf(versionStr, sizeof(versionStr), "%d", cap.version);
-       property_set("vendor.hw.fm.version", versionStr);
+       property_set("hw.fm.version", versionStr);
     } else {
        close(fd);
        return FM_JNI_FAILURE;
@@ -612,14 +612,14 @@ static jint android_hardware_fmradio_FmReceiverJNI_acquireFdNative
     if ((strcmp(value, "rome") != 0) && (strcmp(value, "hastings") != 0))
     {
        /*Set the mode for soc downloader*/
-       property_set("vendor.hw.fm.mode", "normal");
+       property_set("hw.fm.mode", "normal");
        /* Need to clear the hw.fm.init firstly */
-       property_set("vendor.hw.fm.init", "0");
+       property_set("hw.fm.init", "0");
 #ifndef QCOM_NO_FM_FIRMWARE
-       property_set("ctl.start", "vendor.fm");
+       property_set("hw.fm.dl.init", "1");
        sched_yield();
        for(i=0; i<45; i++) {
-         property_get("vendor.hw.fm.init", value, NULL);
+         property_get("hw.fm.init", value, NULL);
          if (strcmp(value, "1") == 0) {
             init_success = 1;
             break;
@@ -628,13 +628,13 @@ static jint android_hardware_fmradio_FmReceiverJNI_acquireFdNative
          }
        }
 #else
-       property_set("vendor.hw.fm.init", "1");
+       property_set("hw.fm.init", "1");
        usleep(WAIT_TIMEOUT);
        init_success = 1;
 #endif
        ALOGE("init_success:%d after %f seconds \n", init_success, 0.2*i);
        if(!init_success) {
-         property_set("ctl.stop", "vendor.fm");
+         property_set("hw.fm.dl.init", "0");
          // close the fd(power down)
          close(fd);
          return FM_JNI_FAILURE;
@@ -655,7 +655,7 @@ static jint android_hardware_fmradio_FmReceiverJNI_closeFdNative
 
     if ((strcmp(value, "rome") != 0) && (strcmp(value, "hastings") != 0))
     {
-       property_set("ctl.stop", "vendor.fm");
+       property_set("hw.fm.dl.init", "0");
     }
     close(fd);
     return FM_JNI_SUCCESS;
@@ -1142,17 +1142,17 @@ static jint android_hardware_fmradio_FmReceiverJNI_setNotchFilterNative
     if ((strcmp(value, "rome") != 0) && (strcmp(value, "hastings") != 0))
     {
        /*Enable/Disable the WAN avoidance*/
-       property_set("vendor.hw.fm.init", "0");
+       property_set("hw.fm.init", "0");
        if (aValue)
-          property_set("vendor.hw.fm.mode", "wa_enable");
+          property_set("hw.fm.mode", "wa_enable");
        else
-          property_set("vendor.hw.fm.mode", "wa_disable");
+          property_set("hw.fm.mode", "wa_disable");
 
 #ifndef QCOM_NO_FM_FIRMWARE
-       property_set("ctl.start", "vendor.fm");
+       property_set("hw.fm.dl.init", "1");
        sched_yield();
        for(i=0; i<10; i++) {
-          property_get("vendor.hw.fm.init", value, NULL);
+          property_get("hw.fm.init", value, NULL);
           if (strcmp(value, "1") == 0) {
              init_success = 1;
              break;
@@ -1206,12 +1206,12 @@ static jint android_hardware_fmradio_FmReceiverJNI_setAnalogModeNative
     if ((strcmp(value, "rome") != 0) && (strcmp(value, "hastings") != 0))
     {
        /*Enable/Disable Analog Mode FM*/
-       property_set("vendor.hw.fm.init", "0");
-       property_set("vendor.hw.fm.mode","config_dac");
-       property_set("ctl.start", "vendor.fm");
+       property_set("hw.fm.init", "0");
+       property_set("hw.fm.mode","config_dac");
+       property_set("hw.fm.dl.init", "1");
        sched_yield();
        for(i=0; i<10; i++) {
-          property_get("vendor.hw.fm.init", value, NULL);
+          property_get("hw.fm.init", value, NULL);
           if (strcmp(value, "1") == 0) {
              return 1;
           } else {
