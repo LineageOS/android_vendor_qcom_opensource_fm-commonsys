@@ -832,9 +832,11 @@ public class FMRadioService extends Service
       /* Application/UI is attached, so get out of lower power mode */
       if (isFmOn()) {
           setLowPowerMode(false);
-          startFM();
-          enableSlimbus(ENABLE_SLIMBUS_DATA_PORT);
-        }
+          if(false == mPlaybackInProgress) {
+              startFM();
+              enableSlimbus(ENABLE_SLIMBUS_DATA_PORT);
+          }
+      }
    }
 
    @Override
@@ -3844,8 +3846,10 @@ public class FMRadioService extends Service
            // adding code for audio focus gain.
            AudioManager audioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
            audioManager.requestAudioFocus(mGainFocusReq);
-           startFM();
-           enableSlimbus(ENABLE_SLIMBUS_DATA_PORT);
+           if(false == mPlaybackInProgress) {
+               startFM();
+               enableSlimbus(ENABLE_SLIMBUS_DATA_PORT);
+           }
            mStoppedOnFocusLoss = false;
        }
    }
