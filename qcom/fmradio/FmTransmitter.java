@@ -106,7 +106,6 @@ public class FmTransmitter extends FmTransceiver
     */
    public FmTransmitter(String path, FmTransmitterCallbacksAdaptor callbacks) throws InstantiationException{
 
-       mTxEvents = new FmTxEventListner();
        mControl = new FmRxControls();
        mTxCallbacks = callbacks;
    }
@@ -312,7 +311,6 @@ public class FmTransmitter extends FmTransceiver
       setFMPowerState(FMState_Turned_Off);
       Log.v(TAG, "reset: NEW-STATE : FMState_Turned_Off");
       status = unregisterTransmitClient();
-      release("/dev/radio0");
       return status;
    }
 

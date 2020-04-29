@@ -64,7 +64,7 @@ typedef enum {
 } fm_power_state_t;
 
 typedef int (*event_notification_cb_t)(unsigned char *buf);
-typedef int (*hci_close_done_cb_t)();
+typedef int (*hci_close_done_cb_t)(void);
 
 
 struct fm_hci_callbacks_t {
