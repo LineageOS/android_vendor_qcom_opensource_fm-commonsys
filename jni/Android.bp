@@ -4,10 +4,6 @@ cc_library_shared {
     product_specific: true,
     srcs: [
         "android_hardware_fm.cpp",
-        "ConfFileParser.cpp",
-        "ConfigFmThs.cpp",
-        "FmIoctlsInterface.cpp",
-        "FmPerformanceParams.cpp",
     ],
 
     host_ldlibs: ["-ldl"],
