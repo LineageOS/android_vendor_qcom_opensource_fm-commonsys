@@ -146,71 +146,6 @@ public class FmTransceiver
    protected FmRxRdsData mRdsData;
    public static final int ERROR = -1;
 
-
-   /*==============================================================
-   FUNCTION:  registerTransmitClient
-   ==============================================================*/
-   /**
-   *    Registers a callback for FM Transmitter event
-   *    notifications.
-   *    <p>
-   *    This is a synchronous call used to register for event
-   *    notifications from the FM Transmitter driver. Since the FM
-   *    driver performs some tasks asynchronously, this function
-   *    allows the client to receive information asynchronously.
-   *    <p>
-   *    When calling this function, the client must pass a callback
-   *    function which will be used to deliver asynchronous events.
-   *    The argument callback must be a non-NULL value.  If a NULL
-   *    value is passed to this function, the registration will
-   *    fail.
-   *    <p>
-   *    The client can choose which events will be sent from the
-   *    receiver driver by simply implementing functions for events
-   *    it wishes to receive.
-   *    <p>
-   *
-   *    @param callback the callback to handle the events events
-   *                    from the FM Transmitter.
-   *    @return true if Callback registered, false if Callback
-   *            registration failed.
-   *
-   *    @see #acquire
-   *    @see #unregisterTransmitClient
-   *
-   */
-   public boolean registerTransmitClient( FmTransmitterCallbacks callback){
-      boolean bReturnStatus = false;
-      if (callback!=null)
-      {
-         bReturnStatus = true;
-      } else
-      {
-         Log.d(TAG, "Null, do nothing");
-      }
-      return bReturnStatus;
-   }
-
-   /*==============================================================
-   FUNCTION:  unregisterTransmitClient
-   ==============================================================*/
-   /**
-   *    Unregisters Transmitter event notification callback.
-   *    <p>
-   *    This is a synchronous call used to unregister a Transmitter
-   *    client's event callback.
-   *    <p>
-   *    @return true always.
-   *
-   *    @see  #acquire
-   *    @see  #release
-   *    @see  #registerTransmitClient
-   *
-   */
-   public boolean unregisterTransmitClient () {
-      return true;
-   }
-
    /*==============================================================
    FUNCTION:  enable
    ==============================================================*/
@@ -371,7 +306,12 @@ public class FmTransceiver
     *
     */
    public void setNotchFilter(boolean value) {
-	FmReceiverJNI.setNotchFilterNative(sFd, V4L2_CID_PRIVATE_TAVARUA_SET_NOTCH_FILTER, value);
+        int intvalue ;
+        if (value)
+           intvalue = 1;
+        else
+           intvalue = 0;
+        FmReceiverJNI.setControlNative (sFd, V4L2_CID_PRIVATE_TAVARUA_SET_NOTCH_FILTER, intvalue);
    }
 
    /*==============================================================

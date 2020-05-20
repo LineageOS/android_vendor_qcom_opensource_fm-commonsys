@@ -704,14 +704,6 @@ static jint android_hardware_fmradio_FmReceiverJNI_setControlNative
     return err;
 }
 
-static jint android_hardware_fmradio_FmReceiverJNI_SetCalibrationNative
-     (JNIEnv * env, jobject thiz, jint fd, jbyteArray buff)
-{
-
-   ALOGE("TODO: set calibration \n");
-
-   return FM_JNI_SUCCESS;
-}
 /* native interface */
 static jint android_hardware_fmradio_FmReceiverJNI_getControlNative
     (JNIEnv * env, jobject thiz, jint fd, jint id)
@@ -865,57 +857,6 @@ static jint android_hardware_fmradio_FmReceiverJNI_getRawRdsNative
 
     return (read (fd, buff, count));
 
-}
-
-/* native interface */
-static jint android_hardware_fmradio_FmReceiverJNI_setNotchFilterNative(JNIEnv * env, jobject thiz,jint fd, jint id, jboolean aValue)
-{
-    return FM_JNI_SUCCESS;
-}
-
-/*
- * Interfaces added for Tx
-*/
-
-/*native interface */
-static jint android_hardware_fmradio_FmReceiverJNI_setPTYNative
-    (JNIEnv * env, jobject thiz, jint fd, jint pty)
-{
-    return FM_JNI_SUCCESS;
-}
-
-static jint android_hardware_fmradio_FmReceiverJNI_setPINative
-    (JNIEnv * env, jobject thiz, jint fd, jint pi)
-{
-    return FM_JNI_SUCCESS;
-}
-
-static jint android_hardware_fmradio_FmReceiverJNI_startRTNative
-    (JNIEnv * env, jobject thiz, jint fd, jstring radio_text, jint count )
-{
-
-    return FM_JNI_SUCCESS;
-}
-
-static jint android_hardware_fmradio_FmReceiverJNI_stopRTNative
-    (JNIEnv * env, jobject thiz, jint fd )
-{
-    return FM_JNI_SUCCESS;
-
-}
-
-static jint android_hardware_fmradio_FmReceiverJNI_startPSNative
-    (JNIEnv * env, jobject thiz, jint fd, jstring buff, jint count )
-{
-    ALOGD("->android_hardware_fmradio_FmReceiverJNI_startPSNative\n");
-
-    return FM_JNI_SUCCESS;
-}
-
-static jint android_hardware_fmradio_FmReceiverJNI_stopPSNative
-    (JNIEnv * env, jobject thiz, jint fd)
-{
-    return FM_JNI_SUCCESS;
 }
 
 static jint android_hardware_fmradio_FmReceiverJNI_configureSpurTable
@@ -1139,26 +1080,10 @@ static JNINativeMethod gMethods[] = {
             (void*)android_hardware_fmradio_FmReceiverJNI_setMonoStereoNative},
         { "getRawRdsNative", "(I[BI)I",
             (void*)android_hardware_fmradio_FmReceiverJNI_getRawRdsNative},
-       { "setNotchFilterNative", "(IIZ)I",
-            (void*)android_hardware_fmradio_FmReceiverJNI_setNotchFilterNative},
-        { "startRTNative", "(ILjava/lang/String;I)I",
-            (void*)android_hardware_fmradio_FmReceiverJNI_startRTNative},
-        { "stopRTNative", "(I)I",
-            (void*)android_hardware_fmradio_FmReceiverJNI_stopRTNative},
-        { "startPSNative", "(ILjava/lang/String;I)I",
-            (void*)android_hardware_fmradio_FmReceiverJNI_startPSNative},
-        { "stopPSNative", "(I)I",
-            (void*)android_hardware_fmradio_FmReceiverJNI_stopPSNative},
-        { "setPTYNative", "(II)I",
-            (void*)android_hardware_fmradio_FmReceiverJNI_setPTYNative},
-        { "setPINative", "(II)I",
-            (void*)android_hardware_fmradio_FmReceiverJNI_setPINative},
         { "setPSRepeatCountNative", "(II)I",
             (void*)android_hardware_fmradio_FmReceiverJNI_setPSRepeatCountNative},
         { "setTxPowerLevelNative", "(II)I",
             (void*)android_hardware_fmradio_FmReceiverJNI_setTxPowerLevelNative},
-        { "SetCalibrationNative", "(I)I",
-            (void*)android_hardware_fmradio_FmReceiverJNI_SetCalibrationNative},
         { "configureSpurTable", "(I)I",
             (void*)android_hardware_fmradio_FmReceiverJNI_configureSpurTable},
         { "setSpurDataNative", "(I[SI)I",

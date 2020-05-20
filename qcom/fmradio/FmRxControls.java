@@ -129,9 +129,6 @@ class FmRxControls
       }
 
       setAudioPath(fd, false);
-      re = FmReceiverJNI.SetCalibrationNative(fd);
-      if (re != 0)
-         Log.d(TAG,"Calibration failed");
       return re;
    }
 
