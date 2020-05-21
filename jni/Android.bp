@@ -1,7 +1,7 @@
 cc_library_shared {
     name: "libqcomfm_jni",
 
-    product_specific: true,
+    system_ext_specific: true,
     srcs: [
         "android_hardware_fm.cpp",
     ],

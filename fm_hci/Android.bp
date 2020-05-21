@@ -21,6 +21,6 @@ cc_library_shared {
         "vendor/qcom/opensource/commonsys/fm/helium",
     ],
 
-    product_specific: true,
+    system_ext_specific: true,
 
 }
