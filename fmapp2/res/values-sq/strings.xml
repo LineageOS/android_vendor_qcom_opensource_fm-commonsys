@@ -154,6 +154,7 @@
     <string name="fm_call">FM s\'mund të përdoret gjatë telefonatës.</string>
     <string name="alert_dialog_hint">Vendos një emër</string>
     <string name="search_dialog_title">Skano stacionet</string>
+    <string name="fm_command_timeout_title">Koha mbaroi</string>
     <string name="fm_tune_timeout_msg">Nuk u mor asnjë përgjigje për të akorduar kanalet FM. Nëse problemi vazhdon, ju lutemi fikeni FM dhe ndizeni sërish.</string>
     <string name="fm_command_failed_title">Veprimi FM dështoi</string>
     <string name="fm_cmd_failed_msg">Funksionimi i FM, dështoi. Nëse problemi vazhdon, ju lutemi fikeni FM dhe ndizeni sërish.</string>
