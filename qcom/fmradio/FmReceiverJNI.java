@@ -433,69 +433,6 @@ class FmReceiverJNI {
      */
     static native int getRawRdsNative (int fd, byte  buff[], int count);
 
-    /**
-     * native method: set v4l2 control
-     * @param fd file descriptor of device
-     * @param id v4l2 control to be set
-     * @param value value to be set
-     * @return {@link #FM_JNI_SUCCESS}
-     *         {@link #FM_JNI_FAILURE}
-     */
-    static native int setNotchFilterNative(int fd, int id, boolean value);
-
-    /**
-     * native method: Starts the RT transmission
-     * @param fd file descriptor of device
-     * @param buff[] buffer
-     * @param count number of bytes to be read
-     * @return Returns number of bytes read
-     */
-    static native int startRTNative(int fd, String str, int count);
-
-    /**
-     * native method: Stops the RT transmission
-     * @param fd file descriptor of device
-     * @param buff[] buffer
-     * @param count number of bytes to be read
-     * @return Returns number of bytes read
-     */
-    static native int stopRTNative(int fd);
-
-    /**
-     * native method: Starts the PS transmission
-     * @param fd file descriptor of device
-     * @param buff[] buffer
-     * @param count number of bytes to be read
-     * @return Returns number of bytes read
-     */
-    static native int startPSNative(int fd, String str, int count);
-
-    /**
-     * native method: Stops the PS transmission
-     * @param fd file descriptor of device
-     * @param buff[] buffer
-     * @param count number of bytes to be read
-     */
-    static native int stopPSNative(int fd);
-   /**
-     * native method: Sets the Programme type for transmission
-     * @param fd file descriptor of device
-     * @param pty program type to be transmited
-     * @return {@link #FM_JNI_SUCCESS}
-     *         {@link #FM_JNI_FAILURE}
-     */
-    static native int setPTYNative (int fd, int pty);
-
-   /**
-     * native method: Sets the Programme Id for transmission
-     * @param fd file descriptor of device
-     * @param pty program Id to be transmited
-     * @return {@link #FM_JNI_SUCCESS}
-     *         {@link #FM_JNI_FAILURE}
-     */
-    static native int setPINative (int fd, int pi);
-
-
    /**
      * native method: Sets the repeat count for Programme service
      * transmission.
@@ -515,13 +452,6 @@ class FmReceiverJNI {
      *         {@link #FM_JNI_FAILURE}
      */
     static native int setTxPowerLevelNative(int fd, int powLevel);
-   /**
-     * native method: Sets the calibration
-     * @param fd file descriptor of device
-     * @return {@link #FM_JNI_SUCCESS}
-     *         {@link #FM_JNI_FAILURE}
-     */
-    static native int SetCalibrationNative(int fd);
 
    /**
      * native method: Configures the spur table
