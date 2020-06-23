@@ -2343,11 +2343,6 @@ public class FMRadioService extends Service
    * Reset (OFF) FM Operations: This resets all the current FM operations             .
    */
    private void fmOperationsReset() {
-      if (isFmRecordingOn())
-      {
-          stopRecording();
-      }
-
       AudioManager audioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
       if(audioManager != null)
       {
