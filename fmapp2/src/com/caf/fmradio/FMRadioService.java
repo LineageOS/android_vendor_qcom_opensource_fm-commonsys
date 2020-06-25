@@ -2171,10 +2171,13 @@ public class FMRadioService extends Service
    private boolean enableSlimbus(int flag) {
        Log.d(LOGTAG, "enableSlimbus");
        boolean bStatus = false;
-       // Send command to enable FM core
-       mEventReceived = false;
-       mReceiver.EnableSlimbus(flag);
-       bStatus = waitForFWEvent();
+       if (mReceiver != null)
+       {
+           // Send command to enable/disable FM core
+           mEventReceived = false;
+           mReceiver.EnableSlimbus(flag);
+           bStatus = waitForFWEvent();
+       }
        return bStatus;
    }
 
