@@ -2378,6 +2378,12 @@ public class FMRadioService extends Service
       // This will disable the FM radio device
       if (mReceiver != null)
       {
+         if(mReceiver.getFMState() == mReceiver.FMState_Srch_InProg) {
+             Log.d(LOGTAG, "Cancelling the on going search operation prior to disabling FM");
+             mEventReceived = false;
+             cancelSearch();
+             waitForEvent();
+         }
          mEventReceived = false;
          bStatus = mReceiver.disable(this);
          if (bStatus &&
@@ -3380,6 +3386,10 @@ public class FMRadioService extends Service
             if(mCallbacks != null)
             {
                mCallbacks.onSearchComplete();
+            }
+            synchronized (mEventWaitLock) {
+               mEventReceived = true;
+               mEventWaitLock.notify();
             }
             /* Update the frequency in the StatusBar's Notification */
             startNotification();
