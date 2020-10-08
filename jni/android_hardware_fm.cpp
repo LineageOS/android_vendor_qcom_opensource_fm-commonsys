@@ -41,7 +41,6 @@
 #include <dlfcn.h>
 #include "android_runtime/Log.h"
 #include "android_runtime/AndroidRuntime.h"
-#include "bt_configstore.h"
 #include <vector>
 #include "radio-helium.h"
 
@@ -157,11 +156,6 @@ char *FM_LIBRARY_SYMBOL_NAME = "FM_HELIUM_LIB_INTERFACE";
 void *lib_handle;
 static int slimbus_flag = 0;
 
-static char soc_name[16];
-bool isSocNameAvailable = false;
-static bt_configstore_interface_t* bt_configstore_intf = NULL;
-static void *bt_configstore_lib_handle = NULL;
-
 static JNIEnv *mCallbackEnv = NULL;
 static jobject mCallbacksObj = NULL;
 static bool mCallbacksObjCreated = false;
@@ -194,8 +188,6 @@ jmethodID method_getStnDbgParamCallback;
 jmethodID method_enableSlimbusCallback;
 jmethodID method_enableSoftMuteCallback;
 jmethodID method_FmReceiverJNICtor;
-
-int load_bt_configstore_lib();
 
 static bool checkCallbackThread() {
    JNIEnv* env = AndroidRuntime::getJNIEnv();
@@ -648,18 +640,6 @@ static   fm_hal_callbacks_t fm_callbacks = {
 };
 /* native interface */
 
-static void get_property(int ptype, char *value)
-{
-    std::vector<vendor_property_t> vPropList;
-    bt_configstore_intf->get_vendor_properties(ptype, vPropList);
-
-    for (auto&& vendorProp : vPropList) {
-        if (vendorProp.type == ptype) {
-            strlcpy(value, vendorProp.value,PROPERTY_VALUE_MAX);
-        }
-    }
-}
-
 /********************************************************************
  * Current JNI
  *******************************************************************/
@@ -905,41 +885,6 @@ static jint android_hardware_fmradio_FmReceiverJNI_enableSlimbusNative
     return err;
 }
 
-static jboolean android_hardware_fmradio_FmReceiverJNI_getFmStatsPropNative
- (JNIEnv* env)
-{
-    jboolean ret;
-    char value[PROPERTY_VALUE_MAX] = {'\0'};
-    get_property(FM_STATS_PROP, value);
-    if (!strncasecmp(value, "true", sizeof("true"))) {
-        ret = true;
-    } else {
-        ret = false;
-    }
-
-    return ret;
-}
-
-static jint android_hardware_fmradio_FmReceiverJNI_getFmCoexPropNative
-(JNIEnv * env, jobject thiz, jint fd, jint prop)
-{
-    jint ret;
-    int property = (int)prop;
-    char value[PROPERTY_VALUE_MAX] = {'\0'};
-
-    if (property == FMWAN_RATCONF) {
-        get_property(FM_PROP_WAN_RATCONF, value);
-    } else if (property == FMBTWLAN_LPFENABLER) {
-        get_property(FM_PROP_BTWLAN_LPFENABLER, value);
-    } else {
-        ALOGE("%s: invalid get property prop = %d\n", __func__, property);
-    }
-
-    ret = atoi(value);
-    ALOGI("%d:: ret  = %d",property, ret);
-    return ret;
-}
-
 static jint android_hardware_fmradio_FmReceiverJNI_enableSoftMuteNative
  (JNIEnv * env, jobject thiz, jint fd, jint val)
 {
@@ -948,27 +893,6 @@ static jint android_hardware_fmradio_FmReceiverJNI_enableSoftMuteNative
     err = vendor_interface->set_fm_ctrl(V4L2_CID_PRV_SOFT_MUTE, val);
 
     return err;
-}
-
-static jstring android_hardware_fmradio_FmReceiverJNI_getSocNameNative
- (JNIEnv* env)
-{
-    ALOGI("%s, bt_configstore_intf: %p isSocNameAvailable: %d",
-        __FUNCTION__, bt_configstore_intf, isSocNameAvailable);
-
-    if (bt_configstore_intf != NULL && isSocNameAvailable == false) {
-       std::vector<vendor_property_t> vPropList;
-
-       bt_configstore_intf->get_vendor_properties(BT_PROP_SOC_TYPE, vPropList);
-       for (auto&& vendorProp : vPropList) {
-          if (vendorProp.type == BT_PROP_SOC_TYPE) {
-            strlcpy(soc_name, vendorProp.value, sizeof(soc_name));
-            isSocNameAvailable = true;
-            ALOGI("%s:: soc_name = %s",__func__, soc_name);
-          }
-       }
-    }
-    return env->NewStringUTF(soc_name);
 }
 
 static void classInitNative(JNIEnv* env, jclass clazz) {
@@ -1092,66 +1016,16 @@ static JNINativeMethod gMethods[] = {
              (void*)android_hardware_fmradio_FmReceiverJNI_enableSlimbusNative},
         { "enableSoftMute", "(II)I",
              (void*)android_hardware_fmradio_FmReceiverJNI_enableSoftMuteNative},
-        {"getSocNameNative", "()Ljava/lang/String;",
-             (void*) android_hardware_fmradio_FmReceiverJNI_getSocNameNative},
-        {"getFmStatsPropNative", "()Z",
-             (void*) android_hardware_fmradio_FmReceiverJNI_getFmStatsPropNative},
-        { "getFmCoexPropNative", "(II)I",
-            (void*)android_hardware_fmradio_FmReceiverJNI_getFmCoexPropNative},
 };
 
 int register_android_hardware_fm_fmradio(JNIEnv* env)
 {
-        ALOGI("%s, bt_configstore_intf", __FUNCTION__, bt_configstore_intf);
-        if (bt_configstore_intf == NULL) {
-          load_bt_configstore_lib();
-        }
-
         return jniRegisterNativeMethods(env, "qcom/fmradio/FmReceiverJNI", gMethods, NELEM(gMethods));
 }
 
 int deregister_android_hardware_fm_fmradio(JNIEnv* env)
 {
-        if (bt_configstore_lib_handle) {
-            dlclose(bt_configstore_lib_handle);
-            bt_configstore_lib_handle = NULL;
-            bt_configstore_intf = NULL;
-        }
         return 0;
-}
-
-int load_bt_configstore_lib() {
-    const char* sym = BT_CONFIG_STORE_INTERFACE_STRING;
-
-    bt_configstore_lib_handle = dlopen("libbtconfigstore.so", RTLD_NOW);
-    if (!bt_configstore_lib_handle) {
-        const char* err_str = dlerror();
-        ALOGE("%s:: failed to load Bt Config store library, error= %s",
-            __func__, (err_str) ? err_str : "error unknown");
-        goto error;
-    }
-
-    // Get the address of the bt_configstore_interface_t.
-    bt_configstore_intf = (bt_configstore_interface_t*)dlsym(bt_configstore_lib_handle, sym);
-    if (!bt_configstore_intf) {
-        ALOGE("%s:: failed to load symbol from bt config store library = %s",
-            __func__, sym);
-        goto error;
-    }
-
-    // Success.
-    ALOGI("%s::  loaded HAL: bt_configstore_interface_t = %p , bt_configstore_lib_handle= %p",
-        __func__, bt_configstore_intf, bt_configstore_lib_handle);
-    return 0;
-
-  error:
-    if (bt_configstore_lib_handle) {
-      dlclose(bt_configstore_lib_handle);
-      bt_configstore_lib_handle = NULL;
-      bt_configstore_intf = NULL;
-    }
-
-    return -EINVAL;
 }
 
 } // end namespace

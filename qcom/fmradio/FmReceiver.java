@@ -359,7 +359,7 @@ public class FmReceiver extends FmTransceiver
    }
 
    public static boolean isRomeChip() {
-       String chip = FmReceiverJNI.getSocNameNative();
+       String chip = getSocName();
        if (chip.equals("rome"))
            return true;
        else
@@ -2898,15 +2898,22 @@ public class FmReceiver extends FmTransceiver
        mControl.enableSoftMute(sFd, enable);
    }
 
-   public String getSocName() {
-     return FmReceiverJNI.getSocNameNative();
+   public static String getSocName() {
+       return SystemProperties.get("vendor.bluetooth.soc");
    }
 
    public boolean getFmStatsProp() {
-     return FmReceiverJNI.getFmStatsPropNative();
+       return SystemProperties.getBoolean("persist.fm.stats", false);
    }
 
    public int getFmWanWlanCoexProp(int property) {
-     return FmReceiverJNI.getFmCoexPropNative(sFd, property);
+       switch (property) {
+           case WAN_RATCONF:
+               return SystemProperties.getInt("persist.fm_wan.ratconf", 0);
+           case BTWLAN_LPFENABLER:
+               return SystemProperties.getInt("persist.btwlan.lpfenabler", 0);
+           default:
+              return 0;
+       }
    }
 }
