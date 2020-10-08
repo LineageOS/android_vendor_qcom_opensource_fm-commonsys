@@ -16,7 +16,7 @@ cc_library_shared {
         "libcutils",
     ],
 
-    include_dirs: ["vendor/qcom/opensource/commonsys/fm/fm_hci"],
+    include_dirs: ["vendor/qcom/opensource/fm-commonsys/fm_hci"],
 
     system_ext_specific: true,
 
