@@ -19,7 +19,7 @@ cc_library_shared {
     ],
 
     include_dirs: [
-        "vendor/qcom/opensource/commonsys/fm/helium",
+        "vendor/qcom/opensource/fm-commonsys/helium",
     ],
 
 }
