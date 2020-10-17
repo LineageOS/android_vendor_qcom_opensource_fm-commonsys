@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0457bf2d_0770514a",
+        "filename": "qcom/fmradio/FmReceiver.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 1590,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2020-10-17T12:50:57Z",
+      "side": 1,
+      "message": "4 spaces",
+      "range": {
+        "startLine": 1590,
+        "startChar": 14,
+        "endLine": 1590,
+        "endChar": 16
+      },
+      "revId": "2cf59db0a106df5fd2b23d7a64147de7625ef3c6",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    }
+  ]
+}
