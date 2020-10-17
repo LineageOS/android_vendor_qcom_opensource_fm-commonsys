@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ad6fc960_5fd81bef",
+        "filename": "fmapp2/src/com/caf/fmradio/FmSharedPreferences.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 514,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2020-10-17T12:52:25Z",
+      "side": 1,
+      "message": "Over 100 chars",
+      "range": {
+        "startLine": 514,
+        "startChar": 10,
+        "endLine": 514,
+        "endChar": 110
+      },
+      "revId": "fbabe5a19557c966c28dcbdbd5dcd0172cec4b66",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    }
+  ]
+}
