@@ -319,6 +319,8 @@ class FmReceiverJNI {
         Log.d(TAG, "FmReceiverJNI constructor called");
     }
 
+    static native int acquireFdNative(String path);
+
     /**
      * native method:
      * @param fd
@@ -336,6 +338,15 @@ class FmReceiverJNI {
      *             {@link #FM_JNI_FAILURE}
      */
     static native int cancelSearchNative(int fd);
+
+    /**
+     * native method: release control of device
+     * @param fd file descriptor of device
+     * @return May return
+     *             {@link #FM_JNI_SUCCESS}
+     *             {@link #FM_JNI_FAILURE}
+     */
+    static native int closeFdNative(int fd);
 
     /**
      * native method: get frequency
@@ -381,6 +392,16 @@ class FmReceiverJNI {
      *         {@link #FM_JNI_FAILURE}
      */
     static native int startSearchNative (int fd, int dir);
+
+    /**
+     * native method: get buffer
+     * @param fd file descriptor of device
+     * @param buff[] buffer
+     * @param index index of the buffer to be retrieved
+     * @return {@link #FM_JNI_SUCCESS}
+     *         {@link #FM_JNI_FAILURE}
+     */
+    static native int getBufferNative (int fd, byte  buff[], int index);
 
     /**
      * native method: get RSSI value of the
@@ -468,6 +489,7 @@ class FmReceiverJNI {
      *         {@link #FM_JNI_FAILURE}
      */
     static native int setSpurDataNative(int fd, short  buff[], int len);
+    static native void configurePerformanceParams(int fd);
     static native int enableSlimbus(int fd, int val);
     static native int enableSoftMute(int fd, int val);
     static native String getSocNameNative();

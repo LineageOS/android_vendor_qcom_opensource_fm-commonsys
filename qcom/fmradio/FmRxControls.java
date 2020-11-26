@@ -123,11 +123,12 @@ class FmRxControls
          Log.d(TAG,"setControlNative faile" + V4L2_CID_PRIVATE_TAVARUA_STATE);
          return re;
       }
-      boolean ret = enableSoftMute(fd,ENABLE_SOFT_MUTE);
-      if(false == ret) {
-          Log.d(TAG,"enableSoftMute failed");
+      if (FmReceiver.isCherokeeChip()) {
+          boolean ret = enableSoftMute(fd,ENABLE_SOFT_MUTE);
+          if(false == ret) {
+              Log.d(TAG,"enableSoftMute failed");
+          }
       }
-
       setAudioPath(fd, false);
       return re;
    }
@@ -435,6 +436,69 @@ class FmRxControls
       else {
          return 0;
       }
+
+   }
+
+   /* Read search list from buffer */
+   public int[] stationList (int fd)
+   {
+         int freq = 0;
+         int i=0, j = 0;
+         int station_num = 0;
+         float real_freq = 0;
+         int [] stationList;
+         byte [] sList = new byte[100];
+         int tmpFreqByte1=0;
+         int tmpFreqByte2=0;
+         float lowBand, highBand;
+
+
+         lowBand  = (float) (FmReceiverJNI.getLowerBandNative(fd) / 1000.00);
+         highBand = (float) (FmReceiverJNI.getUpperBandNative(fd) / 1000.00);
+
+         Log.d(TAG, "lowBand: " + lowBand);
+         Log.d(TAG, "highBand: " + highBand);
+
+         FmReceiverJNI.getBufferNative(fd, sList, 0);
+
+         if ((int)sList[0] >0) {
+            station_num = (int)sList[0];
+         }
+         stationList = new int[station_num+1];
+         Log.d(TAG, "station_num: " + station_num);
+
+         for (i=0;i<station_num;i++) {
+            freq = 0;
+            Log.d(TAG, " Byte1 = " + sList[i*2+1]);
+            Log.d(TAG, " Byte2 = " + sList[i*2+2]);
+            tmpFreqByte1 = sList[i*2+1] & 0xFF;
+            tmpFreqByte2 = sList[i*2+2] & 0xFF;
+            Log.d(TAG, " tmpFreqByte1 = " + tmpFreqByte1);
+            Log.d(TAG, " tmpFreqByte2 = " + tmpFreqByte2);
+            freq = (tmpFreqByte1 & 0x03) << 8;
+            freq |= tmpFreqByte2;
+            Log.d(TAG, " freq: " + freq);
+            real_freq  = (float)(freq * 50) + (lowBand * FREQ_MUL);//tuner.rangelow * FREQ_MUL;
+            Log.d(TAG, " real_freq: " + real_freq);
+            if ( (real_freq < (lowBand * FREQ_MUL)) || (real_freq > (highBand * FREQ_MUL)) ) {
+               Log.e(TAG, "Frequency out of band limits");
+            }
+            else {
+               stationList[j] = (int)(real_freq);
+               Log.d(TAG, " stationList: " + stationList[j]);
+               j++;
+            }
+         }
+
+        try {
+          // mark end of list
+           stationList[station_num] = 0;
+        }
+        catch (ArrayIndexOutOfBoundsException e) {
+           Log.d(TAG, "ArrayIndexOutOfBoundsException !!");
+        }
+
+        return stationList;
 
    }
 
