@@ -139,12 +139,166 @@ public class FmTransceiver
    private static final int V4L2_CID_PRIVATE_TAVARUA_SET_NOTCH_FILTER = V4L2_CID_PRIVATE_BASE + 40;
 
    private final String TAG = "FmTransceiver";
+   private final String V4L2_DEVICE = "/dev/radio0";
 
    protected static int sFd;
    protected FmRxControls mControl;
    protected int mPowerMode;
+   protected FmRxEventListner mRxEvents;
    protected FmRxRdsData mRdsData;
+
    public static final int ERROR = -1;
+
+   /*==============================================================
+   FUNCTION:  acquire
+   ==============================================================*/
+   /**
+   *    Allows access to the V4L2 FM device.
+   *
+   *    This synchronous call allows a client to use the V4L2 FM
+   *    device. This must be the first call issued by the client
+   *    before any receiver interfaces can be used.
+   *
+   *    This call also powers up the FM Module.
+   *
+   *    @param device String that is path to radio device
+   *
+   *    @return true if V4L2 FM device acquired, false if V4L2 FM
+   *            device could not be acquired, possibly acquired by
+   *            other client
+   *    @see   #release
+   *
+   */
+   protected boolean acquire(String device){
+      boolean bStatus = true;
+      if (sFd <= 0) { // if previous open fails fd will be -ve.
+         sFd = FmReceiverJNI.acquireFdNative(V4L2_DEVICE);
+
+         if (sFd > 0) {
+            Log.d(TAG, "Opened "+ sFd);
+            bStatus = true;
+         }
+         else {
+            Log.d(TAG, "Fail to Open "+ sFd);
+	    bStatus = false;
+         }
+      }
+      else {
+         Log.d(TAG, "Already Opened:" + sFd);
+         /*This should be case
+          * Where User try to opne the device
+          * secondtime.
+          * Case where Tx and Rx try to
+          * acquire the device
+          */
+         bStatus = false;
+       }
+      return (bStatus);
+   }
+
+   /*==============================================================
+   FUNCTION:  release
+   ==============================================================*/
+   /**
+   *    Releases access to the V4L2 FM device.
+   *    <p>
+   *    This synchronous call allows a client to release control of
+   *    V4L2 FM device.  This function should be called when the FM
+   *    device is no longer needed. This should be the last call
+   *    issued by the FM client. Once called, the client must call
+   *    #acquire to re-aquire the V4L2 device control before the
+   *    FM device can be used again.
+   *    <p>
+   *    Before the client can release control of the FM receiver
+   *    interface, it must disable the FM receiver, if the client
+   *    enabled it, and unregister any registered callback.  If the
+   *    client has ownership of the receiver, it will automatically
+   *    be returned to the system.
+   *    <p>
+   *    This call also powers down the FM Module.
+   *    <p>
+   *    @param device String that is path to radio device
+   *    @return true if V4L2 FM device released, false if V4L2 FM
+   *            device could not be released
+   *    @see   #acquire
+   */
+   static boolean release(String device) {
+      if (sFd!=0)
+      {
+         FmReceiverJNI.closeFdNative(sFd);
+         sFd = 0;
+         Log.d("FmTransceiver", "Turned off: " + sFd);
+      } else
+      {
+         Log.d("FmTransceiver", "Error turning off");
+      }
+      return true;
+   }
+
+   /*==============================================================
+   FUNCTION:  registerClient
+   ==============================================================*/
+   /**
+   *    Registers a callback for FM receiver event notifications.
+   *    <p>
+   *    This is a synchronous call used to register for event
+   *    notifications from the FM receiver driver. Since the FM
+   *    driver performs some tasks asynchronously, this function
+   *    allows the client to receive information asynchronously.
+   *    <p>
+   *    When calling this function, the client must pass a callback
+   *    function which will be used to deliver asynchronous events.
+   *    The argument callback must be a non-NULL value.  If a NULL
+   *    value is passed to this function, the registration will
+   *    fail.
+   *    <p>
+   *    The client can choose which events will be sent from the
+   *    receiver driver by simply implementing functions for events
+   *    it wishes to receive.
+   *    <p>
+   *
+   *    @param callback the callback to handle the events events
+   *                    from the FM receiver.
+   *    @return true if Callback registered, false if Callback
+   *            registration failed.
+   *
+   *    @see #acquire
+   *    @see #unregisterClient
+   *
+   */
+   public boolean registerClient(FmRxEvCallbacks callback){
+      boolean bReturnStatus = false;
+      if (callback!=null)
+      {
+         mRxEvents.startListner(sFd, callback);
+         bReturnStatus = true;
+      } else
+      {
+         Log.d(TAG, "Null, do nothing");
+      }
+      return bReturnStatus;
+   }
+
+   /*==============================================================
+   FUNCTION:  unregisterClient
+   ==============================================================*/
+   /**
+   *    Unregisters a client's event notification callback.
+   *    <p>
+   *    This is a synchronous call used to unregister a client's
+   *    event callback.
+   *    <p>
+   *    @return true always.
+   *
+   *    @see  #acquire
+   *    @see  #release
+   *    @see  #registerClient
+   *
+   */
+   public boolean unregisterClient () {
+      mRxEvents.stopListener();
+      return true;
+   }
 
    /*==============================================================
    FUNCTION:  enable
@@ -183,6 +337,12 @@ public class FmTransceiver
       boolean status;
       int ret;
 
+      if (!FmReceiver.isCherokeeChip()) {
+          //Acquire the deviceon Enable
+          if (!acquire("/dev/radio0")) {
+              return false;
+          }
+      }
       if (new File("/etc/fm/SpurTableFile.txt").isFile()) {
           Log.d(TAG, "Send Spur roation table");
           FmConfig.fmSpurConfig(sFd);
@@ -193,6 +353,7 @@ public class FmTransceiver
       ret = mControl.fmOn(sFd, device);
       if (ret < 0) {
           Log.d(TAG, "turning on failed");
+          FmReceiverJNI.closeFdNative(sFd);
           sFd = 0;
           return false;
       }
@@ -201,6 +362,7 @@ public class FmTransceiver
       status = FmConfig.fmConfigure (sFd, configSettings);
       if (!status) {
           Log.d(TAG, "fmConfigure failed");
+          FmReceiverJNI.closeFdNative(sFd);
           sFd = 0;
       }
       return status;

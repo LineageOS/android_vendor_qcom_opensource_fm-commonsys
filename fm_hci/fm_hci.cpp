@@ -60,7 +60,6 @@ using android::hardware::ProcessState;
 using ::android::hardware::Return;
 using ::android::hardware::Void;
 using ::android::hardware::hidl_vec;
-using ::android::hardware::hidl_death_recipient;
 
 static struct fm_hci_t hci;
 
@@ -82,31 +81,6 @@ static void cleanup_threads();
 static bool hci_initialize();
 static void hci_transmit(struct fm_command_header_t *hdr);
 static void hci_close();
-#define HCI_EV_HW_ERR_EVENT             0x1A
-
-void hal_service_died() {
-    struct fm_event_header_t *temp = (struct fm_event_header_t *)
-                       malloc(sizeof(struct fm_event_header_t));
-    if (temp != nullptr) {
-        temp->evt_code = HCI_EV_HW_ERR_EVENT;
-        temp->evt_len = 0;
-        ALOGI("%s: evt_code:  0x%x", __func__, temp->evt_code);
-        enqueue_fm_rx_event(temp);
-    } else {
-        ALOGE("%s: Memory Allocation failed for event buffer ",__func__);
-    }
-}
-
-class FmHciDeathRecipient : public hidl_death_recipient {
-    public:
-       virtual void serviceDied(uint64_t /*cookie*/,
-           const android::wp<::android::hidl::base::V1_0::IBase>& /*who*/) {
-       ALOGE("Fm HAL service died!");
-       hal_service_died();
-   }
-};
-
-android::sp<FmHciDeathRecipient> fmHciDeathRecipient = new FmHciDeathRecipient();
 
 /*******************************************************************************
 **
@@ -511,7 +485,6 @@ static void initialization_complete(bool is_hci_initialize)
     int ret;
     ALOGI("++%s: is_hci_initialize: %d", __func__, is_hci_initialize);
 
-    hci.on_mtx.lock();
     while (is_hci_initialize) {
         ret = start_tx_thread();
         if (ret)
@@ -534,7 +507,6 @@ static void initialization_complete(bool is_hci_initialize)
     }
 
     hci.on_cond.notify_all();
-    hci.on_mtx.unlock();
     ALOGI("--%s: is_hci_initialize: %d", __func__, is_hci_initialize);
 
 }
@@ -602,6 +574,8 @@ static bool hci_initialize()
     ALOGI("%s: acquiring mutex", __func__);
     std::lock_guard<std::recursive_mutex> lk(mtx);
 
+    fmHci = IFmHci::getService();
+
     if (fmHci != nullptr) {
         hci.state = FM_RADIO_ENABLING;
         android::sp<IFmHciCallbacks> callbacks = new FmHciCallbacks();
@@ -666,10 +640,6 @@ static void hci_close()
     std::lock_guard<std::recursive_mutex> lk(mtx);
 
     if (fmHci != nullptr) {
-        auto death_unlink = fmHci->unlinkToDeath(fmHciDeathRecipient);
-        if (!death_unlink.isOk()) {
-            ALOGE( "%s: Error unlinking death recipient from the Fm HAL", __func__);
-        }
         auto hidl_daemon_status = fmHci->close();
         if(!hidl_daemon_status.isOk()) {
             ALOGE("%s: HIDL daemon is dead", __func__);
@@ -730,10 +700,10 @@ int fm_hci_init(fm_hci_hal_t *hci_hal)
 
     if (hci_initialize()) {
         //wait for iniialization complete
-        Lock lk(hci.on_mtx);
+        ALOGD("--%s waiting for iniialization complete hci state: %d ",
+                __func__, hci.state);
         if(hci.state == FM_RADIO_ENABLING){
-            ALOGD("--%s waiting for iniialization complete hci state: %d ",
-                    __func__, hci.state);
+            Lock lk(hci.on_mtx);
             std::cv_status status = std::cv_status::no_timeout;
             auto now = std::chrono::system_clock::now();
             status =
@@ -744,7 +714,6 @@ int fm_hci_init(fm_hci_hal_t *hci_hal)
                  kill(getpid(), SIGKILL);
              }
         }
-        hci.on_mtx.unlock();
     }
 
     if (hci.state == FM_RADIO_ENABLED) {
