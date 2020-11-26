@@ -494,5 +494,4 @@ class FmReceiverJNI {
     static native int enableSoftMute(int fd, int val);
     static native String getSocNameNative();
     static native boolean getFmStatsPropNative();
-    static native int getFmCoexPropNative(int fd, int property);
 }
