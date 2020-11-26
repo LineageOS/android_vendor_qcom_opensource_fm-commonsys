@@ -2132,11 +2132,6 @@ public class FMRadioService extends Service
          return(mService.get().getExtenCountryCode());
       }
 
-      public boolean getFmStatsProp()
-      {
-          return (mService.get().getFmStatsProp());
-      }
-
       public void restoreDefaults()
       {
          mService.get().restoreDefaults();
@@ -3914,14 +3909,6 @@ public class FMRadioService extends Service
           else
              return null;
    }
-
-   boolean getFmStatsProp() {
-          if(mReceiver != null)
-             return mReceiver.getFmStatsProp();
-          else
-             return false;
-   }
-
    private void setAlarmSleepExpired (long duration) {
        Intent i = new Intent(SLEEP_EXPIRED_ACTION);
        AlarmManager am = (AlarmManager)getSystemService(Context.ALARM_SERVICE);
