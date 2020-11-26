@@ -134,7 +134,6 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #define FM_AFJUMP_CONFG_MODE 0x42
 #define FM_SRCH_CNFG_LEN    0x08
 #define FM_AFJUMP_CNFG_LEN  0x06
-#define STD_BUF_SIZE  256
 
 /* HCI timeouts */
 #define RADIO_HCI_TIMEOUT   (10000) /* 10 seconds */
@@ -513,10 +512,6 @@ struct hci_fm_def_data_rd {
 #define HCI_EV_RADIO_TEXT_PLUS_ID       0x18
 #define HCI_EV_RADIO_TEXT_PLUS_TAG      0x19
 #define HCI_EV_HW_ERR_EVENT             0x1A
-
-/*HCI event opcode for fm driver RDS support*/
-#define HCI_EV_DRIVER_RDS_EVENT         0x1B
-#define HCI_EV_E_RADIO_TEXT             0x1C
 
 #define HCI_REQ_DONE      0
 #define HCI_REQ_PEND      1
