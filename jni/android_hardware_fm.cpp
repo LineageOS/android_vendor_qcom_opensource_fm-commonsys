@@ -580,37 +580,17 @@ static   fm_hal_callbacks_t fm_callbacks = {
     fm_enable_softmute_cb
 };
 /* native interface */
-
-static bool is_soc_pronto() {
-    if(strcmp(soc_name, "pronto") == 0)
-        return true;
-    else
-        return false;
-}
-
-static void get_property(int ptype, char *value)
-{
-    std::vector<vendor_property_t> vPropList;
-    bt_configstore_intf->get_vendor_properties(ptype, vPropList);
-
-    for (auto&& vendorProp : vPropList) {
-        if (vendorProp.type == ptype) {
-            strlcpy(value, vendorProp.value,PROPERTY_VALUE_MAX);
-        }
-    }
-}
-
 static jint android_hardware_fmradio_FmReceiverJNI_acquireFdNative
         (JNIEnv* env, jobject thiz, jstring path)
 {
     int fd;
     int i,err;
     char value[PROPERTY_VALUE_MAX] = {'\0'};
+    char versionStr[40] = {'\0'};
     int init_success = 0;
     jboolean isCopy;
     v4l2_capability cap;
     const char* radio_path = env->GetStringUTFChars(path, &isCopy);
-
     if(radio_path == NULL){
         return FM_JNI_FAILURE;
     }
@@ -626,33 +606,39 @@ static jint android_hardware_fmradio_FmReceiverJNI_acquireFdNative
 
     ALOGD("VIDIOC_QUERYCAP returns :%d: version: %d \n", err , cap.version );
 
-    if (is_soc_pronto())
+    if( err >= 0 ) {
+       ALOGD("Driver Version(Same as ChipId): %x \n",  cap.version );
+       /*Conver the integer to string */
+       snprintf(versionStr, sizeof(versionStr), "%d", cap.version);
+       property_set("vendor.hw.fm.version", versionStr);
+    } else {
+       close(fd);
+       return FM_JNI_FAILURE;
+    }
+
+    if ((strcmp(soc_name, "rome") != 0) && (strcmp(soc_name, "hastings") != 0))
     {
        /*Set the mode for soc downloader*/
-       if (bt_configstore_intf != NULL) {
-           bt_configstore_intf->set_vendor_property(FM_PROP_HW_MODE, "normal");
-
-          /* Need to clear the hw.fm.init firstly */
-          bt_configstore_intf->set_vendor_property(FM_PROP_HW_INIT, "0");
-          bt_configstore_intf->set_vendor_property(FM_PROP_CTL_START, "fm_dl");
-
-          sched_yield();
-          for(i=0; i<45; i++) {
-              get_property(FM_PROP_HW_INIT, value);
-              if (strcmp(value, "1") == 0) {
-                  init_success = 1;
-                  break;
-              } else {
-                  usleep(WAIT_TIMEOUT);
-              }
-          }
-          ALOGE("init_success:%d after %f seconds \n", init_success, 0.2*i);
-          if(!init_success) {
-             bt_configstore_intf->set_vendor_property(FM_PROP_CTL_STOP,"fm_dl");
-             // close the fd(power down)
-             close(fd);
-             return FM_JNI_FAILURE;
-          }
+       property_set("vendor.hw.fm.mode", "normal");
+       /* Need to clear the hw.fm.init firstly */
+       property_set("vendor.hw.fm.init", "0");
+       property_set("ctl.start", "fm_dl");
+       sched_yield();
+       for(i=0; i<45; i++) {
+         property_get("vendor.hw.fm.init", value, NULL);
+         if (strcmp(value, "1") == 0) {
+            init_success = 1;
+            break;
+         } else {
+            usleep(WAIT_TIMEOUT);
+         }
+       }
+       ALOGE("init_success:%d after %f seconds \n", init_success, 0.2*i);
+       if(!init_success) {
+         property_set("ctl.stop", "fm_dl");
+         // close the fd(power down)
+         close(fd);
+         return FM_JNI_FAILURE;
        }
     }
     return fd;
@@ -662,9 +648,9 @@ static jint android_hardware_fmradio_FmReceiverJNI_acquireFdNative
 static jint android_hardware_fmradio_FmReceiverJNI_closeFdNative
     (JNIEnv * env, jobject thiz, jint fd)
 {
-    if (is_soc_pronto() && bt_configstore_intf != NULL)
+    if ((strcmp(soc_name, "rome") != 0) && (strcmp(soc_name, "hastings") != 0))
     {
-        bt_configstore_intf->set_vendor_property(FM_PROP_CTL_STOP,"fm_dl");
+        property_set("ctl.stop", "fm_dl");
     }
     close(fd);
     return FM_JNI_SUCCESS;
@@ -676,7 +662,6 @@ static bool is_soc_cherokee() {
     else
         return false;
 }
-
 /********************************************************************
  * Current JNI
  *******************************************************************/
