@@ -1232,21 +1232,6 @@ if (is_soc_cherokee()) {
     return err;
 }
 
-static jboolean android_hardware_fmradio_FmReceiverJNI_getFmStatsPropNative
- (JNIEnv* env)
-{
-    jboolean ret;
-    char value[PROPERTY_VALUE_MAX] = {'\0'};
-    get_property(FM_STATS_PROP, value);
-    if (!strncasecmp(value, "true", sizeof("true"))) {
-        ret = true;
-    } else {
-        ret = false;
-    }
-
-    return ret;
-}
-
 static jint android_hardware_fmradio_FmReceiverJNI_enableSoftMuteNative
  (JNIEnv * env, jobject thiz, jint fd, jint val)
 {
@@ -1414,8 +1399,6 @@ static JNINativeMethod gMethods[] = {
              (void*)android_hardware_fmradio_FmReceiverJNI_enableSoftMuteNative},
         {"getSocNameNative", "()Ljava/lang/String;",
              (void*) android_hardware_fmradio_FmReceiverJNI_getSocNameNative},
-        {"getFmStatsPropNative", "()Z",
-             (void*) android_hardware_fmradio_FmReceiverJNI_getFmStatsPropNative},
 };
 
 int register_android_hardware_fm_fmradio(JNIEnv* env)

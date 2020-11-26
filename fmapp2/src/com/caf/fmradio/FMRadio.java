@@ -280,6 +280,9 @@ public class FMRadio extends Activity
    private LoadedDataAndState SavedDataAndState = null;
    private static String mBTsoc;
 
+   /** fm stats property string */
+   public static final String FM_STATS_PROP = "persist.fm.stats";
+
    private BroadcastReceiver mFmSettingReceiver = null;
    private static String[] RECORD_PERMISSIONS = {
             Manifest.permission.RECORD_AUDIO,
@@ -712,17 +715,7 @@ public void onRequestPermissionsResult(int requestCode, String[] permissions,  i
       if (item != null) {
           item.setVisible(sleepActive && radioOn);
       }
-
-      if (mService != null) {
-          try {
-              mFMStats = mService.getFmStatsProp();
-              Log.d(LOGTAG, "mFMStats: " + mFMStats);
-          } catch (RemoteException e) {
-              e.printStackTrace();
-              return false;
-          }
-      }
-
+      mFMStats = SystemProperties.getBoolean(FM_STATS_PROP, false);
       if(mFMStats) {
           item = menu.add(0, MENU_STAT_TEST, 0,R.string.menu_stats).
                              setIcon(android.R.drawable.ic_menu_info_details);
