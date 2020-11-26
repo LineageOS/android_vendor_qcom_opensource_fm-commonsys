@@ -862,50 +862,6 @@ static void  hci_ev_ext_country_code(uint8_t buff[])
     }
 }
 
-static void hci_ev_driver_rds_event(uint8_t buff[])
-{
-    uint8_t rds_type;
-    char *rds_data = NULL;
-    rds_type = buff[0];
-
-    ALOGD("%s:%s:rds type = 0x%x", LOG_TAG, __func__, rds_type);
-    rds_data = malloc(STD_BUF_SIZE);
-    if (rds_data == NULL) {
-        ALOGE("%s:memory allocation failed\n", LOG_TAG);
-        return;
-    } else {
-        memcpy(rds_data, &buff[1],STD_BUF_SIZE);
-    }
-
-    switch (rds_type) {
-        case HCI_EV_RADIO_TEXT:
-            hal->jni_cb->rt_update_cb(rds_data);
-            break;
-
-        case HCI_EV_PROGRAM_SERVICE:
-            hal->jni_cb->ps_update_cb(rds_data);
-            break;
-
-        case HCI_EV_FM_AF_LIST:
-            hal->jni_cb->af_list_update_cb((uint16_t *)&rds_data);
-            break;
-
-        case HCI_EV_RADIO_TEXT_PLUS_TAG:
-            hal->jni_cb->rt_plus_update_cb(rds_data);
-            break;
-
-        case HCI_EV_E_RADIO_TEXT:
-            hal->jni_cb->ert_update_cb(rds_data);
-            break;
-
-        default:
-            ALOGD("%s: Unknown RDS event", __func__);
-            break;
-        }
-
-    free(rds_data);
-}
-
 static void hci_ev_ert()
 {
     char *data = NULL;
@@ -1118,9 +1074,6 @@ static void radio_hci_event_packet(char *evt_buf)
         break;
     case HCI_EV_EXT_COUNTRY_CODE:
         hci_ev_ext_country_code(((struct fm_event_header_t *)evt_buf)->params);
-        break;
-    case HCI_EV_DRIVER_RDS_EVENT:
-        hci_ev_driver_rds_event(((struct fm_event_header_t *)evt_buf)->params);
         break;
     case HCI_EV_HW_ERR_EVENT:
         hci_ev_hw_error();

@@ -3018,11 +3018,15 @@ public class FMStats extends Activity  {
         case SEARCH_TEST:
               try {
                   Log.e(LOGTAG, "start scanning\n");
-                  Log.d(LOGTAG,"Scanning with 0 scan time");
-                  if (mReceiver != null)
-                      mIsSearching = mReceiver.searchStations(FmReceiver.FM_RX_SRCH_MODE_SCAN,
-                              SCAN_DWELL_PERIOD, FmReceiver.FM_RX_SEARCHDIR_UP);
-              } catch (Exception e) {
+                  if(isTransportLayerSMD() || isCherokeeChip()) {
+                      Log.d(LOGTAG,"Scanning with 0 scan time");
+                      if (mReceiver != null)
+                          mIsSearching = mReceiver.searchStations(FmReceiver.FM_RX_SRCH_MODE_SCAN,
+                                  SCAN_DWELL_PERIOD, FmReceiver.FM_RX_SEARCHDIR_UP);
+                  } else {
+                      mIsSearching = mService.scan(0);
+                  }
+              }catch (RemoteException e) {
                   e.printStackTrace();
               }
 
@@ -3219,12 +3223,16 @@ public class FMStats extends Activity  {
         boolean isCherokeeChip = isCherokeeChip();
         if((null != mService)) {
             try {
-                lastCmdSent = CMD_STNPARAM_RSSI;
-                ret = mService.getRssi();
-                if (ret != 0) {
-                    Log.e(LOGTAG, "getrssi cmd failed: ret = " + ret);
-                    lastCmdSent = 0;
-                    return null;
+                if (isCherokeeChip) {
+                    lastCmdSent = CMD_STNPARAM_RSSI;
+                    ret = mService.getRssi();
+                     if (ret != 0) {
+                         Log.e(LOGTAG, "getrssi cmd failed: ret = " + ret);
+                         lastCmdSent = 0;
+                         return null;
+                     }
+                } else {
+                    nRssi = mService.getRssi();
                 }
                 Log.e(LOGTAG, "Got response of mService.getRssi");
                 if (nRssi != Integer.MAX_VALUE) {
