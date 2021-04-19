@@ -95,8 +95,10 @@ public class A2dpDeviceStatus {
 
     public A2dpDeviceStatus(Context mContext) {
         mAdapter = BluetoothAdapter.getDefaultAdapter();
-        mAdapter.getProfileProxy(mContext, mProfileListener,
-                BluetoothProfile.A2DP);
+        if(mAdapter !=  null) {
+            mAdapter.getProfileProxy(mContext, mProfileListener,
+                    BluetoothProfile.A2DP);
+        }
     }
     private BluetoothProfile.ServiceListener mProfileListener =
         new BluetoothProfile.ServiceListener() {
