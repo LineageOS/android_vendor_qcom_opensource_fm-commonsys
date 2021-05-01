@@ -45,7 +45,7 @@
     <item>15 分钟之后</item>
     <item>30 分钟之后</item>
     <item>45 分钟之后</item>
-    <item>1 小时</item>
+    <item>1 小时之后</item>
   </string-array>
   <string-array name="channel_spacing_entries">
     <item>50 kHz</item>
