@@ -244,10 +244,13 @@ public class FMRadioService extends Service
    private boolean mUseAudioSession = false;
 
    private static final int AUDIO_SAMPLE_RATE = 44100;
-   private static final int AUDIO_CHANNEL_CONFIG = AudioFormat.CHANNEL_CONFIGURATION_STEREO;
-   private static final int AUDIO_ENCODING_FORMAT = AudioFormat.ENCODING_PCM_16BIT;
-   private static final int FM_RECORD_BUF_SIZE = AudioRecord.getMinBufferSize(AUDIO_SAMPLE_RATE,
-           AUDIO_CHANNEL_CONFIG, AUDIO_ENCODING_FORMAT);
+   private static final int AUDIO_CHANNEL_CONFIG =
+                                   AudioFormat.CHANNEL_CONFIGURATION_STEREO;
+   private static final int AUDIO_ENCODING_FORMAT =
+                                           AudioFormat.ENCODING_PCM_16BIT;
+   private static final int FM_RECORD_BUF_SIZE =
+                      AudioRecord.getMinBufferSize(AUDIO_SAMPLE_RATE,
+                                   AUDIO_CHANNEL_CONFIG, AUDIO_ENCODING_FORMAT);
    private AudioRecord mAudioRecord = null;
 
    public FMRadioService() {
@@ -296,9 +299,8 @@ public class FMRadioService extends Service
       Log.d(LOGTAG, " is A2DP device Supported In HAL"+mA2dpDeviceSupportInHal);
 
       mUseAudioSession = SystemProperties.getBoolean("ro.vendor.fm.use_audio_session", false);
-      if (mUseAudioSession) {
+      if (mUseAudioSession)
           mRoutingListener = new AudioRoutingListener();
-      }
       mGainFocusReq = requestAudioFocus();
       AudioManager mAudioManager =
           (AudioManager) getSystemService(Context.AUDIO_SERVICE);
@@ -403,19 +405,18 @@ public class FMRadioService extends Service
                                        AUDIO_ENCODING_FORMAT, FM_RECORD_BUF_SIZE);
 
         mAudioTrack = new AudioTrack.Builder()
-                .setAudioFormat(new AudioFormat.Builder()
+        .setAudioFormat(new AudioFormat.Builder()
                         .setEncoding(AUDIO_ENCODING_FORMAT)
                         .setSampleRate(AUDIO_SAMPLE_RATE)
                         .setChannelIndexMask(AUDIO_CHANNEL_CONFIG)
                         .build())
-                .setBufferSizeInBytes(FM_RECORD_BUF_SIZE)
-                .build();
+        .setBufferSizeInBytes(FM_RECORD_BUF_SIZE)
+        .build();
         Log.d(LOGTAG," adding RoutingChangedListener() ");
         mAudioTrack.addOnRoutingChangedListener(mRoutingListener, null);
 
-        if (mMuted) {
+        if (mMuted)
             mAudioTrack.setVolume(0.0f);
-        }
     }
 
     private synchronized void startRecordSink() {
@@ -440,12 +441,14 @@ public class FMRadioService extends Service
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            enableSlimbus(ENABLE_SLIMBUS_DATA_PORT);
+            if (mReceiver.isCherokeeChip() && (mPref.getBoolean("SLIMBUS_SEQ", true))) {
+                enableSlimbus(ENABLE_SLIMBUS_DATA_PORT);
+            }
         }
     }
 
     private synchronized void exitRecordSinkThread() {
-        if (isRecordSinking()) {
+        if(isRecordSinking()) {
             Log.d(LOGTAG, "stopRecordSink");
             mAudioTrack.setPreferredDevice(null);
             mIsRecordSink = false;
@@ -457,7 +460,7 @@ public class FMRadioService extends Service
             Log.d(LOGTAG, "stopRecordSink waiting to join mRecordSinkThread");
             mRecordSinkThread.join();
         } catch (InterruptedException e) {
-            Log.d(LOGTAG, "Exception while mRecordSinkThread join");
+            Log.d(LOGTAG, "Exceprion while mRecordSinkThread join");
         }
         mRecordSinkThread = null;
         mAudioTrack = null;
@@ -517,16 +520,14 @@ public class FMRadioService extends Service
                         mAudioTrack.write(tmpBuf, 0, tmpBuf.length);
                     } else {
                         mCurrentFrame = 0;
-                        Log.d(LOGTAG, "RecordSinkThread: stopRecordSink called, "+
-                                "stopping mAudioTrack and mAudioRecord ");
+                        Log.d(LOGTAG, "RecordSinkThread: stopRecordSink called stopping mAudioTrack and mAudioRecord ");
                         break;
                     }
                 }
             } catch (Exception e) {
                 Log.d(LOGTAG, "RecordSinkThread.run, thread is interrupted, need exit thread");
             } finally {
-                Log.d(LOGTAG, "RecordSinkThread: stopRecordSink called, " +
-                        "stopping mAudioTrack and mAudioRecord ");
+                Log.d(LOGTAG, "RecordSinkThread: stopRecordSink called stopping mAudioTrack and mAudioRecord ");
                 if (mAudioRecord.getRecordingState() == AudioRecord.RECORDSTATE_RECORDING) {
                     Log.d(LOGTAG, "RecordSinkThread: mAudioRecord.stop()");
                     mAudioRecord.stop();
@@ -610,36 +611,36 @@ public class FMRadioService extends Service
         int status = AudioSystem.SUCCESS;
 
         Log.d(LOGTAG, "configureFMDeviceLoopback enable:" + enable +
-                " DeviceLoopbackActive:" + mIsFMDeviceLoopbackActive);
+              " DeviceLoopbackActive:" + mIsFMDeviceLoopbackActive);
         if (enable && mIsFMDeviceLoopbackActive == false) {
             status = AudioSystem.getDeviceConnectionState(AudioSystem.DEVICE_OUT_FM,"");
             Log.d(LOGTAG," FM hardwareLoopback Status = " + status);
-            if (status == AudioSystem.DEVICE_STATE_AVAILABLE) {
+            if( status == AudioSystem.DEVICE_STATE_AVAILABLE) {
                 // This case usually happens, when FM is force killed through settings app
                 // and we don't get chance to disable Hardware LoopBack.
                 Log.d(LOGTAG," FM HardwareLoopBack Active, disable it first");
-                status = AudioSystem.setDeviceConnectionState(AudioSystem.DEVICE_OUT_FM,
-                        AudioSystem.DEVICE_STATE_UNAVAILABLE, "", "",
-                        AudioSystem.AUDIO_FORMAT_DEFAULT);
+                status =  AudioSystem.setDeviceConnectionState(AudioSystem.DEVICE_OUT_FM,
+                              AudioSystem.DEVICE_STATE_UNAVAILABLE, "", "",
+                              AudioSystem.AUDIO_FORMAT_DEFAULT);
                 mCurrentDevice = AudioDeviceInfo.TYPE_WIRED_HEADSET;
             }
             status = AudioSystem.setDeviceConnectionState(AudioSystem.DEVICE_OUT_FM,
-                    AudioSystem.DEVICE_STATE_AVAILABLE, "", "",
-                    AudioSystem.AUDIO_FORMAT_DEFAULT);
+                                          AudioSystem.DEVICE_STATE_AVAILABLE, "", "",
+                                          AudioSystem.AUDIO_FORMAT_DEFAULT);
             if (status != AudioSystem.SUCCESS) {
                 success = false;
                 Log.e(LOGTAG, "configureFMDeviceLoopback failed! status:" + status);
                 AudioSystem.setDeviceConnectionState(AudioSystem.DEVICE_OUT_FM,
-                        AudioSystem.DEVICE_STATE_UNAVAILABLE, "", "",
-                        AudioSystem.AUDIO_FORMAT_DEFAULT);
+                                     AudioSystem.DEVICE_STATE_UNAVAILABLE, "", "",
+                                     AudioSystem.AUDIO_FORMAT_DEFAULT);
                 mCurrentDevice = AudioDeviceInfo.TYPE_UNKNOWN;
             } else {
                 mIsFMDeviceLoopbackActive = true;
             }
         } else if (!enable && mIsFMDeviceLoopbackActive == true) {
             AudioSystem.setDeviceConnectionState(AudioSystem.DEVICE_OUT_FM,
-                    AudioSystem.DEVICE_STATE_UNAVAILABLE, "", "",
-                    AudioSystem.AUDIO_FORMAT_DEFAULT);
+                                 AudioSystem.DEVICE_STATE_UNAVAILABLE, "", "",
+                                 AudioSystem.AUDIO_FORMAT_DEFAULT);
             mIsFMDeviceLoopbackActive = false;
             mCurrentDevice = AudioDeviceInfo.TYPE_UNKNOWN;
         }
@@ -647,67 +648,25 @@ public class FMRadioService extends Service
         return success;
     }
 
-    private boolean startApplicationLoopBack(int deviceType) {
-
-        // stop existing playback path before starting new one
-        Log.d(LOGTAG,"startApplicationLoopBack for device "+deviceType);
-
-        AudioDeviceInfo outputDevice = null;
-        AudioDeviceInfo[] deviceList = mAudioManager.getDevices(AudioManager.GET_DEVICES_OUTPUTS);
-        for (int index = 0; index < deviceList.length; index++) {
-            Log.d(LOGTAG,"startApplicationLoopBack dev_type " + deviceList[index].getType());
-            if (AudioDeviceInfo.TYPE_WIRED_HEADSET == deviceType ||
-                    AudioDeviceInfo.TYPE_WIRED_HEADPHONES == deviceType) {
-                if (deviceList[index].getType() == AudioDeviceInfo.TYPE_WIRED_HEADSET ||
-                        deviceList[index].getType() == AudioDeviceInfo.TYPE_WIRED_HEADPHONES) {
-                     outputDevice = deviceList[index];
-                     Log.d(LOGTAG,"startApplicationLoopBack found_dev "
-                            + deviceList[index].getType());
-                     break;
-                }
-            } else if (deviceList[index].getType() == deviceType) {
-                outputDevice = deviceList[index];
-                Log.d(LOGTAG,"startApplicationLoopBack found_dev "+ deviceList[index].getType());
-                break;
-            }
-        }
-        if (outputDevice == null) {
-            Log.d(LOGTAG,"no output device" + deviceType + " found");
-            return false;
-        }
-        if (mIsFMDeviceLoopbackActive) {
-            enableSlimbus(DISABLE_SLIMBUS_DATA_PORT);
-            configureFMDeviceLoopback_O(false);
-        }
-        if (!isRecordSinking()) {
-            CreateRecordSessions();
-            Log.d(LOGTAG,"creating AudioTrack session");
-        }
-        mCurrentDevice = outputDevice.getType();
-        mAudioTrack.setPreferredDevice(outputDevice);
-        Log.d(LOGTAG,"PreferredDevice is set to "+ outputDevice.getType());
-        if (!isRecordSinking()) {
-            startRecordSink();
-        }
-        return true;
-    }
-
     private synchronized void configureAudioDataPath(boolean enable) {
         Log.d(LOGTAG, "configureAudioDataPath:" + enable +
-                " mA2dpConnected:" + mA2dpConnected +
-                " isRecordSinking" + isRecordSinking() +
-                " mSpeakerPhoneOn:" + mSpeakerPhoneOn +
-                " mIsFMDeviceLoopbackActive:" + mIsFMDeviceLoopbackActive);
+              " mA2dpConnected:" + mA2dpConnected +
+              " isRecordSinking" + isRecordSinking() +
+              " mSpeakerPhoneOn:" + mSpeakerPhoneOn +
+              " mIsFMDeviceLoopbackActive:" + mIsFMDeviceLoopbackActive);
 
         if (enable) {
             Log.d(LOGTAG,"Start Hardware loop back for audio");
             if (mStoppedOnFocusLoss == true) {
-                Log.d(LOGTAG, "FM does not have audio focus, not enabling audio path");
+                Log.d(LOGTAG, "FM does not have audio focus, not enabling " +
+                      "audio path");
                 return;
             }
-            if (!mIsFMDeviceLoopbackActive && !mA2dpConnected && !mSpeakerPhoneOn) {
+            if ((!mIsFMDeviceLoopbackActive) && (!mA2dpConnected) && (!mSpeakerPhoneOn)) {
                 // not on BT and device loop is also not active
-                enableSlimbus(ENABLE_SLIMBUS_DATA_PORT);
+                if (mReceiver.isCherokeeChip() && (mPref.getBoolean("SLIMBUS_SEQ", true))) {
+                    enableSlimbus(ENABLE_SLIMBUS_DATA_PORT);
+                }
                 exitRecordSinkThread();
                 configureFMDeviceLoopback_O(true);
             }
@@ -1122,7 +1081,9 @@ public class FMRadioService extends Service
           setLowPowerMode(false);
           if(false == mPlaybackInProgress) {
               startFM();
-              enableSlimbus(ENABLE_SLIMBUS_DATA_PORT);
+              if (mReceiver.isCherokeeChip() && (mPref.getBoolean("SLIMBUS_SEQ", true))) {
+                  enableSlimbus(ENABLE_SLIMBUS_DATA_PORT);
+              }
           }
       }
    }
@@ -1362,9 +1323,8 @@ public class FMRadioService extends Service
        if (mStoppedOnFactoryReset) {
            mStoppedOnFactoryReset = false;
            mSpeakerPhoneOn = false;
-           if (mUseAudioSession) {
-               configureAudioDataPath(true);
-           }
+           if (mUseAudioSession)
+              configureAudioDataPath(true);
        // In FM stop, the audio route is set to default audio device
        }
        String temp = mSpeakerPhoneOn ? "Speaker" : "WiredHeadset";
@@ -1374,11 +1334,10 @@ public class FMRadioService extends Service
        } else {
            mAudioDevice = AudioDeviceInfo.TYPE_WIRED_HEADPHONES;
        }
-       if (mUseAudioSession) {
-           startApplicationLoopBack(mAudioDevice);
-       } else {
-           configureFMDeviceLoopback(true);
-       }
+       if (mUseAudioSession)
+          startApplicationLoopBack(mAudioDevice);
+       else
+          configureFMDeviceLoopback(true);
        try {
            if ((mServiceInUse) && (mCallbacks != null))
                mCallbacks.onFmAudioPathStarted();
@@ -1389,11 +1348,10 @@ public class FMRadioService extends Service
 
    private void stopFM() {
        Log.d(LOGTAG, "In stopFM");
-       if (mUseAudioSession) {
-           configureAudioDataPath(false);
-       } else {
-           configureFMDeviceLoopback(false);
-       }
+       if (mUseAudioSession)
+          configureAudioDataPath(false);
+       else
+          configureFMDeviceLoopback(false);
        mPlaybackInProgress = false;
        try {
            if ((mServiceInUse) && (mCallbacks != null))
@@ -1406,11 +1364,10 @@ public class FMRadioService extends Service
    private void resetFM(){
        Log.d(LOGTAG, "resetFM");
        mPlaybackInProgress = false;
-       if (mUseAudioSession) {
-           configureAudioDataPath(false);
-       } else {
-           configureFMDeviceLoopback(false);
-       }
+       if (mUseAudioSession)
+          configureAudioDataPath(false);
+       else
+          configureFMDeviceLoopback(false);
    }
 
    private boolean getRecordServiceStatus() {
@@ -1847,9 +1804,9 @@ public class FMRadioService extends Service
             Log.d(LOGTAG," onRoutingChanged  + currdevice " + mCurrentDevice);
             AudioDeviceInfo routedDevice = audioRouting.getRoutedDevice();
             // if routing is nowhere, we get routedDevice as null
-            if (routedDevice != null) {
+            if(routedDevice != null) {
                 Log.d(LOGTAG," Audio Routed to device id " + routedDevice.getType());
-                if (routedDevice.getType() != mCurrentDevice) {
+                if(routedDevice.getType() != mCurrentDevice) {
                     startApplicationLoopBack(mCurrentDevice);
                 }
             }
@@ -1912,9 +1869,10 @@ public class FMRadioService extends Service
                       //intentional fall through.
                   case AudioManager.AUDIOFOCUS_LOSS_TRANSIENT:
                       Log.v(LOGTAG, "AudioFocus: received AUDIOFOCUS_LOSS_TRANSIENT");
-
-                      enableSlimbus(DISABLE_SLIMBUS_DATA_PORT);
-
+                      if (mReceiver != null && mReceiver.isCherokeeChip() &&
+                                            (mPref.getBoolean("SLIMBUS_SEQ", true))) {
+                          enableSlimbus(DISABLE_SLIMBUS_DATA_PORT);
+                      }
                       if (true == mPlaybackInProgress) {
                           stopFM();
                       }
@@ -1936,8 +1894,10 @@ public class FMRadioService extends Service
 
                       if(false == mPlaybackInProgress) {
                           startFM();
-                          enableSlimbus(ENABLE_SLIMBUS_DATA_PORT);
-
+                          if (mReceiver != null && mReceiver.isCherokeeChip() &&
+                                (mPref.getBoolean("SLIMBUS_SEQ", true))) {
+                              enableSlimbus(ENABLE_SLIMBUS_DATA_PORT);
+                          }
                       } else {
                           /* This case usually happens, when FM volume is lowered down and Playback
                            * In Progress on AUDIOFOCUS_LOSS_TRANSIENT_CAN_DUCK recived. Need
@@ -2235,6 +2195,11 @@ public class FMRadioService extends Service
       {
          return(mService.get().getProgramID());
       }
+      public int[] getSearchList()
+      {
+         return(mService.get().getSearchList());
+      }
+
       public boolean setLowPowerMode(boolean enable)
       {
          return(mService.get().setLowPowerMode(enable));
@@ -2384,12 +2349,6 @@ public class FMRadioService extends Service
       {
           return (mService.get().getAfJmpRmssiSamplesCnt());
       }
-
-      public String getSocName()
-      {
-          return (mService.get().getSocName());
-      }
-
       public boolean setAfJmpRmssiSamplesCnt(int afJmpRmssiSmplsCnt)
       {
           return (mService.get().setAfJmpRmssiSamplesCnt(afJmpRmssiSmplsCnt));
@@ -2432,11 +2391,6 @@ public class FMRadioService extends Service
       public int getExtenCountryCode()
       {
          return(mService.get().getExtenCountryCode());
-      }
-
-      public boolean getFmStatsProp()
-      {
-          return (mService.get().getFmStatsProp());
       }
 
       public void restoreDefaults()
@@ -2489,6 +2443,86 @@ public class FMRadioService extends Service
        return status;
    }
 
+   private boolean fmTurnOnSequence () {
+       boolean bStatus = false;
+       // This sets up the FM radio device
+       FmConfig config = FmSharedPreferences.getFMConfiguration();
+
+       Log.d(LOGTAG, "fmOn: RadioBand   :"+ config.getRadioBand());
+       Log.d(LOGTAG, "fmOn: Emphasis    :"+ config.getEmphasis());
+       Log.d(LOGTAG, "fmOn: ChSpacing   :"+ config.getChSpacing());
+       Log.d(LOGTAG, "fmOn: RdsStd      :"+ config.getRdsStd());
+       Log.d(LOGTAG, "fmOn: LowerLimit  :"+ config.getLowerLimit());
+       Log.d(LOGTAG, "fmOn: UpperLimit  :"+ config.getUpperLimit());
+
+       mEventReceived = false;
+       bStatus = mReceiver.enable(FmSharedPreferences.getFMConfiguration(), this);
+
+       if (mReceiver.isCherokeeChip()) {
+           bStatus = waitForEvent();
+       }
+
+       Log.d(LOGTAG, "mReceiver.enable done, Status :" +  bStatus);
+
+         if (bStatus == true)
+         {
+            /* Put the hardware into normal mode */
+            bStatus = setLowPowerMode(false);
+            Log.d(LOGTAG, "setLowPowerMode done, Status :" +  bStatus);
+
+
+            AudioManager audioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
+            if( (audioManager != null) &&(false == mPlaybackInProgress) )
+            {
+               Log.d(LOGTAG, "mAudioManager.setFmRadioOn = true \n" );
+               //audioManager.setParameters("FMRadioOn="+mAudioDevice);
+               int state =  getCallState();
+               if ( TelephonyManager.CALL_STATE_IDLE != getCallState() )
+               {
+                 fmActionOnCallState(state);
+               } else {
+                   startFM(); // enable FM Audio only when Call is IDLE
+               }
+               Log.d(LOGTAG, "mAudioManager.setFmRadioOn done \n" );
+            }
+            if (mReceiver != null) {
+                bStatus = mReceiver.registerRdsGroupProcessing(FmReceiver.FM_RX_RDS_GRP_RT_EBL|
+                                                           FmReceiver.FM_RX_RDS_GRP_PS_EBL|
+                                                           FmReceiver.FM_RX_RDS_GRP_AF_EBL|
+                                                           FmReceiver.FM_RX_RDS_GRP_PS_SIMPLE_EBL|
+                                                           FmReceiver.FM_RX_RDS_GRP_ECC_EBL|
+                                                           FmReceiver.FM_RX_RDS_GRP_PTYN_EBL|
+                                                           FmReceiver.FM_RX_RDS_GRP_RT_PLUS_EBL);
+                Log.d(LOGTAG, "registerRdsGroupProcessing done, Status :" +  bStatus);
+            }
+            bStatus = enableAutoAF(FmSharedPreferences.getAutoAFSwitch());
+            Log.d(LOGTAG, "enableAutoAF done, Status :" +  bStatus);
+
+            /* There is no internal Antenna*/
+            bStatus = mReceiver.setInternalAntenna(false);
+            Log.d(LOGTAG, "setInternalAntenna done, Status :" +  bStatus);
+
+            /* Read back to verify the internal Antenna mode*/
+            readInternalAntennaAvailable();
+
+            startNotification();
+            bStatus = true;
+         }
+         else
+         {
+            if ((mReceiver.getFMState() != mReceiver.subPwrLevel_FMRx_Starting) &&
+                            (mReceiver.getFMState() != mReceiver.FMState_Rx_Turned_On)) {
+                mReceiver = null; // as enable failed no need to disable
+                              // failure of enable can be because handle
+                              // already open which gets effected if
+                              // we disable
+                stop();
+            }
+         }
+
+         return bStatus;
+   }
+
    private boolean enableSlimbus(int flag) {
        Log.d(LOGTAG, "enableSlimbus");
        boolean bStatus = false;
@@ -2507,7 +2541,7 @@ public class FMRadioService extends Service
    *                                                                                 .
    * @return true if fm Enable api was invoked successfully, false if the api failed.
    */
-   private boolean fmTurnOnSequence() {
+   private boolean fmTurnOnSequenceCherokee () {
        boolean bStatus = false;
        AudioManager audioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
        if ((audioManager != null) & (false == mPlaybackInProgress)) {
@@ -2612,9 +2646,15 @@ public class FMRadioService extends Service
          }
          else
          {
-             enableSlimbus(ENABLE_SLIMBUS_DATA_PORT);
-             bStatus = fmTurnOnSequence();
-                /* reset SSR flag */
+           if (mReceiver.isCherokeeChip()) {
+               if (mPref.getBoolean("SLIMBUS_SEQ", true)) {
+                   enableSlimbus(ENABLE_SLIMBUS_DATA_PORT);
+               }
+               bStatus = fmTurnOnSequenceCherokee();
+           } else {
+               bStatus = fmTurnOnSequence();
+           }
+           /* reset SSR flag */
            mIsSSRInProgressFromActivity = false;
          }
       }
@@ -2687,6 +2727,23 @@ public class FMRadioService extends Service
    private boolean fmOffImpl() {
       boolean bStatus=false;
 
+      // This will disable the FM radio device
+      synchronized(mReceiverLock) {
+         if (mReceiver != null)
+         {
+            bStatus = mReceiver.disable(this);
+            mReceiver = null;
+         }
+      }
+      fmOperationsOff();
+      stop();
+
+      return(bStatus);
+   }
+
+   private boolean fmOffImplCherokee() {
+      boolean bStatus=false;
+
       fmOperationsOff();
       stop();
       try {
@@ -2722,7 +2779,11 @@ public class FMRadioService extends Service
    private boolean fmOff() {
        boolean ret = false;
        if (mReceiver != null) {
-           ret = fmOffImpl();
+           if (mReceiver.isCherokeeChip()) {
+               ret = fmOffImplCherokee();
+           } else {
+              ret = fmOffImpl();
+           }
        }
        mWakeLock.release();
        return ret;
@@ -2815,7 +2876,9 @@ public class FMRadioService extends Service
            return;
 
        mSpeakerPhoneOn = speakerOn;
-       enableSlimbus(DISABLE_SLIMBUS_DATA_PORT);
+       if (mReceiver.isCherokeeChip() && (mPref.getBoolean("SLIMBUS_SEQ", true))) {
+           enableSlimbus(DISABLE_SLIMBUS_DATA_PORT);
+       }
 
        if (speakerOn == false) {
            mAudioDevice = AudioDeviceInfo.TYPE_WIRED_HEADPHONES;
@@ -2825,15 +2888,17 @@ public class FMRadioService extends Service
            outputDevice = "Speaker";
        }
        if (mUseAudioSession) {
-           startApplicationLoopBack(mAudioDevice);
+          startApplicationLoopBack(mAudioDevice);
        } else {
-           mAudioDeviceType = mAudioDevice | AudioSystem.DEVICE_OUT_FM;
-           AudioManager audioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
-           String keyValPairs = new String("fm_routing=" + mAudioDeviceType);
-           Log.d(LOGTAG, "keyValPairs = " + keyValPairs);
-           audioManager.setParameters(keyValPairs);
+          mAudioDeviceType = mAudioDevice | AudioSystem.DEVICE_OUT_FM;
+          AudioManager audioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
+          String keyValPairs = new String("fm_routing="+mAudioDeviceType);
+          Log.d(LOGTAG, "keyValPairs = "+keyValPairs);
+          audioManager.setParameters(keyValPairs);
        }
-       enableSlimbus(ENABLE_SLIMBUS_DATA_PORT);
+       if (mReceiver.isCherokeeChip() && (mPref.getBoolean("SLIMBUS_SEQ", true))) {
+          enableSlimbus(ENABLE_SLIMBUS_DATA_PORT);
+       }
    }
   /*
    *  ReConfigure the FM Setup parameters
@@ -3232,6 +3297,24 @@ public class FMRadioService extends Service
       return pi;
    }
 
+
+   /* Retrieves the station list from the SearchStationlist.
+    *
+    * @return Array of integers that represents the station frequencies.
+    * Note: 1. This is a synchronous call that should typically called when
+    *           Callback onSearchListComplete.
+    */
+   public int[] getSearchList()
+   {
+      int[] frequencyList = null;
+      if (mReceiver != null)
+      {
+         Log.d(LOGTAG, "getSearchList: ");
+         frequencyList = mReceiver.getStationList();
+      }
+      return frequencyList;
+   }
+
    /* Set the FM Power Mode on the FM hardware SoC.
     * Typically used when UI/Activity is in the background, so the Host is interrupted less often.
     *
@@ -3425,9 +3508,11 @@ public class FMRadioService extends Service
       {
          Log.d(LOGTAG, "FmRxEvEnableReceiver");
          if (mReceiver != null) {
-             synchronized(mEventWaitLock) {
-                 mEventReceived = true;
-                 mEventWaitLock.notify();
+             if (mReceiver.isCherokeeChip()) {
+                 synchronized(mEventWaitLock) {
+                     mEventReceived = true;
+                     mEventWaitLock.notify();
+                 }
              }
          }
       }
@@ -3436,9 +3521,11 @@ public class FMRadioService extends Service
          Log.d(LOGTAG, "FmRxEvDisableReceiver");
          mFMOn = false;
          FmSharedPreferences.clearTags();
-         synchronized (mEventWaitLock) {
-             mEventReceived = true;
-             mEventWaitLock.notify();
+         if (mReceiver != null && mReceiver.isCherokeeChip()) {
+             synchronized (mEventWaitLock) {
+                 mEventReceived = true;
+                 mEventWaitLock.notify();
+             }
          }
       }
       public void FmRxEvRadioReset()
@@ -3677,9 +3764,11 @@ public class FMRadioService extends Service
           if (mCallbacks != null) {
               try {
                   mCallbacks.getStationParamCb(val, status);
-                  synchronized(mEventWaitLock) {
-                      mEventReceived = true;
-                      mEventWaitLock.notify();
+                  if (mReceiver != null && mReceiver.isCherokeeChip()) {
+                      synchronized(mEventWaitLock) {
+                          mEventReceived = true;
+                          mEventWaitLock.notify();
+                      }
                   }
               } catch (RemoteException e) {
                   e.printStackTrace();
@@ -3888,18 +3977,21 @@ public class FMRadioService extends Service
       public void FmRxEvEnableSlimbus(int status)
       {
          Log.e(LOGTAG, "FmRxEvEnableSlimbus status = " + status);
-         synchronized(mEventWaitLock) {
-             mEventReceived = true;
-             mEventWaitLock.notify();
+         if (mReceiver != null && mReceiver.isCherokeeChip()) {
+             synchronized(mEventWaitLock) {
+                 mEventReceived = true;
+                 mEventWaitLock.notify();
+             }
          }
-
       }
       public void FmRxEvEnableSoftMute(int status)
       {
          Log.e(LOGTAG, "FmRxEvEnableSoftMute status = " + status);
-         synchronized(mEventWaitLock) {
-             mEventReceived = true;
-             mEventWaitLock.notify();
+         if (mReceiver != null && mReceiver.isCherokeeChip()) {
+             synchronized(mEventWaitLock) {
+                 mEventReceived = true;
+                 mEventWaitLock.notify();
+             }
          }
       }
    };
@@ -4089,21 +4181,6 @@ public class FMRadioService extends Service
           else
              return Integer.MIN_VALUE;
    }
-
-   String getSocName() {
-          if(mReceiver != null)
-             return mReceiver.getSocName();
-          else
-             return null;
-   }
-
-   boolean getFmStatsProp() {
-          if(mReceiver != null)
-             return mReceiver.getFmStatsProp();
-          else
-             return false;
-   }
-
    private void setAlarmSleepExpired (long duration) {
        Intent i = new Intent(SLEEP_EXPIRED_ACTION);
        AlarmManager am = (AlarmManager)getSystemService(Context.ALARM_SERVICE);
@@ -4185,7 +4262,18 @@ public class FMRadioService extends Service
    }
 
    private void requestFocusImpl() {
-      Log.d(LOGTAG, "++requestFocusImpl mPlaybackInProgress: " +
+      if( (false == mPlaybackInProgress) &&
+          (true  == mStoppedOnFocusLoss) && isFmOn()) {
+           // adding code for audio focus gain.
+           AudioManager audioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
+           audioManager.requestAudioFocus(mGainFocusReq);
+           startFM();
+           mStoppedOnFocusLoss = false;
+       }
+   }
+
+   private void requestFocusImplCherokee() {
+      Log.d(LOGTAG, "++requestFocusImplCherokee mPlaybackInProgress: " +
                     mPlaybackInProgress + " mStoppedOnFocusLoss: " +
                     mStoppedOnFocusLoss + " isFmOn: " + isFmOn());
       if( (false == mPlaybackInProgress) &&
@@ -4195,7 +4283,9 @@ public class FMRadioService extends Service
            audioManager.requestAudioFocus(mGainFocusReq);
            if(false == mPlaybackInProgress) {
                startFM();
-               enableSlimbus(ENABLE_SLIMBUS_DATA_PORT);
+               if (mReceiver.isCherokeeChip() && (mPref.getBoolean("SLIMBUS_SEQ", true))) {
+                  enableSlimbus(ENABLE_SLIMBUS_DATA_PORT);
+               }
            }
            mStoppedOnFocusLoss = false;
        }
@@ -4203,9 +4293,14 @@ public class FMRadioService extends Service
 
    private void requestFocus() {
        Log.d(LOGTAG, "++requestFocus");
-       requestFocusImpl();
+       if (mReceiver.isCherokeeChip() && (mPref.getBoolean("SLIMBUS_SEQ", true))) {
+           requestFocusImplCherokee();
+       } else {
+           requestFocusImpl();
+       }
        Log.d(LOGTAG, "--requestFocus");
    }
+
 
    public void onAudioFocusChange(int focusChange) {
            mDelayedStopHandler.obtainMessage(FOCUSCHANGE, focusChange, 0).sendToTarget();
@@ -4257,4 +4352,51 @@ public class FMRadioService extends Service
            //TODO unregister the fm service here.
        }
    }
+    private boolean startApplicationLoopBack(int deviceType) {
+
+        // stop existing playback path before starting new one
+        Log.d(LOGTAG,"startApplicationLoopBack for device "+deviceType);
+
+        AudioDeviceInfo outputDevice = null;
+        AudioDeviceInfo[] deviceList = mAudioManager.getDevices(AudioManager.GET_DEVICES_OUTPUTS);
+        for (int index = 0; index < deviceList.length; index++) {
+            Log.d(LOGTAG,"startApplicationLoopBack dev_type " + deviceList[index].getType());
+            if(AudioDeviceInfo.TYPE_WIRED_HEADSET == deviceType || AudioDeviceInfo.TYPE_WIRED_HEADPHONES == deviceType) {
+                if ((deviceList[index].getType() == AudioDeviceInfo.TYPE_WIRED_HEADSET ) ||
+                (deviceList[index].getType() == AudioDeviceInfo.TYPE_WIRED_HEADPHONES )){
+                outputDevice = deviceList[index];
+                Log.d(LOGTAG,"startApplicationLoopBack found_dev "
+                    + deviceList[index].getType());
+                break;
+            }
+        }
+        else if (deviceList[index].getType() == deviceType) {
+                outputDevice = deviceList[index];
+                Log.d(LOGTAG,"startApplicationLoopBack found_dev "+ deviceList[index].getType());
+                break;
+            }
+        }
+        if (outputDevice == null) {
+            Log.d(LOGTAG,"no output device" + deviceType + " found");
+            return false;
+        }
+        if(mIsFMDeviceLoopbackActive) {
+            if ((mReceiver != null) && mReceiver.isCherokeeChip() &&
+                            (mPref.getBoolean("SLIMBUS_SEQ", true))) {
+                enableSlimbus(DISABLE_SLIMBUS_DATA_PORT);
+            }
+            configureFMDeviceLoopback_O(false);
+        }
+        if(!isRecordSinking()) {
+            CreateRecordSessions();
+            Log.d(LOGTAG,"creating AudioTrack session");
+        }
+        mCurrentDevice = outputDevice.getType();
+        mAudioTrack.setPreferredDevice(outputDevice);
+        Log.d(LOGTAG,"PreferredDevice is set to "+ outputDevice.getType());
+        if(!isRecordSinking()) {
+            startRecordSink();
+        }
+        return true;
+    }
 }
