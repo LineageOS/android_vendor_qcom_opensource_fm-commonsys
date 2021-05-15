@@ -334,9 +334,6 @@ public class FMStats extends Activity  {
                           (this, R.array.band_sweep_methods,
                             android.R.layout.simple_spinner_item);
 
-        if(mReceiver == null)
-            mReceiver = new FmReceiver();
-
         Log.d(LOGTAG, "oncreate");
         checkTransportLayer();
         if (isCherokeeChip()) {
@@ -368,6 +365,9 @@ public class FMStats extends Activity  {
             this, R.array.rf_cfg, android.R.layout.simple_spinner_item);
 
         tLayout = (TableLayout) findViewById(R.id.maintable);
+
+        if(mReceiver == null)
+            mReceiver = new FmReceiver();
 
         long curTime = System.currentTimeMillis();
         mCurrentFileName = "FMStats_".concat(
@@ -2837,8 +2837,8 @@ public class FMStats extends Activity  {
         }
     }
     private void checkTransportLayer() {
-       String chip = mReceiver.getSocName();
-       if (chip.equals("pronto"))
+       String chip = SystemProperties.get("vendor.bluetooth.soc","default");
+       if (chip.equals("default"))
            mIsTransportSMD = true;
        else
            mIsTransportSMD = false;
@@ -2850,8 +2850,7 @@ public class FMStats extends Activity  {
     private boolean isCherokeeChip() {
         Log.d(LOGTAG, "isCherokeeChip");
 
-        String chip = mReceiver.getSocName();
-
+        String chip = SystemProperties.get("vendor.bluetooth.soc");
         if (chip.equals("cherokee"))
             return true;
         else
@@ -2859,15 +2858,16 @@ public class FMStats extends Activity  {
     }
 
     private boolean isRomeChip() {
-        String chip = mReceiver.getSocName();
+        String chip = "";
 
+        chip = SystemProperties.get("vendor.bluetooth.soc");
         if(chip.equals("rome"))
            return true;
         return false;
     }
 
     private boolean isHastingsChip() {
-        String chip = mReceiver.getSocName();
+        String chip = SystemProperties.get("vendor.bluetooth.soc","default");
 
         if(chip.equals("hastings"))
            return true;
@@ -3018,11 +3018,15 @@ public class FMStats extends Activity  {
         case SEARCH_TEST:
               try {
                   Log.e(LOGTAG, "start scanning\n");
-                  Log.d(LOGTAG,"Scanning with 0 scan time");
-                  if (mReceiver != null)
-                      mIsSearching = mReceiver.searchStations(FmReceiver.FM_RX_SRCH_MODE_SCAN,
-                              SCAN_DWELL_PERIOD, FmReceiver.FM_RX_SEARCHDIR_UP);
-              } catch (Exception e) {
+                  if(isTransportLayerSMD() || isCherokeeChip()) {
+                      Log.d(LOGTAG,"Scanning with 0 scan time");
+                      if (mReceiver != null)
+                          mIsSearching = mReceiver.searchStations(FmReceiver.FM_RX_SRCH_MODE_SCAN,
+                                  SCAN_DWELL_PERIOD, FmReceiver.FM_RX_SEARCHDIR_UP);
+                  } else {
+                      mIsSearching = mService.scan(0);
+                  }
+              }catch (RemoteException e) {
                   e.printStackTrace();
               }
 
@@ -3219,12 +3223,16 @@ public class FMStats extends Activity  {
         boolean isCherokeeChip = isCherokeeChip();
         if((null != mService)) {
             try {
-                lastCmdSent = CMD_STNPARAM_RSSI;
-                ret = mService.getRssi();
-                if (ret != 0) {
-                    Log.e(LOGTAG, "getrssi cmd failed: ret = " + ret);
-                    lastCmdSent = 0;
-                    return null;
+                if (isCherokeeChip) {
+                    lastCmdSent = CMD_STNPARAM_RSSI;
+                    ret = mService.getRssi();
+                     if (ret != 0) {
+                         Log.e(LOGTAG, "getrssi cmd failed: ret = " + ret);
+                         lastCmdSent = 0;
+                         return null;
+                     }
+                } else {
+                    nRssi = mService.getRssi();
                 }
                 Log.e(LOGTAG, "Got response of mService.getRssi");
                 if (nRssi != Integer.MAX_VALUE) {

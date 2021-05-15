@@ -28,7 +28,8 @@
 -->
 
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.caf.fmradio" >
+    package="com.caf.fmradio"
+    android:sharedUserId="android.uid.system" >
     <uses-sdk android:minSdkVersion="28"  android:targetSdkVersion="28"/>
     <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
     <uses-permission android:name="android.permission.BLUETOOTH" />
