@@ -282,7 +282,10 @@ public class FMRadio extends Activity
    public static boolean mUpdatePickerValue = false;
 
    private LoadedDataAndState SavedDataAndState = null;
-   private static String mBTsoc;
+   private static String mBTsoc = "invalid";
+
+   /** fm stats property string */
+   public static final String FM_STATS_PROP = "persist.fm.stats";
 
    private BroadcastReceiver mFmSettingReceiver = null;
    private static String[] RECORD_PERMISSIONS = {
@@ -444,6 +447,7 @@ public void onRequestPermissionsResult(int requestCode, String[] permissions,  i
       if ((mERadioTextScroller == null) && (mERadioTextTV != null)) {
           mERadioTextScroller = new ScrollerText(mERadioTextTV);
       }
+      mBTsoc = SystemProperties.get("vendor.qcom.bluetooth.soc");
    }
 
    protected void setDisplayvalue(){
@@ -745,17 +749,7 @@ public void onRequestPermissionsResult(int requestCode, String[] permissions,  i
       if (item != null) {
           item.setVisible(sleepActive && radioOn);
       }
-
-      if (mService != null) {
-          try {
-              mFMStats = mService.getFmStatsProp();
-              Log.d(LOGTAG, "mFMStats: " + mFMStats);
-          } catch (RemoteException e) {
-              e.printStackTrace();
-              return false;
-          }
-      }
-
+      mFMStats = SystemProperties.getBoolean(FM_STATS_PROP, false);
       if(mFMStats) {
           item = menu.add(0, MENU_STAT_TEST, 0,R.string.menu_stats).
                              setIcon(android.R.drawable.ic_menu_info_details);
@@ -828,29 +822,12 @@ public void onRequestPermissionsResult(int requestCode, String[] permissions,  i
           startActivity(launchFMStatIntent);
           return true;
       case MENU_SCAN_START:
-          Log.d(LOGTAG, "mBTsoc: " + mBTsoc + " mService: " + mService);
-
-          if (mBTsoc == null) {
-              if (mService != null) {
-                  try {
-                      mBTsoc = mService.getSocName();
-                      Log.d(LOGTAG, "mBTsoc: " + mBTsoc);
-                  }catch (RemoteException e) {
-                      e.printStackTrace();
-                      return false;
-                  }
-              } else {
-                return false;
-              }
-          }
-
          if (mBTsoc.equals("rome")) {
              clearStationList();
              initiateSearch(0); // 0 - All stations
          } else {
              displayDialog(DIALOG_SEARCH);
          }
-
          return true;
       case MENU_SCAN_STOP:
          cancelSearch();
