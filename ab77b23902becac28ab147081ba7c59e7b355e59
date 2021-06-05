@@ -22,6 +22,30 @@
       "revId": "ab77b23902becac28ab147081ba7c59e7b355e59",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cbab65b0_575f37fe",
+        "filename": "fmapp2/AndroidManifest.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 20370
+      },
+      "writtenOn": "2021-06-05T10:38:01Z",
+      "side": 1,
+      "message": "Sorry, I am confused.\nThis line is missing in los-18.1 repo and Arne said I should revert the patch adding this line which means to remove this line.\nShould I try to _add_ this line instead?",
+      "parentUuid": "e31f41ae_213af1c9",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 47
+      },
+      "revId": "ab77b23902becac28ab147081ba7c59e7b355e59",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
     }
   ]
 }
