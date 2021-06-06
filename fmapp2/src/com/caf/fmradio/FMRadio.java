@@ -448,7 +448,7 @@ public void onRequestPermissionsResult(int requestCode, String[] permissions,  i
       if ((mERadioTextScroller == null) && (mERadioTextTV != null)) {
           mERadioTextScroller = new ScrollerText(mERadioTextTV);
       }
-      mBTsoc = SystemProperties.get("vendor.bluetooth.soc");
+      mBTsoc = SystemProperties.get("vendor.qcom.bluetooth.soc");
    }
 
    protected void setDisplayvalue(){
