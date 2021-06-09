@@ -3768,14 +3768,14 @@ public class FMStats extends Activity  {
     private void setAlarm(long duration, String action) {
         Intent i = new Intent(action);
         AlarmManager am = (AlarmManager)getSystemService(Context.ALARM_SERVICE);
-        PendingIntent pi = PendingIntent.getBroadcast(this, 0, i, 0);
+        PendingIntent pi = PendingIntent.getBroadcast(this, 0, i, PendingIntent.FLAG_IMMUTABLE);
         am.set(AlarmManager.ELAPSED_REALTIME_WAKEUP, SystemClock.elapsedRealtime() + duration, pi);
     }
 
     private void cancelAlarm(String action) {
         Intent i = new Intent(action);
         AlarmManager am = (AlarmManager)getSystemService(Context.ALARM_SERVICE);
-        PendingIntent pi = PendingIntent.getBroadcast(this, 0, i, 0);
+        PendingIntent pi = PendingIntent.getBroadcast(this, 0, i, PendingIntent.FLAG_IMMUTABLE);
         am.cancel(pi);
     }
 
