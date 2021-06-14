@@ -1783,6 +1783,11 @@ public class FMRadioService extends Service
            boolean bTempSpeaker = mSpeakerPhoneOn ; //need to restore SpeakerPhone
            boolean bTempMute = mMuted;// need to restore Mute status
            int bTempCall = mCallStatus;//need to restore call status
+           if (mSession != null && mSession.isActive()) {
+               Log.d(LOGTAG, "onCallStateChanged: State - " + state
+                       + " Session is Active: " + mSession.isActive() );
+               mSession.setActive(false);
+           }
            if (isFmOn() && fmOff()) {
                if((mServiceInUse) && (mCallbacks != null)) {
                    try {
