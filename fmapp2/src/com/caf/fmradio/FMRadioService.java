@@ -2020,25 +2020,6 @@ public class FMRadioService extends Service
       }
    }
 
-      /* hide the FM Notification */
-   public void stopNotification() {
-      Log.d(LOGTAG,"stopNotification");
-
-      synchronized (mNotificationLock) {
-          Context context = getApplicationContext();
-          NotificationManager notificationManager =
-              (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
-          if((notificationManager != null)
-            && (notificationManager.getNotificationChannel(FMRADIO_NOTIFICATION_CHANNEL) != null)) {
-             try {
-               notificationManager.deleteNotificationChannel(FMRADIO_NOTIFICATION_CHANNEL);
-             } catch (Exception e) {
-               Log.e(LOGTAG,"exception raised from deleteNotificationChannel");
-             }
-          }
-      }
-   }
-
    private void stop() {
       Log.d(LOGTAG,"in stop");
 
@@ -2826,9 +2807,6 @@ public class FMRadioService extends Service
            Log.d(LOGTAG, "FM off from Application");
            isfmOffFromApplication = true;
        }
-
-       //stop Notification
-       stopNotification();
 
        return fmOff();
    }
