@@ -70,7 +70,7 @@ import android.os.Message;
 import android.os.PowerManager;
 import android.os.PowerManager.WakeLock;
 import android.os.RemoteException;
-import android.telephony.PhoneStateListener;
+import android.telephony.TelephonyCallback;
 import android.telephony.TelephonyManager;
 import android.util.Log;
 import android.widget.RemoteViews;
@@ -234,6 +234,7 @@ public class FMRadioService extends Service
    private boolean mEventReceived = false;
    private boolean isfmOffFromApplication = false;
    private AudioFocusRequest mGainFocusReq;
+   private PhoneStateCallback mPhoneStateCallback;
 
    public FMRadioService() {
    }
@@ -247,8 +248,10 @@ public class FMRadioService extends Service
       mPrefs = new FmSharedPreferences(this);
       mCallbacks = null;
       TelephonyManager tmgr = (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);
-      tmgr.listen(mPhoneStateListener, PhoneStateListener.LISTEN_CALL_STATE |
-                                       PhoneStateListener.LISTEN_DATA_ACTIVITY);
+      if (mPhoneStateCallback == null) {
+         mPhoneStateCallback = new PhoneStateCallback();
+      }
+      tmgr.registerTelephonyCallback(getApplicationContext().getMainExecutor(), mPhoneStateCallback);
       PowerManager pm = (PowerManager)getSystemService(Context.POWER_SERVICE);
       mWakeLock = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, this.getClass().getName());
       mWakeLock.setReferenceCounted(false);
@@ -362,7 +365,7 @@ public class FMRadioService extends Service
       }
 
       TelephonyManager tmgr = (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);
-      tmgr.listen(mPhoneStateListener, 0);
+      tmgr.unregisterTelephonyCallback(mPhoneStateCallback);
 
       Log.d(LOGTAG, "onDestroy: unbindFromService completed");
 
@@ -1352,7 +1355,7 @@ public class FMRadioService extends Service
        cv.put(MediaStore.Audio.Media.DATA, file.getAbsolutePath());
        cv.put(MediaStore.Audio.Media.DATE_ADDED, (int) (current / 1000));
        cv.put(MediaStore.Audio.Media.DATE_MODIFIED, (int) (modDate / 1000));
-       cv.put(MediaStore.Audio.Media.MIME_TYPE, "audio/aac_mp4");
+       cv.put(MediaStore.Audio.Media.MIME_TYPE, "audio/mpeg");
        cv.put(MediaStore.Audio.Media.ARTIST,
                res.getString(R.string.audio_db_artist_name));
        cv.put(MediaStore.Audio.Media.ALBUM,
@@ -1511,11 +1514,12 @@ public class FMRadioService extends Service
    }
 
     /* Handle Phone Call + FM Concurrency */
-   private PhoneStateListener mPhoneStateListener = new PhoneStateListener() {
+   private class PhoneStateCallback extends TelephonyCallback implements
+            TelephonyCallback.CallStateListener,
+            TelephonyCallback.DataActivityListener {
       @Override
-      public void onCallStateChanged(int state, String incomingNumber) {
+      public void onCallStateChanged(int state){
           Log.d(LOGTAG, "onCallStateChanged: State - " + state );
-          Log.d(LOGTAG, "onCallStateChanged: incomingNumber - " + incomingNumber );
           fmActionOnCallState(state );
       }
 
