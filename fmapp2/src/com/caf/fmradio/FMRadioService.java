@@ -1349,7 +1349,6 @@ public class FMRadioService extends Service
 
        // Lets label the recorded audio file as NON-MUSIC so that the file
        // won't be displayed automatically, except for in the playlist.
-       cv.put(MediaStore.Audio.Media.IS_MUSIC, "1");
        cv.put(MediaStore.Audio.Media.DURATION, mSampleLength);
        cv.put(MediaStore.Audio.Media.TITLE, title);
        cv.put(MediaStore.Audio.Media.DATA, file.getAbsolutePath());
@@ -1424,24 +1423,16 @@ public class FMRadioService extends Service
    }
 
    private void addToPlaylist(ContentResolver resolver, int audioId, long playlistId) {
-       String[] cols = new String[] {
-               MediaStore.Audio.Media.ALBUM_ID
-       };
        Uri uri = MediaStore.Audio.Playlists.Members.getContentUri("external", playlistId);
-       Cursor cur = resolver.query(uri, cols, null, null, null);
-       final int base;
-       if(cur != null && cur.getCount() != 0) {
-            cur.moveToFirst();
-            base = cur.getInt(0);
-            cur.close();
-       }
-       else {
-            base = 0;
-       }
+
        ContentValues values = new ContentValues();
-       values.put(MediaStore.Audio.Playlists.Members.PLAY_ORDER, Integer.valueOf(base + audioId));
+       values.put(MediaStore.Audio.Playlists.Members.PLAY_ORDER, audioId);
        values.put(MediaStore.Audio.Playlists.Members.AUDIO_ID, audioId);
-       resolver.insert(uri, values);
+       try {
+           resolver.insert(uri, values);
+       } catch (Exception exception) {
+           exception.printStackTrace();
+       }
    }
 
     private void resumeAfterCall() {
