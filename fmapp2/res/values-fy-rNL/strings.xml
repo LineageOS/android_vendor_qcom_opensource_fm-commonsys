@@ -144,14 +144,21 @@
     <string name="settings_revert_defaults_summary">Alles opnij ynstelle</string>
     <string name="settings_revert_confirm_title">Opnij ynstelle befêstigje</string>
     <string name="settings_revert_confirm_msg">Dit sil alle ynstellingen fuortsmite ynklusyf bewarre favoriten. Trochgean?</string>
+    <!-- alert to the user that USB storage must be available before using FM recording  [CHAR LIMIT=NONE] -->
     <string name="no_storage">Pleats SD-kaart om opnimme te kinnen.</string>
+    <!-- alert to the user that the USB storage is being disk-checked [CHAR LIMIT=30] -->
     <string name="preparing_sd">SD-kaart tariede\u2026</string>
+    <!-- alert to the user that the FM fails to read or write the USB storage. [CHAR LIMIT=NONE] -->
     <string name="access_sd_fail">Gjin tagong ta SD-kaart.</string>
+    <!-- Low-memory dialog message [CHAR LIMT=NONE] -->
     <string name="spaceIsLow_content">Jo SD-kaart is hast fol. Ferminderje de opnamekwaliteit of smyt bestannen fuort om romte frij te meitsjen.</string>
+    <!-- The messsage shown when FM record reaches size limit. -->
     <string name="FMRecording_reach_size_limit">Opnamelimyt berikke.</string>
     <string name="menu_scan_for_preset">Favoriten sykje</string>
+    <!-- Off messages -->
     <string name="fm_off">FM is útskeakele.</string>
     <string name="fm_call">FM kin net brûkt wurde wylst it bellen.</string>
+    <!-- The messsage shown when long pressed on a station. -->
     <string name="alert_dialog_hint">Namme ynfiere</string>
     <string name="search_dialog_title">Stjoerders sykje</string>
     <string name="fm_command_timeout_title">Time-out</string>
@@ -160,9 +167,14 @@
     <string name="fm_cmd_failed_msg">FM-bewurking mislearre. As it probleem bestean bliuwt, skeakel FM-radio út en oan.</string>
     <string name="fm_cmd_failed_msg_hdmi">FM-bewurking mislearre. FM en HDMI tagelyk wurdt net stipe.</string>
     <string name="fm_cmd_failed_call_on">FM-bewurking mislearre. FM audio net tastien wylst in telefoanpetear.</string>
+    <!-- Do not translate. Duration format. -->
+    <!-- the name under which recordings will be visible in the media database is formatted like this -->
     <string name="audio_db_title_format"><xliff:g id="format">dd-MM-yyyy HH:mm:ss</xliff:g></string>
+    <!-- all recordings will show up in the media database with this 'artist' name -->
     <string name="audio_db_artist_name">Myn FM-opnamen</string>
+    <!-- all recordings will show up in the media database with this 'album' name -->
     <string name="audio_db_album_name">FM-opnamen</string>
+    <!-- all recordings will show up in the media database in a playlist with this name -->
     <string name="audio_db_playlist_name">FM-opnamen</string>
     <string name="station_name">Stjoerder:</string>
     <string name="station_exists">Dizze frekwinsje bestiet al!</string>
@@ -178,6 +190,7 @@
     <string name="user_defind_band_msg">Fier in frekwinsje yn tusken 76.0 en 108.0 MHz mei in tuskenromte fan in kanaal en 100 KHz romte tusken minimale en maksimale frekwinsje</string>
     <string name="save_record_file">FM-opname bewarre yn ‘<xliff:g id="record_file">%1$s</xliff:g>’</string>
     <string name="fm_search_no_results">Gjin stjoerders fûn</string>
+    <!-- program types -->
     <string name="typ_All_stations">Alle stjoerders</string>
     <string name="typ_Culture">Kultuer</string>
     <string name="typ_Current_affairs">Aktualiteiten</string>
@@ -210,6 +223,7 @@
     <string name="typ_Travel">Reizigje</string>
     <string name="typ_Varied">Fariearre</string>
     <string name="typ_Weather">Waar</string>
+    <!-- RBDS (North America) -->
     <string name="typ_Adult_hits">Hits</string>
     <string name="typ_Classical">Klassyk</string>
     <string name="typ_Classic_Rock">Klassike rock</string>

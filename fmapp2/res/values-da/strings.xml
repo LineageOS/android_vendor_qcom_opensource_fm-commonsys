@@ -144,14 +144,21 @@
     <string name="settings_revert_defaults_summary">Nulstil alle indstillinger</string>
     <string name="settings_revert_confirm_title">Bekræft nulstilling</string>
     <string name="settings_revert_confirm_msg">Dette vil rydde alle applikationsindstillinger, inklusive gemte forudindstillinger. Fortsæt?</string>
+    <!-- alert to the user that USB storage must be available before using FM recording  [CHAR LIMIT=NONE] -->
     <string name="no_storage">Montér SD-kort, før start på optagelse.</string>
+    <!-- alert to the user that the USB storage is being disk-checked [CHAR LIMIT=30] -->
     <string name="preparing_sd">Forbereder SD-kort\u2026</string>
+    <!-- alert to the user that the FM fails to read or write the USB storage. [CHAR LIMIT=NONE] -->
     <string name="access_sd_fail">Kunne ikke tilgå SD-kort.</string>
+    <!-- Low-memory dialog message [CHAR LIMT=NONE] -->
     <string name="spaceIsLow_content">Dit SD-kort lager er ved at løbe før for plads. Skift kvalitetsindstillingen, eller slet nogle andre filer, for at frigøre plads.</string>
+    <!-- The messsage shown when FM record reaches size limit. -->
     <string name="FMRecording_reach_size_limit">Størrelsesgrænse nået.</string>
     <string name="menu_scan_for_preset">Skan efter forudindstillinger</string>
+    <!-- Off messages -->
     <string name="fm_off">FM er slået fra.</string>
     <string name="fm_call">FM kan ikke bruges under opkald.</string>
+    <!-- The messsage shown when long pressed on a station. -->
     <string name="alert_dialog_hint">Indtast et navn</string>
     <string name="search_dialog_title">Skan stationer</string>
     <string name="fm_command_timeout_title">Tidsudløb</string>
@@ -160,9 +167,14 @@
     <string name="fm_cmd_failed_msg">FM-opgave fejlede. Hvis problemet vedbliver, så slå venligst FM fra og til igen.</string>
     <string name="fm_cmd_failed_msg_hdmi">FM-opgave fejlede. Samtidig brug af FM og HDMI er ikke understøttet.</string>
     <string name="fm_cmd_failed_call_on">FM-opgave fejlede. FM-lyd er ikke tilladt under opkald.</string>
+    <!-- Do not translate. Duration format. -->
+    <!-- the name under which recordings will be visible in the media database is formatted like this -->
     <string name="audio_db_title_format"><xliff:g id="format">dd-MM-yyyy HH:mm:ss</xliff:g></string>
+    <!-- all recordings will show up in the media database with this 'artist' name -->
     <string name="audio_db_artist_name">Mine FM-optagelser</string>
+    <!-- all recordings will show up in the media database with this 'album' name -->
     <string name="audio_db_album_name">FM-optagelser</string>
+    <!-- all recordings will show up in the media database in a playlist with this name -->
     <string name="audio_db_playlist_name">FM-optagelser</string>
     <string name="station_name">Station:</string>
     <string name="station_exists">Denne frekvens eksisterer allerede!</string>
@@ -178,6 +190,7 @@
     <string name="user_defind_band_msg">Angiv frekvens fra 76,0 til 108,0 MHz med minimum 1 kanals afstand og 100 kHz afstand mellem min. og maks. frekvens</string>
     <string name="save_record_file">FM-optaget fil gemt til \'<xliff:g id="record_file">%1$s</xliff:g>\'</string>
     <string name="fm_search_no_results">Ingen kompatible stationer fundet</string>
+    <!-- program types -->
     <string name="typ_All_stations">Alle stationer</string>
     <string name="typ_Culture">Kultur</string>
     <string name="typ_Current_affairs">Aktuelle sager</string>
@@ -210,6 +223,7 @@
     <string name="typ_Travel">Rejse</string>
     <string name="typ_Varied">Varieret</string>
     <string name="typ_Weather">Vejr</string>
+    <!-- RBDS (North America) -->
     <string name="typ_Adult_hits">Voksen-hits</string>
     <string name="typ_Classical">Klassisk</string>
     <string name="typ_Classic_Rock">Klassisk rock</string>

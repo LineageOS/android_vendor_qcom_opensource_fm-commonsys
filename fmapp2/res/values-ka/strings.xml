@@ -77,7 +77,20 @@
     <string name="regional_band_entry_united_kingdom">გაერთიანებული სამეფო</string>
     <string name="regional_band_entry_united_states">შეერთებული შტატები</string>
     <string name="audio_type_stereo">სტერეო</string>
+    <!-- alert to the user that USB storage must be available before using FM recording  [CHAR LIMIT=NONE] -->
+    <!-- alert to the user that the USB storage is being disk-checked [CHAR LIMIT=30] -->
+    <!-- alert to the user that the FM fails to read or write the USB storage. [CHAR LIMIT=NONE] -->
+    <!-- Low-memory dialog message [CHAR LIMT=NONE] -->
+    <!-- The messsage shown when FM record reaches size limit. -->
+    <!-- Off messages -->
+    <!-- The messsage shown when long pressed on a station. -->
+    <!-- Do not translate. Duration format. -->
+    <!-- the name under which recordings will be visible in the media database is formatted like this -->
+    <!-- all recordings will show up in the media database with this 'artist' name -->
+    <!-- all recordings will show up in the media database with this 'album' name -->
+    <!-- all recordings will show up in the media database in a playlist with this name -->
     <string name="station_name">სადგური:</string>
+    <!-- program types -->
     <string name="typ_Culture">კულტურა</string>
     <string name="typ_Children">საბავშვო პროგრამები</string>
     <string name="typ_News">ახალი ამბები</string>
@@ -86,4 +99,5 @@
     <string name="typ_Sport">სპორტი</string>
     <string name="typ_Travel">მოგზაურობა</string>
     <string name="typ_Weather">ამინდი</string>
+    <!-- RBDS (North America) -->
 </resources>
