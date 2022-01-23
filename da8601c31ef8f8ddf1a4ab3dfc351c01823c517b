@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c23cbed4_56a26d5f",
+        "filename": "qcom/fmradio/FmReceiver.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 363,
+      "author": {
+        "id": 13028
+      },
+      "writtenOn": "2022-01-23T23:02:21Z",
+      "side": 1,
+      "message": "Replace all 3 methods with   \n\n   public static boolean isHidlChip() {\n       String chip \u003d SystemProperties.get(\"vendor.qcom.bluetooth.soc\");\n       return chip.equals(\"cherokee\") || chip.equals(\"hastings\");\n   }",
+      "revId": "da8601c31ef8f8ddf1a4ab3dfc351c01823c517b",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
