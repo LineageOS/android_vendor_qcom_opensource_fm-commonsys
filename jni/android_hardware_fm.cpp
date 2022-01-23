@@ -655,15 +655,12 @@ static jint android_hardware_fmradio_FmReceiverJNI_closeFdNative
     return FM_JNI_SUCCESS;
 }
 
-static bool is_soc_cherokee() {
+static bool is_soc_hidl() {
     char value[PROPERTY_VALUE_MAX] = {'\0'};
     property_get("vendor.qcom.bluetooth.soc", value, NULL);
     ALOGD("BT soc is %s\n", value);
 
-    if(strcmp(value, "cherokee") == 0)
-        return true;
-    else
-        return false;
+    return (strcmp(value, "cherokee") == 0) || (strcmp(value, "hastings") == 0);
 }
 /********************************************************************
  * Current JNI
@@ -675,7 +672,7 @@ static jint android_hardware_fmradio_FmReceiverJNI_getFreqNative
 {
     int err;
     long freq;
-    if (is_soc_cherokee())
+    if (is_soc_hidl())
     {
         err = vendor_interface->get_fm_ctrl(V4L2_CID_PRV_IRIS_FREQ, (int *)&freq);
         if (err == FM_JNI_SUCCESS) {
@@ -709,7 +706,7 @@ static jint android_hardware_fmradio_FmReceiverJNI_setFreqNative
     (JNIEnv * env __unused, jobject thiz __unused, jint fd __unused, jint freq)
 {
     int err;
-    if (is_soc_cherokee())
+    if (is_soc_hidl())
     {
         err = vendor_interface->set_fm_ctrl(V4L2_CID_PRV_IRIS_FREQ, freq);
     }
@@ -739,7 +736,7 @@ static jint android_hardware_fmradio_FmReceiverJNI_setControlNative
 {
     int err;
     ALOGE("id(%x) value: %x\n", id, value);
-    if (is_soc_cherokee())
+    if (is_soc_hidl())
     {
         err = vendor_interface->set_fm_ctrl(id, value);
     }
@@ -770,7 +767,7 @@ static jint android_hardware_fmradio_FmReceiverJNI_getControlNative
     long val;
 
     ALOGE("id(%x)\n", id);
-    if (is_soc_cherokee())
+    if (is_soc_hidl())
     {
         err = vendor_interface->get_fm_ctrl(id, (int *)&val);
         if (err < 0) {
@@ -805,7 +802,7 @@ static jint android_hardware_fmradio_FmReceiverJNI_startSearchNative
     (JNIEnv * env __unused, jobject thiz __unused, jint fd __unused, jint dir)
 {
     int err;
-    if (is_soc_cherokee())
+    if (is_soc_hidl())
     {
         err = vendor_interface->set_fm_ctrl(V4L2_CID_PRV_IRIS_SEEK, dir);
         if (err < 0) {
@@ -841,7 +838,7 @@ static jint android_hardware_fmradio_FmReceiverJNI_cancelSearchNative
 {
     int err;
 
-    if (is_soc_cherokee())
+    if (is_soc_hidl())
     {
         err = vendor_interface->set_fm_ctrl(V4L2_CID_PRV_SRCHON, 0);
         if (err < 0) {
@@ -877,7 +874,7 @@ static jint android_hardware_fmradio_FmReceiverJNI_getRSSINative
     int err;
     long rmssi;
 
-    if (is_soc_cherokee())
+    if (is_soc_hidl())
     {
         err = vendor_interface->get_fm_ctrl(V4L2_CID_PRV_IRIS_RMSSI, (int *)&rmssi);
         if (err < 0) {
@@ -912,7 +909,7 @@ static jint android_hardware_fmradio_FmReceiverJNI_setBandNative
     jint high)
 {
     int err;
-    if (is_soc_cherokee())
+    if (is_soc_hidl())
     {
         err = vendor_interface->set_fm_ctrl(V4L2_CID_PRV_IRIS_UPPER_BAND, high);
         if (err < 0) {
@@ -954,7 +951,7 @@ static jint android_hardware_fmradio_FmReceiverJNI_getLowerBandNative
 {
     int err;
     ULINT freq;
-if (is_soc_cherokee())
+if (is_soc_hidl())
 {
     err = vendor_interface->get_fm_ctrl(V4L2_CID_PRV_IRIS_LOWER_BAND, (int *)&freq);
     if (err < 0) {
@@ -990,7 +987,7 @@ static jint android_hardware_fmradio_FmReceiverJNI_getUpperBandNative
 {
     int err;
     ULINT freq;
-if (is_soc_cherokee())
+if (is_soc_hidl())
 {
     err = vendor_interface->get_fm_ctrl(V4L2_CID_PRV_IRIS_UPPER_BAND, (int *)&freq);
     if (err < 0) {
@@ -1025,7 +1022,7 @@ static jint android_hardware_fmradio_FmReceiverJNI_setMonoStereoNative
 {
 
     int err;
-if (is_soc_cherokee())
+if (is_soc_hidl())
 {
     err = vendor_interface->set_fm_ctrl(V4L2_CID_PRV_IRIS_AUDIO_MODE, val);
     if (err < 0) {
@@ -1218,7 +1215,7 @@ static jint android_hardware_fmradio_FmReceiverJNI_enableSlimbusNative
 {
     ALOGD("%s: val = %d\n", __func__, val);
     int err = JNI_ERR;
-if (is_soc_cherokee()) {
+if (is_soc_hidl()) {
     err = vendor_interface->set_fm_ctrl(V4L2_CID_PRV_ENABLE_SLIMBUS, val);
 }
     return err;
@@ -1229,7 +1226,7 @@ static jint android_hardware_fmradio_FmReceiverJNI_enableSoftMuteNative
 {
     ALOGD("%s: val = %d\n", __func__, val);
     int err = JNI_ERR;
-if (is_soc_cherokee()) {
+if (is_soc_hidl()) {
     err = vendor_interface->set_fm_ctrl(V4L2_CID_PRV_SOFT_MUTE, val);
 }
     return err;
@@ -1290,7 +1287,7 @@ error:
 }
 
 static void initNative(JNIEnv *env __unused, jobject object __unused) {
-if (is_soc_cherokee()) {
+if (is_soc_hidl()) {
     int status;
     ALOGI("Init native called \n");
 
@@ -1309,7 +1306,7 @@ if (is_soc_cherokee()) {
 
 static void cleanupNative(JNIEnv *env __unused, jobject object __unused) {
 
-    if (is_soc_cherokee()) {
+    if (is_soc_hidl()) {
         if (mCallbacksObj != NULL) {
             env->DeleteGlobalRef(mCallbacksObj);
             mCallbacksObj = NULL;

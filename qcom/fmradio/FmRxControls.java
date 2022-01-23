@@ -123,7 +123,7 @@ class FmRxControls
          Log.d(TAG,"setControlNative faile" + V4L2_CID_PRIVATE_TAVARUA_STATE);
          return re;
       }
-      if (FmReceiver.isCherokeeChip()) {
+      if (FmReceiver.isHidlChip()) {
           boolean ret = enableSoftMute(fd,ENABLE_SOFT_MUTE);
           if(false == ret) {
               Log.d(TAG,"enableSoftMute failed");
