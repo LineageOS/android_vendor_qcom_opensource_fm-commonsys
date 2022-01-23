@@ -441,7 +441,7 @@ public class FMRadioService extends Service
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            if (mReceiver.isCherokeeChip() && (mPref.getBoolean("SLIMBUS_SEQ", true))) {
+            if (mReceiver.isHidlChip() && (mPref.getBoolean("SLIMBUS_SEQ", true))) {
                 enableSlimbus(ENABLE_SLIMBUS_DATA_PORT);
             }
         }
@@ -664,7 +664,7 @@ public class FMRadioService extends Service
             }
             if ((!mIsFMDeviceLoopbackActive) && (!mA2dpConnected) && (!mSpeakerPhoneOn)) {
                 // not on BT and device loop is also not active
-                if (mReceiver.isCherokeeChip() && (mPref.getBoolean("SLIMBUS_SEQ", true))) {
+                if (mReceiver.isHidlChip() && (mPref.getBoolean("SLIMBUS_SEQ", true))) {
                     enableSlimbus(ENABLE_SLIMBUS_DATA_PORT);
                 }
                 exitRecordSinkThread();
@@ -1081,7 +1081,7 @@ public class FMRadioService extends Service
           setLowPowerMode(false);
           if(false == mPlaybackInProgress) {
               startFM();
-              if (mReceiver.isCherokeeChip() && (mPref.getBoolean("SLIMBUS_SEQ", true))) {
+              if (mReceiver.isHidlChip() && (mPref.getBoolean("SLIMBUS_SEQ", true))) {
                   enableSlimbus(ENABLE_SLIMBUS_DATA_PORT);
               }
           }
@@ -1869,7 +1869,7 @@ public class FMRadioService extends Service
                       //intentional fall through.
                   case AudioManager.AUDIOFOCUS_LOSS_TRANSIENT:
                       Log.v(LOGTAG, "AudioFocus: received AUDIOFOCUS_LOSS_TRANSIENT");
-                      if (mReceiver != null && mReceiver.isCherokeeChip() &&
+                      if (mReceiver != null && mReceiver.isHidlChip() &&
                                             (mPref.getBoolean("SLIMBUS_SEQ", true))) {
                           enableSlimbus(DISABLE_SLIMBUS_DATA_PORT);
                       }
@@ -1894,7 +1894,7 @@ public class FMRadioService extends Service
 
                       if(false == mPlaybackInProgress) {
                           startFM();
-                          if (mReceiver != null && mReceiver.isCherokeeChip() &&
+                          if (mReceiver != null && mReceiver.isHidlChip() &&
                                 (mPref.getBoolean("SLIMBUS_SEQ", true))) {
                               enableSlimbus(ENABLE_SLIMBUS_DATA_PORT);
                           }
@@ -2443,7 +2443,7 @@ public class FMRadioService extends Service
        mEventReceived = false;
        bStatus = mReceiver.enable(FmSharedPreferences.getFMConfiguration(), this);
 
-       if (mReceiver.isCherokeeChip()) {
+       if (mReceiver.isHidlChip()) {
            bStatus = waitForEvent();
        }
 
@@ -2631,7 +2631,7 @@ public class FMRadioService extends Service
          }
          else
          {
-           if (mReceiver.isCherokeeChip()) {
+           if (mReceiver.isHidlChip()) {
                if (mPref.getBoolean("SLIMBUS_SEQ", true)) {
                    enableSlimbus(ENABLE_SLIMBUS_DATA_PORT);
                }
@@ -2764,7 +2764,7 @@ public class FMRadioService extends Service
    private boolean fmOff() {
        boolean ret = false;
        if (mReceiver != null) {
-           if (mReceiver.isCherokeeChip()) {
+           if (mReceiver.isHidlChip()) {
                ret = fmOffImplCherokee();
            } else {
               ret = fmOffImpl();
@@ -2858,7 +2858,7 @@ public class FMRadioService extends Service
            return;
 
        mSpeakerPhoneOn = speakerOn;
-       if (mReceiver.isCherokeeChip() && (mPref.getBoolean("SLIMBUS_SEQ", true))) {
+       if (mReceiver.isHidlChip() && (mPref.getBoolean("SLIMBUS_SEQ", true))) {
            enableSlimbus(DISABLE_SLIMBUS_DATA_PORT);
        }
 
@@ -2878,7 +2878,7 @@ public class FMRadioService extends Service
           Log.d(LOGTAG, "keyValPairs = "+keyValPairs);
           audioManager.setParameters(keyValPairs);
        }
-       if (mReceiver.isCherokeeChip() && (mPref.getBoolean("SLIMBUS_SEQ", true))) {
+       if (mReceiver.isHidlChip() && (mPref.getBoolean("SLIMBUS_SEQ", true))) {
           enableSlimbus(ENABLE_SLIMBUS_DATA_PORT);
        }
    }
@@ -3490,7 +3490,7 @@ public class FMRadioService extends Service
       {
          Log.d(LOGTAG, "FmRxEvEnableReceiver");
          if (mReceiver != null) {
-             if (mReceiver.isCherokeeChip()) {
+             if (mReceiver.isHidlChip()) {
                  synchronized(mEventWaitLock) {
                      mEventReceived = true;
                      mEventWaitLock.notify();
@@ -3503,7 +3503,7 @@ public class FMRadioService extends Service
          Log.d(LOGTAG, "FmRxEvDisableReceiver");
          mFMOn = false;
          FmSharedPreferences.clearTags();
-         if (mReceiver != null && mReceiver.isCherokeeChip()) {
+         if (mReceiver != null && mReceiver.isHidlChip()) {
              synchronized (mEventWaitLock) {
                  mEventReceived = true;
                  mEventWaitLock.notify();
@@ -3746,7 +3746,7 @@ public class FMRadioService extends Service
           if (mCallbacks != null) {
               try {
                   mCallbacks.getStationParamCb(val, status);
-                  if (mReceiver != null && mReceiver.isCherokeeChip()) {
+                  if (mReceiver != null && mReceiver.isHidlChip()) {
                       synchronized(mEventWaitLock) {
                           mEventReceived = true;
                           mEventWaitLock.notify();
@@ -3959,7 +3959,7 @@ public class FMRadioService extends Service
       public void FmRxEvEnableSlimbus(int status)
       {
          Log.e(LOGTAG, "FmRxEvEnableSlimbus status = " + status);
-         if (mReceiver != null && mReceiver.isCherokeeChip()) {
+         if (mReceiver != null && mReceiver.isHidlChip()) {
              synchronized(mEventWaitLock) {
                  mEventReceived = true;
                  mEventWaitLock.notify();
@@ -3969,7 +3969,7 @@ public class FMRadioService extends Service
       public void FmRxEvEnableSoftMute(int status)
       {
          Log.e(LOGTAG, "FmRxEvEnableSoftMute status = " + status);
-         if (mReceiver != null && mReceiver.isCherokeeChip()) {
+         if (mReceiver != null && mReceiver.isHidlChip()) {
              synchronized(mEventWaitLock) {
                  mEventReceived = true;
                  mEventWaitLock.notify();
@@ -4265,7 +4265,7 @@ public class FMRadioService extends Service
            audioManager.requestAudioFocus(mGainFocusReq);
            if(false == mPlaybackInProgress) {
                startFM();
-               if (mReceiver.isCherokeeChip() && (mPref.getBoolean("SLIMBUS_SEQ", true))) {
+               if (mReceiver.isHidlChip() && (mPref.getBoolean("SLIMBUS_SEQ", true))) {
                   enableSlimbus(ENABLE_SLIMBUS_DATA_PORT);
                }
            }
@@ -4275,7 +4275,7 @@ public class FMRadioService extends Service
 
    private void requestFocus() {
        Log.d(LOGTAG, "++requestFocus");
-       if (mReceiver.isCherokeeChip() && (mPref.getBoolean("SLIMBUS_SEQ", true))) {
+       if (mReceiver.isHidlChip() && (mPref.getBoolean("SLIMBUS_SEQ", true))) {
            requestFocusImplCherokee();
        } else {
            requestFocusImpl();
@@ -4363,7 +4363,7 @@ public class FMRadioService extends Service
             return false;
         }
         if(mIsFMDeviceLoopbackActive) {
-            if ((mReceiver != null) && mReceiver.isCherokeeChip() &&
+            if ((mReceiver != null) && mReceiver.isHidlChip() &&
                             (mPref.getBoolean("SLIMBUS_SEQ", true))) {
                 enableSlimbus(DISABLE_SLIMBUS_DATA_PORT);
             }
