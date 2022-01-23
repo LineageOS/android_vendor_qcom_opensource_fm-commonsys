@@ -2874,6 +2874,11 @@ public class FMStats extends Activity  {
         return false;
     }
 
+    private boolean isHidlChip(){
+        String chip = SystemProperties.get("vendor.qcom.bluetooth.soc");
+        return (chip.equals("cherokee") || chip.equals("hastings") || chip.equals("moselle"));
+    }
+
     private void createResult(Result aRes) {
         // Get the TableLayout
         TableLayout tl = (TableLayout) findViewById(R.id.maintable);
@@ -3018,7 +3023,7 @@ public class FMStats extends Activity  {
         case SEARCH_TEST:
               try {
                   Log.e(LOGTAG, "start scanning\n");
-                  if(isTransportLayerSMD() || isCherokeeChip()) {
+                  if(isTransportLayerSMD() || isHidlChip()) {
                       Log.d(LOGTAG,"Scanning with 0 scan time");
                       if (mReceiver != null)
                           mIsSearching = mReceiver.searchStations(FmReceiver.FM_RX_SRCH_MODE_SCAN,
@@ -3223,7 +3228,7 @@ public class FMStats extends Activity  {
         boolean isCherokeeChip = isCherokeeChip();
         if((null != mService)) {
             try {
-                if (isCherokeeChip) {
+                if (isHidlChip()) {
                     lastCmdSent = CMD_STNPARAM_RSSI;
                     ret = mService.getRssi();
                      if (ret != 0) {
