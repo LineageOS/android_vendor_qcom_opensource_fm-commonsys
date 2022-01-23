@@ -3018,7 +3018,7 @@ public class FMStats extends Activity  {
         case SEARCH_TEST:
               try {
                   Log.e(LOGTAG, "start scanning\n");
-                  if(isTransportLayerSMD() || isCherokeeChip()) {
+                  if(isTransportLayerSMD() || isCherokeeChip() || isHastingsChip()) {
                       Log.d(LOGTAG,"Scanning with 0 scan time");
                       if (mReceiver != null)
                           mIsSearching = mReceiver.searchStations(FmReceiver.FM_RX_SRCH_MODE_SCAN,
@@ -3223,7 +3223,7 @@ public class FMStats extends Activity  {
         boolean isCherokeeChip = isCherokeeChip();
         if((null != mService)) {
             try {
-                if (isCherokeeChip) {
+                if (isCherokeeChip || isHastingsChip()) {
                     lastCmdSent = CMD_STNPARAM_RSSI;
                     ret = mService.getRssi();
                      if (ret != 0) {

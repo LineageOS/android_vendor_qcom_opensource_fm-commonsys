@@ -338,7 +338,7 @@ public class FmTransceiver
       boolean status;
       int ret;
 
-      if (!FmReceiver.isCherokeeChip()) {
+      if (!FmReceiver.isHidlChip()) {
           //Acquire the deviceon Enable
           if (!acquire("/dev/radio0")) {
               return false;
