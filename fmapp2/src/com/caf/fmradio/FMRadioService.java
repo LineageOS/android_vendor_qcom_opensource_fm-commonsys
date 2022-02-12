@@ -158,7 +158,6 @@ public class FMRadioService extends Service
    private boolean mA2dpDisconnected = false;
    private boolean mA2dpConnected = false;
 
-   private boolean mFmStats = false;
    //Install the death receipient
    private IBinder.DeathRecipient mDeathRecipient;
    private FMDeathRecipient mFMdr;
@@ -2307,9 +2306,6 @@ public class FMRadioService extends Service
                 /* reset SSR flag */
            mIsSSRInProgressFromActivity = false;
          }
-
-         if (mReceiver != null)
-            mFmStats = mReceiver.getFmStatsProp();
       }
       return(bStatus);
    }
@@ -3772,7 +3768,10 @@ public class FMRadioService extends Service
    }
 
    boolean getFmStatsProp() {
-          return mFmStats;
+          if(mReceiver != null)
+             return mReceiver.getFmStatsProp();
+          else
+             return false;
    }
 
    private void setAlarmSleepExpired (long duration) {
