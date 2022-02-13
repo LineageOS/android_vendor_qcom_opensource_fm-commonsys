@@ -39,7 +39,7 @@
     <string name="menu_sleep_cancel">Sguir dhen chadal</string>
     <string name="menu_all_channels">A h-uile seanail</string>
     <string name="menu_display_tags">Seall na tagaichean</string>
-    <string name="button_text_stop">Stad</string>
+    <string name="button_text_stop">Cuir stad air</string>
     <string name="msg_seeking">A’ lorg an stèisein FM\u2026</string>
     <string name="msg_scanning">A’ lorg gach stèisean FM\u2026</string>
     <string name="msg_scanning_pty">A’ sganadh airson “<xliff:g id="pty_name">%1$s</xliff:g>”\u2026</string>
