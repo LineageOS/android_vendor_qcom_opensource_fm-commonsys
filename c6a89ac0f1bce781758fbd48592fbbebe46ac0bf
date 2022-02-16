@@ -54,6 +54,24 @@
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "18c60cd5_852401c7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2022-02-16T20:58:53Z",
+      "side": 1,
+      "message": "It looks like payton received Android 9.0 (P) update from Motorola and mixer paths were updated in the device tree. Did anyone check if this patch is still really needed?",
+      "parentUuid": "b40d5ee7_e5cca095",
+      "revId": "c6a89ac0f1bce781758fbd48592fbbebe46ac0bf",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6e5e20c3_867ff4d9",
