@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf5b16ff_91e36921",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 11801
+      },
+      "writtenOn": "2022-02-16T20:53:23Z",
+      "side": 1,
+      "message": "I\u0027d kinda prefer indentation was consistent in the file (even though it\u0027s weird and uses 3 spaces), but /shrug",
+      "revId": "8e420925edc4bc0f12ffb08950a093e60f8330c8",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
