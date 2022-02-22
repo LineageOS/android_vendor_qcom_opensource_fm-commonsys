@@ -5,6 +5,7 @@ java_defaults {
 
 java_library {
     name: "qcom.fmradio",
+    provides_uses_lib: "qcom.fmradio",
     defaults: ["qcom.fmradio_defaults"],
     installable: true,
     srcs: ["**/*.java"],
