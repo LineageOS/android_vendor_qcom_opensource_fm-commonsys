@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+ * Copyright (c) 2009, 2011-2013 The Linux Foundation. All rights reserved.
+ * Copyright (C) 2014-2015 The CyanogenMod Project
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions are met:
+ *    * Redistributions of source code must retain the above copyright
+ *      notice, this list of conditions and the following disclaimer.
+ *    * Redistributions in binary form must reproduce the above copyright
+ *      notice, this list of conditions and the following disclaimer in the
+ *      documentation and/or other materials provided with the distribution.
+ *    * Neither the name of The Linux Foundation nor
+ *      the names of its contributors may be used to endorse or promote
+ *      products derived from this software without specific prior written
+ *      permission.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+ * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ * IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+ * NON-INFRINGEMENT ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR
+ * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+ * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+ * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+ * OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+ * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+ * OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
+ * ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+-->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="app_name">Ṛṛadyu FM</string>
+    <string name="tx_app_name">Amesgal FM</string>
+    <string name="menu_scan_start">Smiḍen</string>
+    <string name="menu_scan_stop">Seḥbes anadi</string>
+    <string name="menu_record_start">Kles</string>
+    <string name="menu_record_stop">Seḥbes asekles</string>
+    <string name="menu_settings">Iɣewwaṛen</string>
+    <string name="menu_sleep">Taguni </string>
+    <string name="menu_sleep_cancel">Sefsex taguni</string>
+    <string name="menu_all_channels">Akk tizririn</string>
+    <string name="menu_display_tags">Sken-d tibzimin</string>
+    <string name="button_text_stop">Seḥbes</string>
+    <string name="msg_seeking">Anadi n teɣsert FM\u2026</string>
+    <string name="msg_scanning">Anadi n teɣsar FM meṛṛa\u2026</string>
+    <string name="msg_scanning_pty">Anadi ɣef \'<xliff:g id="pty_name">%1$s</xliff:g>\'\u2026</string>
+    <string name="msg_search_title"><xliff:g id="frequency">%1$s</xliff:g> MHZ</string>
+    <string name="msg_searching_title">Aqeɛɛed uzwir i ufran awurman</string>
+    <string name="msg_searching">Anadi n teɣsar i yelhan akken ad tettusbedd tebdart n yifranen\u2026</string>
+    <string name="msg_noantenna">Ttxil senfel amsigdal i useqdec n ṛṛadyu FM</string>
+    <string name="dialog_sleep_title">Tanzagt n uxsay awurman</string>
+    <string name="presetlist_select_name">Fren \'<xliff:g id="presetlist_name">%1$s</xliff:g>\'</string>
+    <string name="presetlist_add_new">Rnu tabdart tamaynut</string>
+    <string name="dialog_presetlist_rename_title">Sekcem isem</string>
+    <string name="presetlist_autoselect_title">Sentem tafrant tawurmant</string>
+    <string name="preset_replace">Semselsi</string>
+    <string name="preset_tune">Gerrez</string>
+    <string name="preset_rename">Snifel isem</string>
+    <string name="preset_delete">Kkes</string>
+    <string name="preset_search">Nadi ɣef \'<xliff:g id="preset_pi">%1$s</xliff:g>\'</string>
+    <string name="stat_notif_frequency">\'<xliff:g id="frequency">%1$s</xliff:g>\' MHZ</string>
+    <string name="regional_band">Tarbaɛt n temnaḍt</string>
+    <string name="regional_band_entry_north_america">Tamrikt n ugafa</string>
+    <string name="regional_band_entry_europe">Turuft</string>
+    <string name="regional_band_entry_japan">Japun</string>
+    <string name="regional_band_entry_japan_wide">Japun (ahrawan)</string>
+    <string name="regional_band_entry_australia">Ustṛalya</string>
+    <string name="regional_band_entry_austria">Ustriya</string>
+    <string name="regional_band_entry_belgium">Biljik</string>
+    <string name="regional_band_entry_brazil">Brizil</string>
+    <string name="regional_band_entry_china">Ccinwa</string>
+    <string name="regional_band_entry_czech_republic">Tagduda Tačikit</string>
+    <string name="regional_band_entry_denmark">Danmark</string>
+    <string name="regional_band_summary_poland">Pulunya (87.5 γer 108.0 MHz deg tṣeddarin n 100 KHz)</string>
+    <string name="regional_band_summary_portugal">Puṛtugal (87.5 γer 108.0 MHz deg tṣeddarin n 50 KHz)</string>
+    <string name="regional_band_summary_russia">Rruss (87.5 γer 108.0 MHz deg tṣeddarin n 100 KHz)</string>
+    <string name="regional_band_summary_singapore">Singapur (88.0 γer 108.0 MHz deg tṣeddarin n 100 KHz)</string>
+    <string name="regional_band_summary_slovakia">Sluvakya (87.5 γer 108.0 MHz deg tṣeddarin n 100 KHz)</string>
+    <string name="regional_band_summary_spain">Spenyul (87.5 γer 108.0 MHz deg tṣeddarin n 100 KHz)</string>
+    <string name="regional_band_summary_switzerland">Sswis (87.5 γer 108.0 MHz deg tṣeddarin n 100 KHz)</string>
+    <string name="regional_band_summary_sweden">Sswid (87.5 γer 108.0 MHz deg tṣeddarin n 100 KHz)</string>
+    <string name="regional_band_summary_taiwan">Taiwan (87.5 γer 108.0 MHz deg tṣeddarin n 100 KHz)</string>
+    <string name="regional_band_summary_turkey">Ṭṭerk (87.5 γer 108.0 MHz deg tṣeddarin n 100 KHz)</string>
+    <string name="regional_band_summary_united_kingdom">Tagelda Yeddukklen (87.5 γer 108.0 MHz deg tṣeddarin n 100 KHz)</string>
+    <string name="regional_band_summary_united_states">Iwanaken-Yeddukklen-N-Temrikt (88.1 γer 107.9 MHz deg tṣeddarin n 200 KHz)</string>
+    <string name="regional_band_summary_user_defined">Tarbaɛt yettusbadun sɣur useqdac</string>
+    <string name="aud_output_mode">Askar n tufγa ameslaw</string>
+    <string name="record_dur">Teɣzi n usekles</string>
+    <string name="auto_select_af">Asnagar</string>
+    <string name="settings_revert_defaults_title">Uγal γer iγewwaṛen imezwar</string>
+    <string name="settings_revert_defaults_summary">Ales awennez iγewwaṛen meṛṛa</string>
+    <string name="settings_revert_confirm_title">Sentem awennez</string>
+    <string name="settings_revert_confirm_msg">Aya ad yesfeḍ akk iɣewwaṛen n usnas, ad yeglu ula s iɣewwaṛen yellan ttwaskelsen. Kemmel?</string>
+    <string name="no_storage">Sali takarḍa SD send bdu n usekles.</string>
+    <string name="preparing_sd">Aheggi n tkarḍa SD\u2026</string>
+    <string name="access_sd_fail">Ur izmir ara ad-ikcem ar tkarḍa SD.</string>
+    <string name="spaceIsLow_content">Tfuk tallunt n tkarḍa SD. Beddel iɣewwaṛen n tɣara neɣ kkes kra ifuyla-nniḍen iwakken ad tiwsiɛ tallunt.</string>
+    <string name="FMRecording_reach_size_limit">Talast n tiddi tewweḍ.</string>
+    <string name="menu_scan_for_preset">Nadi izwirfranen</string>
+    <string name="fm_off">FM yensa.</string>
+    <string name="fm_call">Ulac ṛadyu FM lawan n usiwel. </string>
+    <string name="alert_dialog_hint">Sekcem isem</string>
+    <string name="search_dialog_title">Anadi n tiɣsar</string>
+    <string name="fm_command_timeout_title">Amenḍar</string>
+    <string name="fm_tune_timeout_msg">Ulac tiririt id-yuɣalen  i uṣeggem n umaṭṭaf FM. Ma ur yefra ara wugur, sens ṛṛadyu FM sakin cɛel-itt tikelt-nniḍen.</string>
+    <string name="fm_command_failed_title">Tamhelt FM ur teddara akken iwata</string>
+    <string name="fm_cmd_failed_msg">Afsax n temhelt ṛṛady FM. Ma ur yefra ara wugur, sens ṛṛadyu FM sakin cɛel-itt tikelt-nniḍen.</string>
+    <string name="fm_cmd_failed_msg_hdmi">Tamhelt FM ur tedda ara. FM akked HDMI ur mtawan ara ad ddun ɣef tikelt.</string>
+    <string name="fm_cmd_failed_call_on">Tamhelt FM ur tedda ara. Timesliwt i FM ur yettwaqbal lawan n usiwel.</string>
+    <string name="audio_db_artist_name">Asekles-iw FM</string>
+    <string name="audio_db_album_name">Asekles FM</string>
+    <string name="audio_db_playlist_name">Asekles FM</string>
+    <string name="station_name">Taɣsert:</string>
+    <string name="station_exists">Asnagar agi yella yakan!</string>
+    <string name="station_list_delete_station">Kkes <xliff:g id="name">%s</xliff:g></string>
+    <string name="station_list_delete_station_prompt">Tḥeqqeḍ tebɣiḍ ad-tekkseḍ \'<xliff:g id="name">%s</xliff:g>\'?</string>
+    <string name="station_name_empty">Isem n tɣsert dilem, sekcem-it tikelt nniḍen.</string>
+    <string name="station_name_exist">\'<xliff:g id="name">%s</xliff:g>\' yettwaseqdec yakan, sekcem isem nniḍen.</string>
+    <string name="rt_plus_tags">Tiṛekkizin</string>
+    <string name="usr_def_band_min">Lmuja tameẓyant (MHz)</string>
+    <string name="usr_def_band_max">Lmuja tameqṛant (MHz)</string>
+    <string name="chanl_spacing">Litteɛ ger ibuda</string>
+    <string name="set">Initialiser</string>
+    <string name="typ_Top_40">40 imenza</string>
+</resources>
