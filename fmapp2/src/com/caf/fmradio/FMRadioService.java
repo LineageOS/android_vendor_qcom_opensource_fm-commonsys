@@ -385,7 +385,20 @@ public class FMRadioService extends Service
        String keyValPairs = new String("fm_volume="+volume);
        Log.d(LOGTAG, "keyValPairs = "+keyValPairs);
        audioManager.setParameters(keyValPairs);
-
+       try
+       {
+           if (mCallbacks != null)
+           {
+             if (isMuted() == true) {
+               unMute();
+               mCallbacks.onMute(false);
+             }
+           }
+       }
+       catch (RemoteException e)
+       {
+          e.printStackTrace();
+       }
     }
     private boolean configureFMDeviceLoopback(boolean enable) {
         Log.d(LOGTAG, "configureFMDeviceLoopback enable = " + enable +
