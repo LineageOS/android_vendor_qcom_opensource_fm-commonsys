@@ -141,6 +141,7 @@
     <string name="fm_off">La radio FM ta apagada.</string>
     <string name="fm_call">La radio FM nun se pue usar nes llamaes telefóniques.</string>
     <string name="alert_dialog_hint">Introduz un nome</string>
+    <string name="search_dialog_title">Busca d\'emisores</string>
     <string name="fm_tune_timeout_msg">Nun se recibió nenguna rempuesta pa sintonizar la emisora FM. Si\'l problema sigue, desactiva la radio FM y volvi activala.</string>
     <string name="audio_db_title_format"><xliff:g id="format">dd-MM-yyyy HH:mm:ss</xliff:g></string>
     <string name="station_name">Emisora:</string>
@@ -160,6 +161,8 @@
     <string name="typ_Children">Programes pa neños</string>
     <string name="typ_Country">Música country</string>
     <string name="typ_Documentary">Documentales</string>
+    <string name="typ_Drama">Drama</string>
+    <string name="typ_Easy_listening">Música agradable</string>
     <string name="typ_Education">Educación</string>
     <string name="typ_Emergency">Emerxencia</string>
     <string name="typ_Emergency_test">Prueba d\'emerxencia</string>
@@ -167,18 +170,24 @@
     <string name="typ_Folk">Música folk</string>
     <string name="typ_Information">Información</string>
     <string name="typ_Jazz">Música jazz</string>
+    <string name="typ_Light_classical">Música clásica llixera</string>
     <string name="typ_Leisure">Ociu</string>
     <string name="typ_News">Noticies</string>
+    <string name="typ_National">Música nacional</string>
     <string name="typ_Other">Otra música</string>
     <string name="typ_Pop">Música pop</string>
     <string name="typ_Religion">Relixón</string>
     <string name="typ_Rock">Música rock</string>
     <string name="typ_Science">Ciencia</string>
+    <string name="typ_Social_affairs">Temes sociales</string>
     <string name="typ_Sport">Deportes</string>
     <string name="typ_Travel">Viaxes</string>
+    <string name="typ_Classical">Música clásica</string>
+    <string name="typ_Hiphop">Hip Hop</string>
     <string name="typ_Nostalgia">Señaldá</string>
     <string name="typ_Religious_music">Música relixosa</string>
     <string name="typ_Religious_talk">Charres relixoses</string>
     <string name="typ_Spanish_music">Música española</string>
+    <string name="typ_Spanish_talk">Conversación en castellán</string>
     <string name="typ_Sports">Deportes</string>
 </resources>

@@ -29,10 +29,26 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="app_name">FM-რადიო</string>
+    <string name="tx_app_name">FM-გადამცემი</string>
+    <string name="menu_scan_start">მოძიება</string>
+    <string name="menu_scan_stop">ძიების შეწყვეტა</string>
+    <string name="menu_record_start">ჩაწერა</string>
+    <string name="menu_record_stop">ჩაწერის შეწყვეტა</string>
     <string name="menu_settings">პარამეტრები</string>
+    <string name="menu_sleep">უქმი რეჟიმი</string>
+    <string name="menu_sleep_cancel">უქმი რეჟიმიდან გამოსვლა</string>
+    <string name="menu_all_channels">ყველა არხი</string>
+    <string name="menu_display_tags">ჭდეების ჩვენება</string>
+    <string name="button_text_stop">შეწყვეტა</string>
+    <string name="msg_seeking">მოძიება FM-სადგურის\u2026</string>
+    <string name="msg_scanning">მოძიება ყველა FM-სადგურის\u2026</string>
+    <string name="msg_scanning_pty">იძებნება „<xliff:g id="pty_name">%1$s</xliff:g>“\u2026</string>
+    <string name="msg_search_title"><xliff:g id="frequency_string">%1$s</xliff:g> მჰც</string>
     <string name="msg_searching_title">მზა პარამეტრების თვითშერჩევა</string>
     <string name="msg_searching">იძებნება მძლავრი სადგურები მზა პარამეტრების სიის შესადგენად\u2026</string>
     <string name="msg_noantenna">გთხოვთ, შეაერთოთ ყურსასმენები FM-რადიოს გამოსაყენებლად</string>
+    <string name="dialog_sleep_title">თვითგამორთვის დრო</string>
+    <string name="presetlist_select_name">აირჩიეთ „\'<xliff:g id="presetlist_name">%1$s</xliff:g>“</string>
     <string name="presetlist_add_new">ახალი სიის დამატება</string>
     <string name="dialog_presetlist_rename_title">შეიყვანეთ სახელი</string>
     <string name="presetlist_autoselect_title">თვითშერჩევის დამოწმება</string>
@@ -40,6 +56,9 @@
     <string name="preset_tune">მომართვა</string>
     <string name="preset_rename">გადარქმევა</string>
     <string name="preset_delete">წაშლა</string>
+    <string name="preset_search">მოიძიოს „<xliff:g id="preset_pi">%1$s</xliff:g>“</string>
+    <string name="stat_notif_frequency">„<xliff:g id="frequency">%1$s</xliff:g>“ მჰც</string>
+    <string name="regional_band">სამხარეო დიაპაზონი</string>
     <string name="regional_band_entry_north_america">ჩრდილოეთი ამერიკა</string>
     <string name="regional_band_entry_europe">ევროპა</string>
     <string name="regional_band_entry_japan">იაპონია</string>
@@ -77,6 +96,24 @@
     <string name="regional_band_entry_turkey">თურქეთი</string>
     <string name="regional_band_entry_united_kingdom">გაერთიანებული სამეფო</string>
     <string name="regional_band_entry_united_states">შეერთებული შტატები</string>
+    <string name="regional_band_entry_user_defined">მითითებული დიაპაზონი</string>
+    <string name="regional_band_summary_north_america">ჩრდილოეთ ამერიკა (87.5 მჰც-დან 108.0 მჰც-მდე 200 კჰც ბიჯით)</string>
+    <string name="regional_band_summary_europe">ევროპა (87.5 მჰც-დან 108.0 მჰც-მდე 100 კჰც ბიჯით)</string>
+    <string name="regional_band_summary_japan">იაპონია (76.0 მჰც-დან 90.0 მჰც-მდე 100 კჰც ბიჯით)</string>
+    <string name="regional_band_summary_japan_wide">იაპონია (ფართო) (90.0 მჰც-დან 108.0 მჰც-მდე 50 კჰც ბიჯით)</string>
+    <string name="regional_band_summary_australia">ავსტრალია (87.7 მჰც-დან 108.0 მჰც-მდე 100 კჰც ბიჯით)</string>
+    <string name="regional_band_summary_austria">ავსტრია (87.5 მჰც-დან 108.0 მჰც-მდე 50 კჰც ბიჯით)</string>
+    <string name="regional_band_summary_belgium">ბელგია (87.5 მჰც-დან 108.0 მჰც-მდე 100 კჰც ბიჯით)</string>
+    <string name="regional_band_summary_brazil">ბრაზილია (87.5 მჰც-დან 108.0 მჰც-მდე 200 კჰც ბიჯით)</string>
+    <string name="regional_band_summary_china">ჩინეთი (87.0 მჰც-დან 108.0 მჰც-მდე 100 კჰც ბიჯით)</string>
+    <string name="regional_band_summary_czech_republic">ჩეხეთი (87.5 მჰც-დან 108.0 მჰც-მდე 100 კჰც ბიჯით)</string>
+    <string name="regional_band_summary_denmark">დანია (87.5 მჰც-დან 108.0 მჰც-მდე 50 კჰც ბიჯით)</string>
+    <string name="regional_band_summary_finland">ფინეთი (87.5 მჰც-დან 108.0 მჰც-მდე 100 კჰც ბიჯით)</string>
+    <string name="regional_band_summary_france">საფრანგეთი (87.5 მჰც-დან 108.0 მჰც-მდე 100 კჰც ბიჯით)</string>
+    <string name="regional_band_summary_germany">გერმანია (87.5 მჰც-დან 108.0 მჰც-მდე 50 კჰც ბიჯით)</string>
+    <string name="regional_band_summary_greece">საბერძნეთი (87.5 მჰც-დან 108.0 მჰც-მდე 50 კჰც ბიჯით)</string>
+    <string name="regional_band_summary_hong_kong">ჰონგ-კონგი (87.5 მჰც-დან 108.0 მჰც-მდე 100 კჰც ბიჯით)</string>
+    <string name="regional_band_summary_india">ინდოეთი (87.5 მჰც-დან 108.0 მჰც-მდე 100 კჰც ბიჯით)</string>
     <string name="regional_band_summary_indonesia">ინდონეზია (87.5 მჰც-დან 108.0 მჰც-მდე 100 კჰც ბიჯით)</string>
     <string name="regional_band_summary_ireland">ირლანდია (87.5 მჰც-დან 108.0 მჰც-მდე 50 კჰც ბიჯით)</string>
     <string name="regional_band_summary_italy">იტალია (87.5 მჰც-დან 108.0 მჰც-მდე 50 კჰც ბიჯით)</string>
