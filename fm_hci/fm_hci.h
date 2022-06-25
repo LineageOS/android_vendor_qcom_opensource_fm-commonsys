@@ -53,6 +53,8 @@ struct fm_hci_t {
 
         std::mutex tx_queue_mtx;
 
+        std::mutex rx_queue_mtx;
+
         std::condition_variable cmd_credits_cond;
 
         std::queue<struct fm_command_header_t *> tx_cmd_queue;

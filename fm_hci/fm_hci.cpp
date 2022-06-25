@@ -98,12 +98,37 @@ static int enqueue_fm_rx_event(struct fm_event_header_t *hdr)
 {
 
     ALOGV("%s: putting lock before enqueue ", __func__);
-    hci.rx_cond_mtx.lock();
+    /*
+     * enqueue_fm_rx_event may need to wait for rx_cond_mtx here as
+     * last event is still under processing, besides current event
+     * has held internal_mutex_ when OnPacketReady called in data_handler.cpp
+     * if last event is HCI_EV_CMD_COMPLETE, it will try to hold
+     * internal_mutex_ again when calling close in data_handler,
+     * thus, last event will wait for internal_mutex_ while new event
+     * will wait util last event done, finally dead lock occurs.
+     * so we try to check hci state here if rx_cond_mtx is still locked
+     */
+    int tryLockCount = 0;
+    while (1) {
+        if (!hci.rx_cond_mtx.try_lock()) {
+            if (hci.state == FM_RADIO_DISABLING || hci.state == FM_RADIO_DISABLED) {
+                ALOGI("%s: can't lock rx_cond_mtx and hci is not available", __func__);
+                return FM_HC_STATUS_NULL_POINTER;
+            }
+            usleep(1000);
+            tryLockCount++;
+            continue;
+        } else {
+            break;
+        }
+    }
+    hci.rx_queue_mtx.lock();
     hci.rx_event_queue.push(hdr);
-    hci.rx_cond_mtx.unlock();
+    hci.rx_queue_mtx.unlock();
     ALOGV("%s:notify to waiting thred", __func__);
     hci.rx_cond.notify_all();
-    ALOGI("%s: FM-Event ENQUEUED SUCCESSFULLY", __func__);
+    ALOGI("%s: FM-Event ENQUEUED SUCCESSFULLY tryLockCount = %d", __func__, tryLockCount);
+    hci.rx_cond_mtx.unlock();
 
     return FM_HC_STATUS_SUCCESS;
 }
@@ -127,14 +152,17 @@ static void dequeue_fm_rx_event()
 
     ALOGI("%s", __func__);
     while (1) {
+        hci.rx_queue_mtx.lock();
         if (hci.rx_event_queue.empty()) {
             ALOGI("No more FM Events are available in the RX Queue");
+            hci.rx_queue_mtx.unlock();
             return;
         } else {
         }
 
         evt_buf = hci.rx_event_queue.front();
         hci.rx_event_queue.pop();
+        hci.rx_queue_mtx.unlock();
 
         if (evt_buf->evt_code == FM_CMD_COMPLETE) {
             ALOGI("%s: FM_CMD_COMPLETE: current_credits %d, %d Credits got from the SOC", __func__, hci.command_credits, evt_buf->params[0]);
@@ -518,6 +546,7 @@ class FmHciCallbacks : public IFmHciCallbacks {
                 memcpy(temp, event.data(), event.size());
                 ALOGI("%s: evt_code:  0x%x", __func__, temp->evt_code);
                 enqueue_fm_rx_event(temp);
+                ALOGI("%s: evt_code:  0x%x done", __func__, temp->evt_code);
             } else {
                 ALOGE("%s: Memory Allocation failed for event buffer ",__func__);
             }
