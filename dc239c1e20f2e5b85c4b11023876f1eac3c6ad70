@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "75b7a713_0f5578b8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 25732
+      },
+      "writtenOn": "2022-06-28T19:30:02Z",
+      "side": 1,
+      "message": "Can\u0027t you make it a property instead of a Soong conditional?",
+      "revId": "dc239c1e20f2e5b85c4b11023876f1eac3c6ad70",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
