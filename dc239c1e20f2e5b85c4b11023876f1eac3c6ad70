@@ -16,6 +16,24 @@
       "message": "Can\u0027t you make it a property instead of a Soong conditional?",
       "revId": "dc239c1e20f2e5b85c4b11023876f1eac3c6ad70",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8893698e_4a0e5b83",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 22856
+      },
+      "writtenOn": "2022-07-01T08:51:51Z",
+      "side": 1,
+      "message": "I guess so, I\u0027ll try that soon",
+      "parentUuid": "75b7a713_0f5578b8",
+      "revId": "dc239c1e20f2e5b85c4b11023876f1eac3c6ad70",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
