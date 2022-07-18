@@ -65,6 +65,7 @@ using ::android::hardware::hidl_death_recipient;
 static struct fm_hci_t hci;
 
 typedef std::unique_lock<std::mutex> Lock;
+static std::recursive_mutex mtx;
 android::sp<IFmHci> fmHci;
 
 static int enqueue_fm_rx_event(struct fm_event_header_t *hdr);
@@ -597,7 +598,8 @@ class FmHciCallbacks : public IFmHciCallbacks {
 *******************************************************************************/
 static bool hci_initialize()
 {
-    ALOGI("%s", __func__);
+    ALOGI("%s: acquiring mutex", __func__);
+    std::lock_guard<std::recursive_mutex> lk(mtx);
 
     if (fmHci != nullptr) {
         hci.state = FM_RADIO_ENABLING;
@@ -628,7 +630,8 @@ static bool hci_initialize()
 static void hci_transmit(struct fm_command_header_t *hdr) {
     HciPacket data;
 
-    ALOGI("%s: opcode 0x%x len:%d", __func__, hdr->opcode, hdr->len);
+    ALOGI("%s: opcode 0x%x len:%d, acquiring mutex", __func__, hdr->opcode, hdr->len);
+    std::lock_guard<std::recursive_mutex> lk(mtx);
 
     if (fmHci != nullptr) {
         data.setToExternal((uint8_t *)hdr, 3 + hdr->len);
@@ -658,7 +661,8 @@ static void hci_transmit(struct fm_command_header_t *hdr) {
 *******************************************************************************/
 static void hci_close()
 {
-    ALOGI("%s", __func__);
+    ALOGI("%s: acquiring mutex", __func__);
+    std::lock_guard<std::recursive_mutex> lk(mtx);
 
     if (fmHci != nullptr) {
         auto death_unlink = fmHci->unlinkToDeath(fmHciDeathRecipient);
