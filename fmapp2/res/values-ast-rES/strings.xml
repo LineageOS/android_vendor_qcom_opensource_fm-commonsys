@@ -144,6 +144,9 @@
     <string name="search_dialog_title">Busca d\'emisores</string>
     <string name="fm_tune_timeout_msg">Nun se recibió nenguna rempuesta pa sintonizar la emisora FM. Si\'l problema sigue, desactiva la radio FM y volvi activala.</string>
     <string name="audio_db_title_format"><xliff:g id="format">dd-MM-yyyy HH:mm:ss</xliff:g></string>
+    <string name="audio_db_artist_name">Les mios grabaciones FM</string>
+    <string name="audio_db_album_name">Grabaciones FM</string>
+    <string name="audio_db_playlist_name">Grabaciones FM</string>
     <string name="station_name">Emisora:</string>
     <string name="station_exists">¡Esta frecuencia yá esiste!</string>
     <string name="station_list_delete_station_prompt">¿De xuru que quies desaniciar «<xliff:g id="name">%s</xliff:g>»?</string>
@@ -152,6 +155,7 @@
     <string name="rt_plus_tags">Etiquetes</string>
     <string name="usr_def_band_min">La frecuencia más baxa (MHz)</string>
     <string name="usr_def_band_max">La frecuencia más alta (MHz)</string>
+    <string name="chanl_spacing">Esparu de canales</string>
     <string name="set">Afitar</string>
     <string name="save_record_file">La grabación de la radio FM guardóse en «<xliff:g id="record_file">%1$s</xliff:g>»</string>
     <string name="fm_search_no_results">Nun s\'atopó nenguna emisora compatible</string>
@@ -175,6 +179,7 @@
     <string name="typ_News">Noticies</string>
     <string name="typ_National">Música nacional</string>
     <string name="typ_Other">Otra música</string>
+    <string name="typ_Oldies">Música antigua</string>
     <string name="typ_Pop">Música pop</string>
     <string name="typ_Religion">Relixón</string>
     <string name="typ_Rock">Música rock</string>
@@ -182,12 +187,20 @@
     <string name="typ_Social_affairs">Temes sociales</string>
     <string name="typ_Sport">Deportes</string>
     <string name="typ_Travel">Viaxes</string>
+    <string name="typ_Weather">Clima</string>
     <string name="typ_Classical">Música clásica</string>
-    <string name="typ_Hiphop">Hip Hop</string>
+    <string name="typ_Classic_Rock">Música rock clásica</string>
+    <string name="typ_Hiphop">Música hip hop</string>
     <string name="typ_Nostalgia">Señaldá</string>
+    <string name="typ_Personality">Personalidaes</string>
     <string name="typ_Religious_music">Música relixosa</string>
     <string name="typ_Religious_talk">Charres relixoses</string>
+    <string name="typ_Rhythm_and_Blues">Rhythm and blues</string>
     <string name="typ_Spanish_music">Música española</string>
     <string name="typ_Spanish_talk">Conversación en castellán</string>
+    <string name="typ_Soft">Música soft</string>
+    <string name="typ_Soft_Rock">Música soft rock</string>
+    <string name="typ_Soft_Rhythm_and_Blues">Música rhythm and blues soft</string>
     <string name="typ_Sports">Deportes</string>
+    <string name="typ_Talk">Charres</string>
 </resources>
