@@ -151,7 +151,7 @@
     <string name="FMRecording_reach_size_limit">ზომის ზღვარი მიღწეულია.</string>
     <string name="menu_scan_for_preset">მზა პარამეტრების მონახვა</string>
     <string name="fm_off">FM გამორთულია.</string>
-    <string name="fm_call">FM ვერ გამოიყენება ზარისას.</string>
+    <string name="fm_call">FM ვერ იმუშავებს ზარისას.</string>
     <string name="alert_dialog_hint">შეიყვანეთ სახელი</string>
     <string name="search_dialog_title">სადგურების მოძიება</string>
     <string name="fm_command_timeout_title">ამოწურვის დრო</string>
