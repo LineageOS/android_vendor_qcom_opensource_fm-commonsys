@@ -50,6 +50,7 @@ import android.media.AudioManager;
 import android.media.AudioManager.OnAudioFocusChangeListener;
 import android.media.AudioSystem;
 import android.media.MediaRecorder;
+import android.media.AudioDeviceAttributes;
 import android.media.AudioDevicePort;
 import android.media.AudioDevicePortConfig;
 import android.media.AudioFormat;
@@ -641,27 +642,31 @@ public class FMRadioService extends Service
                 // This case usually happens, when FM is force killed through settings app
                 // and we don't get chance to disable Hardware LoopBack.
                 Log.d(LOGTAG, " FM HardwareLoopBack Active, disable it first");
-                AudioSystem.setDeviceConnectionState(AudioSystem.DEVICE_OUT_FM,
-                        AudioSystem.DEVICE_STATE_UNAVAILABLE, "", "",
+                AudioSystem.setDeviceConnectionState(
+                        new AudioDeviceAttributes(AudioSystem.DEVICE_OUT_FM, ""),
+                        AudioSystem.DEVICE_STATE_UNAVAILABLE,
                         AudioSystem.AUDIO_FORMAT_DEFAULT);
                 mCurrentDevice = AudioDeviceInfo.TYPE_WIRED_HEADSET;
             }
-            status = AudioSystem.setDeviceConnectionState(AudioSystem.DEVICE_OUT_FM,
-                    AudioSystem.DEVICE_STATE_AVAILABLE, "", "",
+            status = AudioSystem.setDeviceConnectionState(
+                    new AudioDeviceAttributes(AudioSystem.DEVICE_OUT_FM, ""),
+                    AudioSystem.DEVICE_STATE_AVAILABLE,
                     AudioSystem.AUDIO_FORMAT_DEFAULT);
             if (status != AudioSystem.SUCCESS) {
                 success = false;
                 Log.e(LOGTAG, "configureFMDeviceLoopback failed! status:" + status);
-                AudioSystem.setDeviceConnectionState(AudioSystem.DEVICE_OUT_FM,
-                        AudioSystem.DEVICE_STATE_UNAVAILABLE, "", "",
+                AudioSystem.setDeviceConnectionState(
+                        new AudioDeviceAttributes(AudioSystem.DEVICE_OUT_FM, ""),
+                        AudioSystem.DEVICE_STATE_UNAVAILABLE,
                         AudioSystem.AUDIO_FORMAT_DEFAULT);
                 mCurrentDevice = AudioDeviceInfo.TYPE_UNKNOWN;
             } else {
                 mIsFMDeviceLoopbackActive = true;
             }
         } else if (!enable && mIsFMDeviceLoopbackActive) {
-            AudioSystem.setDeviceConnectionState(AudioSystem.DEVICE_OUT_FM,
-                    AudioSystem.DEVICE_STATE_UNAVAILABLE, "", "",
+            AudioSystem.setDeviceConnectionState(
+                    new AudioDeviceAttributes(AudioSystem.DEVICE_OUT_FM, ""),
+                    AudioSystem.DEVICE_STATE_UNAVAILABLE,
                     AudioSystem.AUDIO_FORMAT_DEFAULT);
             mIsFMDeviceLoopbackActive = false;
             mCurrentDevice = AudioDeviceInfo.TYPE_UNKNOWN;
