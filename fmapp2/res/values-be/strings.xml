@@ -31,7 +31,6 @@
     <string name="app_name">FM-радыё</string>
     <string name="tx_app_name">FM-перадатчык</string>
     <string name="menu_scan_start">Сканаваць</string>
-    <string name="menu_scan_stop">Спыніць пошук\"</string>
     <string name="menu_record_start">Запіс</string>
     <string name="menu_record_stop">Спыніць запіс</string>
     <string name="menu_settings">Параметры</string>
@@ -96,8 +95,8 @@
     <string name="regional_band_entry_turkey">Турцыя</string>
     <string name="regional_band_entry_united_kingdom">Вялікабрытанія</string>
     <string name="regional_band_entry_united_states">ЗША</string>
-    <string name="regional_band_entry_user_defined">Вызначаная карыстальнікам частата</string>
-    <string name="regional_band_summary_user_defined">Карыстальніцкая палоса частасцяў</string>
+    <string name="regional_band_entry_user_defined">Вызначаны карыстальнікам дыяпазон</string>
+    <string name="regional_band_summary_user_defined">Вызначаны карыстальнікам дыяпазон</string>
     <string name="aud_output_mode">Рэжым вываду гуку</string>
     <string name="audio_type_stereo">Стэрэа</string>
     <string name="audio_type_mono">Ч/Б</string>
@@ -108,19 +107,18 @@
     <string name="settings_revert_confirm_title">Пацвердзіце скід</string>
     <string name="settings_revert_confirm_msg">Будуць выдалены ўсе налады праграм, уключаючы спіс захаваных станцый. Працягнуць?</string>
     <string name="no_storage">Для пачатку запісу далучыце SD-картку.</string>
-    <string name="preparing_sd">Падрыхтоўка SD-карты\u2026</string>
+    <string name="preparing_sd">Падрыхтоўка SD-карткі\u2026</string>
     <string name="access_sd_fail">Няма доступу да SD-карткі.</string>
     <string name="spaceIsLow_content">На SD-карце не хапае месца. Зменіце налады якасці ці выдаліце некалькі выяў ці іншых файлаў.</string>
     <string name="FMRecording_reach_size_limit">Дасягнута абмежаванне памеру.</string>
-    <string name="menu_scan_for_preset">Сканаваць па нарыхтоўках</string>
     <string name="fm_off">FM адключана.</string>
     <string name="fm_call">FM не можа выкарыстоўвацца падчас выкліку.</string>
     <string name="alert_dialog_hint">Увядзіце назву</string>
     <string name="search_dialog_title">Шукаць станцыі</string>
     <string name="fm_command_timeout_title">Тайм-аўт</string>
-    <string name="fm_tune_timeout_msg">Няма адказу на каманду налады. Калі праблема не знікне, выключыце FM-радыё і ўключыце яго зноўку.</string>
+    <string name="fm_tune_timeout_msg">Няма адказу на настройку FM-станцыі. Калі праблема не знікне, выключыце і зноў уключыце FM.</string>
     <string name="fm_command_failed_title">Аперацыя немагчыма</string>
-    <string name="fm_cmd_failed_msg">Аперацыя немагчымая. Калі праблема не знікне, выключыце FM-радыё і ўключыце яго зноўку.</string>
+    <string name="fm_cmd_failed_msg">Аперацыя немагчымая. Калі праблема не знікне, выключыце і зноў уключыце FM-радыё.</string>
     <string name="fm_cmd_failed_msg_hdmi">Адначаснае выкарыстанне FM-радыё і HDMI немагчыма.</string>
     <string name="fm_cmd_failed_call_on">Выкарыстоўванне FM-радыё падчас тэлефоннага званка немагчыма.</string>
     <string name="audio_db_title_format"><xliff:g id="format">гггг-мм-дздз гг:хвхв:сс </xliff:g></string>
