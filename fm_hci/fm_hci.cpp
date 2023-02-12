@@ -682,12 +682,6 @@ int fm_hci_init(fm_hci_hal_t *hci_hal)
         return FM_HC_STATUS_NULL_POINTER;
     }
 
-    auto death_link = fmHci->linkToDeath(fmHciDeathRecipient, 0);
-    if (!death_link.isOk()) {
-        ALOGE("%s: Unable to set the death recipient for the Fm HAL", __func__);
-        abort();
-    }
-
     memset(&hci, 0, sizeof(struct fm_hci_t));
 
     hci.cb = hci_hal->cb;
