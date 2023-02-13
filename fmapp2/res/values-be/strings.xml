@@ -96,8 +96,43 @@
     <string name="regional_band_entry_united_kingdom">Вялікабрытанія</string>
     <string name="regional_band_entry_united_states">ЗША</string>
     <string name="regional_band_entry_user_defined">Вызначаны карыстальнікам дыяпазон</string>
+    <string name="regional_band_summary_north_america">Паўночная Амерыка (ад 87,5 МГц да 108,0 МГц з крокам у 200 кГц)</string>
+    <string name="regional_band_summary_europe">Еўропа (ад 87,5 МГц да 108,0 МГц з крокам у 100 кГц)</string>
+    <string name="regional_band_summary_japan">Японія (ад 76,0 МГц да 90,0 МГц з крокам у 100 кГц)</string>
+    <string name="regional_band_summary_japan_wide">Японія (шырокі дыяпазон) (ад 90,0 МГц да 108,0 МГц з крокам у 50 кГц)</string>
+    <string name="regional_band_summary_australia">Аўстралія (ад 87,7 МГц да 108,0 МГц з крокам у 100 кГц)</string>
+    <string name="regional_band_summary_austria">Аўстрыя (ад 87,5 МГц да 108,0 МГц з крокам у 50 кГц)</string>
+    <string name="regional_band_summary_belgium">Бельгія (ад 87,5 МГц да 108,0 МГц з крокам у 100 кГц)</string>
+    <string name="regional_band_summary_brazil">Бразілія (ад 87,5 МГц да 108,0 МГц з крокам у 200 кГц)</string>
+    <string name="regional_band_summary_china">Кітай (ад 87,0 МГц да 108,0 МГц з крокам у 100 кГц)</string>
     <string name="regional_band_summary_czech_republic">Рэспубліка Чэхія (ад 87,5 МГц да 108,0 МГц з крокам у 100 кГц)</string>
     <string name="regional_band_summary_denmark">Данія (ад 87,5 МГц да 108,0 МГц з крокам у 50 кГц)</string>
+    <string name="regional_band_summary_finland">Фінляндыя (ад 87,5 МГц да 108,0 МГц з крокам у 100 кГц)</string>
+    <string name="regional_band_summary_france">Францыя (ад 87,5 МГц да 108,0 МГц з крокам у 100 кГц)</string>
+    <string name="regional_band_summary_germany">Германія (ад 87,5 МГц да 108,0 МГц з крокам у 50 кГц)</string>
+    <string name="regional_band_summary_greece">Грэцыя (ад 87,5 МГц да 108,0 МГц з крокам у 50 кГц)</string>
+    <string name="regional_band_summary_hong_kong">Ганконг (ад 87,5 МГц да 108,0 МГц з крокам у 100 кГц)</string>
+    <string name="regional_band_summary_india">Індыя (ад 87,5 МГц да 108,0 МГц з крокам у 100 кГц)</string>
+    <string name="regional_band_summary_indonesia">Інданезія (ад 87,5 МГц да 108,0 МГц з крокам у 100 кГц)</string>
+    <string name="regional_band_summary_ireland">Ірландыя (ад 87,5 МГц да 108,0 МГц з крокам у 50 кГц)</string>
+    <string name="regional_band_summary_italy">Італія (ад 87,5 МГц да 108,0 МГц з крокам у 50 кГц)</string>
+    <string name="regional_band_summary_korea">Рэспубліка Карэя (ад 87,5 МГц да 108,0 МГц з крокам у 200 кГц)</string>
+    <string name="regional_band_summary_mexico">Мексіка (ад 88,1 МГц да 107,9 МГц з крокам у 200 кГц)</string>
+    <string name="regional_band_summary_netherlands">Нідэрланды (ад 87,5 МГц да 108,0 МГц з крокам у 100 кГц)</string>
+    <string name="regional_band_summary_new_zealand">Новая Зеландыя (ад 88,0 МГц да 107,0 МГц з крокам у 100 кГц)</string>
+    <string name="regional_band_summary_norway">Нарвегія (ад 87,5 МГц да 108,0 МГц з крокам у 100 кГц)</string>
+    <string name="regional_band_summary_poland">Польшча (ад 87,5 МГц да 108,0 МГц з крокам у 100 кГц)</string>
+    <string name="regional_band_summary_portugal">Партугалія (ад 87,5 МГц да 108,0 МГц з крокам у 50 кГц)</string>
+    <string name="regional_band_summary_russia">Расія (ад 87,5 МГц да 108,0 МГц з крокам у 100 кГц)</string>
+    <string name="regional_band_summary_singapore">Сінгапур (ад 88,0 МГц да 108,0 МГц з крокам у 100 кГц)</string>
+    <string name="regional_band_summary_slovakia">Славакія (ад 87,5 МГц да 108,0 МГц з крокам у 100 кГц)</string>
+    <string name="regional_band_summary_spain">Іспанія (ад 87,5 МГц да 108,0 МГц з крокам у 100 кГц)</string>
+    <string name="regional_band_summary_switzerland">Швейцарыя (ад 87,5 МГц да 108,0 МГц з крокам у 100 кГц)</string>
+    <string name="regional_band_summary_sweden">Швецыя (ад 87,5 МГц да 108,0 МГц з крокам у 100 кГц)</string>
+    <string name="regional_band_summary_taiwan">Тайвань (ад 87,5 МГц да 108,0 МГц з крокам у 100 кГц)</string>
+    <string name="regional_band_summary_turkey">Турцыя (ад 87,5 МГц да 108,0 МГц з крокам у 100 кГц)</string>
+    <string name="regional_band_summary_united_kingdom">Вялікабрытанія (ад 87,5 МГц да 108,0 МГц з крокам у 100 кГц)</string>
+    <string name="regional_band_summary_united_states">ЗША (ад 88,1 МГц да 107,9 МГц з крокам у 200 кГц)</string>
     <string name="regional_band_summary_user_defined">Вызначаны карыстальнікам дыяпазон</string>
     <string name="aud_output_mode">Рэжым вываду аўдыя</string>
     <string name="audio_type_stereo">Стэрэа</string>
@@ -121,12 +156,12 @@
     <string name="fm_tune_timeout_msg">Няма адказу на настройку FM-станцыі. Калі праблема не знікне, выключыце і зноў уключыце FM.</string>
     <string name="fm_command_failed_title">Аперацыя немагчыма</string>
     <string name="fm_cmd_failed_msg">Аперацыя немагчымая. Калі праблема не знікне, выключыце і зноў уключыце FM-радыё.</string>
-    <string name="fm_cmd_failed_msg_hdmi">Адначаснае выкарыстанне FM-радыё і HDMI немагчыма.</string>
-    <string name="fm_cmd_failed_call_on">Выкарыстоўванне FM-радыё падчас тэлефоннага званка немагчыма.</string>
+    <string name="fm_cmd_failed_msg_hdmi">Аперацыя немагчыма. Немагчыма адначасова выкарыстоўваць FM-радыё і HDMI.</string>
+    <string name="fm_cmd_failed_call_on">Аперацыя немагчыма. Вы не можаце выкарыстоўваць FM-радыё падчас тэлефоннага званка.</string>
     <string name="audio_db_title_format"><xliff:g id="format">yyyy-MM-dd HH:mm:ss</xliff:g></string>
     <string name="audio_db_artist_name">Мае радыёзапісы</string>
-    <string name="audio_db_album_name">Радыёзапісы</string>
-    <string name="audio_db_playlist_name">Радыёзапісы</string>
+    <string name="audio_db_album_name">Запісы з FM</string>
+    <string name="audio_db_playlist_name">Запісы з FM</string>
     <string name="station_name">Станцыя:</string>
     <string name="station_exists">Гэта частата ужо існуе!</string>
     <string name="station_list_delete_station">Выдаліць: <xliff:g id="name">%s</xliff:g></string>
@@ -135,10 +170,10 @@
     <string name="station_name_exist">\'<xliff:g id="name">%s</xliff:g>\' ужо выкарыстоўваецца, увядзіце іншую назву.</string>
     <string name="rt_plus_tags">Ключавыя словы</string>
     <string name="usr_def_band_min">Мінімальная частата (Мгц)</string>
-    <string name="usr_def_band_max">Максімальная частата (Мгц)</string>
+    <string name="usr_def_band_max">Максімальная частата (МГц)</string>
     <string name="chanl_spacing">Крок каналаў</string>
     <string name="set">Задаць</string>
-    <string name="save_record_file">Файл радыёзапісу захаваны ў \'<xliff:g id="record_file">%1$s</xliff:g>\'</string>
+    <string name="save_record_file">Файл запісу радыё захаваны ў \'<xliff:g id="record_file">%1$s</xliff:g>\'</string>
     <string name="fm_search_no_results">Сумесных станцый не знойдзена</string>
     <string name="typ_All_stations">Усе станцыі</string>
     <string name="typ_Culture">Культура</string>
@@ -152,7 +187,7 @@
     <string name="typ_Emergency">Экстранны</string>
     <string name="typ_Emergency_test">Экстранны тэст</string>
     <string name="typ_Finance">Фінансы</string>
-    <string name="typ_Folk">Фолк музыка</string>
+    <string name="typ_Folk">Народная музыка</string>
     <string name="typ_Information">Інфармацыя</string>
     <string name="typ_Jazz">Джазавая музыка</string>
     <string name="typ_Light_classical">Лёгкая класічная</string>
