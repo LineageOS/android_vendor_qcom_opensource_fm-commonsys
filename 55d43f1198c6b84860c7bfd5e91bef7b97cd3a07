@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ac57839_83db7823",
+        "filename": "jni/android_hardware_fm.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 642,
+      "author": {
+        "id": 4550
+      },
+      "writtenOn": "2023-03-11T13:50:51Z",
+      "side": 1,
+      "message": "vendor.hw.fm.init",
+      "range": {
+        "startLine": 642,
+        "startChar": 21,
+        "endLine": 642,
+        "endChar": 31
+      },
+      "revId": "55d43f1198c6b84860c7bfd5e91bef7b97cd3a07",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f77b49d_f76095bc",
+        "filename": "jni/android_hardware_fm.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 664,
+      "author": {
+        "id": 4550
+      },
+      "writtenOn": "2023-03-11T13:50:51Z",
+      "side": 1,
+      "message": "vendor.hw.fm.init",
+      "range": {
+        "startLine": 664,
+        "startChar": 22,
+        "endLine": 664,
+        "endChar": 32
+      },
+      "revId": "55d43f1198c6b84860c7bfd5e91bef7b97cd3a07",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
