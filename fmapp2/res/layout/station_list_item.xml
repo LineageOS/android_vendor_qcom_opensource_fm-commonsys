@@ -29,48 +29,41 @@
  * IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
  -->
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/item"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="vertical">
 
-   <TableLayout
-       android:id="@+id/TableLayout1"
-       android:layout_width="match_parent"
-       android:layout_height="wrap_content"
-       android:stretchColumns="1">
+   <TextView
+	   android:id="@+id/fixName"
+	   android:layout_width="wrap_content"
+	   android:layout_height="wrap_content"
+	   android:paddingStart="16dp"
+	   android:paddingEnd="8dp"
+	   android:paddingTop="15dp"
+	   android:text="@string/station_name" />
 
-       <TableRow>
-           <TextView
-               android:id="@+id/fixName"
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               android:paddingLeft="30dp"
-               android:paddingTop="15dp"
-               android:text="@string/station_name" />
+   <TextView
+	   android:id="@+id/name"
+	   android:layout_width="wrap_content"
+	   android:layout_height="wrap_content"
+	   android:paddingTop="15dp"
+	   android:ellipsize="marquee"
+	   android:marqueeRepeatLimit="marquee_forever"
+	   android:layout_toEndOf="@id/fixName"
+	   tools:text="10"/>
 
-           <TextView
-               android:id="@+id/name"
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               android:ellipsize="marquee"
-               android:marqueeRepeatLimit="marquee_forever" />
 
-       </TableRow>
-       <TableRow >
+	<TextView
+		android:id="@+id/freq"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:paddingStart="16dp"
+		android:paddingEnd="16dp"
+		android:paddingBottom="15dp"
+		android:textSize="20sp"
+		android:layout_below="@id/fixName"/>
 
-	    <TextView
-	        android:id="@+id/freq"
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
-	        android:paddingLeft="30dp"
-	        android:paddingBottom="15dp"
-	        android:textSize="20sp"
-	        android:layout_span="2" />
-
-       </TableRow>
-
-    </TableLayout>
-
-</LinearLayout>
+</RelativeLayout>

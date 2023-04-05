@@ -35,7 +35,7 @@
 
     <LinearLayout android:id="@+id/stationinfo_layout"
         android:layout_width="fill_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
         android:orientation="horizontal"
         android:layout_weight="1">
 
