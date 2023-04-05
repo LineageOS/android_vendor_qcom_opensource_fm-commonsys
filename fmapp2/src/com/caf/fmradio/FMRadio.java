@@ -61,8 +61,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.view.KeyEvent;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -244,7 +242,6 @@ public class FMRadio extends Activity
    private static boolean mIsSearching = false;
    private static int mScanPty = 0;
    private static int mScanPtyIndex = 0;
-   private Animation mAnimation = null;
    private ScrollerText mRadioTextScroller = null;
    private ScrollerText mERadioTextScroller = null;
 
@@ -369,9 +366,6 @@ public void onRequestPermissionsResult(int requestCode, String[] permissions,  i
             }
         });
       }
-
-      mAnimation = AnimationUtils.loadAnimation(this,
-                                                R.anim.preset_select);
 
       mMuteButton = (ImageView)findViewById(R.id.btn_silent);
       if (mMuteButton != null) {
@@ -780,14 +774,13 @@ public void onRequestPermissionsResult(int requestCode, String[] permissions,  i
       }
       if (RECORDING_ENABLE) {
          item = menu.findItem(MENU_RECORD_START);
+         boolean canRecordOrStop = radioOn && !isAnalogModeEnabled();
          if (item != null) {
-            item.setVisible(true);
-            item.setEnabled((!recording) && radioOn && (!isAnalogModeEnabled()));
+            item.setVisible(!recording && canRecordOrStop);
          }
          item = menu.findItem(MENU_RECORD_STOP);
          if (item != null) {
-             item.setVisible(true);
-             item.setEnabled(recording && radioOn && (!isAnalogModeEnabled()));
+             item.setVisible(recording && canRecordOrStop);
          }
       }
 
@@ -1439,7 +1432,6 @@ public void onRequestPermissionsResult(int requestCode, String[] permissions,  i
               Log.d(LOGTAG, "station - " + station.getName() + " ("
                     + station.getFrequency() + ")");
               tuneRadio(station.getFrequency());
-              view.startAnimation(mAnimation);
            }
       }
    };
@@ -1455,7 +1447,6 @@ public void onRequestPermissionsResult(int requestCode, String[] permissions,  i
                displayDialog(DIALOG_PRESET_OPTIONS);
            }else {
                addToPresets();
-               //view.startAnimation(mAnimation);
            }
          return true;
       }
@@ -1502,7 +1493,6 @@ public void onRequestPermissionsResult(int requestCode, String[] permissions,  i
                }
                if (bStatus) {
                    setMuteModeButtonImage(true);
-                   v.startAnimation(mAnimation);
                }else {
                    mCommandFailed = CMD_MUTE;
                    if(isCallActive()) {
