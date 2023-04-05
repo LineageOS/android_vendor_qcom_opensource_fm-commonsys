@@ -112,6 +112,7 @@ public class Settings extends PreferenceActivity implements
           // Root
           PreferenceScreen root = getPreferenceManager().createPreferenceScreen(
                                 this);
+          getListView().setDivider(null);
 
            summaryBandItems = getResources().getStringArray(
                                 R.array.regional_band_summary);
