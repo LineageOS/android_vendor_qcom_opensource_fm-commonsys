@@ -51,12 +51,14 @@
          android:padding="6dp" >
 
          <Button android:id="@+id/save"
+             style="?android:style/Widget.Material.Light.Button.Borderless.Colored"
              android:layout_width="120dp"
              android:layout_height="wrap_content"
              android:text="@android:string/ok"
              android:layout_alignParentLeft="true" />
 
          <Button android:id="@+id/cancel"
+             style="?android:style/Widget.Material.Light.Button.Borderless.Colored"
              android:layout_width="120dp"
              android:layout_height="wrap_content"
              android:text="@android:string/cancel"

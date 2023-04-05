@@ -51,7 +51,7 @@
         <item name="android:layout_height">match_parent</item>
         <item name="android:textSize">18sp</item>
         <item name="android:textColor">@color/white</item>
-        <item name="android:background">@drawable/preset_button_background</item>
+        <item name="android:background">?android:attr/selectableItemBackgroundBorderless</item>
         <item name="android:singleLine">true</item>
         <item name="android:text">@string/add_station</item>
         <item name="android:textStyle">bold</item>
@@ -63,8 +63,9 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textSize">18sp</item>
         <item name="android:textColor">@color/white</item>
-        <item name="android:background">@drawable/preset_button_background</item>
-        <item name="android:singleLine">true</item>    </style>
+        <item name="android:background">?android:attr/selectableItemBackgroundBorderless</item>
+        <item name="android:singleLine">true</item>
+    </style>
 
     <style name="ButtonStripMiddle">
         <item name="android:gravity">center</item>
@@ -72,7 +73,7 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textSize">18sp</item>
         <item name="android:textColor">@color/white</item>
-        <item name="android:background">@drawable/preset_button_background</item>
+        <item name="android:background">?android:attr/selectableItemBackgroundBorderless</item>
         <item name="android:singleLine">true</item>
     </style>
 
@@ -82,7 +83,7 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textSize">18sp</item>
         <item name="android:textColor">@color/white</item>
-        <item name="android:background">@drawable/preset_button_background</item>
+        <item name="android:background">?android:attr/selectableItemBackgroundBorderless</item>
         <item name="android:singleLine">true</item>
     </style>
 

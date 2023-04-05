@@ -34,10 +34,10 @@
     android:layout_height="fill_parent"
     android:orientation="vertical">
 
-    <!--Change layout_height value "wrap_content" to "fill_parent" can dispaly last item dividing line -->
     <ListView android:id="@+id/station_list"
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent" >
+        android:layout_height="fill_parent"
+        android:divider="@null">
     </ListView>
 
 </LinearLayout>
