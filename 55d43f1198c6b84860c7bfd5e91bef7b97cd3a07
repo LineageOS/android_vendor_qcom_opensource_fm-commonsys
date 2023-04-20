@@ -45,6 +45,30 @@
       },
       "revId": "55d43f1198c6b84860c7bfd5e91bef7b97cd3a07",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "948d9a26_87b685c2",
+        "filename": "jni/android_hardware_fm.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 664,
+      "author": {
+        "id": 32355
+      },
+      "writtenOn": "2023-04-20T17:05:08Z",
+      "side": 1,
+      "message": "\u003e vendor.hw.fm.init\n\nSystem apps are neverallowed to set vendor properties. This prop is, as far as I understand at least, intended to be system-side to avoid such SELinux issues with system-vendor isolation. You did something for this some years ago with libfmjni (for CAF devices) for AOSP FM: https://github.com/LineageOS/android_vendor_qcom_opensource_libfmjni/commit/e33227ed63c6b8e7df0b638f556bf14fa99acd83.",
+      "parentUuid": "9f77b49d_f76095bc",
+      "range": {
+        "startLine": 664,
+        "startChar": 22,
+        "endLine": 664,
+        "endChar": 32
+      },
+      "revId": "55d43f1198c6b84860c7bfd5e91bef7b97cd3a07",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
