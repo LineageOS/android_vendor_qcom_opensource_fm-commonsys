@@ -81,7 +81,7 @@
     <string name="regional_band_entry_italy">იტალია</string>
     <string name="regional_band_entry_korea">კორეა</string>
     <string name="regional_band_entry_mexico">მექსიკა</string>
-    <string name="regional_band_entry_netherlands">ნიდერლანდები</string>
+    <string name="regional_band_entry_netherlands">ნიდერლანდი</string>
     <string name="regional_band_entry_new_zealand">ახალი ზელანდია</string>
     <string name="regional_band_entry_norway">ნორვეგია</string>
     <string name="regional_band_entry_poland">პოლონეთი</string>
@@ -119,7 +119,7 @@
     <string name="regional_band_summary_italy">იტალია (87.5 მჰც-დან 108.0 მჰც-მდე 50 კჰც ბიჯით)</string>
     <string name="regional_band_summary_korea">კორეა (87.5 მჰც-დან 108.0 მჰც-მდე 200 კჰც ბიჯით)</string>
     <string name="regional_band_summary_mexico">მექსიკა (88.1 მჰც-დან 107.9 მჰც-მდე 200 კჰც ბიჯით)</string>
-    <string name="regional_band_summary_netherlands">ნიდერლანდები (87.5 მჰც-დან 108.0 მჰც-მდე 100 კჰცაბიჯით)</string>
+    <string name="regional_band_summary_netherlands">ნიდერლანდი (87.5 მჰც-დან 108.0 მჰც-მდე 100 კჰც ნაბიჯით)</string>
     <string name="regional_band_summary_new_zealand">ახალი ზელანდია (88.0 მჰც-დან 107.0 მჰც-მდე 100 კჰც ბიჯით)</string>
     <string name="regional_band_summary_norway">ნორვეგია (87.5 მჰც-დან 108.0 მჰც-მდე 100 კჰც ბიჯით)</string>
     <string name="regional_band_summary_poland">პოლონეთი (87.5 მჰც-დან 108.0 მჰც-მდე 100 კჰც ბიჯით)</string>

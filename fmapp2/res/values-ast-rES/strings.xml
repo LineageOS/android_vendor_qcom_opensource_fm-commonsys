@@ -34,7 +34,7 @@
     <string name="menu_scan_stop">Dexar de buscar</string>
     <string name="menu_record_start">Grabar</string>
     <string name="menu_record_stop">Dexar de grabar</string>
-    <string name="menu_settings">Axustes</string>
+    <string name="menu_settings">Configuración</string>
     <string name="menu_sleep">Dormir</string>
     <string name="menu_sleep_cancel">Encaboxar la dormición</string>
     <string name="menu_all_channels">Toles canales</string>
@@ -133,8 +133,8 @@
     <string name="audio_type_mono">Monu</string>
     <string name="record_dur">Duración de les grabaciones</string>
     <string name="auto_select_af">Frecuencia alternativa</string>
-    <string name="settings_revert_defaults_title">Reafitar los axustes</string>
-    <string name="settings_revert_defaults_summary">Reafita tolos axustes</string>
+    <string name="settings_revert_defaults_title">Reafitar la configuración</string>
+    <string name="settings_revert_defaults_summary">Reafita tola configuración</string>
     <string name="no_storage">Monta la tarxeta SD enantes d\'aniciar la grabación.</string>
     <string name="preparing_sd">Tresnando la tarxeta SD\u2026</string>
     <string name="access_sd_fail">Nun se pudo acceder a la tarxeta SD.</string>
