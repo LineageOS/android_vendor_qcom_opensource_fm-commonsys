@@ -31,33 +31,32 @@
     <string name="app_name">FM-радыё</string>
     <string name="tx_app_name">FM-перадатчык</string>
     <string name="menu_scan_start">Сканаваць</string>
-    <string name="menu_scan_stop">Спыніць пошук\"</string>
     <string name="menu_record_start">Запіс</string>
     <string name="menu_record_stop">Спыніць запіс</string>
     <string name="menu_settings">Параметры</string>
     <string name="menu_sleep">Рэжым сну</string>
-    <string name="menu_sleep_cancel">Скасаваць таймер</string>
+    <string name="menu_sleep_cancel">Скасаваць рэжым сну</string>
     <string name="menu_all_channels">Усе каналы</string>
     <string name="menu_display_tags">Паказаць тэгі</string>
     <string name="button_text_stop">Кнопка прыпынку</string>
     <string name="msg_seeking">Пошук радыёстанцыі\u2026</string>
     <string name="msg_scanning">Сканаванне ўсіх FM-станцый\u2026</string>
     <string name="msg_scanning_pty">Пошук \'<xliff:g id="pty_name">%1$s</xliff:g>\'\u2026</string>
-    <string name="msg_search_title"><xliff:g id="frequency_string">%1$s</xliff:g> Мгц</string>
+    <string name="msg_search_title"><xliff:g id="frequency_string">%1$s</xliff:g> МГц</string>
     <string name="msg_searching_title">Аўтапошук станцый</string>
     <string name="msg_searching">Пошук станцый з магутным сігналам для стварэння спіса станцый\u2026</string>
     <string name="msg_noantenna">Калі ласка, устаўце гарнітуру</string>
     <string name="dialog_sleep_title">Час аўтавыключэння</string>
     <string name="presetlist_select_name">Абраць \'<xliff:g id="presetlist_name">%1$s</xliff:g>\'</string>
     <string name="presetlist_add_new">Дадаць новы спіс</string>
-    <string name="dialog_presetlist_rename_title">Увядзіце імя</string>
-    <string name="presetlist_autoselect_title">Пацвердзіце аўтаналадку</string>
+    <string name="dialog_presetlist_rename_title">Увядзіце назву</string>
+    <string name="presetlist_autoselect_title">Пацвердзіць аўтаматычны выбар</string>
     <string name="preset_replace">Змяніць</string>
     <string name="preset_tune">Наладзіць</string>
     <string name="preset_rename">Перайменаваць</string>
     <string name="preset_delete">Выдалiць</string>
     <string name="preset_search">Пошук \'<xliff:g id="preset_pi">%1$s</xliff:g>\'</string>
-    <string name="stat_notif_frequency">\'<xliff:g id="frequency">%1$s</xliff:g>\' Мгц</string>
+    <string name="stat_notif_frequency">\'<xliff:g id="frequency">%1$s</xliff:g>\' МГц</string>
     <string name="regional_band">Рэгіянальны дыяпазон</string>
     <string name="regional_band_entry_north_america">Паўночная Амерыка</string>
     <string name="regional_band_entry_europe">Еўропа</string>
@@ -68,7 +67,7 @@
     <string name="regional_band_entry_belgium">Бельгія</string>
     <string name="regional_band_entry_brazil">Бразілія</string>
     <string name="regional_band_entry_china">Кітай</string>
-    <string name="regional_band_entry_czech_republic">Чэшская рэспубліка</string>
+    <string name="regional_band_entry_czech_republic">Рэспубліка Чэхія</string>
     <string name="regional_band_entry_denmark">Данія</string>
     <string name="regional_band_entry_finland">Фінляндыя</string>
     <string name="regional_band_entry_france">Францыя</string>
@@ -96,63 +95,99 @@
     <string name="regional_band_entry_turkey">Турцыя</string>
     <string name="regional_band_entry_united_kingdom">Вялікабрытанія</string>
     <string name="regional_band_entry_united_states">ЗША</string>
-    <string name="regional_band_entry_user_defined">Вызначаная карыстальнікам частата</string>
-    <string name="regional_band_summary_user_defined">Карыстальніцкая палоса частасцяў</string>
-    <string name="aud_output_mode">Рэжым вываду гуку</string>
+    <string name="regional_band_entry_user_defined">Вызначаны карыстальнікам дыяпазон</string>
+    <string name="regional_band_summary_north_america">Паўночная Амерыка (ад 87,5 МГц да 108,0 МГц з крокам у 200 кГц)</string>
+    <string name="regional_band_summary_europe">Еўропа (ад 87,5 МГц да 108,0 МГц з крокам у 100 кГц)</string>
+    <string name="regional_band_summary_japan">Японія (ад 76,0 МГц да 90,0 МГц з крокам у 100 кГц)</string>
+    <string name="regional_band_summary_japan_wide">Японія (шырокі дыяпазон) (ад 90,0 МГц да 108,0 МГц з крокам у 50 кГц)</string>
+    <string name="regional_band_summary_australia">Аўстралія (ад 87,7 МГц да 108,0 МГц з крокам у 100 кГц)</string>
+    <string name="regional_band_summary_austria">Аўстрыя (ад 87,5 МГц да 108,0 МГц з крокам у 50 кГц)</string>
+    <string name="regional_band_summary_belgium">Бельгія (ад 87,5 МГц да 108,0 МГц з крокам у 100 кГц)</string>
+    <string name="regional_band_summary_brazil">Бразілія (ад 87,5 МГц да 108,0 МГц з крокам у 200 кГц)</string>
+    <string name="regional_band_summary_china">Кітай (ад 87,0 МГц да 108,0 МГц з крокам у 100 кГц)</string>
+    <string name="regional_band_summary_czech_republic">Рэспубліка Чэхія (ад 87,5 МГц да 108,0 МГц з крокам у 100 кГц)</string>
+    <string name="regional_band_summary_denmark">Данія (ад 87,5 МГц да 108,0 МГц з крокам у 50 кГц)</string>
+    <string name="regional_band_summary_finland">Фінляндыя (ад 87,5 МГц да 108,0 МГц з крокам у 100 кГц)</string>
+    <string name="regional_band_summary_france">Францыя (ад 87,5 МГц да 108,0 МГц з крокам у 100 кГц)</string>
+    <string name="regional_band_summary_germany">Германія (ад 87,5 МГц да 108,0 МГц з крокам у 50 кГц)</string>
+    <string name="regional_band_summary_greece">Грэцыя (ад 87,5 МГц да 108,0 МГц з крокам у 50 кГц)</string>
+    <string name="regional_band_summary_hong_kong">Ганконг (ад 87,5 МГц да 108,0 МГц з крокам у 100 кГц)</string>
+    <string name="regional_band_summary_india">Індыя (ад 87,5 МГц да 108,0 МГц з крокам у 100 кГц)</string>
+    <string name="regional_band_summary_indonesia">Інданезія (ад 87,5 МГц да 108,0 МГц з крокам у 100 кГц)</string>
+    <string name="regional_band_summary_ireland">Ірландыя (ад 87,5 МГц да 108,0 МГц з крокам у 50 кГц)</string>
+    <string name="regional_band_summary_italy">Італія (ад 87,5 МГц да 108,0 МГц з крокам у 50 кГц)</string>
+    <string name="regional_band_summary_korea">Рэспубліка Карэя (ад 87,5 МГц да 108,0 МГц з крокам у 200 кГц)</string>
+    <string name="regional_band_summary_mexico">Мексіка (ад 88,1 МГц да 107,9 МГц з крокам у 200 кГц)</string>
+    <string name="regional_band_summary_netherlands">Нідэрланды (ад 87,5 МГц да 108,0 МГц з крокам у 100 кГц)</string>
+    <string name="regional_band_summary_new_zealand">Новая Зеландыя (ад 88,0 МГц да 107,0 МГц з крокам у 100 кГц)</string>
+    <string name="regional_band_summary_norway">Нарвегія (ад 87,5 МГц да 108,0 МГц з крокам у 100 кГц)</string>
+    <string name="regional_band_summary_poland">Польшча (ад 87,5 МГц да 108,0 МГц з крокам у 100 кГц)</string>
+    <string name="regional_band_summary_portugal">Партугалія (ад 87,5 МГц да 108,0 МГц з крокам у 50 кГц)</string>
+    <string name="regional_band_summary_russia">Расія (ад 87,5 МГц да 108,0 МГц з крокам у 100 кГц)</string>
+    <string name="regional_band_summary_singapore">Сінгапур (ад 88,0 МГц да 108,0 МГц з крокам у 100 кГц)</string>
+    <string name="regional_band_summary_slovakia">Славакія (ад 87,5 МГц да 108,0 МГц з крокам у 100 кГц)</string>
+    <string name="regional_band_summary_spain">Іспанія (ад 87,5 МГц да 108,0 МГц з крокам у 100 кГц)</string>
+    <string name="regional_band_summary_switzerland">Швейцарыя (ад 87,5 МГц да 108,0 МГц з крокам у 100 кГц)</string>
+    <string name="regional_band_summary_sweden">Швецыя (ад 87,5 МГц да 108,0 МГц з крокам у 100 кГц)</string>
+    <string name="regional_band_summary_taiwan">Тайвань (ад 87,5 МГц да 108,0 МГц з крокам у 100 кГц)</string>
+    <string name="regional_band_summary_turkey">Турцыя (ад 87,5 МГц да 108,0 МГц з крокам у 100 кГц)</string>
+    <string name="regional_band_summary_united_kingdom">Вялікабрытанія (ад 87,5 МГц да 108,0 МГц з крокам у 100 кГц)</string>
+    <string name="regional_band_summary_united_states">ЗША (ад 88,1 МГц да 107,9 МГц з крокам у 200 кГц)</string>
+    <string name="regional_band_summary_user_defined">Вызначаны карыстальнікам дыяпазон</string>
+    <string name="aud_output_mode">Рэжым вываду аўдыя</string>
     <string name="audio_type_stereo">Стэрэа</string>
     <string name="audio_type_mono">Ч/Б</string>
     <string name="record_dur">Працягласць запісу</string>
     <string name="auto_select_af">Альтэрнатыўная частата</string>
     <string name="settings_revert_defaults_title">Вярнуцца да завадскіх налад</string>
     <string name="settings_revert_defaults_summary">Скінуць усе налады</string>
-    <string name="settings_revert_confirm_title">Пацвердзіце скід</string>
+    <string name="settings_revert_confirm_title">Пацвердзіць скід</string>
     <string name="settings_revert_confirm_msg">Будуць выдалены ўсе налады праграм, уключаючы спіс захаваных станцый. Працягнуць?</string>
     <string name="no_storage">Для пачатку запісу далучыце SD-картку.</string>
-    <string name="preparing_sd">Падрыхтоўка SD-карты\u2026</string>
-    <string name="access_sd_fail">Няма доступу да SD-карткі.</string>
+    <string name="preparing_sd">Падрыхтоўка SD-карткі\u2026</string>
+    <string name="access_sd_fail">Немагчыма атрымаць доступ да SD-карткі.</string>
     <string name="spaceIsLow_content">На SD-карце не хапае месца. Зменіце налады якасці ці выдаліце некалькі выяў ці іншых файлаў.</string>
     <string name="FMRecording_reach_size_limit">Дасягнута абмежаванне памеру.</string>
-    <string name="menu_scan_for_preset">Сканаваць па нарыхтоўках</string>
     <string name="fm_off">FM адключана.</string>
     <string name="fm_call">FM не можа выкарыстоўвацца падчас выкліку.</string>
     <string name="alert_dialog_hint">Увядзіце назву</string>
     <string name="search_dialog_title">Шукаць станцыі</string>
     <string name="fm_command_timeout_title">Тайм-аўт</string>
-    <string name="fm_tune_timeout_msg">Няма адказу на каманду налады. Калі праблема не знікне, выключыце FM-радыё і ўключыце яго зноўку.</string>
+    <string name="fm_tune_timeout_msg">Няма адказу на настройку FM-станцыі. Калі праблема не знікне, выключыце і зноў уключыце FM.</string>
     <string name="fm_command_failed_title">Аперацыя немагчыма</string>
-    <string name="fm_cmd_failed_msg">Аперацыя немагчымая. Калі праблема не знікне, выключыце FM-радыё і ўключыце яго зноўку.</string>
-    <string name="fm_cmd_failed_msg_hdmi">Адначаснае выкарыстанне FM-радыё і HDMI немагчыма.</string>
-    <string name="fm_cmd_failed_call_on">Выкарыстоўванне FM-радыё падчас тэлефоннага званка немагчыма.</string>
-    <string name="audio_db_title_format"><xliff:g id="format">гггг-мм-дздз гг:хвхв:сс </xliff:g></string>
+    <string name="fm_cmd_failed_msg">Аперацыя немагчымая. Калі праблема не знікне, выключыце і зноў уключыце FM-радыё.</string>
+    <string name="fm_cmd_failed_msg_hdmi">Аперацыя немагчыма. Немагчыма адначасова выкарыстоўваць FM-радыё і HDMI.</string>
+    <string name="fm_cmd_failed_call_on">Аперацыя немагчыма. Вы не можаце выкарыстоўваць FM-радыё падчас тэлефоннага званка.</string>
+    <string name="audio_db_title_format"><xliff:g id="format">yyyy-MM-dd HH:mm:ss</xliff:g></string>
     <string name="audio_db_artist_name">Мае радыёзапісы</string>
-    <string name="audio_db_album_name">Радыёзапісы</string>
-    <string name="audio_db_playlist_name">Радыёзапісы</string>
+    <string name="audio_db_album_name">Запісы з FM</string>
+    <string name="audio_db_playlist_name">Запісы з FM</string>
     <string name="station_name">Станцыя:</string>
     <string name="station_exists">Гэта частата ужо існуе!</string>
-    <string name="station_list_delete_station">Выдаленне: <xliff:g id="name">%s</xliff:g></string>
-    <string name="station_list_delete_station_prompt">Вы ўпэўнены, што хочаце выдаліць \'<xliff:g id="name">%s</xliff:g>\'?</string>
+    <string name="station_list_delete_station">Выдаліць: <xliff:g id="name">%s</xliff:g></string>
+    <string name="station_list_delete_station_prompt">Вы сапраўды хочаце выдаліць \'<xliff:g id="name">%s</xliff:g>\'?</string>
     <string name="station_name_empty">Пустая назва станцыі, калі ласка, увядзіце яшчэ раз.</string>
-    <string name="station_name_exist">\'<xliff:g id="name">%s</xliff:g>\' ужо выкарыстоўваецца, увядзіце іншае імя.</string>
+    <string name="station_name_exist">\'<xliff:g id="name">%s</xliff:g>\' ужо выкарыстоўваецца, увядзіце іншую назву.</string>
     <string name="rt_plus_tags">Ключавыя словы</string>
     <string name="usr_def_band_min">Мінімальная частата (Мгц)</string>
-    <string name="usr_def_band_max">Максімальная частата (Мгц)</string>
+    <string name="usr_def_band_max">Максімальная частата (МГц)</string>
     <string name="chanl_spacing">Крок каналаў</string>
     <string name="set">Задаць</string>
-    <string name="save_record_file">Файл радыёзапісу захаваны ў \'<xliff:g id="record_file">%1$s</xliff:g>\'</string>
+    <string name="save_record_file">Файл запісу радыё захаваны ў \'<xliff:g id="record_file">%1$s</xliff:g>\'</string>
     <string name="fm_search_no_results">Сумесных станцый не знойдзена</string>
     <string name="typ_All_stations">Усе станцыі</string>
     <string name="typ_Culture">Культура</string>
-    <string name="typ_Current_affairs">Цякучыя падзеі</string>
+    <string name="typ_Current_affairs">Бягучыя справы</string>
     <string name="typ_Children">Дзіцячыя праграмы</string>
-    <string name="typ_Country">Кантры музыка</string>
+    <string name="typ_Country">Музыка кантры</string>
     <string name="typ_Documentary">Дакументальны</string>
     <string name="typ_Drama">Драма</string>
     <string name="typ_Easy_listening">Лёгкая музыка</string>
     <string name="typ_Education">Адукацыя</string>
-    <string name="typ_Emergency">Неадкладны</string>
-    <string name="typ_Emergency_test">Аварыйны тэст</string>
+    <string name="typ_Emergency">Экстранны</string>
+    <string name="typ_Emergency_test">Экстранны тэст</string>
     <string name="typ_Finance">Фінансы</string>
-    <string name="typ_Folk">Фолк музыка</string>
+    <string name="typ_Folk">Народная музыка</string>
     <string name="typ_Information">Інфармацыя</string>
     <string name="typ_Jazz">Джазавая музыка</string>
     <string name="typ_Light_classical">Лёгкая класічная</string>
@@ -172,8 +207,8 @@
     <string name="typ_Travel">Падарожжа</string>
     <string name="typ_Varied">Разнастайны</string>
     <string name="typ_Weather">Надвор\'е</string>
-    <string name="typ_Adult_hits">Сталыя хіты</string>
-    <string name="typ_Classical">Класічная</string>
+    <string name="typ_Adult_hits">Хіты даўніх гадоў</string>
+    <string name="typ_Classical">Класіка</string>
     <string name="typ_Classic_Rock">Класічны рок</string>
     <string name="typ_College">Каледж</string>
     <string name="typ_Foreign_language">Замежная мова</string>
