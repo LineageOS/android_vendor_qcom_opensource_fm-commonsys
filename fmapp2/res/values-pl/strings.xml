@@ -167,7 +167,7 @@
     <string name="station_name">Stacja:</string>
     <string name="station_exists">Ta częstotliwość już istnieje!</string>
     <string name="station_list_delete_station">Usuń: <xliff:g id="name">%s</xliff:g></string>
-    <string name="station_list_delete_station_prompt">Jesteś pewny, że chcesz usunąć \'<xliff:g id="name">%s</xliff:g>\'?</string>
+    <string name="station_list_delete_station_prompt">Czy na pewno chcesz usunąć \'<xliff:g id="name">%s</xliff:g>\'?</string>
     <string name="station_name_empty">Nie wprowadzono nazwy stacji, spróbuj ponownie.</string>
     <string name="station_name_exist">\'<xliff:g id="name">%s</xliff:g>\' jest w użyciu, wpisz inną nazwę.</string>
     <string name="rt_plus_tags">Tagi</string>
