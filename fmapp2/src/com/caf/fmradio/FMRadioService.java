@@ -42,6 +42,7 @@ import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.pm.ServiceInfo;
 import android.app.IntentService;
 import android.os.UserHandle;
 import android.content.BroadcastReceiver;
@@ -1734,7 +1735,8 @@ public class FMRadioService extends Service
             .setOngoing(true)
             .build();
 
-          startForeground(FMRADIOSERVICE_STATUS, notification);
+          startForeground(FMRADIOSERVICE_STATUS, notification,
+                ServiceInfo.FOREGROUND_SERVICE_TYPE_MEDIA_PLAYBACK);
           mFMOn = true;
       }
    }
@@ -1777,7 +1779,7 @@ public class FMRadioService extends Service
       mDelayedStopHandler.removeCallbacksAndMessages(null);
       cancelAlarms();
       setAlarmDelayedServiceStop();
-      stopForeground(true);
+      stopForeground(Service.STOP_FOREGROUND_REMOVE);
    }
 
    /** Read's the internal Antenna available state from the FM

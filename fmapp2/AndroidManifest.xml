@@ -29,7 +29,9 @@
 
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.caf.fmradio" >
-    <uses-sdk android:minSdkVersion="31"  android:targetSdkVersion="31"/>
+    <uses-sdk android:minSdkVersion="34"  android:targetSdkVersion="34"/>
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_MEDIA_PLAYBACK" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
     <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
     <uses-permission android:name="android.permission.BLUETOOTH" />
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
@@ -130,6 +132,7 @@
        </activity>
 
        <service android:name=".FMRadioService"
+            android:foregroundServiceType="mediaPlayback"
             android:exported="true" />
 
     </application>
