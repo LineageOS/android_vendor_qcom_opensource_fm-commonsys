@@ -175,6 +175,7 @@
     <string name="usr_def_band_max">Högsta frekvens (MHz)</string>
     <string name="chanl_spacing">Kanalavstånd</string>
     <string name="set">Ställ in</string>
+    <string name="user_defind_band_msg">Ange frekvens mellan 76,0 och 108,0 MHz med minst en kanals mellanrum och 100 kHz avstånd mellan min- och maxfrekvens</string>
     <string name="save_record_file">FM-inspelningen sparades till \'<xliff:g id="record_file">%1$s</xliff:g>\'</string>
     <string name="fm_search_no_results">Inga kompatibla stationer hittades</string>
     <string name="typ_All_stations">Alla stationer</string>
