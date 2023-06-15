@@ -135,6 +135,7 @@
     <string name="auto_select_af">Frecuencia alternativa</string>
     <string name="settings_revert_defaults_title">Reafitar la configuración</string>
     <string name="settings_revert_defaults_summary">Reafita tola configuración</string>
+    <string name="settings_revert_confirm_msg">Esta aición va borrar tola configuración de l\'aplicación, incluyíos los preaxustes guardaos. ¿Quies siguir?</string>
     <string name="no_storage">Monta la tarxeta SD enantes d\'aniciar la grabación.</string>
     <string name="preparing_sd">Tresnando la tarxeta SD\u2026</string>
     <string name="access_sd_fail">Nun se pudo acceder a la tarxeta SD.</string>
@@ -143,6 +144,10 @@
     <string name="alert_dialog_hint">Introduz un nome</string>
     <string name="search_dialog_title">Busca d\'emisores</string>
     <string name="fm_tune_timeout_msg">Nun se recibió nenguna rempuesta pa sintonizar la emisora FM. Si\'l problema sigue, desactiva la radio FM y volvi activala.</string>
+    <string name="fm_command_failed_title">Operación FM fallida</string>
+    <string name="fm_cmd_failed_msg">La operación FM falló. Si sigue\'l problema, apaga la radio ya volvi prendela.</string>
+    <string name="fm_cmd_failed_msg_hdmi">Falló la operación FM. Usar la radio ya\'l HDMI nun ye téunicamente compatible.</string>
+    <string name="fm_cmd_failed_call_on">La operación FM falló. Nun se permite l\'audiu FM demientres les llamaes.</string>
     <string name="audio_db_title_format"><xliff:g id="format">dd-MM-yyyy HH:mm:ss</xliff:g></string>
     <string name="audio_db_artist_name">Les mios grabaciones FM</string>
     <string name="audio_db_album_name">Grabaciones FM</string>

@@ -136,7 +136,6 @@
     <string name="regional_band_summary_user_defined">Вызначаны карыстальнікам дыяпазон</string>
     <string name="aud_output_mode">Рэжым вываду аўдыя</string>
     <string name="audio_type_stereo">Стэрэа</string>
-    <string name="audio_type_mono">Ч/Б</string>
     <string name="record_dur">Працягласць запісу</string>
     <string name="auto_select_af">Альтэрнатыўная частата</string>
     <string name="settings_revert_defaults_title">Вярнуцца да завадскіх налад</string>
@@ -148,18 +147,10 @@
     <string name="access_sd_fail">Немагчыма атрымаць доступ да SD-карткі.</string>
     <string name="spaceIsLow_content">На SD-карце не хапае месца. Зменіце налады якасці ці выдаліце некалькі выяў ці іншых файлаў.</string>
     <string name="FMRecording_reach_size_limit">Дасягнута абмежаванне памеру.</string>
-    <string name="fm_off">FM адключана.</string>
-    <string name="fm_call">FM не можа выкарыстоўвацца падчас выкліку.</string>
     <string name="alert_dialog_hint">Увядзіце назву</string>
     <string name="search_dialog_title">Шукаць станцыі</string>
     <string name="fm_command_timeout_title">Тайм-аўт</string>
-    <string name="fm_tune_timeout_msg">Няма адказу на настройку FM-станцыі. Калі праблема не знікне, выключыце і зноў уключыце FM.</string>
-    <string name="fm_command_failed_title">Аперацыя немагчыма</string>
-    <string name="fm_cmd_failed_msg">Аперацыя немагчымая. Калі праблема не знікне, выключыце і зноў уключыце FM-радыё.</string>
-    <string name="fm_cmd_failed_msg_hdmi">Аперацыя немагчыма. Немагчыма адначасова выкарыстоўваць FM-радыё і HDMI.</string>
-    <string name="fm_cmd_failed_call_on">Аперацыя немагчыма. Вы не можаце выкарыстоўваць FM-радыё падчас тэлефоннага званка.</string>
     <string name="audio_db_title_format"><xliff:g id="format">yyyy-MM-dd HH:mm:ss</xliff:g></string>
-    <string name="audio_db_artist_name">Мае радыёзапісы</string>
     <string name="audio_db_album_name">Запісы з FM</string>
     <string name="audio_db_playlist_name">Запісы з FM</string>
     <string name="station_name">Станцыя:</string>
@@ -167,14 +158,11 @@
     <string name="station_list_delete_station">Выдаліць: <xliff:g id="name">%s</xliff:g></string>
     <string name="station_list_delete_station_prompt">Вы сапраўды хочаце выдаліць \'<xliff:g id="name">%s</xliff:g>\'?</string>
     <string name="station_name_empty">Пустая назва станцыі, калі ласка, увядзіце яшчэ раз.</string>
-    <string name="station_name_exist">\'<xliff:g id="name">%s</xliff:g>\' ужо выкарыстоўваецца, увядзіце іншую назву.</string>
     <string name="rt_plus_tags">Ключавыя словы</string>
-    <string name="usr_def_band_min">Мінімальная частата (Мгц)</string>
     <string name="usr_def_band_max">Максімальная частата (МГц)</string>
     <string name="chanl_spacing">Крок каналаў</string>
     <string name="set">Задаць</string>
     <string name="save_record_file">Файл запісу радыё захаваны ў \'<xliff:g id="record_file">%1$s</xliff:g>\'</string>
-    <string name="fm_search_no_results">Сумесных станцый не знойдзена</string>
     <string name="typ_All_stations">Усе станцыі</string>
     <string name="typ_Culture">Культура</string>
     <string name="typ_Current_affairs">Бягучыя справы</string>
