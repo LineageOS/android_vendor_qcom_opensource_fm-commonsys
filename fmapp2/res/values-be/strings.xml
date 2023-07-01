@@ -45,7 +45,6 @@
     <string name="msg_search_title"><xliff:g id="frequency_string">%1$s</xliff:g> МГц</string>
     <string name="msg_searching_title">Аўтапошук станцый</string>
     <string name="msg_searching">Пошук станцый з магутным сігналам для стварэння спіса станцый\u2026</string>
-    <string name="msg_noantenna">Калі ласка, устаўце гарнітуру</string>
     <string name="dialog_sleep_title">Час аўтавыключэння</string>
     <string name="presetlist_select_name">Абраць \'<xliff:g id="presetlist_name">%1$s</xliff:g>\'</string>
     <string name="presetlist_add_new">Дадаць новы спіс</string>
@@ -157,7 +156,6 @@
     <string name="station_exists">Гэта частата ужо існуе!</string>
     <string name="station_list_delete_station">Выдаліць: <xliff:g id="name">%s</xliff:g></string>
     <string name="station_list_delete_station_prompt">Вы сапраўды хочаце выдаліць \'<xliff:g id="name">%s</xliff:g>\'?</string>
-    <string name="station_name_empty">Пустая назва станцыі, калі ласка, увядзіце яшчэ раз.</string>
     <string name="rt_plus_tags">Ключавыя словы</string>
     <string name="usr_def_band_max">Максімальная частата (МГц)</string>
     <string name="chanl_spacing">Крок каналаў</string>
@@ -183,7 +181,6 @@
     <string name="typ_News">Навіны</string>
     <string name="typ_National">Нацыянальная музыка</string>
     <string name="typ_Other">Іншая музыка</string>
-    <string name="typ_Oldies">Сталая музыка</string>
     <string name="typ_Phone_in">Тэлефон у</string>
     <string name="typ_Pop">Поп музыка</string>
     <string name="typ_Religion">Рэлігія</string>
@@ -202,8 +199,6 @@
     <string name="typ_Foreign_language">Замежная мова</string>
     <string name="typ_Hiphop">Хіп-хоп</string>
     <string name="typ_Nostalgia">Настальгія</string>
-    <string name="typ_Personality">Індывідуальны</string>
-    <string name="typ_Public">Грамадскі</string>
     <string name="typ_Religious_music">Рэлігійная музыка</string>
     <string name="typ_Religious_talk">Рэлігійныя размовы</string>
     <string name="typ_Rhythm_and_Blues">Рытм і блюз</string>
