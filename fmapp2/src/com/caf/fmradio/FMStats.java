@@ -3737,7 +3737,7 @@ public class FMStats extends Activity  {
                }
            };
            IntentFilter intentFilter = new IntentFilter(BAND_SWEEP_START_DELAY_TIMEOUT);
-           registerReceiver(mBandSweepDelayExprdListener, intentFilter);
+           registerReceiver(mBandSweepDelayExprdListener, intentFilter, Context.RECEIVER_EXPORTED);
         }
     }
 
@@ -3754,7 +3754,7 @@ public class FMStats extends Activity  {
                }
            };
            IntentFilter intentFilter = new IntentFilter(BAND_SWEEP_DWELL_DELAY_TIMEOUT);
-           registerReceiver(mBandSweepDwellExprdListener, intentFilter);
+           registerReceiver(mBandSweepDwellExprdListener, intentFilter, Context.RECEIVER_EXPORTED);
         }
     }
 

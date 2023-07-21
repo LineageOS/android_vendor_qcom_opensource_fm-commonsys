@@ -3248,7 +3248,7 @@ public void onRequestPermissionsResult(int requestCode, String[] permissions,  i
             };
             IntentFilter iFilter = new IntentFilter();
             iFilter.addAction(Settings.ACTION_FM_SETTING);
-            registerReceiver(mFmSettingReceiver, iFilter);
+            registerReceiver(mFmSettingReceiver, iFilter, Context.RECEIVER_EXPORTED);
         }
     }
 
