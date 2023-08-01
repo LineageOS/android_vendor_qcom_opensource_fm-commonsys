@@ -133,7 +133,6 @@
     <string name="no_storage">Для пачатку запісу далучыце SD-картку.</string>
     <string name="preparing_sd">Падрыхтоўка SD-карткі\u2026</string>
     <string name="access_sd_fail">Немагчыма атрымаць доступ да SD-карткі.</string>
-    <string name="spaceIsLow_content">На SD-карце не хапае месца. Зменіце налады якасці ці выдаліце некалькі выяў ці іншых файлаў.</string>
     <string name="FMRecording_reach_size_limit">Дасягнута абмежаванне памеру.</string>
     <string name="menu_scan_for_preset">Шукаць захаваныя станцыі</string>
     <string name="alert_dialog_hint">Увядзіце назву</string>
@@ -169,9 +168,7 @@
     <string name="typ_National">Нацыянальная музыка</string>
     <string name="typ_Other">Іншая музыка</string>
     <string name="typ_Phone_in">Тэлефон у</string>
-    <string name="typ_Pop">Поп музыка</string>
     <string name="typ_Religion">Рэлігія</string>
-    <string name="typ_Rock">Рок музыка</string>
     <string name="typ_Science">Навука</string>
     <string name="typ_Serious_classical">Сур\'ёзная класіка</string>
     <string name="typ_Social_affairs">Сацыяльныя пытанні</string>
