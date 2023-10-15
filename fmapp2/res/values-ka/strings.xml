@@ -159,7 +159,7 @@
     <string name="fm_command_failed_title">FM-მოქმდება ვერ შესრულდა</string>
     <string name="fm_cmd_failed_msg">FM-მოქმედება ვერ შესრულდა. ხარვეზის არსებობის შემთხვევაში, გთხოვთ გამორთოთ FM და ხელახლა ჩართოთ.</string>
     <string name="fm_cmd_failed_msg_hdmi">FM-მოქმედება ვერ შესრულდა. FM და HDMI ერთდროულად მხარდაუჭერელია.</string>
-    <string name="fm_cmd_failed_call_on">FM-მოქმედება ვერ შესრულდა. FM-სიგნალი დაუშვებელია ზარისას.</string>
+    <string name="fm_cmd_failed_call_on">FM-მოქმედება ვერ შესრულდა. FM-სიგნალი მიუღებელია ზარისას.</string>
     <string name="audio_db_title_format"><xliff:g id="format">dd-MM-yyyy HH:mm:ss</xliff:g></string>
     <string name="audio_db_artist_name">ჩემი FM-ჩანაწერები</string>
     <string name="audio_db_album_name">FM-ჩანაწერები</string>
