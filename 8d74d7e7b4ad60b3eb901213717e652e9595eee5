@@ -16,6 +16,24 @@
       "message": "Revert https://github.com/LineageOS/android_vendor_qcom_opensource_fm-commonsys/commit/7e8d3109dd3d3577216dd3fd9daf3083f50bfb1a instead",
       "revId": "8d74d7e7b4ad60b3eb901213717e652e9595eee5",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d7c984ee_98e52e9b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 16185
+      },
+      "writtenOn": "2023-11-03T00:36:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1bd22a1d_4e36f29e",
+      "revId": "8d74d7e7b4ad60b3eb901213717e652e9595eee5",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
