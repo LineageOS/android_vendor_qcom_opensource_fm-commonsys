@@ -177,7 +177,7 @@
     <string name="set">Ayarla</string>
     <string name="user_defind_band_msg">Ən az 1 kanal aralığı ilə və minimum və maksimum tezlik arasında 100 kHz aralığa sahib 76.0-108.0 MHz arası tezlik daxil edin</string>
     <string name="save_record_file">FM səsyazma faylı \'<xliff:g id="record_file">%1$s</xliff:g>\' yolunda saxlanıldı</string>
-    <string name="fm_search_no_results">Uyğun stansiyalar tapılmadı</string>
+    <string name="fm_search_no_results">Uyumlu stansiyalar tapılmadı</string>
     <string name="typ_All_stations">Bütün kanallar</string>
     <string name="typ_Culture">Mədəniyyət</string>
     <string name="typ_Current_affairs">Hazırki hadisələr</string>
