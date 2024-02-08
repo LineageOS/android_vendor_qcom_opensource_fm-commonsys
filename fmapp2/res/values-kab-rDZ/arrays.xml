@@ -28,28 +28,16 @@
  * ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 -->
 <resources>
-  <string-array name="ster_mon_entries">
-    <item>Стэрэа</item>
-    <item>Мона</item>
-  </string-array>
-  <string-array name="ster_entries">
-    <item>Стэрэа</item>
-  </string-array>
   <string-array name="record_durations_entries">
-    <item>5 хвілін</item>
-    <item>15 хвілін</item>
-    <item>30 хвілін</item>
-    <item>Until stopped</item>
+    <item>5 n tisdatin</item>
+    <item>15 n tisdatin</item>
+    <item>30 n tisdatin</item>
+    <item>Arma yeḥbes</item>
   </string-array>
   <string-array name="sleep_duration_values">
-    <item>15 хвілін</item>
-    <item>30 хвілін</item>
-    <item>45 хвілін</item>
-    <item>1 гадзіна</item>
-  </string-array>
-  <string-array name="channel_spacing_entries">
-    <item>50 кГц</item>
-    <item>100 кГц</item>
-    <item>200 кГц</item>
+    <item>15 n tisdatin</item>
+    <item>30 n tisdatin</item>
+    <item>45 n tisdatin</item>
+    <item>1 asrag</item>
   </string-array>
 </resources>

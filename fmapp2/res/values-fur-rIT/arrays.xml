@@ -29,27 +29,27 @@
 -->
 <resources>
   <string-array name="ster_mon_entries">
-    <item>Стэрэа</item>
-    <item>Мона</item>
+    <item>Stereo</item>
+    <item>Mono</item>
   </string-array>
   <string-array name="ster_entries">
-    <item>Стэрэа</item>
+    <item>Stereo</item>
   </string-array>
   <string-array name="record_durations_entries">
-    <item>5 хвілін</item>
-    <item>15 хвілін</item>
-    <item>30 хвілін</item>
-    <item>Until stopped</item>
+    <item>5 minûts</item>
+    <item>15 minûts</item>
+    <item>30 minûts</item>
+    <item>Fin ae fermade</item>
   </string-array>
   <string-array name="sleep_duration_values">
-    <item>15 хвілін</item>
-    <item>30 хвілін</item>
-    <item>45 хвілін</item>
-    <item>1 гадзіна</item>
+    <item>15 minûts</item>
+    <item>30 minûts</item>
+    <item>45 minûts</item>
+    <item>1 ore</item>
   </string-array>
   <string-array name="channel_spacing_entries">
-    <item>50 кГц</item>
-    <item>100 кГц</item>
-    <item>200 кГц</item>
+    <item>50 kHz</item>
+    <item>100 kHz</item>
+    <item>200 kHz</item>
   </string-array>
 </resources>
