@@ -150,7 +150,7 @@
     <string name="spaceIsLow_content">Hapësira në kartën SD është pothuajse e mbushur plot. Ndrysho parametrat e cilësisë ose fshi disa imazhe apo disa skedarë të tjerë për të liruar vënd.</string>
     <string name="FMRecording_reach_size_limit">U arrit kufiri i madhësisë.</string>
     <string name="menu_scan_for_preset">Kërko për kanale</string>
-    <string name="fm_off">FM u çaktivizua.</string>
+    <string name="fm_off">FM u fik.</string>
     <string name="fm_call">FM s\'mund të përdoret gjatë telefonatës.</string>
     <string name="alert_dialog_hint">Vendos një emër</string>
     <string name="search_dialog_title">Skano stacionet</string>
