@@ -160,6 +160,7 @@
     <string name="fm_cmd_failed_msg">Thao tác FM không thành công. Nếu vẫn tiếp tục xảy ra vấn đề, vui lòng tắt FM và quay lại.</string>
     <string name="fm_cmd_failed_msg_hdmi">Thao tác FM không thành công. Truy cập đồng thời FM và HDMI không được hỗ trợ.</string>
     <string name="fm_cmd_failed_call_on">Thao tác FM không thành công. Âm thanh FM không được cho phép trong suốt cuộc gọi.</string>
+    <string name="audio_db_title_format"><xliff:g id="format">dd-MM-yyyy HH:mm:ss</xliff:g></string>
     <string name="audio_db_artist_name">Bản ghi âm FM của tôi</string>
     <string name="audio_db_album_name">Bản ghi âm FM</string>
     <string name="audio_db_playlist_name">Bản ghi âm FM</string>
@@ -168,6 +169,7 @@
     <string name="station_list_delete_station">Xóa: <xliff:g id="name">%s</xliff:g></string>
     <string name="station_list_delete_station_prompt">Bạn có chắc chắn muốn xóa \'<xliff:g id="name">%s</xliff:g>\'?</string>
     <string name="station_name_empty">Tên trạm trống, vui lòng nhập lại.</string>
+    <string name="station_name_exist">\'<xliff:g id="name">%s</xliff:g>\' đã được sử dụng, vui lòng nhập tên khác.</string>
     <string name="rt_plus_tags">Thẻ</string>
     <string name="usr_def_band_min">Tần số thấp nhất (MHz)</string>
     <string name="usr_def_band_max">Tần số cao nhất (MHz)</string>

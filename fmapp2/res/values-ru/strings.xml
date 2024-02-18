@@ -161,6 +161,7 @@
     <string name="fm_cmd_failed_msg">Операция невозможна. Если проблема не исчезнет, выключите FM-радио и включите его снова.</string>
     <string name="fm_cmd_failed_msg_hdmi">Одновременное использование FM-радио и HDMI невозможно.</string>
     <string name="fm_cmd_failed_call_on">Использование FM-радио во время телефонного звонка невозможно.</string>
+    <string name="audio_db_title_format"><xliff:g id="format">dd-MM-yyyy HH:mm:ss</xliff:g></string>
     <string name="audio_db_artist_name">Мои радиозаписи</string>
     <string name="audio_db_album_name">Радиозаписи</string>
     <string name="audio_db_playlist_name">Радиозаписи</string>

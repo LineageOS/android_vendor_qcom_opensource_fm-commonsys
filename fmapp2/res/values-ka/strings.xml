@@ -175,7 +175,7 @@
     <string name="usr_def_band_max">უმაღლესი სიხშირე (მჰც)</string>
     <string name="chanl_spacing">არხის ბიჯი</string>
     <string name="set">დაყენება</string>
-    <string name="user_defind_band_msg">შეიყვანეთ სიხშირე 76.0 მჰც-ს და 108.0 მჰც-ს შუალედში, სულ მცირე 1 არხისა და 100 კჰც დაშორებით უმცირესსა და უმაღლეს სიხშირეთა შორის.</string>
+    <string name="user_defind_band_msg">შეიყვანეთ სიხშირე შუალედით 76.0 და 108.0 მჰც სულ მცირე 1 არხისა და 100 კჰც დაშორებით უმცირესსა და უმაღლეს სიხშირეთა შორის.</string>
     <string name="save_record_file">FM-ჩანაწერის შენახვის ადგილია „<xliff:g id="record_file">%1$s</xliff:g>“</string>
     <string name="fm_search_no_results">თავსებადი სადგურები ვერ მოიძებნა</string>
     <string name="typ_All_stations">ყველა სადგური</string>
@@ -188,7 +188,7 @@
     <string name="typ_Easy_listening">ადვილი მოსასმენი</string>
     <string name="typ_Education">საგანმანათლებლო</string>
     <string name="typ_Emergency">საგანგებო</string>
-    <string name="typ_Emergency_test">საგანგებო საცდელი</string>
+    <string name="typ_Emergency_test">საგანგებო (შემოწმება)</string>
     <string name="typ_Finance">ფულადი სახსრები</string>
     <string name="typ_Folk">ხალხური</string>
     <string name="typ_Information">ამბები</string>
