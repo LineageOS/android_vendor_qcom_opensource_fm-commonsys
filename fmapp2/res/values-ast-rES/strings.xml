@@ -139,6 +139,7 @@
     <string name="no_storage">Monta la tarxeta SD enantes d\'aniciar la grabación.</string>
     <string name="preparing_sd">Tresnando la tarxeta SD\u2026</string>
     <string name="access_sd_fail">Nun se pudo acceder a la tarxeta SD.</string>
+    <string name="spaceIsLow_content">La tarxeta SD ta escosando l\'espaciu. Camuda la configuración de la calidá o desanicia dalgunos ficheros pa lliberar espaciu.</string>
     <string name="fm_off">La radio FM ta apagada.</string>
     <string name="fm_call">La radio FM nun se pue usar nes llamaes telefóniques.</string>
     <string name="alert_dialog_hint">Introduz un nome</string>
@@ -195,6 +196,8 @@
     <string name="typ_Weather">Clima</string>
     <string name="typ_Classical">Música clásica</string>
     <string name="typ_Classic_Rock">Música rock clásica</string>
+    <string name="typ_College">Escuela</string>
+    <string name="typ_Foreign_language">Llingües estranxeres</string>
     <string name="typ_Hiphop">Música hip hop</string>
     <string name="typ_Nostalgia">Señaldá</string>
     <string name="typ_Personality">Personalidaes</string>
