@@ -160,6 +160,7 @@
     <string name="fm_cmd_failed_msg">Operace FM rádia selhala. Pokud problém přetrvává, vypněte a opět zapněte prosím FM rádio.</string>
     <string name="fm_cmd_failed_msg_hdmi">Operace FM rádia selhala. Nelze společně provozovat FM rádio a zároveň HDMI připojení.</string>
     <string name="fm_cmd_failed_call_on">Operace FM rádia selhala. Nelze současně mít zapnuté FM rádio a volat.</string>
+    <string name="audio_db_title_format"><xliff:g id="format">dd. MM. yyyy HH:mm:ss</xliff:g></string>
     <string name="audio_db_artist_name">Mé nahrávky FM</string>
     <string name="audio_db_album_name">Nahrávky FM</string>
     <string name="audio_db_playlist_name">Nahrávky FM</string>
