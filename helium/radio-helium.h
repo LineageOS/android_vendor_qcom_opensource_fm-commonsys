@@ -614,7 +614,7 @@ struct hci_ev_radio_text {
 struct hci_ev_af_list {
     int   tune_freq;
     short   pi_code;
-    char    af_size;
+    uint8_t af_size;
     char    af_list[FM_AF_LIST_MAX_SIZE];
 } __attribute__((packed)) ;
 
@@ -688,7 +688,7 @@ struct hci_fm_af_list_rsp {
 } __attribute__((packed));
 
 struct hci_fm_data_rd_rsp {
-    char    data_len;
+    uint8_t data_len;
     char    data[DEFAULT_DATA_SIZE];
 } ;
 
@@ -750,6 +750,8 @@ struct hci_fm_spur_data {
 #define AF_SIZE_OFFSET 6
 #define AF_LIST_OFFSET 7
 #define RT_A_B_FLAG_OFFSET 4
+#define RDS_PS_NUMBER_MIN 1
+#define RDS_PS_NUMBER_MAX 12
 /*FM states*/
 
 enum radio_state_t {

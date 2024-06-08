@@ -279,9 +279,10 @@ static void hci_cc_sig_threshold_rsp(char *ev_buff)
     hal->jni_cb->fm_get_sig_thres_cb(val, status);
 }
 
-static void hci_cc_default_data_read_rsp(char *ev_buff)
+static void hci_cc_default_data_read_rsp(uint8_t ev_buff[])
 {
-    int status, val= 0, data_len = 0;
+    int status, val= 0;
+    uint8_t data_len = 0;
 
     if (ev_buff == NULL) {
         ALOGE("Response buffer is null");
@@ -291,7 +292,7 @@ static void hci_cc_default_data_read_rsp(char *ev_buff)
     if (status == 0) {
         data_len = ev_buff[1];
         ALOGV("hci_cc_default_data_read_rsp:data_len = %d", data_len);
-        memcpy(&hal->radio->def_data, &ev_buff[1], data_len + sizeof(char));
+        memcpy(&hal->radio->def_data, &ev_buff[1], data_len + sizeof(uint8_t));
 
         if (test_bit(def_data_rd_mask_flag, CMD_DEFRD_AF_RMSSI_TH)) {
             val = hal->radio->def_data.data[AF_RMSSI_TH_OFFSET];
@@ -528,7 +529,7 @@ static inline void hci_cmd_complete_event(uint8_t buff[])
             hci_cc_sig_threshold_rsp(pbuf);
             break;
     case hci_common_cmd_op_pack(HCI_OCF_FM_DEFAULT_DATA_READ):
-            hci_cc_default_data_read_rsp(pbuf);
+            hci_cc_default_data_read_rsp(&buff[3]);
             break;
     case hci_common_cmd_op_pack(HCI_OCF_FM_DEFAULT_DATA_WRITE):
             hci_cc_default_data_write_rsp(pbuf);
@@ -670,6 +671,15 @@ static inline void hci_ev_program_service(uint8_t buff[])
     int len;
     char *data;
 
+    if (buff == NULL) {
+        ALOGE("%s:%s, buffer is null\n", LOG_TAG,__func__);
+        return;
+    }
+    if (buff[RDS_PS_LENGTH_OFFSET] < RDS_PS_NUMBER_MIN ||
+        buff[RDS_PS_LENGTH_OFFSET] > RDS_PS_NUMBER_MAX) {
+        ALOGE("%s:Invalid PS strings number", LOG_TAG);
+        return;
+    }
     len = (buff[RDS_PS_LENGTH_OFFSET] * RDS_STRING) + RDS_OFFSET;
     data = malloc(len);
     if (!data) {
