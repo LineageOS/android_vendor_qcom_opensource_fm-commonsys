@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "186b4aa5_813ab176",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 20370
+      },
+      "writtenOn": "2024-11-05T20:46:58Z",
+      "side": 1,
+      "message": "needs 403055, fixes FM playback through speaker on rhodep",
+      "revId": "13fa5cae90e22dddaaadfcff21da7ddf051855ae",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
