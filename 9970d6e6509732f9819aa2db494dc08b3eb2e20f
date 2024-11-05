@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6995abfc_702d91fb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 20370
+      },
+      "writtenOn": "2024-11-05T20:47:34Z",
+      "side": 1,
+      "message": "needs 403060, needed rebase due to removal of cherokee code, fixes FM playback through speaker on rhodep",
+      "revId": "9970d6e6509732f9819aa2db494dc08b3eb2e20f",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
