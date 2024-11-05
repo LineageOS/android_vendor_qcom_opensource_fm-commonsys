@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "931a8c80_aa386428",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 20370
+      },
+      "writtenOn": "2024-11-05T21:01:49Z",
+      "side": 1,
+      "message": "squashed https://review.lineageos.org/c/LineageOS/android_vendor_qcom_opensource_fm-commonsys/+/403060, needed rebase due to removal of cherokee code, fixes FM playback through speaker on rhodep",
+      "revId": "41adf5466cb29f7c959ac153204f65ac9743640c",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
