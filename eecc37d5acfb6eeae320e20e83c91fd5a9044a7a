@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "04620e91_bfe98f2a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 4550
+      },
+      "writtenOn": "2024-12-03T21:05:11Z",
+      "side": 1,
+      "message": "@merothh@gmail.com does this work for you on otter along with the device side commits? I am not able to get audio with all the adapters I have tried.",
+      "revId": "eecc37d5acfb6eeae320e20e83c91fd5a9044a7a",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
