@@ -16,6 +16,24 @@
       "message": "@merothh@gmail.com does this work for you on otter along with the device side commits? I am not able to get audio with all the adapters I have tried.",
       "revId": "eecc37d5acfb6eeae320e20e83c91fd5a9044a7a",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f64c398_ee63bb7f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 18586
+      },
+      "writtenOn": "2024-12-04T09:53:18Z",
+      "side": 1,
+      "message": "I don\u0027t get audio on stock ROM as well, but with current patchsets the crash on FM poweron is fixed\n\nThe signal is weak where I reside, which lead to me only catching onto the audio issue yesterday.",
+      "parentUuid": "04620e91_bfe98f2a",
+      "revId": "eecc37d5acfb6eeae320e20e83c91fd5a9044a7a",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
