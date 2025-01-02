@@ -36,15 +36,15 @@
     <item>பன்னொலி</item>
   </string-array>
   <string-array name="record_durations_entries">
-    <item>5 நிமிடங்கள்</item>
-    <item>15 நிமிடங்கள்</item>
-    <item>30 நிமிடங்கள்</item>
+    <item>5 நுணுத்தம்</item>
+    <item>15 நுணுத்தம்</item>
+    <item>30 நுணுத்தம்</item>
     <item>நிறுத்தும் வரை</item>
   </string-array>
   <string-array name="sleep_duration_values">
-    <item>15 நிமிடங்கள்</item>
-    <item>30 நிமிடங்கள்</item>
-    <item>45 நிமிடங்கள்</item>
+    <item>15 நுணுத்தம்</item>
+    <item>30 நுணுத்தம்</item>
+    <item>45 நுணுத்தம்</item>
     <item>1 மணிநேரம்</item>
   </string-array>
   <string-array name="channel_spacing_entries">
