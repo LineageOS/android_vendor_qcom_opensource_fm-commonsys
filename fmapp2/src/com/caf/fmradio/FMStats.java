@@ -2852,7 +2852,7 @@ public class FMStats extends Activity  {
 
         String chip = mReceiver.getSocName();
 
-        if (chip.equals("cherokee"))
+        if (chip.equals("cherokee") || chip.equals("evros"))
             return true;
         else
             return false;
