@@ -27,6 +27,10 @@
  * ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 -->
 <resources>
+    <style name="OptOutEdgeToEdge">
+        <item name="android:windowOptOutEdgeToEdgeEnforcement">true</item>
+    </style>
+
     <style name="FMStationSeekBar">
         <item name="android:indeterminateOnly">false</item>
         <item name="android:progressDrawable">@android:drawable/progress_horizontal</item>
