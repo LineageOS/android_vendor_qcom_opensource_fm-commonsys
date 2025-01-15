@@ -147,7 +147,7 @@
     <string name="no_storage">Montar la tarjeta SD antes de iniciar la grabación.</string>
     <string name="preparing_sd">Preparando tarjeta SD...</string>
     <string name="access_sd_fail">No se puede acceder a la tarjeta SD.</string>
-    <string name="spaceIsLow_content">La tarjeta SD se está quedando sin espacio. Cambia el ajuste de calidad o elimina algunas imágenes o archivos.</string>
+    <string name="spaceIsLow_content">La tarjeta SD está quedando sin espacio. Cambia el ajuste de calidad o elimina algunas imágenes o archivos.</string>
     <string name="FMRecording_reach_size_limit">Se ha alcanzado el límite de tamaño.</string>
     <string name="menu_scan_for_preset">Buscar preseleccionadas</string>
     <string name="fm_off">La radio FM está apagada.</string>

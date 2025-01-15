@@ -48,6 +48,7 @@
     <string name="msg_searching">プリセットリストを作成するために電波の強い局を検索中...</string>
     <string name="msg_noantenna">FMラジオを使用するにはヘッドセットを接続してください</string>
     <string name="dialog_sleep_title">自動終了スリープ時間</string>
+    <string name="presetlist_select_name"><xliff:g id="presetlist_name">%1$s</xliff:g> を選択</string>
     <string name="presetlist_add_new">新しいリストを追加</string>
     <string name="dialog_presetlist_rename_title">名前を入力:</string>
     <string name="presetlist_autoselect_title">自動選択を確認</string>
