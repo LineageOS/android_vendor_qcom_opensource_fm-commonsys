@@ -10,5 +10,5 @@ android_app {
     platform_apis: true,
     aaptflags: ["--legacy"],
     system_ext_specific: true,
-    required: ["qcom.fmradio.xml"],
+    required: ["qcom.fmradio", "qcom.fmradio.xml"],
 }
