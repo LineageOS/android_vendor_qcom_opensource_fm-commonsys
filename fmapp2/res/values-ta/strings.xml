@@ -30,7 +30,7 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="app_name">பண்பலை வானொலி</string>
     <string name="tx_app_name">பண்பலைப்பரப்பி</string>
-    <string name="menu_scan_start">ஊடறிக</string>
+    <string name="menu_scan_start">துழவுக</string>
     <string name="menu_scan_stop">தேடலை நிறுத்துக</string>
     <string name="menu_record_start">பதிவுசெய்க</string>
     <string name="menu_record_stop">பதிவித்தலை நிறுத்துக</string>
@@ -41,12 +41,12 @@
     <string name="menu_display_tags">குறிகளைக் காட்டுக</string>
     <string name="button_text_stop">நிறுத்துக</string>
     <string name="msg_seeking">பண்பலை நிலையத்தைத் தேடுகிறது\u2026</string>
-    <string name="msg_scanning">பண்பலை நிலையங்கள் முழுதும் ஊடறிகிறது\u2026</string>
-    <string name="msg_scanning_pty">\'<xliff:g id="pty_name">%1$s</xliff:g>\'\u2026 என்பதற்காக ஊடறிகிறது</string>
+    <string name="msg_scanning">பண்பலை நிலையங்கள் முழுதும் துழவுகிறது\u2026</string>
+    <string name="msg_scanning_pty">\'<xliff:g id="pty_name">%1$s</xliff:g>\'\u2026 என்பதற்காகத் துழவுகிறது</string>
     <string name="msg_search_title"><xliff:g id="frequency_string">%1$s</xliff:g> MHz</string>
     <string name="msg_searching_title">தற்தெரிவுசெய்தல் முன்னமைவுகளை</string>
     <string name="msg_searching">ஒரு முன்னமைவுப் பட்டியலை உருவாக்க வலிய நிலையங்களைத் தேடுகிறது\u2026</string>
-    <string name="msg_noantenna">தலையணி ஒன்றைச் செருகுக வானொலியைப் பயன்படுத்த </string>
+    <string name="msg_noantenna">தலையணியைச் செருகுக வானொலியைப் பயன்படுத்த</string>
     <string name="dialog_sleep_title">உறக்க நேரத்தைத் தன்னணைக்க</string>
     <string name="presetlist_select_name">\'<xliff:g id="presetlist_name">%1$s</xliff:g>\' என்பதைத்தேர்க</string>
     <string name="presetlist_add_new">புதுப்பட்டியலைச் சேர்க்க</string>
@@ -149,11 +149,11 @@
     <string name="access_sd_fail">SD அட்டையை அணுக முடியவில்லை.</string>
     <string name="spaceIsLow_content">இடமின்றி உமது SD அட்டை சேமிப்பகம் தொடருகிறது. தர அமைப்பை மாற்றியோ, சில கோப்புகளை நீக்கியோ இடத்தை வெறுமையாக்குக.</string>
     <string name="FMRecording_reach_size_limit">அளவு வரம்படைந்தது.</string>
-    <string name="menu_scan_for_preset">முன்னமைவுகளுக்காக ஊடறிக</string>
+    <string name="menu_scan_for_preset">முன்னமைவுகளுக்காகத் துழவுக</string>
     <string name="fm_off">பண்பலை அணைக்கப்பட்டுள்ளது.</string>
     <string name="fm_call">பண்பலையை அழைப்பின்போது பயன்படுத்த முடியாது.</string>
     <string name="alert_dialog_hint">ஒரு பெயரை உள்ளிடுக</string>
-    <string name="search_dialog_title">நிலையங்களை ஊடறிக</string>
+    <string name="search_dialog_title">நிலையங்களைத் துழவுக</string>
     <string name="fm_command_timeout_title">நேரமுடிவு</string>
     <string name="fm_tune_timeout_msg">பண்பலை நிலையத்தை இசைவிக்க மறுமொழி பெறப்படவில்லை. பிறழ்வினை தொடர்ந்தால், பண்பலையை அணைத்து மீண்டும் இயக்குக.</string>
     <string name="fm_command_failed_title">பண்பலைச் செயற்பாடு செயலிழந்தது</string>
@@ -176,7 +176,7 @@
     <string name="chanl_spacing">கற்றையகலம்</string>
     <string name="set">அமைக்க</string>
     <string name="user_defind_band_msg">76.0 முதல் 108.0 MHz வரையிலான அதிர்வெண்ணை மீச்சிறு ஓர் அலைவரிசை இடைவெளியுடனும், சிறும பெரும அதிர்வெண்ணுக்கு இடையே 100 kHz இடைவெளியுடனும் உள்ளிடுக</string>
-    <string name="save_record_file">பதிவுசெய்த கோப்பு \'<xliff:g id="record_file"> %1$s</xliff:g>\' இல் சேமிக்கப்பட்டது</string>
+    <string name="save_record_file">பண்பலைப் பதிவு \'<xliff:g id="record_file"> %1$s</xliff:g>\' கோப்பில் சேமிக்கப்பட்டது</string>
     <string name="fm_search_no_results">இணக்கமான நிலையங்கள் எவையும் இல்லை</string>
     <string name="typ_All_stations">நிலையங்கள் அனைத்தும்</string>
     <string name="typ_Culture">பண்பாடு</string>

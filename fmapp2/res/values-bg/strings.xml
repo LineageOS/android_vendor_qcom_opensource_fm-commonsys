@@ -42,10 +42,13 @@
     <string name="button_text_stop">Спри</string>
     <string name="msg_seeking">Търсене на ръдиостанции\u2026</string>
     <string name="msg_scanning">Сканиране за всички радиостанции\u2026</string>
+    <string name="msg_scanning_pty">Сканиране за \' <xliff:g id="pty_name"> %1$s\' </xliff:g>\'\u2026</string>
+    <string name="msg_search_title"><xliff:g id="frequency_string">%1$s</xliff:g> MHz</string>
     <string name="msg_searching_title">Автоматично избиране на станции</string>
     <string name="msg_searching">Търсене на станции със силен сигнал, за създаване на списък\u2026</string>
     <string name="msg_noantenna">Моля включете слушалките, за да използвате радиото</string>
     <string name="dialog_sleep_title">Време до самоизключване</string>
+    <string name="presetlist_select_name">Изберете \' <xliff:g id="presetlist_name"> %1$s\' </xliff:g></string>
     <string name="presetlist_add_new">Добавяне на нов списък</string>
     <string name="dialog_presetlist_rename_title">Въведете име</string>
     <string name="presetlist_autoselect_title">Потвърдете автоматично избиране</string>
@@ -53,6 +56,8 @@
     <string name="preset_tune">Настрой</string>
     <string name="preset_rename">Преименуване</string>
     <string name="preset_delete">Изтрий</string>
+    <string name="preset_search">Търсене на \'<xliff:g id="preset_pi">%1$s</xliff:g>\'</string>
+    <string name="stat_notif_frequency">\'<xliff:g id="frequency">%1$s</xliff:g>\' MHz</string>
     <string name="regional_band">Регионален обхват</string>
     <string name="regional_band_entry_north_america">Северна Америка</string>
     <string name="regional_band_entry_europe">Европа</string>
@@ -161,7 +166,10 @@
     <string name="audio_db_playlist_name">Радиозаписи</string>
     <string name="station_name">Станция:</string>
     <string name="station_exists">Тази честота вече съществува!</string>
+    <string name="station_list_delete_station">Изтриване: <xliff:g id="name">%s</xliff:g></string>
+    <string name="station_list_delete_station_prompt">Сигурен ли сте да изтриете \'<xliff:g id="name">%s</xliff:g>\'?</string>
     <string name="station_name_empty">Името на станцията е празно, моля, въведете отново.</string>
+    <string name="station_name_exist">\'<xliff:g id="name">%s </xliff:g>\' е вече в употреба, моля въведете друго име.</string>
     <string name="rt_plus_tags">Етикети</string>
     <string name="usr_def_band_min">Най-ниска честота (MHz)</string>
     <string name="usr_def_band_max">Най-високата честота (MHz)</string>
