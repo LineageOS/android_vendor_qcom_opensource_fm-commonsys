@@ -41,7 +41,6 @@
 #include <dlfcn.h>
 #include "android_runtime/Log.h"
 #include "android_runtime/AndroidRuntime.h"
-#include "bt_configstore.h"
 #include <vector>
 #include "radio-helium.h"
 
@@ -143,10 +142,7 @@ enum search_dir_t {
     SCAN_DN
 };
 
-enum fm_prop_t {
-    FMWAN_RATCONF,
-    FMBTWLAN_LPFENABLER
-};
+enum fm_prop_t { FMWAN_RATCONF, FMBTWLAN_LPFENABLER, FM_STATS };
 
 static JavaVM *g_jVM = NULL;
 
@@ -192,8 +188,6 @@ jmethodID method_getStnDbgParamCallback;
 jmethodID method_enableSlimbusCallback;
 jmethodID method_enableSoftMuteCallback;
 jmethodID method_FmReceiverJNICtor;
-
-int load_bt_configstore_lib();
 
 static bool checkCallbackThread() {
    JNIEnv* env = AndroidRuntime::getJNIEnv();
@@ -649,12 +643,12 @@ static   fm_hal_callbacks_t fm_callbacks = {
 
 static void get_property(int ptype, char *value)
 {
-    if (FM_STATS_PROP == ptype) {
-        property_get("persist.vendor.fm.stats", value, "false");
-    } else if( FM_PROP_WAN_RATCONF == ptype) {
-        property_get("persist.vendor.fm_wan.ratconf", value, "0");
-    } else if ( FM_PROP_BTWLAN_LPFENABLER == ptype) {
-        property_get("persist.vendor.btwlan.lpfenabler", value, "0");
+  if (FM_STATS == ptype) {
+    property_get("persist.vendor.fm.stats", value, "false");
+  } else if (FMWAN_RATCONF == ptype) {
+    property_get("persist.vendor.fm_wan.ratconf", value, "0");
+  } else if (FMBTWLAN_LPFENABLER == ptype) {
+    property_get("persist.vendor.btwlan.lpfenabler", value, "0");
     }
 }
 
@@ -912,7 +906,7 @@ static jboolean android_hardware_fmradio_FmReceiverJNI_getFmStatsPropNative
 {
     jboolean ret;
     char value[PROPERTY_VALUE_MAX] = {'\0'};
-    get_property(FM_STATS_PROP, value);
+    get_property(FM_STATS, value);
     if (!strncasecmp(value, "true", sizeof("true"))) {
         ret = true;
     } else {
@@ -930,9 +924,9 @@ static jint android_hardware_fmradio_FmReceiverJNI_getFmCoexPropNative
     char value[PROPERTY_VALUE_MAX] = {'\0'};
 
     if (property == FMWAN_RATCONF) {
-        get_property(FM_PROP_WAN_RATCONF, value);
+      get_property(FMWAN_RATCONF, value);
     } else if (property == FMBTWLAN_LPFENABLER) {
-        get_property(FM_PROP_BTWLAN_LPFENABLER, value);
+      get_property(FMBTWLAN_LPFENABLER, value);
     } else {
         ALOGE("%s: invalid get property prop = %d\n", __func__, property);
     }
