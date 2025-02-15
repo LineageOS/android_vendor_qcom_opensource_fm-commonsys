@@ -46,7 +46,7 @@
     <string name="msg_search_title"><xliff:g id="frequency_string">%1$s</xliff:g> MHz</string>
     <string name="msg_searching_title">Selección automática de emisoras</string>
     <string name="msg_searching">Buscando las emisoras con mejor señal para crear una lista\u2026</string>
-    <string name="msg_noantenna">Por favor conecta unos auriculares para usar la radio FM</string>
+    <string name="msg_noantenna">Por favor, conecta unos auriculares para usar la radio FM</string>
     <string name="dialog_sleep_title">Tiempo de apagado automático</string>
     <string name="presetlist_select_name">Seleccionar «<xliff:g id="presetlist_name">%1$s</xliff:g>»</string>
     <string name="presetlist_add_new">Añadir nueva lista</string>
@@ -62,7 +62,7 @@
     <string name="regional_band_entry_north_america">Norteamérica</string>
     <string name="regional_band_entry_europe">Europa</string>
     <string name="regional_band_entry_japan">Japón</string>
-    <string name="regional_band_entry_japan_wide">Japón (amplia)</string>
+    <string name="regional_band_entry_japan_wide">Japón (ancha)</string>
     <string name="regional_band_entry_australia">Australia</string>
     <string name="regional_band_entry_austria">Austria</string>
     <string name="regional_band_entry_belgium">Bélgica</string>
@@ -100,13 +100,13 @@
     <string name="regional_band_summary_north_america">Norte América (87,5 a 108,0 MHz en pasos de 200 kHz)</string>
     <string name="regional_band_summary_europe">Europa (87,5 a 108,0 MHz en pasos de 100 kHz)</string>
     <string name="regional_band_summary_japan">Japón (76,0 a 90,0 MHz en pasos de 200 kHz)</string>
-    <string name="regional_band_summary_japan_wide">Japón (amplio) (90,0 a 108,0 MHz en pasos de 50 kHz)</string>
+    <string name="regional_band_summary_japan_wide">Japón (ancha) (90,0 a 108,0 MHz en pasos de 50 kHz)</string>
     <string name="regional_band_summary_australia">Australia (87,7 a 108,0 MHz en pasos de 100 kHz)</string>
     <string name="regional_band_summary_austria">Austria (87,5 a 108,0 MHz en pasos de 50 kHz)</string>
     <string name="regional_band_summary_belgium">Bélgica (87,5 a 108,0 MHz en pasos de 100 kHz)</string>
     <string name="regional_band_summary_brazil">Brasil (87,5 a 108,0 MHz en pasos de 200 kHz)</string>
     <string name="regional_band_summary_china">China (87,0 a 108,0 MHz en pasos de 100 kHz)</string>
-    <string name="regional_band_summary_czech_republic">República Checa (87.5 MHz a 108.0 MHz en pasos de 100 KHz)</string>
+    <string name="regional_band_summary_czech_republic">República Checa (87.5 MHz a 108.0 MHz en pasos de 100 kHz)</string>
     <string name="regional_band_summary_denmark">Dinamarca (87,5 a 108,0 MHz en pasos de 50 kHz)</string>
     <string name="regional_band_summary_finland">Finlandia (87,5 a 108,0 MHz en pasos de 100 kHz)</string>
     <string name="regional_band_summary_france">Francia (87,5 a 108,0 MHz en pasos de 100 kHz)</string>
@@ -115,12 +115,12 @@
     <string name="regional_band_summary_hong_kong">Hong Kong (87,5 a 108,0 MHz en pasos de 100 kHz)</string>
     <string name="regional_band_summary_india">India (87,5 a 108,0 MHz en pasos de 100 kHz)</string>
     <string name="regional_band_summary_indonesia">Indonesia (87,5 a 108,0 MHz en pasos de 100 kHz)</string>
-    <string name="regional_band_summary_ireland">Irlandia (87,5 a 108,0 MHz en pasos de 50 kHz)</string>
+    <string name="regional_band_summary_ireland">Irlanda (87,5 a 108,0 MHz en pasos de 50 kHz)</string>
     <string name="regional_band_summary_italy">Italia (87,5 a 108,0 MHz en pasos de 50 kHz)</string>
     <string name="regional_band_summary_korea">Corea (87,5 a 108,0 MHz en pasos de 200 kHz)</string>
-    <string name="regional_band_summary_mexico">México (88,1 a 107,9 MHz en pasos de 200kHz)</string>
+    <string name="regional_band_summary_mexico">México (88,1 a 107,9 MHz en pasos de 200 kHz)</string>
     <string name="regional_band_summary_netherlands">Países Bajos (87,5 a 108,0 MHz en pasos de 100 kHz)</string>
-    <string name="regional_band_summary_new_zealand">Nueva Zelanda (88,0 a 107,0 MHz en pasos de 100kHz)</string>
+    <string name="regional_band_summary_new_zealand">Nueva Zelanda (88,0 a 107,0 MHz en pasos de 100 kHz)</string>
     <string name="regional_band_summary_norway">Noruega (87,5 a 108,0 MHz en pasos de 100 kHz)</string>
     <string name="regional_band_summary_poland">Polonia (87,5 a 108,0 MHz en pasos de 100 kHz)</string>
     <string name="regional_band_summary_portugal">Portugal (87,5 a 108,0 MHz en pasos de 50 kHz)</string>
@@ -141,13 +141,13 @@
     <string name="record_dur">Duración de grabación</string>
     <string name="auto_select_af">Frecuencia alternativa</string>
     <string name="settings_revert_defaults_title">Restablecer configuración de fábrica</string>
-    <string name="settings_revert_defaults_summary">Restablece todos los ajustes</string>
+    <string name="settings_revert_defaults_summary">Restablecer todos los ajustes</string>
     <string name="settings_revert_confirm_title">Confirmar restablecimiento</string>
     <string name="settings_revert_confirm_msg">Esta acción borrará todos los ajustes de la aplicación, incluyendo las emisoras almacenadas. ¿Continuar?</string>
     <string name="no_storage">Montar la tarjeta SD antes de iniciar la grabación.</string>
-    <string name="preparing_sd">Preparando tarjeta SD...</string>
+    <string name="preparing_sd">Preparando tarjeta SD\u2026</string>
     <string name="access_sd_fail">No se puede acceder a la tarjeta SD.</string>
-    <string name="spaceIsLow_content">La tarjeta SD está quedando sin espacio. Cambia el ajuste de calidad o elimina algunas imágenes o archivos.</string>
+    <string name="spaceIsLow_content">La tarjeta SD se está quedando sin espacio. Cambia el ajuste de calidad o elimina algunos archivos para liberar espacio.</string>
     <string name="FMRecording_reach_size_limit">Se ha alcanzado el límite de tamaño.</string>
     <string name="menu_scan_for_preset">Buscar preseleccionadas</string>
     <string name="fm_off">La radio FM está apagada.</string>
@@ -155,27 +155,27 @@
     <string name="alert_dialog_hint">Introducir un nombre</string>
     <string name="search_dialog_title">Buscar emisoras</string>
     <string name="fm_command_timeout_title">Tiempo de espera</string>
-    <string name="fm_tune_timeout_msg">No se ha recibido respuesta de la emisora FM. Si el problema persiste, apaga la radio y vuelve a encenderla.</string>
+    <string name="fm_tune_timeout_msg">No se ha recibido respuesta para sintonizar la emisora FM. Si el problema persiste, apaga la radio y vuelve a encenderla.</string>
     <string name="fm_command_failed_title">Error en la operación FM</string>
-    <string name="fm_cmd_failed_msg">Eror para operar la radio FM. Si el problema persiste, apaga la radio y vuelve a encenderla.</string>
-    <string name="fm_cmd_failed_msg_hdmi">Falló la operación FM. Es imposible utilizar la radio y el HDMI simultáneamente.</string>
-    <string name="fm_cmd_failed_call_on">Falló la operación FM. El audio FM no está permitido durante una llamada.</string>
+    <string name="fm_cmd_failed_msg">Error para operar la radio FM. Si el problema persiste, apaga la radio y vuelve a encenderla.</string>
+    <string name="fm_cmd_failed_msg_hdmi">Error para operar la radio. Es imposible utilizar la radio y el HDMI simultáneamente.</string>
+    <string name="fm_cmd_failed_call_on">Error para operar la radio. El audio FM no está permitido durante una llamada.</string>
     <string name="audio_db_title_format"><xliff:g id="format">yyyy-MM-dd HH:mm:ss</xliff:g></string>
     <string name="audio_db_artist_name">Mis grabaciones de FM</string>
     <string name="audio_db_album_name">Grabaciones de FM</string>
     <string name="audio_db_playlist_name">Grabaciones de FM</string>
     <string name="station_name">Emisora:</string>
     <string name="station_exists">¡Esta frecuencia ya existe!</string>
-    <string name="station_list_delete_station">Eliminar:<xliff:g id="name">%s</xliff:g></string>
-    <string name="station_list_delete_station_prompt">¿Estás seguro de que quieres eliminar a «<xliff:g id="name">%s</xliff:g>»?</string>
+    <string name="station_list_delete_station">Borrar: <xliff:g id="name">%s</xliff:g></string>
+    <string name="station_list_delete_station_prompt">¿Estás seguro de que quieres borrar a «<xliff:g id="name">%s</xliff:g>»?</string>
     <string name="station_name_empty">Nombre de emisora vacío. Por favor, escribe uno.</string>
-    <string name="station_name_exist">«<xliff:g id="name">%s</xliff:g>» ya está en uso. Por favor, escribe un nuevo nombre.</string>
+    <string name="station_name_exist">«<xliff:g id="name">%s</xliff:g>» ya está en uso. Por favor, escribe otro nombre.</string>
     <string name="rt_plus_tags">Etiquetas</string>
     <string name="usr_def_band_min">Frecuencia más baja (MHz)</string>
     <string name="usr_def_band_max">Frecuencia más alta (MHz)</string>
     <string name="chanl_spacing">Espaciado de canales</string>
     <string name="set">Establecer</string>
-    <string name="user_defind_band_msg">Introduce una frecuencia entre 76,0 y 108,0 MHz con al menos 1 canal de espacio y 100KHz entre la frecuencia mínima y máxima</string>
+    <string name="user_defind_band_msg">Introduce una frecuencia entre 76,0 y 108,0 MHz con al menos 1 canal de espacio y 100 kHz entre la frecuencia mínima y máxima</string>
     <string name="save_record_file">Archivo de grabación de FM guardado en «<xliff:g id="record_file">%1$s</xliff:g>»</string>
     <string name="fm_search_no_results">No se han encontrado emisoras compatibles</string>
     <string name="typ_All_stations">Todas las emisoras</string>
@@ -220,10 +220,10 @@
     <string name="typ_Personality">Personalidad</string>
     <string name="typ_Public">Pública</string>
     <string name="typ_Religious_music">Música religiosa</string>
-    <string name="typ_Religious_talk">Temas religiosos</string>
+    <string name="typ_Religious_talk">Charlas religiosas</string>
     <string name="typ_Rhythm_and_Blues">Rhythm and Blues</string>
     <string name="typ_Spanish_music">Música española</string>
-    <string name="typ_Spanish_talk">Conversación en español</string>
+    <string name="typ_Spanish_talk">Charlas en español</string>
     <string name="typ_Soft">Suave</string>
     <string name="typ_Soft_Rock">Rock suave</string>
     <string name="typ_Soft_Rhythm_and_Blues">Rhythm and Blues suave</string>
