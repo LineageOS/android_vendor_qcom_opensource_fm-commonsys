@@ -38,7 +38,7 @@
     <string name="menu_sleep">Uśpienie</string>
     <string name="menu_sleep_cancel">Anuluj uśpienie</string>
     <string name="menu_all_channels">Wszystkie kanały</string>
-    <string name="menu_display_tags">Pokaż Tagi</string>
+    <string name="menu_display_tags">Pokazuj znaczniki</string>
     <string name="button_text_stop">Zatrzymaj</string>
     <string name="msg_seeking">Wyszukiwanie stacji FM\u2026</string>
     <string name="msg_scanning">Skanowanie w poszukiwaniu wszystkich stacji FM\u2026</string>
