@@ -46,7 +46,7 @@
     <string name="msg_search_title"><xliff:g id="frequency_string">%1$s</xliff:g> MHz</string>
     <string name="msg_searching_title">தற்தெரிவுசெய்தல் முன்னமைவுகளை</string>
     <string name="msg_searching">ஒரு முன்னமைவுப் பட்டியலை உருவாக்க வலிய நிலையங்களைத் தேடுகிறது\u2026</string>
-    <string name="msg_noantenna">தலையணியைச் செருகுக வானொலியைப் பயன்படுத்த</string>
+    <string name="msg_noantenna">தலையணியைச் செருகவும் வானொலியைப் பயன்படுத்த</string>
     <string name="dialog_sleep_title">உறக்க நேரத்தைத் தன்னணைக்க</string>
     <string name="presetlist_select_name">\'<xliff:g id="presetlist_name">%1$s</xliff:g>\' என்பதைத்தேர்க</string>
     <string name="presetlist_add_new">புதுப்பட்டியலைச் சேர்க்க</string>
