@@ -430,7 +430,7 @@ static void hci_rx_thread()
     while (hci.state != FM_RADIO_DISABLING && hci.state != FM_RADIO_DISABLED) {
         //wait for rx event
         ALOGI("%s:before wait", __func__);
-        hci.rx_cond.wait(lk);
+        hci.rx_cond.wait(lk, []{return !hci.rx_event_queue.empty();});
         ALOGI("%s:after wait ", __func__);
         dequeue_fm_rx_event();
     }
