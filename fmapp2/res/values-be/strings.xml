@@ -43,7 +43,6 @@
     <string name="presetlist_add_new">Дадаць новы спіс</string>
     <string name="dialog_presetlist_rename_title">Увядзіце назву</string>
     <string name="presetlist_autoselect_title">Пацвердзіць аўтаматычны выбар</string>
-    <string name="preset_tune">Наладзіць</string>
     <string name="preset_rename">Перайменаваць</string>
     <string name="preset_delete">Выдалiць</string>
     <string name="preset_search">Пошук \'<xliff:g id="preset_pi">%1$s</xliff:g>\'</string>
@@ -129,12 +128,10 @@
     <string name="record_dur">Працягласць запісу</string>
     <string name="auto_select_af">Альтэрнатыўная частата</string>
     <string name="settings_revert_defaults_summary">Скінуць усе налады</string>
-    <string name="settings_revert_confirm_title">Пацвердзіць скід</string>
     <string name="no_storage">Для пачатку запісу далучыце SD-картку.</string>
     <string name="preparing_sd">Падрыхтоўка SD-карткі\u2026</string>
     <string name="access_sd_fail">Немагчыма атрымаць доступ да SD-карткі.</string>
     <string name="FMRecording_reach_size_limit">Дасягнута абмежаванне памеру.</string>
-    <string name="menu_scan_for_preset">Шукаць захаваныя станцыі</string>
     <string name="alert_dialog_hint">Увядзіце назву</string>
     <string name="search_dialog_title">Шукаць станцыі</string>
     <string name="audio_db_title_format"><xliff:g id="format">yyyy-MM-dd HH:mm:ss</xliff:g></string>
@@ -152,15 +149,12 @@
     <string name="typ_Current_affairs">Бягучыя справы</string>
     <string name="typ_Children">Дзіцячыя праграмы</string>
     <string name="typ_Country">Музыка кантры</string>
-    <string name="typ_Documentary">Дакументальны</string>
     <string name="typ_Drama">Драма</string>
-    <string name="typ_Easy_listening">Лёгкая музыка</string>
     <string name="typ_Education">Адукацыя</string>
     <string name="typ_Emergency">Экстранны</string>
     <string name="typ_Emergency_test">Экстранны тэст</string>
     <string name="typ_Finance">Фінансы</string>
     <string name="typ_Folk">Народная музыка</string>
-    <string name="typ_Information">Інфармацыя</string>
     <string name="typ_Jazz">Джазавая музыка</string>
     <string name="typ_Light_classical">Лёгкая класічная</string>
     <string name="typ_Leisure">Вольны час</string>
@@ -175,7 +169,6 @@
     <string name="typ_Sport">Спорт</string>
     <string name="typ_Travel">Падарожжа</string>
     <string name="typ_Weather">Надвор\'е</string>
-    <string name="typ_Adult_hits">Хіты даўніх гадоў</string>
     <string name="typ_Classical">Класіка</string>
     <string name="typ_Classic_Rock">Класічны рок</string>
     <string name="typ_College">Каледж</string>
