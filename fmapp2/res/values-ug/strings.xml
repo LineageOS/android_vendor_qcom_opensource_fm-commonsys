@@ -123,7 +123,6 @@
     <string name="fm_cmd_failed_msg">FM مەشخۇلاتى مەغلۇب بولدى. ئەگەر يەنىلا مەسىلە بولسا، FM تاقاپ قايتا قوزغىتىڭ.</string>
     <string name="fm_cmd_failed_msg_hdmi">FM مەشخۇلاتى مەغلۇب بولدى. FM ۋە HDMI بىرگە ئەۋەتىشنى قوللىمايدۇ.</string>
     <string name="fm_cmd_failed_call_on">FM مەشخۇلاتى مەغلۇب بولدى. سۆزلىشىش جەريانىدا FM ئاۋاز چاستوتىسى چەكلىنىدۇ.</string>
-    <string name="audio_db_title_format"><xliff:g id="format">yyyy-MM-dd HH:mm:ss</xliff:g></string>
     <string name="audio_db_artist_name">مېنىڭ FM ئۈن خاتىرەم</string>
     <string name="audio_db_album_name">FM ئۈن خاتىرىلەر</string>
     <string name="audio_db_playlist_name">FM ئۈن خاتىرىلەر</string>

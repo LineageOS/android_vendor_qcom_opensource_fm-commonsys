@@ -160,7 +160,6 @@
     <string name="fm_cmd_failed_msg">Faddina in s\'operatzione de FM. Si su problema abarrat, istuda s\'FM e torra·dda a allùghere.</string>
     <string name="fm_cmd_failed_msg_hdmi">Faddina in s\'operatzione de FM. S\'FM e s\'HDMI no sunt cumpatìbiles in manera simultànea.</string>
     <string name="fm_cmd_failed_call_on">Faddina in s\'operatzione de FM. S\'àudio de s\'FM no est permìtidu cando s\'est in una mutida.</string>
-    <string name="audio_db_title_format"><xliff:g id="format">yyyy-MM-dd HH:mm:ss</xliff:g></string>
     <string name="audio_db_artist_name">Registratziones de FM mias</string>
     <string name="audio_db_album_name">Registratziones de FM</string>
     <string name="audio_db_playlist_name">Registratziones de FM</string>

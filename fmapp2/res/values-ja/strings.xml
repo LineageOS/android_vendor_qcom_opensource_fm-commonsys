@@ -160,7 +160,6 @@
     <string name="fm_cmd_failed_msg">FMを操作できませんでした。問題が解決しなければFMをOFFにして、ONに戻してみてください。</string>
     <string name="fm_cmd_failed_msg_hdmi">FMを操作できませんでした。FMとHDMIの同時実行はサポートされていません。</string>
     <string name="fm_cmd_failed_call_on">FMを操作できませんでした。通話中のFMオーディオは許可されていません。</string>
-    <string name="audio_db_title_format"><xliff:g id="format">yyyy-MM-dd HH:mm:ss</xliff:g></string>
     <string name="audio_db_artist_name">FM録音</string>
     <string name="audio_db_album_name">FM録音</string>
     <string name="audio_db_playlist_name">FM録音</string>

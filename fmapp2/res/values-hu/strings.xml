@@ -160,7 +160,6 @@
     <string name="fm_cmd_failed_msg">FM-művelet sikertelen. Ha a probléma továbbra is fennáll, kapcsolja ki az FM rádiót majd vissza.</string>
     <string name="fm_cmd_failed_msg_hdmi">FM-művelet sikertelen. Az FM-rádió és a HDMI egyszerre nem támogatott.</string>
     <string name="fm_cmd_failed_call_on">FM-művelet sikertelen. Az FM rádió telefonhívás közben nem megengedett.</string>
-    <string name="audio_db_title_format"><xliff:g id="format">yyyy-MM-dd HH:mm:ss</xliff:g></string>
     <string name="audio_db_artist_name">Saját FM felvételek</string>
     <string name="audio_db_album_name">FM felvételek</string>
     <string name="audio_db_playlist_name">FM felvételek</string>

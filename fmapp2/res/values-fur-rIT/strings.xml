@@ -160,7 +160,6 @@
     <string name="fm_cmd_failed_msg">Operazion FM falide. Se il probleme al persist, distude la radio FM e torne impiile.</string>
     <string name="fm_cmd_failed_msg_hdmi">Operazion FM falide. FM e HDMI no son supuartâts in mût simultani.</string>
     <string name="fm_cmd_failed_call_on">Operazion FM falide. L\'audio FM nol è ametût intant des clamadis.</string>
-    <string name="audio_db_title_format"><xliff:g id="format">yyyy-MM-dd HH:mm:ss</xliff:g></string>
     <string name="audio_db_artist_name">Lis mês regjistrazions FM</string>
     <string name="audio_db_album_name">Regjistrazions FM</string>
     <string name="audio_db_playlist_name">Regjistrazions FM</string>

@@ -160,7 +160,6 @@
     <string name="fm_cmd_failed_msg">Operația FM a eșuat. Dacă problema persistă, vă rugăm să opriți și să reporniți FM-ul.</string>
     <string name="fm_cmd_failed_msg_hdmi">Operația FM a eșuat. Concurența dintre FM și HDMI nu este acceptată.</string>
     <string name="fm_cmd_failed_call_on">Operația FM a eșuat. În timpul unui apel, audio al FM nu este permis.</string>
-    <string name="audio_db_title_format"><xliff:g id="format">yyyy-MM-dd HH:mm:ss</xliff:g></string>
     <string name="audio_db_artist_name">Înregistrările mele FM</string>
     <string name="audio_db_album_name">Înregistrări FM</string>
     <string name="audio_db_playlist_name">Înregistrări FM</string>

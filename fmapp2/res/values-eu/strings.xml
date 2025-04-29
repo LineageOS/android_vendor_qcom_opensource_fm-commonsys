@@ -160,7 +160,6 @@
     <string name="fm_cmd_failed_msg">FM eragiketak huts egin du. Arazoak jarraitzen badu, irratia itzali eta berriro piztu.</string>
     <string name="fm_cmd_failed_msg_hdmi">FM eragiketak huts egin du. Ezin dira FM eta HDMI batera erabili.</string>
     <string name="fm_cmd_failed_call_on">FM eragiketak huts egin du. FM audioa ez da onartzen dei batean zehar.</string>
-    <string name="audio_db_title_format"><xliff:g id="format">yyyy-MM-dd HH:mm:ss</xliff:g></string>
     <string name="audio_db_artist_name">Nire FM grabazioak</string>
     <string name="audio_db_album_name">FM grabazioak</string>
     <string name="audio_db_playlist_name">FM grabazioak</string>

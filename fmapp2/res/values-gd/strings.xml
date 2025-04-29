@@ -160,7 +160,6 @@
     <string name="fm_cmd_failed_msg">Dh’fhàillig le obrachadh FM. Ma mhaireas an duilgheadas, cuir FM dheth is air a-rithist.</string>
     <string name="fm_cmd_failed_msg_hdmi">Dh’fhàillig le obrachadh FM. Cha chuir sinn taic ri FM ’s HDMI aig an aon àm.</string>
     <string name="fm_cmd_failed_call_on">Dh’fhàillig le obrachadh FM. Chan eil fuaim FM ceadaichte rè gairme.</string>
-    <string name="audio_db_title_format"><xliff:g id="format">yyyy-MM-dd HH:mm:ss</xliff:g></string>
     <string name="audio_db_artist_name">Na clàraidhean FM agam</string>
     <string name="audio_db_album_name">Clàraidhean FM</string>
     <string name="audio_db_playlist_name">Clàraidhean FM</string>

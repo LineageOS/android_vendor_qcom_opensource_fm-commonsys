@@ -36,7 +36,6 @@
     <string name="menu_sleep">Рэжым сну</string>
     <string name="menu_sleep_cancel">Скасаваць рэжым сну</string>
     <string name="menu_all_channels">Усе каналы</string>
-    <string name="msg_scanning_pty">Пошук \'<xliff:g id="pty_name">%1$s</xliff:g>\'\u2026</string>
     <string name="msg_search_title"><xliff:g id="frequency_string">%1$s</xliff:g> МГц</string>
     <string name="msg_searching_title">Аўтапошук станцый</string>
     <string name="dialog_sleep_title">Час аўтавыключэння</string>
@@ -69,7 +68,6 @@
     <string name="regional_band_entry_ireland">Ірландыя</string>
     <string name="regional_band_entry_italy">Італія</string>
     <string name="regional_band_entry_korea">Карэя</string>
-    <string name="regional_band_entry_mexico">Мексіка</string>
     <string name="regional_band_entry_netherlands">Нідэрланды</string>
     <string name="regional_band_entry_new_zealand">Новая Зеландыя</string>
     <string name="regional_band_entry_norway">Нарвегія</string>
@@ -128,19 +126,10 @@
     <string name="record_dur">Працягласць запісу</string>
     <string name="auto_select_af">Альтэрнатыўная частата</string>
     <string name="settings_revert_defaults_summary">Скінуць усе налады</string>
-    <string name="no_storage">Для пачатку запісу далучыце SD-картку.</string>
-    <string name="preparing_sd">Падрыхтоўка SD-карткі\u2026</string>
-    <string name="access_sd_fail">Немагчыма атрымаць доступ да SD-карткі.</string>
-    <string name="FMRecording_reach_size_limit">Дасягнута абмежаванне памеру.</string>
     <string name="alert_dialog_hint">Увядзіце назву</string>
-    <string name="search_dialog_title">Шукаць станцыі</string>
-    <string name="audio_db_title_format"><xliff:g id="format">yyyy-MM-dd HH:mm:ss</xliff:g></string>
-    <string name="audio_db_album_name">Запісы з FM</string>
-    <string name="audio_db_playlist_name">Запісы з FM</string>
     <string name="station_name">Станцыя:</string>
     <string name="station_list_delete_station">Выдаліць: <xliff:g id="name">%s</xliff:g></string>
     <string name="station_list_delete_station_prompt">Вы сапраўды хочаце выдаліць \'<xliff:g id="name">%s</xliff:g>\'?</string>
-    <string name="usr_def_band_max">Максімальная частата (МГц)</string>
     <string name="chanl_spacing">Крок каналаў</string>
     <string name="set">Задаць</string>
     <string name="save_record_file">Файл запісу радыё захаваны ў \'<xliff:g id="record_file">%1$s</xliff:g>\'</string>
@@ -168,7 +157,6 @@
     <string name="typ_Social_affairs">Сацыяльныя пытанні</string>
     <string name="typ_Sport">Спорт</string>
     <string name="typ_Travel">Падарожжа</string>
-    <string name="typ_Weather">Надвор\'е</string>
     <string name="typ_Classical">Класіка</string>
     <string name="typ_Classic_Rock">Класічны рок</string>
     <string name="typ_College">Каледж</string>

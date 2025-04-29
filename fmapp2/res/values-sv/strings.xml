@@ -160,7 +160,6 @@
     <string name="fm_cmd_failed_msg">FM-åtgärd misslyckades. Om problemet kvarstår, stäng av och sätt på FM.</string>
     <string name="fm_cmd_failed_msg_hdmi">FM-åtgärd misslyckades. FM- och HDMI-parallellitet saknar stöd.</string>
     <string name="fm_cmd_failed_call_on">FM-åtgärd misslyckades. FM-ljud är inte tillåtet under samtal.</string>
-    <string name="audio_db_title_format"><xliff:g id="format">yyyy-MM-dd HH:mm:ss</xliff:g></string>
     <string name="audio_db_artist_name">Mina FM-inspelningar</string>
     <string name="audio_db_album_name">FM-inspelningar</string>
     <string name="audio_db_playlist_name">FM-inspelningar</string>

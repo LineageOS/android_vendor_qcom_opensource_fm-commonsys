@@ -160,7 +160,6 @@
     <string name="fm_cmd_failed_msg">L\'operació FM ha fallat. Si el problema continua, si us plau apaga la ràdio FM i torna-la a engegar.</string>
     <string name="fm_cmd_failed_msg_hdmi">L\'operació FM ha fallat. No ha esta suportada la simultaneïtat FM i HDMI.</string>
     <string name="fm_cmd_failed_call_on">L\'operació FM ha fallat. El so FM no està permès durant una trucada.</string>
-    <string name="audio_db_title_format"><xliff:g id="format">yyyy-MM-dd HH:mm:ss</xliff:g></string>
     <string name="audio_db_artist_name">Les meves gravacions FM</string>
     <string name="audio_db_album_name">Gravacions FM</string>
     <string name="audio_db_playlist_name">Gravacions FM</string>

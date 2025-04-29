@@ -160,7 +160,6 @@
     <string name="fm_cmd_failed_msg">Operazione FM non riuscita. Se il problema persiste, si prega di spegnere e riaccendere FM.</string>
     <string name="fm_cmd_failed_msg_hdmi">Operazione FM non riuscita. La concorrenza di FM e HDMI non è supportata.</string>
     <string name="fm_cmd_failed_call_on">Operazione FM non riuscita. L\'audio FM non è consentito durante una chiamata.</string>
-    <string name="audio_db_title_format"><xliff:g id="format">yyyy-MM-dd HH:mm:ss</xliff:g></string>
     <string name="audio_db_artist_name">Le mie registrazioni FM</string>
     <string name="audio_db_album_name">Registrazioni FM</string>
     <string name="audio_db_playlist_name">Registrazioni FM</string>

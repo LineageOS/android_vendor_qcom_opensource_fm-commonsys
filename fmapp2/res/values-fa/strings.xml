@@ -160,7 +160,6 @@
     <string name="fm_cmd_failed_msg">عملیات FM ناموفق بود. در صورت ادامه مشکل لطفا FM را خاموش و روشن کنید.</string>
     <string name="fm_cmd_failed_msg_hdmi">عملیات FM ناموفق بود. FM و HDMI همزمان پشتیبانی نمی‌شود.</string>
     <string name="fm_cmd_failed_call_on">عملیات FM ناموفق بود. استفاده از FM در طول تماس مجاز نمی‌باشد.</string>
-    <string name="audio_db_title_format"><xliff:g id="format">yyyy-MM-dd HH:mm:ss</xliff:g></string>
     <string name="audio_db_artist_name">اف‌ام‌های ضبط شدهٔ من</string>
     <string name="audio_db_album_name">اف‌ام‌های ضبط شده</string>
     <string name="audio_db_playlist_name">اف‌ام‌های ضبط شده</string>

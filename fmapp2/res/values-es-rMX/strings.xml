@@ -29,7 +29,6 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="FMRecording_reach_size_limit">Se alcanzó el límite del tamaño.</string>
-    <string name="audio_db_title_format"><xliff:g id="format">yyyy-MM-dd HH:mm:ss</xliff:g></string>
     <string name="audio_db_artist_name">Mis grabaciones FM</string>
     <string name="audio_db_album_name">Grabaciones FM</string>
     <string name="audio_db_playlist_name">Grabaciones FM</string>

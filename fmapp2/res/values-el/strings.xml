@@ -160,7 +160,6 @@
     <string name="fm_cmd_failed_msg">Η λειτουργία FM απέτυχε. Εάν το πρόβλημα παραμένει, παρακαλούμε απενεργοποιήστε το FM και ενεργοποιήστε το ξανά.</string>
     <string name="fm_cmd_failed_msg_hdmi">Η λειτουργία FM απέτυχε. Δεν υποστηρίζονται ταυτόχρονα FM και HDMI.</string>
     <string name="fm_cmd_failed_call_on">Η λειτουργία FM απέτυχε. Ο ήχος από FM δεν επιτρέπεται κατά τη διάρκεια κλήσης.</string>
-    <string name="audio_db_title_format"><xliff:g id="format">dd-MM-yyyy HH:mm:ss</xliff:g></string>
     <string name="audio_db_artist_name">Οι ηχογραφήσεις FM μου</string>
     <string name="audio_db_album_name">Ηχογραφήσεις FM</string>
     <string name="audio_db_playlist_name">Ηχογραφήσεις FM</string>

@@ -160,7 +160,6 @@
     <string name="fm_cmd_failed_msg">Vorgang fehlgeschlagen. Wenn das Problem weiterhin besteht, bitte FM aus- und einschalten.</string>
     <string name="fm_cmd_failed_msg_hdmi">Vorgang fehlgeschlagen. FM und HDMI parallel wird nicht unterstützt.</string>
     <string name="fm_cmd_failed_call_on">Vorgang fehlgeschlagen. FM ist während eines Anrufes nicht möglich.</string>
-    <string name="audio_db_title_format"><xliff:g id="format">yyyy-MM-dd HH:mm:ss</xliff:g></string>
     <string name="audio_db_artist_name">Meine Radioaufnahmen</string>
     <string name="audio_db_album_name">Radioaufnahmen</string>
     <string name="audio_db_playlist_name">Radioaufnahmen</string>

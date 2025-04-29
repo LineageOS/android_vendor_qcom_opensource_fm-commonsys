@@ -160,7 +160,6 @@
     <string name="fm_cmd_failed_msg">FM 操作失败。如果问题仍然存在，请关闭 FM，并将其重新打开。</string>
     <string name="fm_cmd_failed_msg_hdmi">FM 操作失败。不支持 FM 和 HDMI 并发。</string>
     <string name="fm_cmd_failed_call_on">FM 操作失败。通话期间禁止 FM 音频。</string>
-    <string name="audio_db_title_format"><xliff:g id="format">yyyy-MM-dd HH:mm:ss</xliff:g></string>
     <string name="audio_db_artist_name">我的 FM 录音</string>
     <string name="audio_db_album_name">FM 录音</string>
     <string name="audio_db_playlist_name">FM 录音</string>

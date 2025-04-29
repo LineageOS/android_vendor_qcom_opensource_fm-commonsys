@@ -160,7 +160,6 @@
     <string name="fm_cmd_failed_msg">Fallou a operación de FM. Se o problema persiste, apague a FM e volva acendela.</string>
     <string name="fm_cmd_failed_msg_hdmi">Fallou a operación de FM. Non é compatíbel a concorrencia de FM con HDMI.</string>
     <string name="fm_cmd_failed_call_on">Fallou a operación de FM. Non se permite que soe o transmisor de FM durante unha chamada.</string>
-    <string name="audio_db_title_format"><xliff:g id="format">yyyy-MM-dd HH:mm:ss</xliff:g></string>
     <string name="audio_db_artist_name">As miñas gravacións de radio</string>
     <string name="audio_db_album_name">Gravacións de radio</string>
     <string name="audio_db_playlist_name">Gravacións de radio</string>

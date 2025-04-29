@@ -160,7 +160,6 @@
     <string name="fm_cmd_failed_msg">Error para operar la radio FM. Si el problema persiste, apaga la radio y vuelve a encenderla.</string>
     <string name="fm_cmd_failed_msg_hdmi">Error para operar la radio. Es imposible utilizar la radio y el HDMI simultáneamente.</string>
     <string name="fm_cmd_failed_call_on">Error para operar la radio. El audio FM no está permitido durante una llamada.</string>
-    <string name="audio_db_title_format"><xliff:g id="format">yyyy-MM-dd HH:mm:ss</xliff:g></string>
     <string name="audio_db_artist_name">Mis grabaciones de FM</string>
     <string name="audio_db_album_name">Grabaciones de FM</string>
     <string name="audio_db_playlist_name">Grabaciones de FM</string>

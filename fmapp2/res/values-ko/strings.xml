@@ -160,7 +160,6 @@
     <string name="fm_cmd_failed_msg">FM 실행이 실패했습니다. 문제가 지속되면 FM을 껐다 다시 켜 보십시오.</string>
     <string name="fm_cmd_failed_msg_hdmi">FM 실행이 실패했습니다. FM과 HDMI는 동시에 사용할 수 없습니다.</string>
     <string name="fm_cmd_failed_call_on">FM 실행이 실패했습니다. 통화 중에는 FM 오디오를 사용할 수 없습니다.</string>
-    <string name="audio_db_title_format"><xliff:g id="format">yyyy-MM-dd HH:mm:ss</xliff:g></string>
     <string name="audio_db_artist_name">내 FM 녹음</string>
     <string name="audio_db_album_name">FM 녹음</string>
     <string name="audio_db_playlist_name">FM 녹음</string>

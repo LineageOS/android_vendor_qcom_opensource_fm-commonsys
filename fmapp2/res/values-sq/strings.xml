@@ -160,7 +160,6 @@
     <string name="fm_cmd_failed_msg">Funksionimi i FM, dështoi. Nëse problemi vazhdon, ju lutemi fikeni FM dhe ndizeni sërish.</string>
     <string name="fm_cmd_failed_msg_hdmi">Funksionimi i FM dështoi. Nuk mundësohet funksionimi i njëkohëshëm i FM dhe HDMI.</string>
     <string name="fm_cmd_failed_call_on">Funksionimi i FM dështoi. Radio FM nuk lejohet gjatë telefonatave.</string>
-    <string name="audio_db_title_format"><xliff:g id="format">yyyy-MM-dd HH:mm:ss</xliff:g></string>
     <string name="audio_db_artist_name">Regjistrimet e mia FM</string>
     <string name="audio_db_album_name">Regjistrimet FM</string>
     <string name="audio_db_playlist_name">Regjistrimet FM</string>

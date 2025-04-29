@@ -160,7 +160,6 @@
     <string name="fm_cmd_failed_msg">Неуспешна операция. Ако проблемът продължава, моля изключете радиото и го включете отново.</string>
     <string name="fm_cmd_failed_msg_hdmi">FM радио грешка. Системата не разрешава едновременното позване на FM и HDMI.</string>
     <string name="fm_cmd_failed_call_on">Използването на радио по време на телефонен разговор е невъзможно.</string>
-    <string name="audio_db_title_format"><xliff:g id="format">yyyy-MM-dd HH:mm:ss</xliff:g></string>
     <string name="audio_db_artist_name">Моите радиозаписи</string>
     <string name="audio_db_album_name">Радиозаписи</string>
     <string name="audio_db_playlist_name">Радиозаписи</string>

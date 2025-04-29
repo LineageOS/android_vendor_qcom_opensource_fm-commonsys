@@ -160,7 +160,6 @@
     <string name="fm_cmd_failed_msg">Pengoperasian FM gagal. Jika masalah berlanjut, silahkan matikan FM dan menghidupkannya kembali.</string>
     <string name="fm_cmd_failed_msg_hdmi">Pengoperasian FM gagal. Pengoperasian FM dan HDMI secara bersamaan tidak didukung.</string>
     <string name="fm_cmd_failed_call_on">Pengoperasian FM gagal. Audio FM tidak diizinkan selama panggilan.</string>
-    <string name="audio_db_title_format"><xliff:g id="format">dd-MM-yyyy- HH:mm:ss</xliff:g></string>
     <string name="audio_db_artist_name">Rekaman FM saya</string>
     <string name="audio_db_album_name">Rekaman FM</string>
     <string name="audio_db_playlist_name">Rekaman FM</string>

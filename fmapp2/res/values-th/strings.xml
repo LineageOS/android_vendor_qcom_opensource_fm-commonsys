@@ -160,7 +160,6 @@
     <string name="fm_cmd_failed_msg">การดำเนินการ FM ล้มเหลว หากปัญหายังเกิดขึ้น ให้ลองปิดวิทยุ FM แล้วเปิดใหม่</string>
     <string name="fm_cmd_failed_msg_hdmi">การดำเนินการ FM ล้มเหลว ไม่รองรับการใช้ FM และ HDMI ในเวลาเดียวกัน</string>
     <string name="fm_cmd_failed_call_on">การดำเนินการ FM ล้มเหลว ไม่สามารถใช้ FM ขณะโทรออกได้</string>
-    <string name="audio_db_title_format"><xliff:g id="format">yyyy-MM-dd HH:mm:ss</xliff:g></string>
     <string name="audio_db_artist_name">การบันทึก FM ของฉัน</string>
     <string name="audio_db_album_name">การบันทึก FM</string>
     <string name="audio_db_playlist_name">การบันทึก FM</string>

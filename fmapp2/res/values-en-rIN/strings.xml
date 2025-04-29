@@ -160,7 +160,6 @@
     <string name="fm_cmd_failed_msg">FM operation failed. If the problem persists, please turn off FM and turn it back on.</string>
     <string name="fm_cmd_failed_msg_hdmi">FM operation failed. FM and HDMI concurrency is not supported.</string>
     <string name="fm_cmd_failed_call_on">FM operation failed. FM audio is not allowed during call.</string>
-    <string name="audio_db_title_format"><xliff:g id="format">yyyy-MM-dd HH:mm:ss</xliff:g></string>
     <string name="audio_db_artist_name">My FM recordings</string>
     <string name="audio_db_album_name">FM recordings</string>
     <string name="audio_db_playlist_name">FM recordings</string>

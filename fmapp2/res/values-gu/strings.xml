@@ -123,7 +123,6 @@
     <string name="fm_cmd_failed_msg">FM ઑપરેશન નિષ્ફળ. જો સમસ્યા ચાલુ રહે તો કૃપા કરી FM બંધ કરી ફરી ચાલુ કરો.</string>
     <string name="fm_cmd_failed_msg_hdmi">FM ઑપરેશન નિષ્ફળ. FM અને HDMI સમરૂપતાને સમર્થન નથી.</string>
     <string name="fm_cmd_failed_call_on">FM ઑપરેશન નિષ્ફળ. કૉલ દરમિયાન FM ઑડિયોની છૂટ નથી.</string>
-    <string name="audio_db_title_format"><xliff:g id="format">yyyy-MM-dd HH:mm:ss</xliff:g></string>
     <string name="audio_db_artist_name">મારા FM રેકોર્ડિંગ્સ</string>
     <string name="audio_db_album_name">FM રેકોર્ડિંગ્સ</string>
     <string name="audio_db_playlist_name">FM રેકોર્ડિંગ્સ</string>

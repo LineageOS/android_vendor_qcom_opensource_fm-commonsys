@@ -160,7 +160,6 @@
     <string name="fm_cmd_failed_msg">FM-aðgerðin tókst ekki. Ef vandamálið er viðvarandi, slökktu þá á FM-útvarpinu og kveiktu svo aftur á því.</string>
     <string name="fm_cmd_failed_msg_hdmi">FM-aðgerðin tókst ekki. Samhliða notkun FM og HDMI er ekki studd.</string>
     <string name="fm_cmd_failed_call_on">FM-aðgerðin tókst ekki. Ekki er hægt að nota FM-hljóð á meðan símtali stendur.</string>
-    <string name="audio_db_title_format"><xliff:g id="format">yyyy-MM-dd HH:mm:ss</xliff:g></string>
     <string name="audio_db_artist_name">FM-upptökurnar mínar</string>
     <string name="audio_db_album_name">FM-upptökur</string>
     <string name="audio_db_playlist_name">FM-upptökur</string>

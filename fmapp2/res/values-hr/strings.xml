@@ -160,7 +160,6 @@
     <string name="fm_cmd_failed_msg">FM operacija nije uspjela. Ako se problem nastavi pojavljivati, isključite FM i ponovno ga uključite.</string>
     <string name="fm_cmd_failed_msg_hdmi">FM operacija nije uspjela. FM i HDMI nisu podržani istovremeno.</string>
     <string name="fm_cmd_failed_call_on">FM operacija nije uspjela. FM zvuk nije dopušten tijekom poziva.</string>
-    <string name="audio_db_title_format"><xliff:g id="format">yyyy-MM-dd HH:mm:ss</xliff:g></string>
     <string name="audio_db_artist_name">Moje FM snimke</string>
     <string name="audio_db_album_name">FM snimke</string>
     <string name="audio_db_playlist_name">FM snimke</string>

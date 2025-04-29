@@ -160,7 +160,6 @@
     <string name="fm_cmd_failed_msg">FM əməliyyatı baş tutmadı. Əgər problem davam edərsə, lütfən FM-i söndürüb yenidən işə salın.</string>
     <string name="fm_cmd_failed_msg_hdmi">FM əməliyyatı baş tutmadı. FM və HDMI\'ın eyni vaxtda işləməsi dəstəklənmir.</string>
     <string name="fm_cmd_failed_call_on">FM əməliyyatı baş tutmadı. FM səsinə zəng vaxtı icazə verilmir.</string>
-    <string name="audio_db_title_format"><xliff:g id="format">yyyy-MM-dd HH:mm:ss</xliff:g></string>
     <string name="audio_db_artist_name">FM səsyazmalarım</string>
     <string name="audio_db_album_name">FM səsyazmaları</string>
     <string name="audio_db_playlist_name">FM səsyazmaları</string>

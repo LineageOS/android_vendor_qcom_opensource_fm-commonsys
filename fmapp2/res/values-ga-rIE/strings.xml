@@ -160,7 +160,6 @@
     <string name="fm_cmd_failed_msg">Theip ar oibríocht FM. Má leanann an fhadhb, cas as FM agus cuir ar siúl arís é.</string>
     <string name="fm_cmd_failed_msg_hdmi">Theip ar oibríocht FM. Ní thacaítear le comhairgeadra FM agus HDMI.</string>
     <string name="fm_cmd_failed_call_on">Theip ar oibríocht FM. Ní cheadaítear fuaim FM le linn glaonna.</string>
-    <string name="audio_db_title_format"><xliff:g id="format">bbbb-MM-ll UU:nn: ss</xliff:g></string>
     <string name="audio_db_artist_name">Mo thaifeadtaí FM</string>
     <string name="audio_db_album_name">Taifeadtaí FM</string>
     <string name="audio_db_playlist_name">Taifeadtaí FM</string>
