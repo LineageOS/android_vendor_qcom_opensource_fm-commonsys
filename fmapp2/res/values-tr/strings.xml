@@ -160,6 +160,7 @@
     <string name="fm_cmd_failed_msg">FM işlemi başarısız oldu. Sorun devam ederse, lütfen FM\'i kapatın ve tekrar açın.</string>
     <string name="fm_cmd_failed_msg_hdmi">FM işlemi başarısız oldu. FM ve HDMI eşzamanlılığı desteklenmiyor.</string>
     <string name="fm_cmd_failed_call_on">FM işlemi başarısız oldu. FM sesine telefon konuşması sırasında izin verilmiyor.</string>
+    <string name="audio_db_title_format"><xliff:g id="format">yyyy-AA-gg SS.dd.ss</xliff:g></string>
     <string name="audio_db_artist_name">FM kayıtlarım</string>
     <string name="audio_db_album_name">FM kayıtları</string>
     <string name="audio_db_playlist_name">FM kayıtları</string>
