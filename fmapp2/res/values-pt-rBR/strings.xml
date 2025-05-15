@@ -55,7 +55,7 @@
     <string name="preset_replace">Substituir</string>
     <string name="preset_tune">Sintonia</string>
     <string name="preset_rename">Renomear</string>
-    <string name="preset_delete">Excluir</string>
+    <string name="preset_delete">Apagar</string>
     <string name="preset_search">Pesquisar por \'<xliff:g id="preset_pi">%1$s</xliff:g>\'</string>
     <string name="stat_notif_frequency">\'<xliff:g id="frequency">%1$s</xliff:g>\' MHz</string>
     <string name="regional_band">Faixa regional</string>
@@ -147,7 +147,7 @@
     <string name="no_storage">Monte o cartão SD antes de iniciar a gravação.</string>
     <string name="preparing_sd">Preparando cartão SD\u2026</string>
     <string name="access_sd_fail">Não foi possível acessar o cartão SD.</string>
-    <string name="spaceIsLow_content">Seu cartão de armazenamento SD está sem espaço. Troque a configuração de qualidade ou remova alguns arquivos para liberar espaço.</string>
+    <string name="spaceIsLow_content">O armazenamento do seu cartão SD está quase acabando. Altere a configuração de qualidade ou exclua alguns arquivos para liberar espaço.</string>
     <string name="FMRecording_reach_size_limit">Limite de tamanho atingido.</string>
     <string name="menu_scan_for_preset">Buscar estações predefinidas</string>
     <string name="fm_off">A FM está desligada.</string>
@@ -166,8 +166,8 @@
     <string name="audio_db_playlist_name">Gravações FM</string>
     <string name="station_name">Estação:</string>
     <string name="station_exists">Essa frequência já existe!</string>
-    <string name="station_list_delete_station">Excluir: <xliff:g id="name">%s</xliff:g></string>
-    <string name="station_list_delete_station_prompt">Tem certeza que quer excluir \'<xliff:g id="name">%s</xliff:g>\'?</string>
+    <string name="station_list_delete_station">Apagar: <xliff:g id="name">%s</xliff:g></string>
+    <string name="station_list_delete_station_prompt">Tem certeza de que quer apagar \'<xliff:g id="name">%s</xliff:g>\'?</string>
     <string name="station_name_empty">Nome de estação vazio, digite novamente.</string>
     <string name="station_name_exist">\'<xliff:g id="name">%s</xliff:g>\' já está em uso, digite um nome diferente.</string>
     <string name="rt_plus_tags">Etiquetas</string>
