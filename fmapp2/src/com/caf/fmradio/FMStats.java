@@ -2896,22 +2896,28 @@ public class FMStats extends Activity  {
         TextView colFreq = new TextView(getApplicationContext());
         colFreq.setText(aRes.getFreq());
         colFreq.setTextSize(TypedValue.COMPLEX_UNIT_SP, 25);
-        colFreq.setWidth(width/4);
+        colFreq.setWidth(width/5);
                 /* Add Button to row. */
         tr2.addView(colFreq);
 
         TextView colRMSSI = new TextView(getApplicationContext());
         colRMSSI.setText(aRes.getRSSI());
         colRMSSI.setTextSize(TypedValue.COMPLEX_UNIT_SP, 25);
-        colRMSSI.setWidth(width/4);
+        colRMSSI.setWidth(width/5);
         tr2.addView(colRMSSI);
 
         if(!isRomeChip() && !isHastingsChip()) {
             TextView colIoC = new TextView(getApplicationContext());
             colIoC.setText(aRes.getIoC());
             colIoC.setTextSize(TypedValue.COMPLEX_UNIT_SP, 25);
-            colIoC.setWidth(width/4);
+            colIoC.setWidth(width/5);
             tr2.addView(colIoC);
+
+            TextView colIntDet = new TextView(getApplicationContext());
+            colIntDet.setText(aRes.getIntDet());
+            colIntDet.setTextSize(TypedValue.COMPLEX_UNIT_SP, 25);
+            colIntDet.setWidth(width/5);
+            tr2.addView(colIntDet);
         }
 
         if(isTransportLayerSMD() || isRomeChip() || isCherokeeChip())
@@ -2919,7 +2925,7 @@ public class FMStats extends Activity  {
              TextView colSINR = new TextView(getApplicationContext());
              colSINR.setText(aRes.getSINR());
              colSINR.setTextSize(TypedValue.COMPLEX_UNIT_SP, 25);
-             colSINR.setWidth(width/4);
+             colSINR.setWidth(width/5);
              tr2.addView(colSINR);
         }
           /* Add row to TableLayout. */
