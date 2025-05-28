@@ -483,7 +483,7 @@ static inline void hci_cmd_complete_event(uint8_t buff[])
             break;
     case hci_recv_ctrl_cmd_op_pack(HCI_OCF_FM_SET_MUTE_MODE_REQ):
             hci_cc_enable_softmute_rsp(pbuf);
-            break; 
+            break;
     case hci_recv_ctrl_cmd_op_pack(HCI_OCF_FM_SET_RECV_CONF_REQ):
     case hci_recv_ctrl_cmd_op_pack(HCI_OCF_FM_SET_STEREO_MODE_REQ):
     case hci_recv_ctrl_cmd_op_pack(HCI_OCF_FM_SET_ANTENNA):
@@ -875,17 +875,11 @@ static void  hci_ev_ext_country_code(uint8_t buff[])
 static void hci_ev_driver_rds_event(uint8_t buff[])
 {
     uint8_t rds_type;
-    char *rds_data = NULL;
+    char rds_data[STD_BUF_SIZE];
     rds_type = buff[0];
 
     ALOGD("%s:%s:rds type = 0x%x", LOG_TAG, __func__, rds_type);
-    rds_data = malloc(STD_BUF_SIZE);
-    if (rds_data == NULL) {
-        ALOGE("%s:memory allocation failed\n", LOG_TAG);
-        return;
-    } else {
-        memcpy(rds_data, &buff[1],STD_BUF_SIZE);
-    }
+    memcpy(rds_data, &buff[1],STD_BUF_SIZE);
 
     switch (rds_type) {
         case HCI_EV_RADIO_TEXT:
@@ -912,8 +906,6 @@ static void hci_ev_driver_rds_event(uint8_t buff[])
             ALOGD("%s: Unknown RDS event", __func__);
             break;
         }
-
-    free(rds_data);
 }
 
 static void hci_ev_ert()
