@@ -39,7 +39,7 @@
     <string name="menu_sleep_cancel">בטל שינה</string>
     <string name="menu_all_channels">כל הערוצים</string>
     <string name="menu_display_tags">הצג תגיות</string>
-    <string name="button_text_stop">עצור</string>
+    <string name="button_text_stop">עצירה</string>
     <string name="msg_seeking">מחפש תחנת FM\u2026</string>
     <string name="msg_scanning">סורק את כל תחנות ה-FM\u2026</string>
     <string name="msg_scanning_pty">מחפש את \"<xliff:g id="pty_name">%1$s</xliff:g>\"\u2026</string>
@@ -147,7 +147,7 @@
     <string name="no_storage">עיגון כרטיס זיכרון לפי תחילת ההקלטה.</string>
     <string name="preparing_sd">הכנת כרטיס זיכרון\u2026</string>
     <string name="access_sd_fail">אין אפשרות לגשת לכרטיס הזיכרון.</string>
-    <string name="spaceIsLow_content">שטח האחסון בכרטיס הזיכרון שלך אוזל. שנה את הגדרות האיכות או מחק קבצים אחרים כדי לפנות מקום.</string>
+    <string name="spaceIsLow_content">שטח האחסון בכרטיס הזיכרון שלך אוזל. יש לשנות את הגדרות האיכות או למחוק קבצים אחרים כדי לפנות מקום.</string>
     <string name="FMRecording_reach_size_limit">הגעת למגבלת הגודל.</string>
     <string name="menu_scan_for_preset">סרוק למציאת תחנות קבועות מראש</string>
     <string name="fm_off">FM כבוי.</string>
