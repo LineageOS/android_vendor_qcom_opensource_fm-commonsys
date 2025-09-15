@@ -155,7 +155,7 @@
     <string name="alert_dialog_hint">הזנת שם</string>
     <string name="search_dialog_title">סריקת תחנות</string>
     <string name="fm_command_timeout_title">זמן קצוב לתפוגה</string>
-    <string name="fm_tune_timeout_msg">אין קליטה מהתחנה הנבחרת. אם הבעיה חוזרת על עצמה, כבה את מקלט ה-FM והפעל אותו שנית.</string>
+    <string name="fm_tune_timeout_msg">אין תגובה לכיוונון תחנת FM. אם הבעיה נמשכת, נא לכבות את ה-FM ולהפעיל אותו מחדש.</string>
     <string name="fm_command_failed_title">פעולת FM נכשלה</string>
     <string name="fm_cmd_failed_msg">פעולת FM נכשלה. אם הבעיה חוזרת על עצמה, כבה את מקלט ה-FM והפעל אותו שנית.</string>
     <string name="fm_cmd_failed_msg_hdmi">פעולת FM נכשלה. התרחשות בו זמנית של FM ו-HDMI אינה נתמכת.</string>
