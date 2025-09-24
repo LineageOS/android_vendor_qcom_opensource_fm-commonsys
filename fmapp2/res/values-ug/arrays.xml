@@ -47,4 +47,9 @@
     <item>45 مىنۇت</item>
     <item>1 سائەت</item>
   </string-array>
+  <string-array name="channel_spacing_entries">
+    <item>50kHz</item>
+    <item>100kHz</item>
+    <item>200kHz</item>
+  </string-array>
 </resources>
