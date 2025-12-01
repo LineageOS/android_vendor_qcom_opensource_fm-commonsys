@@ -44,8 +44,8 @@
     <string name="msg_scanning">Procurando todas as estações FM\u2026</string>
     <string name="msg_scanning_pty">Buscando \'<xliff:g id="pty_name">%1$s</xliff:g>\'\u2026</string>
     <string name="msg_search_title"><xliff:g id="frequency_string">%1$s</xliff:g> MHz</string>
-    <string name="msg_searching_title">Pré-definições automáticas</string>
-    <string name="msg_searching">Buscando as estações mais fortes para criar uma lista de pré-definições\u2026</string>
+    <string name="msg_searching_title">Auto-seleção de pré-configurações</string>
+    <string name="msg_searching">Buscando as estações mais fortes para criar uma lista de pré-configurações\u2026</string>
     <string name="msg_noantenna">Conecte fones de ouvido com fio para usar a rádio FM</string>
     <string name="dialog_sleep_title">Tempo antes de suspender</string>
     <string name="presetlist_select_name">Selecionar \'<xliff:g id="presetlist_name">%1$s</xliff:g>\'</string>
@@ -96,7 +96,7 @@
     <string name="regional_band_entry_turkey">Turquia</string>
     <string name="regional_band_entry_united_kingdom">Reino Unido</string>
     <string name="regional_band_entry_united_states">Estados Unidos</string>
-    <string name="regional_band_entry_user_defined">Faixa definida pelo usuário</string>
+    <string name="regional_band_entry_user_defined">Faixa configurada pelo usuário</string>
     <string name="regional_band_summary_north_america">América do Norte (87,5 MHz a 108,0 MHz em intervalos de 200 kHz)</string>
     <string name="regional_band_summary_europe">Europa (87,5 MHz a 108,0 MHz em intervalos de 100 kHz)</string>
     <string name="regional_band_summary_japan">Japão (76,0 MHz  a 90,0 MHz  em intervalos de 100 kHz)</string>
@@ -134,22 +134,22 @@
     <string name="regional_band_summary_turkey">Turquia (87,5 MHz a 108,0 MHz em intervalos de 100 kHz)</string>
     <string name="regional_band_summary_united_kingdom">Reino Unido (87,5 MHz a 108,0 MHz em intervalos de 100 kHz)</string>
     <string name="regional_band_summary_united_states">Estados Unidos (88,1 MHz a 107,9 MHz em intervalos de 200 kHz)</string>
-    <string name="regional_band_summary_user_defined">Faixa definida pelo usuário</string>
+    <string name="regional_band_summary_user_defined">Faixa configurada pelo usuário</string>
     <string name="aud_output_mode">Modo de saída de áudio</string>
     <string name="audio_type_stereo">Estéreo</string>
     <string name="audio_type_mono">Mono</string>
     <string name="record_dur">Duração da gravação</string>
     <string name="auto_select_af">Frequência alternativa</string>
     <string name="settings_revert_defaults_title">Restaurar padrões de fábrica</string>
-    <string name="settings_revert_defaults_summary">Redefinir configurações</string>
-    <string name="settings_revert_confirm_title">Confirmar redefinição</string>
+    <string name="settings_revert_defaults_summary">Reconfigure tudo</string>
+    <string name="settings_revert_confirm_title">Confirmar reconfiguração</string>
     <string name="settings_revert_confirm_msg">Isto vai limpar todas as configurações, incluindo as estações pré configuradas. Continuar?</string>
     <string name="no_storage">Monte o cartão SD antes de iniciar a gravação.</string>
     <string name="preparing_sd">Preparando cartão SD\u2026</string>
     <string name="access_sd_fail">Não foi possível acessar o cartão SD.</string>
     <string name="spaceIsLow_content">O armazenamento do seu cartão SD está quase acabando. Altere a configuração de qualidade ou exclua alguns arquivos para liberar espaço.</string>
     <string name="FMRecording_reach_size_limit">Limite de tamanho atingido.</string>
-    <string name="menu_scan_for_preset">Buscar estações predefinidas</string>
+    <string name="menu_scan_for_preset">Buscar estações pré-configuradas</string>
     <string name="fm_off">A FM está desligada.</string>
     <string name="fm_call">A FM não pode ser utilizada durante uma ligação.</string>
     <string name="alert_dialog_hint">Digite um nome</string>
@@ -174,7 +174,7 @@
     <string name="usr_def_band_min">Frequência mínima (MHz)</string>
     <string name="usr_def_band_max">Frequência máxima (MHz)</string>
     <string name="chanl_spacing">Espaçamento entre canais</string>
-    <string name="set">Definir</string>
+    <string name="set">Configurar</string>
     <string name="user_defind_band_msg">Digite uma frequência de 76,0 MHz à 108,0 MHz com, no mínimo, 1 canal de espaço e 100 kHz de diferença entre a frequência mínima e máxima</string>
     <string name="save_record_file">Arquivo de gravação FM salvo em \'<xliff:g id="record_file">%1$s</xliff:g>\'</string>
     <string name="fm_search_no_results">Nenhuma estação compatível encontrada</string>
