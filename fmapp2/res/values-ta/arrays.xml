@@ -30,7 +30,7 @@
 <resources>
   <string-array name="ster_mon_entries">
     <item>பன்னொலி</item>
-    <item>ஒருவொலி</item>
+    <item>ஓரொலி</item>
   </string-array>
   <string-array name="ster_entries">
     <item>பன்னொலி</item>
