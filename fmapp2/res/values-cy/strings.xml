@@ -160,6 +160,7 @@
     <string name="fm_cmd_failed_msg">Methodd y weithred FM. Os yw\'r broblem yn parhau, tro FM i ffwrdd a nôl ymlaen eto.</string>
     <string name="fm_cmd_failed_msg_hdmi">Methodd y weithred FM. Nid yw eto\'n bosib defnyddio FM a HDMI ar yr un pryd.</string>
     <string name="fm_cmd_failed_call_on">Methodd y weithred FM. Ni chaniateir sain FM yn ystod galwad.</string>
+    <string name="audio_db_title_format"><xliff:g id="format">yyyy-MM-dd HH:mm:ss</xliff:g></string>
     <string name="audio_db_artist_name">Fy recordiadau FM</string>
     <string name="audio_db_album_name">Recordiadau FM</string>
     <string name="audio_db_playlist_name">Recordiadau FM</string>
