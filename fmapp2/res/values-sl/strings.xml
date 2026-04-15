@@ -138,7 +138,7 @@
     <string name="aud_output_mode">Način zvočnega izhoda</string>
     <string name="audio_type_stereo">Stereo</string>
     <string name="audio_type_mono">Mono</string>
-    <string name="record_dur">Trajanje snemanja</string>
+    <string name="record_dur">Dolžina snemanja</string>
     <string name="auto_select_af">Nadomestna frekvenca</string>
     <string name="settings_revert_defaults_title">Povrni na tovarniške nastavitve</string>
     <string name="settings_revert_defaults_summary">Ponastavi vse nastavitve</string>
