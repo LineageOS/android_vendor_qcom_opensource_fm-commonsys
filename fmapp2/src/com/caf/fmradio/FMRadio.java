@@ -286,7 +286,9 @@ public class FMRadio extends Activity
    private static String[] RECORD_PERMISSIONS = {
             Manifest.permission.RECORD_AUDIO,
             Manifest.permission.CAPTURE_AUDIO_OUTPUT,
-            Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE
+            Manifest.permission.WRITE_EXTERNAL_STORAGE,
+            Manifest.permission.READ_EXTERNAL_STORAGE,
+            Manifest.permission.POST_NOTIFICATIONS
     };
    private static final int ALL_PERMISSIONS = 101;
 
@@ -313,6 +315,10 @@ public void onRequestPermissionsResult(int requestCode, String[] permissions,  i
                     Log.d(LOGTAG,"  READ_EXTERNAL_STORAGE permission granted");
                 }
                 else{Log.d(LOGTAG,"  no READ_EXTERNAL_STORAGE permissions"); }
+                if(grantResults[4] == PackageManager.PERMISSION_GRANTED){
+                    Log.d(LOGTAG,"  POST_NOTIFICATIONS permission granted");
+                }
+                else{Log.d(LOGTAG,"  no POST_NOTIFICATIONS permissions"); }
             }
     }
 }
