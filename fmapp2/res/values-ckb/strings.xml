@@ -143,7 +143,7 @@
     <string name="settings_revert_defaults_title">گەڕانەوە بۆ ڕێکخستنە بنەڕەتییەکانی کارگە</string>
     <string name="settings_revert_defaults_summary">ڕێکخستنەوەی هەموو ڕێکخستنەکان</string>
     <string name="settings_revert_confirm_title">دڵنیابوونەوە لە ڕێکخستنەوە</string>
-    <string name="settings_revert_confirm_msg">ئەمە هەموو ڕێکخستنەکانی ئەپەکان دەسڕێتەوە، لەوانەش وێستگە پاشەکەوتکراوەکان. بەردەوامیت؟</string>
+    <string name="settings_revert_confirm_msg">ئەمە هەموو ڕێکخستنەکانی بەرنامەکان دەسڕێتەوە، لەوانەش وێستگە پاشەکەوتکراوەکان. بەردەوامیت؟</string>
     <string name="no_storage">تکایە کارتی میمۆری (SD) داخڵ بکە پێش تۆمارکردن</string>
     <string name="preparing_sd">ئامادەکردنی کارتی SD\u2026</string>
     <string name="access_sd_fail">نەتوانرا دەست بگات بە کارتی SD</string>
