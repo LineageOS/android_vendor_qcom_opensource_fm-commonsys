@@ -156,10 +156,10 @@
     <string name="search_dialog_title">Preišči postaje</string>
     <string name="fm_command_timeout_title">Časovna omejitev</string>
     <string name="fm_tune_timeout_msg">Za naravnanje postaje FM ni bilo prejetega nobenega odziva. Če se težava še naprej pojavlja, izklopite FM in ga ponovno vklopite.</string>
-    <string name="fm_command_failed_title">Opravilo FM je spodletelo</string>
-    <string name="fm_cmd_failed_msg">Opravilo FM je spodletelo. Če se težava še naprej pojavlja, izklopite FM in ga ponovno vklopite.</string>
-    <string name="fm_cmd_failed_msg_hdmi">Opravilo FM je spodletelo. Sočasnost FM in HDMI ni podprta.</string>
-    <string name="fm_cmd_failed_call_on">Opravilo FM je spodletelo. Zvok FM med klicem ni dovoljen.</string>
+    <string name="fm_command_failed_title">Opravilo FM ni uspelo</string>
+    <string name="fm_cmd_failed_msg">Opravilo FM ni uspelo. Če se težava še naprej pojavlja, izklopite FM in ga ponovno vklopite.</string>
+    <string name="fm_cmd_failed_msg_hdmi">Opravilo FM ni uspelo. Sočasnost FM in HDMI ni podprta.</string>
+    <string name="fm_cmd_failed_call_on">Opravilo FM ni uspelo. Zvok FM med klicem ni dovoljen.</string>
     <string name="audio_db_title_format"><xliff:g id="format">dd-MM-yyyy HH:mm:ss</xliff:g></string>
     <string name="audio_db_artist_name">Moji posnetki FM</string>
     <string name="audio_db_album_name">Posnetki FM</string>
