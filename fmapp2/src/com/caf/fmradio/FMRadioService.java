@@ -64,6 +64,8 @@ import android.media.AudioTrack;
 import android.media.AudioDeviceInfo;
 import android.media.AudioAttributes;
 import android.media.AudioFocusRequest;
+import android.media.MediaMetadata;
+import android.media.session.PlaybackState;
 
 import android.os.Environment;
 import android.os.Handler;
@@ -1265,6 +1267,20 @@ public class FMRadioService extends Service
                     }
                     return true;
                 }
+            } else if ((event != null) && (event.getKeyCode() == KeyEvent.KEYCODE_MEDIA_NEXT)
+                    && (key_action == KeyEvent.ACTION_DOWN)) {
+                Log.d(LOGTAG, "SessionCallback: MEDIA_NEXT");
+                if (isFmOn()) {
+                    seek(true);
+                }
+                return true;
+            } else if ((event != null) && (event.getKeyCode() == KeyEvent.KEYCODE_MEDIA_PREVIOUS)
+                    && (key_action == KeyEvent.ACTION_DOWN)) {
+                Log.d(LOGTAG, "SessionCallback: MEDIA_PREVIOUS");
+                if (isFmOn()) {
+                    seek(false);
+                }
+                return true;
             }
             return false;
         }
@@ -1986,13 +2002,39 @@ public class FMRadioService extends Service
        }
     };
 
-   /* Show the FM Notification */
+   /* Show the FM Notification and update MediaSession */
    public void startNotification() {
       Log.d(LOGTAG,"startNotification");
 
       synchronized (mNotificationLock) {
           Context context = getApplicationContext();
-          Notification notification;
+
+          int state = isFmOn() ? PlaybackState.STATE_PLAYING : PlaybackState.STATE_PAUSED;
+
+          long actions = PlaybackState.ACTION_PAUSE | PlaybackState.ACTION_PLAY |
+                  PlaybackState.ACTION_PLAY_PAUSE | PlaybackState.ACTION_STOP;
+
+          if (isFmOn()) {
+              actions |= PlaybackState.ACTION_SKIP_TO_NEXT |
+                      PlaybackState.ACTION_SKIP_TO_PREVIOUS;
+          }
+
+          PlaybackState.Builder stateBuilder = new PlaybackState.Builder()
+                  .setActions(actions)
+                  .setState(state, PlaybackState.PLAYBACK_POSITION_UNKNOWN, 1.0f);
+          mSession.setPlaybackState(stateBuilder.build());
+
+          MediaMetadata.Builder metaBuilder = new MediaMetadata.Builder();
+          metaBuilder.putString(MediaMetadata.METADATA_KEY_TITLE, getTunedFrequencyString());
+          String stationName = getProgramService();
+          if (stationName != null && !stationName.isEmpty()) {
+              metaBuilder.putString(MediaMetadata.METADATA_KEY_ARTIST, stationName);
+          } else {
+              metaBuilder.putString(MediaMetadata.METADATA_KEY_ARTIST,
+                      getString(R.string.app_name));
+          }
+          mSession.setMetadata(metaBuilder.build());
+
           NotificationManager notificationManager =
               (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
           NotificationChannel notificationChannel =
@@ -2002,16 +2044,63 @@ public class FMRadioService extends Service
 
           notificationManager.createNotificationChannel(notificationChannel);
 
-          notification = new Notification.Builder(context, FMRADIO_NOTIFICATION_CHANNEL)
-            .setSmallIcon(R.drawable.stat_notify_fm)
-            .setContentTitle(isFmOn() ? getString(R.string.app_name) : "")
-            .setContentText(isFmOn() ? getTunedFrequencyString() : "")
-            .setContentIntent(PendingIntent.getActivity(this,
-                0, new Intent("com.caf.fmradio.FMRADIO_ACTIVITY"), PendingIntent.FLAG_IMMUTABLE))
-            .setOngoing(true)
-            .build();
+          Intent playPauseIntent = new Intent(Intent.ACTION_MEDIA_BUTTON);
+          playPauseIntent.putExtra(Intent.EXTRA_KEY_EVENT, new KeyEvent(KeyEvent.ACTION_DOWN,
+                  KeyEvent.KEYCODE_MEDIA_PLAY_PAUSE));
+          PendingIntent playPausePendingIntent = PendingIntent.getBroadcast(context, 2,
+                  playPauseIntent, PendingIntent.FLAG_UPDATE_CURRENT |
+                  PendingIntent.FLAG_IMMUTABLE);
 
-          startForeground(FMRADIOSERVICE_STATUS, notification,
+          int playPauseIcon = isFmOn() ?
+                  android.R.drawable.ic_media_pause : android.R.drawable.ic_media_play;
+          Notification.Action playPauseAction = new Notification.Action.Builder(
+                  playPauseIcon, "Play/Pause", playPausePendingIntent).build();
+
+          Notification.Builder builder =
+                  new Notification.Builder(context, FMRADIO_NOTIFICATION_CHANNEL)
+                          .setSmallIcon(R.drawable.stat_notify_fm)
+                          .setContentTitle(isFmOn() ? getString(R.string.app_name) : "")
+                          .setContentText(isFmOn() ? getTunedFrequencyString() : "")
+                          .setContentIntent(PendingIntent.getActivity(this, 0,
+                                  new Intent("com.caf.fmradio.FMRADIO_ACTIVITY"),
+                                  PendingIntent.FLAG_IMMUTABLE))
+                          .setVisibility(Notification.VISIBILITY_PUBLIC)
+                          .setOngoing(isFmOn());
+
+          if (isFmOn()) {
+              Intent prevIntent = new Intent(Intent.ACTION_MEDIA_BUTTON);
+              prevIntent.putExtra(Intent.EXTRA_KEY_EVENT, new KeyEvent(KeyEvent.ACTION_DOWN,
+                      KeyEvent.KEYCODE_MEDIA_PREVIOUS));
+              PendingIntent prevPendingIntent = PendingIntent.getBroadcast(context, 1,
+                      prevIntent, PendingIntent.FLAG_UPDATE_CURRENT |
+                      PendingIntent.FLAG_IMMUTABLE);
+              Notification.Action prevAction = new Notification.Action.Builder(
+                      android.R.drawable.ic_media_previous, "Previous",
+                      prevPendingIntent).build();
+
+              Intent nextIntent = new Intent(Intent.ACTION_MEDIA_BUTTON);
+              nextIntent.putExtra(Intent.EXTRA_KEY_EVENT, new KeyEvent(KeyEvent.ACTION_DOWN,
+                      KeyEvent.KEYCODE_MEDIA_NEXT));
+              PendingIntent nextPendingIntent = PendingIntent.getBroadcast(context, 3,
+                      nextIntent, PendingIntent.FLAG_UPDATE_CURRENT |
+                      PendingIntent.FLAG_IMMUTABLE);
+              Notification.Action nextAction = new Notification.Action.Builder(
+                      android.R.drawable.ic_media_next, "Next", nextPendingIntent).build();
+
+              builder.addAction(prevAction)
+                     .addAction(playPauseAction)
+                     .addAction(nextAction)
+                     .setStyle(new Notification.MediaStyle()
+                             .setShowActionsInCompactView(0, 1, 2)
+                             .setMediaSession(mSession.getSessionToken()));
+          } else {
+              builder.addAction(playPauseAction)
+                     .setStyle(new Notification.MediaStyle()
+                             .setShowActionsInCompactView(0)
+                             .setMediaSession(mSession.getSessionToken()));
+          }
+
+          startForeground(FMRADIOSERVICE_STATUS, builder.build(),
                 ServiceInfo.FOREGROUND_SERVICE_TYPE_MEDIA_PLAYBACK);
           mFMOn = true;
       }
