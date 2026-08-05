@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a32b5218_2880eeb0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 37188
+      },
+      "writtenOn": "2026-08-05T17:21:37Z",
+      "side": 1,
+      "message": "Hi! Just a friendly ping. Please let me know if anything else is needed for this to be merged.",
+      "revId": "40d104bc16f15585091916e949f155af74142af8",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
