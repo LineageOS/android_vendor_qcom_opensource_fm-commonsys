@@ -50,7 +50,7 @@
     <string name="dialog_sleep_title">Slå av automatisk etter</string>
     <string name="presetlist_select_name">Vel «<xliff:g id="presetlist_name">%1$s</xliff:g>»</string>
     <string name="presetlist_add_new">Legg til ny liste</string>
-    <string name="dialog_presetlist_rename_title">Skriv inn namn</string>
+    <string name="dialog_presetlist_rename_title">Skriv namnet</string>
     <string name="presetlist_autoselect_title">Stadfest automatisk val</string>
     <string name="preset_replace">Byt ut</string>
     <string name="preset_tune">Still inn</string>
@@ -152,7 +152,7 @@
     <string name="menu_scan_for_preset">Søk etter førehandsval</string>
     <string name="fm_off">Slo av FM-radioen.</string>
     <string name="fm_call">Du kan ikkje bruka FM-radioen under ein samtale.</string>
-    <string name="alert_dialog_hint">Skriv inn eit namn</string>
+    <string name="alert_dialog_hint">Skriv eit namn</string>
     <string name="search_dialog_title">Søk etter stasjonar</string>
     <string name="fm_command_timeout_title">Tidsavbrot</string>
     <string name="fm_tune_timeout_msg">Fekk ikkje svar ved innstilling av FM-stasjon. Dersom problemet held fram, kan du prøva å slå FM-radioen av og på att.</string>
