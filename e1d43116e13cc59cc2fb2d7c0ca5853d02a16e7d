@@ -16,6 +16,23 @@
       "message": "Uploaded a new patchset that adds MediaSession transport callbacks for\nplay, pause, previous and next, and updates the commit message\naccordingly.\n\nThe previous implementation only handled media-button KeyEvents via\nonMediaButtonEvent(), while SystemUI may dispatch transport controls\ndirectly through the corresponding MediaSession callbacks.\n\nPlease take a look.",
       "revId": "e1d43116e13cc59cc2fb2d7c0ca5853d02a16e7d",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d6376ca9_8bcd4451",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 37188
+      },
+      "writtenOn": "2026-09-09T14:10:52Z",
+      "side": 1,
+      "message": "Hi @bgcngm@gmail.com and @mkbestas@lineageos.org,\n\nGentle ping for review when you have a chance.\n\nThe latest patchset adds the MediaSession transport callbacks requested\nfor play, pause, previous and next, since SystemUI may invoke these\ndirectly instead of sending media-button KeyEvents.\n\nPTAL, thanks!",
+      "revId": "e1d43116e13cc59cc2fb2d7c0ca5853d02a16e7d",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
