@@ -160,7 +160,8 @@
     <string name="fm_cmd_failed_msg">کرداری FM شکستی هێنا. ئەگەر کێشەکە بەردەوام بوو، تکایە ڕادیۆی FM بکوژێنەرەوە و دووبارە دایگیرسێنەرەوە.</string>
     <string name="fm_cmd_failed_msg_hdmi">کرداری FM شکستی هێنا. کارکردنی هاوکاتی FM و HDMI پشتگیری ناکرێت.</string>
     <string name="fm_cmd_failed_call_on">کرداری FM شکستی هێنا. دەنگی FM لە کاتی پەیوەندیدا ڕێگەپێدراو نییە.</string>
-    <string name="audio_db_title_format">        <xliff:g id="format">yyyy-MM-dd HH:mm:ss</xliff:g>
+    <string name="audio_db_title_format">
+        <xliff:g id="format">yyyy-MM-dd HH:mm:ss</xliff:g>
     </string>
     <string name="audio_db_artist_name">تۆمارکراوەکانی من</string>
     <string name="audio_db_album_name">تۆمارکراوەکانی ڕادیۆ</string>
@@ -168,7 +169,8 @@
     <string name="station_name">وێستگە:</string>
     <string name="station_exists">ئەم فرێکوێنسییە پێشتر هەیە!</string>
     <string name="station_list_delete_station">سڕینه‌وه‌ی  <xliff:g id="name">%s</xliff:g></string>
-    <string name="station_list_delete_station_prompt">        دڵنیایت لە سڕینەوەی \'
+    <string name="station_list_delete_station_prompt">
+        دڵنیایت لە سڕینەوەی \'
         <xliff:g id="name">%s</xliff:g>
         \'؟
     </string>
@@ -180,7 +182,8 @@
     <string name="chanl_spacing">مەودای نێوان کەناڵەکان</string>
     <string name="set">دانان</string>
     <string name="user_defind_band_msg">فریکوێنسییەک لە نێوان 76.0 بۆ 108.0 MHz دیاری بکە</string>
-    <string name="save_record_file">        فایلی تۆمارکراو پاشەکەوت کرا لە \'
+    <string name="save_record_file">
+        فایلی تۆمارکراو پاشەکەوت کرا لە \'
         <xliff:g id="record_file">%1$s</xliff:g>
         \'
     </string>
