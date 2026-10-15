@@ -42,9 +42,9 @@
     <item>تاکو وەستاندن</item>
   </string-array>
   <string-array name="sleep_duration_values">
-    <item>ده‌قیقه‌ 15</item>
-    <item>30 خوله‌ك</item>
-    <item>45 خوله‌ك</item>
+    <item>15 خولەک</item>
+    <item>30 خولەک</item>
+    <item>45 خولەک</item>
     <item>1 کاتژمێر</item>
   </string-array>
   <string-array name="channel_spacing_entries">
