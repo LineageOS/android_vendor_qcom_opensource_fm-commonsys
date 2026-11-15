@@ -32,6 +32,8 @@
     <string name="tx_app_name">FM 發射器</string>
     <string name="menu_scan_start">掃描</string>
     <string name="menu_scan_stop">停止搜尋</string>
+    <string name="menu_record_start">錄音</string>
+    <string name="menu_record_stop">停止錄音</string>
     <string name="menu_settings">設定</string>
     <string name="menu_sleep">休眠</string>
     <string name="menu_sleep_cancel">取消休眠</string>
@@ -50,6 +52,7 @@
     <string name="presetlist_add_new">新增新清單</string>
     <string name="dialog_presetlist_rename_title">輸入名稱</string>
     <string name="presetlist_autoselect_title">確認自動選擇</string>
+    <string name="preset_replace">取代</string>
     <string name="preset_tune">調整</string>
     <string name="preset_rename">重新命名</string>
     <string name="preset_delete">刪除</string>
@@ -65,7 +68,7 @@
     <string name="regional_band_entry_belgium">比利時</string>
     <string name="regional_band_entry_brazil">巴西</string>
     <string name="regional_band_entry_china">中國</string>
-    <string name="regional_band_entry_czech_republic">Czech Republic</string>
+    <string name="regional_band_entry_czech_republic">捷克共和國</string>
     <string name="regional_band_entry_denmark">丹麥</string>
     <string name="regional_band_entry_finland">芬蘭</string>
     <string name="regional_band_entry_france">法國</string>
@@ -73,7 +76,7 @@
     <string name="regional_band_entry_greece">希臘</string>
     <string name="regional_band_entry_hong_kong">香港</string>
     <string name="regional_band_entry_india">印度</string>
-    <string name="regional_band_entry_indonesia">Indonesia</string>
+    <string name="regional_band_entry_indonesia">印尼</string>
     <string name="regional_band_entry_ireland">愛爾蘭</string>
     <string name="regional_band_entry_italy">意大利</string>
     <string name="regional_band_entry_korea">韓國</string>
@@ -91,22 +94,25 @@
     <string name="regional_band_entry_sweden">瑞典</string>
     <string name="regional_band_entry_taiwan">台灣</string>
     <string name="regional_band_entry_turkey">土耳其</string>
-    <string name="regional_band_entry_united_kingdom">United Kingdom</string>
+    <string name="regional_band_entry_united_kingdom">英國</string>
     <string name="regional_band_entry_united_states">美國</string>
     <string name="regional_band_entry_user_defined">使用者定義的頻段</string>
     <string name="regional_band_summary_user_defined">使用者定義的頻段</string>
     <string name="aud_output_mode">音訊輸出模式</string>
     <string name="audio_type_stereo">立體聲</string>
+    <string name="audio_type_mono">單聲道</string>
     <string name="record_dur">記錄時間</string>
     <string name="auto_select_af">備用頻率</string>
     <string name="settings_revert_defaults_title">恢復到出廠預設</string>
-    <string name="settings_revert_defaults_summary">清除所有設定</string>
+    <string name="settings_revert_defaults_summary">重設所有設定</string>
+    <string name="settings_revert_confirm_title">確定重設</string>
     <string name="settings_revert_confirm_msg">將會清除所有應用程式設定，包括已儲存的預設值。是否繼續？</string>
     <string name="access_sd_fail">無法存取 SD 卡。</string>
     <string name="spaceIsLow_content">您的 SD 卡儲存空間用完，更改質量設定或刪除一些其他的檔案以釋放空間。</string>
     <string name="menu_scan_for_preset">掃描預設</string>
     <string name="fm_off">FM 已關閉。</string>
     <string name="fm_call">FM 不能在通話時使用。</string>
+    <string name="alert_dialog_hint">輸入名稱</string>
     <string name="search_dialog_title">掃描電台</string>
     <string name="fm_command_timeout_title">逾時</string>
     <string name="fm_tune_timeout_msg">沒有收到要 FM 電台的回應。如果問題仍然存在，請關閉 FM，並將其重新開啟。</string>
@@ -114,6 +120,9 @@
     <string name="fm_cmd_failed_msg">FM 操作失敗。如果問題仍然存在，請關閉 FM 及重新開啟。</string>
     <string name="fm_cmd_failed_msg_hdmi">FM 操作失敗。不支援 FM 和 HDMI 的並行。</string>
     <string name="fm_cmd_failed_call_on">FM 操作失敗。通話期間不允許 FM 音頻。</string>
+    <string name="audio_db_artist_name">我的 FM 錄音</string>
+    <string name="audio_db_album_name">FM 錄音</string>
+    <string name="audio_db_playlist_name">FM 錄音</string>
     <string name="station_name">電台：</string>
     <string name="station_exists">此頻率已存在!</string>
     <string name="station_list_delete_station">刪除：<xliff:g id="name">%s</xliff:g></string>
@@ -123,7 +132,17 @@
     <string name="rt_plus_tags">標籤</string>
     <string name="usr_def_band_min">最低頻率 (MHz)</string>
     <string name="usr_def_band_max">最高頻率 (MHz)</string>
-    <string name="chanl_spacing">頻道距間</string>
+    <string name="chanl_spacing">頻道間距</string>
     <string name="set">設定</string>
+    <string name="save_record_file">FM 錄音已儲存到 \'<xliff:g id="record_file">%1$s</xliff:g>\'</string>
     <string name="fm_search_no_results">找不到相容的電台</string>
+    <string name="typ_All_stations">所有電台</string>
+    <string name="typ_Culture">文化</string>
+    <string name="typ_Easy_listening">輕鬆流行樂</string>
+    <string name="typ_Phone_in">聽眾來電</string>
+    <string name="typ_Religion">宗教</string>
+    <string name="typ_Science">科學</string>
+    <string name="typ_Sport">體育</string>
+    <string name="typ_Travel">旅遊</string>
+    <string name="typ_Weather">天氣</string>
 </resources>
